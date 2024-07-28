@@ -26911,7 +26911,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kayoko
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7146998984884783958, guid: e6c2f09528e44ef489dff9db1d26645f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
