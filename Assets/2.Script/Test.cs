@@ -1,10 +1,7 @@
-using System.Numerics;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.UI;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
-
 
 public class Test : MonoBehaviour
 {
@@ -16,11 +13,12 @@ public class Test : MonoBehaviour
     public Vector3 offSet;
     public int endIndex = 96;
     
-    
     public Material mat;
     public Texture2D tx;
 
-    void Awake()
+    public bool showGizmo = false;
+
+    private void Awake()
     {
         Mouth();
         Set(4, 0);
@@ -31,11 +29,8 @@ public class Test : MonoBehaviour
         var subMeshDescriptor = _skinned.GetSubMesh(faceMeshIndex);
         if (subMeshMaxCount != _skinned.subMeshCount)
             return;
-        BigInteger asd;
-        BigInteger asd2;
-        var q = asd* asd2;
-        
-        _skinned.subMeshCount = subMeshMaxCount+1;
+
+        _skinned.subMeshCount = subMeshMaxCount + 1;
         _skinned.SetSubMesh(faceMeshIndex, new SubMeshDescriptor(subMeshDescriptor.indexStart + endIndex, subMeshDescriptor.indexCount));
         _skinned.SetSubMesh(subMeshMaxCount, new SubMeshDescriptor(subMeshDescriptor.indexStart, endIndex));
     }
@@ -50,11 +45,13 @@ public class Test : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-        return;
+        if (false == showGizmo)
+            return;
+        
         var subMeshDescriptor = _skinned.GetSubMesh(faceMeshIndex);
-        for (int i = subMeshDescriptor.indexStart + startIndex ;
+        for (var i = subMeshDescriptor.indexStart + startIndex;
              i < subMeshDescriptor.indexStart + subMeshDescriptor.indexCount;
-             i += 3)
+             i += 3) 
         {
             var position = transform.position+offSet;
             var A = position + (Quaternion.AngleAxis(90, Vector3.right) * _skinned.vertices[_skinned.triangles[i]] * 100);

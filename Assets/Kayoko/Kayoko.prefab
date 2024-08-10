@@ -3488,10 +3488,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3709757016093822044}
   - component: {fileID: 2429586438966915023}
-  - component: {fileID: 832328503041314972}
   - component: {fileID: 387577899073726399}
-  - component: {fileID: 1388762233055337411}
   - component: {fileID: 7461774109172521428}
+  - component: {fileID: 832328503041314972}
+  - component: {fileID: 8930458751826804551}
   m_Layer: 0
   m_Name: Kayoko
   m_TagString: Untagged
@@ -3573,26 +3573,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 1
---- !u!114 &832328503041314972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7719790744615435754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 584e41cec515af64bbd268f73f0f2c6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  faceMeshIndex: 2
-  subMeshMaxCount: 5
-  _skinned: {fileID: 4300000, guid: a58116a541e82c5408c2f8c28c6dfd94, type: 2}
-  startIndex: 0
-  offSet: {x: 0, y: 0, z: 0}
-  endIndex: 96
-  mat: {fileID: 2100000, guid: fcac28aed62310c4da1b79f5a41e40ea, type: 2}
-  tx: {fileID: 2800000, guid: 0e54b9c71850da745b72039e06013ce5, type: 3}
 --- !u!136 &387577899073726399
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3600,7 +3580,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7719790744615435754}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 095b69d8ceacb0b4ebb0f0839f919af7, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3612,36 +3592,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.003
-  m_Height: 0.01
+  m_Radius: 0.13
+  m_Height: 1.019603
   m_Direction: 1
-  m_Center: {x: 0, y: 0.005, z: 0}
---- !u!143 &1388762233055337411
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7719790744615435754}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 0.96
-  m_Radius: 0.16
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.35
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Center: {x: -0, y: 0.47258294, z: 0}
 --- !u!54 &7461774109172521428
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3667,8 +3621,42 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 64
+  m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &832328503041314972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7719790744615435754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 584e41cec515af64bbd268f73f0f2c6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  faceMeshIndex: 2
+  subMeshMaxCount: 5
+  _skinned: {fileID: 4300000, guid: a58116a541e82c5408c2f8c28c6dfd94, type: 2}
+  startIndex: 0
+  offSet: {x: 0, y: 0, z: 0}
+  endIndex: 96
+  mat: {fileID: 2100000, guid: fcac28aed62310c4da1b79f5a41e40ea, type: 2}
+  tx: {fileID: 2800000, guid: 0e54b9c71850da745b72039e06013ce5, type: 3}
+  showGizmo: 0
+--- !u!114 &8930458751826804551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7719790744615435754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b957f4326df7ef546a65eb202e8c04b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
 --- !u!1 &7745974817198762608
 GameObject:
   m_ObjectHideFlags: 0
