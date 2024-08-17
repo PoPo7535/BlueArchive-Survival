@@ -1,8 +1,5 @@
 using UnityEngine;
 using UnityEngine.Rendering;
-using Quaternion = UnityEngine.Quaternion;
-using Vector3 = UnityEngine.Vector3;
-
 public class Test : MonoBehaviour
 {
     public int faceMeshIndex = 2;

@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
 namespace RealToon.Effects
 {
+#pragma warning disable CS0618
 
     public class DeNorSobOutline : ScriptableRendererFeature
     {
@@ -211,10 +213,10 @@ namespace RealToon.Effects
 
         public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
         {
-            DeNorSobOutlinepass.SetSource(renderer.cameraColorTarget);
+            DeNorSobOutlinepass.SetSource(renderer.cameraColorTargetHandle);
             renderer.EnqueuePass(DeNorSobOutlinepass);
         }
     }
-
+#pragma warning restore CS0618
 }
 
