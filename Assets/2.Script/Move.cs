@@ -1,7 +1,5 @@
-using System;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.EventSystems;
 
 public class Move : MonoBehaviour
 {
@@ -12,16 +10,21 @@ public class Move : MonoBehaviour
     public Camera mainCamera;
     public Transform weaponTr;
     public GameObject bullet;
+
     
     private void Start()
     {
         rigi = GetComponent<Rigidbody>();
     }
+    
+    
 
     void Update()
     {
         var x = Input.GetAxis("Horizontal");
         var y = Input.GetAxis("Vertical");
+
+
         if (Input.GetMouseButton(0))
         {
             Foo();
