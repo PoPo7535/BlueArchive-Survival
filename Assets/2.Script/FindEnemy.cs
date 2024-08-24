@@ -1,5 +1,8 @@
+using System;
 using System.Linq;
+using Fusion;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class FindEnemy : MonoBehaviour
 {
@@ -7,8 +10,8 @@ public class FindEnemy : MonoBehaviour
     private const float findTime = 0.1f;
     public float radius = 5;
 
-    [HideInInspector] public GameObject nearObj;
-    [HideInInspector] public GameObject randomObj;
+    public GameObject nearObj;
+    public GameObject randomObj;
     void Update()
     {
         time += Time.deltaTime;
@@ -25,7 +28,6 @@ public class FindEnemy : MonoBehaviour
         }
             
         randomObj = colliders[Random.Range(0, colliders.Length - 1)].gameObject;
-
         var shortDis = float.MaxValue;
         foreach (var collider in colliders)
         {
