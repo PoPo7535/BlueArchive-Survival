@@ -2,39 +2,56 @@ using System;
 using System.Linq;
 using Fusion;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class FindEnemy : MonoBehaviour
 {
-    private float time = 0;
-    private const float findTime = 0.1f;
     public float radius = 5;
-
-    public GameObject nearObj;
-    public GameObject randomObj;
-    void Update()
+    private int frameCount = 0;
+    public GameObject nearObj
     {
-        time += Time.deltaTime;
-        if (false == findTime < time) 
+        get
+        {
+            Find();
+            return _nearObj;
+        }
+    }
+
+    private GameObject _nearObj;
+    public GameObject randomObj
+    {
+        get
+        {
+            Find();
+            return _randomObj;
+        }
+    }
+
+    private GameObject _randomObj;
+    
+    private void Find()
+    {
+        if (frameCount == Time.frameCount)
             return;
         
-        time = 0;
+        frameCount = Time.frameCount;
         var colliders = Physics.OverlapSphere(transform.position, radius);
         colliders = colliders.Where(col => col.gameObject.CompareTag("Enemy")).ToArray();
         if (0 == colliders.Length)
         {
-            nearObj = randomObj = null;
+            _nearObj = _randomObj = null;
             return;
         }
             
-        randomObj = colliders[Random.Range(0, colliders.Length - 1)].gameObject;
+        _randomObj = colliders[Random.Range(0, colliders.Length - 1)].gameObject;
         var shortDis = float.MaxValue;
         foreach (var collider in colliders)
         {
             var dis = Vector3.Distance(collider.transform.position, transform.position);
             if (dis < shortDis)
             {
-                nearObj = collider.gameObject;
+                _nearObj = collider.gameObject;
                 shortDis = dis;
             }
         }

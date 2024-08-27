@@ -1,18 +1,22 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Move : MonoBehaviour
 {
     private Rigidbody rigi;
+    private FindEnemy findEnemy;
     public float moveSpeed = 30;
     public float rotateSpeed = 30;
     public Animator ani;
     public Camera mainCamera;
     public GameObject bullet;
-    private bool isShooting;
-    
+
+    private float attackDelay = 0;
+    private const float attackDelayMax = 2f;
     private void Start()
     {
         rigi = GetComponent<Rigidbody>();
+        findEnemy = GetComponent<FindEnemy>();
     }
 
 
@@ -23,7 +27,6 @@ public class Move : MonoBehaviour
         var input = new Vector2(x, y);
         var dir = new Vector2(x, y).normalized * (moveSpeed * Time.deltaTime);
 
-       
         Move2(input, dir);
         Rotation(input, dir);
     }
@@ -42,9 +45,15 @@ public class Move : MonoBehaviour
 
     private void Rotation(Vector2 input, Vector2 dir)
     {
-        if (Input.GetMouseButtonDown(0))
+
+        attackDelay += Time.deltaTime;
+        if (ani.GetCurrentAnimatorStateInfo(0).shortNameHash == StringToHash.Attack)
+            return;
+        
+        if (false == findEnemy.nearObj.IsUnityNull() &&attackDelayMax < attackDelay) 
         {
             Shot();
+            attackDelay = 0;
             ani.SetTrigger(StringToHash.Attack);
             Instantiate(bullet, transform.position + (transform.forward + Vector3.up) * 0.5f, transform.rotation);
             return;
@@ -58,14 +67,15 @@ public class Move : MonoBehaviour
     }
     private void Shot()
     {
-        var ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        var plane = new Plane(Vector3.up, transform.position);
-        if (false == plane.Raycast(ray, out var distance)) 
-            return;
-        
-        var targetPoint = ray.GetPoint(distance);
+        // var ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        // var plane = new Plane(Vector3.up, transform.position);
+        // if (false == plane.Raycast(ray, out var distance)) 
+        //     return;
+        // var targetPoint = ray.GetPoint(distance);
+
+        var targetPoint = findEnemy.nearObj.transform.position;
         var dir = (targetPoint - transform.position).normalized;
         var lookRotation = Quaternion.LookRotation(new Vector3(dir.x, 0, dir.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotateSpeed * Time.deltaTime*10000);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 10000);
     }
 }
