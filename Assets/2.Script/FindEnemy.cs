@@ -36,13 +36,12 @@ public class FindEnemy : MonoBehaviour
             return;
         
         frameCount = Time.frameCount;
+        _nearObj = _randomObj = null;
         var colliders = Physics.OverlapSphere(transform.position, radius);
         colliders = colliders.Where(col => col.gameObject.CompareTag("Enemy")).ToArray();
+
         if (0 == colliders.Length)
-        {
-            _nearObj = _randomObj = null;
             return;
-        }
             
         _randomObj = colliders[Random.Range(0, colliders.Length - 1)].gameObject;
         var shortDis = float.MaxValue;

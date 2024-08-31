@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class Follow : MonoBehaviour
@@ -8,8 +9,8 @@ public class Follow : MonoBehaviour
 
     public Vector3 off;
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        transform.position = tr.position + off;
+        transform.position = GameManager.I.player.transform.position + off;
     }
 }
