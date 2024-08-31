@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class Follow : MonoBehaviour
 {
-    public Transform tr;
-
     public Vector3 off;
     // Update is called once per frame
     void LateUpdate()

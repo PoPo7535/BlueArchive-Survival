@@ -2,7 +2,7 @@ using Fusion;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Move : NetworkBehaviour
+public class Move : NetworkBehaviour, ISpawned
 {
     private Rigidbody rigi;
     private FindEnemy findEnemy;
@@ -20,19 +20,23 @@ public class Move : NetworkBehaviour
         findEnemy = GetComponent<FindEnemy>();
     }
 
+    public override void Spawned()
+    {
+        if (HasInputAuthority)
+            GameManager.I.player = gameObject;
+    }
 
     public override void FixedUpdateNetwork()
     {
-        if (false == HasInputAuthority)
-            return;
-        
-        var x = Input.GetAxis("Horizontal");
-        var y = Input.GetAxis("Vertical");
-        var input = new Vector2(x, y);
-        var dir = new Vector2(x, y).normalized * (moveSpeed * Runner.DeltaTime);
-
-        Move2(input, dir);
-        Rotation(input, dir);
+        // if (false == HasStateAuthority)
+        //     return;
+   
+        if (GetInput(out Spawner.NetworkInputData data) && Runner.IsForward)
+        {
+            var dir = data.input.normalized * (moveSpeed * Runner.DeltaTime);
+            Move2(data.input, dir);
+            Rotation(data.input, dir);
+        }
     }
 
     private void Move2(Vector2 input, Vector2 dir)
