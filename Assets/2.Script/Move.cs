@@ -6,11 +6,12 @@ public class Move : NetworkBehaviour, ISpawned
 {
     private Rigidbody rigi;
     private FindEnemy findEnemy;
-    public float moveSpeed = 30;
-    public float rotateSpeed = 30;
-    public NetworkMecanimAnimator ani;
+    public Animator ani;
     public Camera mainCamera;
     public GameObject bullet;
+    [Networked] private int aniTrigger { get; set; }
+    public float moveSpeed = 30;
+    public float rotateSpeed = 30;
 
     private float attackDelay = 0;
     private const float attackDelayMax = 2f;
@@ -30,8 +31,8 @@ public class Move : NetworkBehaviour, ISpawned
     {
         // if (false == HasStateAuthority)
         //     return;
-   
-        if (GetInput(out Spawner.NetworkInputData data) && Runner.IsForward)
+        ani.SetTrigger(aniTrigger);
+        if (GetInput(out Spawner.NetworkInputData data))
         {
             var dir = data.input.normalized * (moveSpeed * Runner.DeltaTime);
             Move2(data.input, dir);
@@ -44,10 +45,10 @@ public class Move : NetworkBehaviour, ISpawned
         if (input is { x: 0, y: 0 })
         {
             rigi.velocity = new Vector3(0, rigi.velocity.y, 0);
-            ani.SetTrigger(StringToHash.Idle);
+            aniTrigger = StringToHash.Idle;
             return; 
         }
-        ani.SetTrigger(StringToHash.Move);
+        aniTrigger = StringToHash.Move;
         rigi.velocity = new Vector3(dir.x, rigi.velocity.y, dir.y);
     }
 
@@ -55,14 +56,14 @@ public class Move : NetworkBehaviour, ISpawned
     {
 
         attackDelay += Runner.DeltaTime;
-        if (ani.Animator.GetCurrentAnimatorStateInfo(0).shortNameHash == StringToHash.Attack)
+        if (ani.GetCurrentAnimatorStateInfo(0).shortNameHash == StringToHash.Attack)
             return;
         
         if (false == findEnemy.nearObj.IsUnityNull() &&attackDelayMax < attackDelay) 
         {
             Shot();
             attackDelay = 0;
-            ani.SetTrigger(StringToHash.Attack);
+            aniTrigger = StringToHash.Attack;
             Instantiate(bullet, transform.position + (transform.forward + Vector3.up) * 0.5f, transform.rotation);
             return;
         }

@@ -3729,11 +3729,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b957f4326df7ef546a65eb202e8c04b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 300
-  rotateSpeed: 10
-  ani: {fileID: 2258653692285929973}
+  ani: {fileID: 1045847734138903264}
   mainCamera: {fileID: 0}
   bullet: {fileID: 970238790205541930, guid: 165c5e191bafd4b4a83b899f0a386523, type: 3}
+  moveSpeed: 300
+  rotateSpeed: 10
 --- !u!114 &377901874750698743
 MonoBehaviour:
   m_ObjectHideFlags: 0

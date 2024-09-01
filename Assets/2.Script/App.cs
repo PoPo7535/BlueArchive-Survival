@@ -14,10 +14,10 @@ public class App : SimulationBehaviour
         Debug.Log(GameManager.I.gameObject);
         I = this;
         runner = GetComponent<NetworkRunner>();
-        startBtn.onClick.AddListener(StartG);
+        startBtn.onClick.AddListener(StartGame);
     }
 
-    private async void StartG()
+    private async void StartGame()
     {
         var result = await runner.StartGame(new StartGameArgs()
         {
