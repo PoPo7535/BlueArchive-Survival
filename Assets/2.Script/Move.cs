@@ -44,7 +44,7 @@ public class Move : NetworkBehaviour, ISpawned
     {
         if (input is { x: 0, y: 0 })
         {
-            rigi.velocity = new Vector3(0, rigi.velocity.y, 0);
+            rigi.velocity = new Vector3(0, rigi.velocity.y, 0); 
             aniTrigger = StringToHash.Idle;
             return; 
         }
@@ -64,7 +64,7 @@ public class Move : NetworkBehaviour, ISpawned
             Shot();
             attackDelay = 0;
             aniTrigger = StringToHash.Attack;
-            Instantiate(bullet, transform.position + (transform.forward + Vector3.up) * 0.5f, transform.rotation);
+            Runner.Spawn(bullet, transform.position + (transform.forward + Vector3.up) * 0.5f, transform.rotation);
             return;
         }
 

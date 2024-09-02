@@ -1,13 +1,29 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Fusion;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : NetworkBehaviour
 {
     public float speed = 100f;
-    void Update()
+    [Networked] private TickTimer timer { get; set; }
+
+    public override void Spawned()
     {
+        timer = TickTimer.CreateFromSeconds(Runner, 3f);
+    }
+
+    public override void Despawned(NetworkRunner runner, bool hasState)
+    {
+        timer = TickTimer.None;
+    }
+    
+    public override void FixedUpdateNetwork()
+    {
+        if (false == HasStateAuthority)
+            return;
+        
+        if (timer.ExpiredOrNotRunning(Runner))
+            Runner.Despawn(Object);
+        
         transform.Translate(Vector3.forward * (speed * Time.deltaTime),Space.Self);
     }
 
@@ -16,7 +32,7 @@ public class Bullet : MonoBehaviour
         if (other.CompareTag($"Enemy"))
         {
             other.GetComponent<Monster>().Damage();
-            gameObject.SetActive(false);
+            Runner.Despawn(Object);
         }
     }
 }

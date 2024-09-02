@@ -7,6 +7,7 @@ using UnityEngine;
 public class Spawner : NetworkBehaviour, INetworkRunnerCallbacks
 {
     public List<GameObject> spawnPoints = new();
+    public Transform playerPoint;
     public GameObject obj;
     private float spawnDelay = 0;
     public float spawnDelayMax = 2;
@@ -26,15 +27,21 @@ public class Spawner : NetworkBehaviour, INetworkRunnerCallbacks
 
     void Update()
     {
-        _mouseButton0 = _mouseButton0 | Input.GetMouseButton(0);
-        // spawnDelay += Time.deltaTime;
-        // if (spawnDelayMax < spawnDelay)
-        // {
-        //     spawnDelay = 0;
-        //     var randomIndex = Random.Range(0, spawnPoints.Count);
-        //     Instantiate(obj, spawnPoints[randomIndex].transform.position, Quaternion.identity);
-        //
-        // }
+        _mouseButton0 |= Input.GetMouseButton(0);
+    }
+
+    public override void FixedUpdateNetwork()
+    {
+        if (false == HasStateAuthority)
+            return;
+        
+        spawnDelay += Runner.DeltaTime;
+        if (spawnDelayMax < spawnDelay)
+        {
+            spawnDelay = 0;
+            var randomIndex =  UnityEngine.Random.Range(0, spawnPoints.Count);
+            Runner.Spawn(obj, spawnPoints[randomIndex].transform.position, Quaternion.identity);
+        }
     }
 
     public struct NetworkInputData : INetworkInput
@@ -60,10 +67,12 @@ public class Spawner : NetworkBehaviour, INetworkRunnerCallbacks
     {
          if (HasStateAuthority)
          {
-             Runner.Spawn(
-                 GameManager.I.kayoko, 
-                 new Vector3(0, 1, 0), 
+             var obj = player == Runner.LocalPlayer ? GameManager.I.kayoko : GameManager.I.kayoko2;
+             var playerObj = Runner.Spawn(
+                 obj, 
+                 playerPoint.position, 
                  Quaternion.identity,player);
+             Runner.SetPlayerObject(player, playerObj);
          }
     }
     

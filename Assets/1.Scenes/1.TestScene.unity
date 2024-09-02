@@ -805,6 +805,7 @@ MonoBehaviour:
   - {fileID: 492215418}
   - {fileID: 2011301114}
   - {fileID: 1516747215}
+  playerPoint: {fileID: 191907252}
   obj: {fileID: 3286513706925757525, guid: 7111124b948cb924981a0231273dc4bb, type: 3}
   spawnDelayMax: 1
 --- !u!4 &100308195
@@ -824,6 +825,7 @@ Transform:
   - {fileID: 492215419}
   - {fileID: 2011301115}
   - {fileID: 1516747216}
+  - {fileID: 191907252}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &100308196
@@ -1598,6 +1600,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7759192849292270736, guid: cbd3c582c7c83264f99a3ed890539100, type: 3}
+--- !u!1 &191907251
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 191907252}
+  m_Layer: 0
+  m_Name: PlayerPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &191907252
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191907251}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.6538305, y: 1.860215, z: 3.1912613}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 100308195}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &203307036
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6420,13 +6453,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5735764, y: 0, z: 0, w: 0.8191521}
+  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
   m_LocalPosition: {x: -0.00000023841858, y: 8.215792, z: 39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 70, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6483,8 +6516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de0feabeadd448e459bd0d5aec1edb12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tr: {fileID: 0}
-  off: {x: 0, y: 8, z: -3}
+  off: {x: 0, y: 5, z: -3}
 --- !u!64 &968092342
 MeshCollider:
   m_ObjectHideFlags: 0

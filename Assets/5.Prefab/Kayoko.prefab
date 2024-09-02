@@ -3600,7 +3600,6 @@ GameObject:
   - component: {fileID: 8930458751826804551}
   - component: {fileID: 377901874750698743}
   - component: {fileID: 4446647335603666684}
-  - component: {fileID: 2258653692285929973}
   - component: {fileID: -8750236703293195644}
   m_Layer: 0
   m_Name: Kayoko
@@ -3732,7 +3731,7 @@ MonoBehaviour:
   ani: {fileID: 1045847734138903264}
   mainCamera: {fileID: 0}
   bullet: {fileID: 970238790205541930, guid: 165c5e191bafd4b4a83b899f0a386523, type: 3}
-  moveSpeed: 300
+  moveSpeed: 100
   rotateSpeed: 10
 --- !u!114 &377901874750698743
 MonoBehaviour:
@@ -3765,26 +3764,7 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 8930458751826804551}
-  - {fileID: 2258653692285929973}
   - {fileID: -8750236703293195644}
---- !u!114 &2258653692285929973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7719790744615435754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Animator: {fileID: 1045847734138903264}
-  TotalWords: 2
-  ApplyTiming: 2
-  SyncSettings: 79
-  StateHashes: 000000007724c5985494c63e0d286c404e865f4315c67a0e26755f392b1a167c7940695546980c4f14c27366
-  TriggerHashes: 000000002b1a167c0d286c4046980c4f
 --- !u!114 &-8750236703293195644
 MonoBehaviour:
   m_ObjectHideFlags: 0

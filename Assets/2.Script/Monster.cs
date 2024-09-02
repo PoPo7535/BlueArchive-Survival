@@ -1,24 +1,29 @@
+using Fusion;
 using UnityEngine;
 
-public class Monster : MonoBehaviour
+public class Monster : NetworkBehaviour
 {
     public Rigidbody rigi;
     public float moveSpeed = 300f;
     public float rotateSpeed = 10f;
     public Animator ani;
         
-    void Update()
+    public override void FixedUpdateNetwork()
     {
+        ani.SetTrigger(StringToHash.Move);
+
+        if (false == HasStateAuthority)
+            return;
+        
         var dir = (GameManager.I.player.transform.position - transform.position).normalized *
-                  (moveSpeed * Time.deltaTime);
+                  (moveSpeed * Runner.DeltaTime);
         rigi.velocity = new Vector3(dir.x, rigi.velocity.y, dir.z);
         var targetRotation = Quaternion.LookRotation(new Vector3(dir.x, 0, dir.z));
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
-        ani.SetTrigger(StringToHash.Move);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotateSpeed * Runner.DeltaTime);
     }
 
     public void Damage()
     {
-        gameObject.SetActive(false);
+        Runner.Despawn(Object);
     }
 }
