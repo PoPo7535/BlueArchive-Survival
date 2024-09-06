@@ -7,4 +7,6 @@ public class GameManager : Singleton<GameManager>
 
     public GameObject kayoko;
     public GameObject kayoko2;
+
+    public PlayerInfo playerInfo;
 }

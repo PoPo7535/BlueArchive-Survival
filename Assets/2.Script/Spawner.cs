@@ -72,7 +72,6 @@ public class Spawner : NetworkBehaviour, INetworkRunnerCallbacks
                  obj, 
                  playerPoint.position, 
                  Quaternion.identity,player);
-             Runner.SetPlayerObject(player, playerObj);
          }
     }
     
