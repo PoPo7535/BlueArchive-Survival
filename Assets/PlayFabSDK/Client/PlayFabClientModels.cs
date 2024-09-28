@@ -5384,7 +5384,7 @@ namespace PlayFab.ClientModels
         /// </summary>
         public Dictionary<string,string> CustomTags;
         /// <summary>
-        /// An optional parameter for setting the display name for this title (3-25 characters).
+        ///  An optional parameter for setting the display name for this title(3-25 characters).
         /// </summary>
         public string DisplayName;
         /// <summary>
