@@ -19,7 +19,12 @@ public static class Extensions
                 queue.Enqueue(tr.GetChild(i));
             }
         }
-
         return list;
+    }
+    public static void SetActive(this CanvasGroup cg, bool isActive)
+    {
+        cg.interactable = isActive;
+        cg.blocksRaycasts = isActive;
+        cg.alpha = isActive ? 1 : 0;
     }
 }

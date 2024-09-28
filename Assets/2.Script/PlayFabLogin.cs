@@ -3,10 +3,10 @@ using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine;
 
-public class PlayFabLogin
+public static class PlayFabLogin
 {
 
-    public void Login(string username, string password, Action resultAction = null, Action errorAction = null)
+    public static void Login(string username, string password, Action resultAction = null, Action errorAction = null)
     {
         var request = new LoginWithPlayFabRequest() { Username = username, Password = password };
         PlayFabClientAPI.LoginWithPlayFab(request,
@@ -21,7 +21,8 @@ public class PlayFabLogin
 
     }
 
-    public void Register(string displayName, string username, string password, Action resultAction, Action errorAction)
+    public static void Register(string displayName, string username, string password, Action resultAction = null,
+        Action errorAction = null)
     {
         var request = new RegisterPlayFabUserRequest()
         {
