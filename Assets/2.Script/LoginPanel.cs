@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using PlayFab;
+using PlayFab.ClientModels;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -17,6 +19,7 @@ public class LoginPanel : MonoBehaviour
     [SerializeField, FoldoutGroup("LoginBox")] private Button registerOpenBtn;
     
     [SerializeField, FoldoutGroup("RegisterPanel")] private CanvasGroup registerGroup;
+    [SerializeField, FoldoutGroup("RegisterPanel")] private TMP_InputField nickNameIF;
     [SerializeField, FoldoutGroup("RegisterPanel")] private TMP_InputField registerIdIF;
     [SerializeField, FoldoutGroup("RegisterPanel")] private TMP_InputField registerPwIF;
     [SerializeField, FoldoutGroup("RegisterPanel")] private TMP_InputField registerPwCheckIF;
@@ -34,6 +37,7 @@ public class LoginPanel : MonoBehaviour
         registerOpenBtn = childs.First(tr => tr.name == "RegisterOpen Btn").GetComponent<Button>();
 
         registerGroup = childs.First(tr => tr.name == "RegisterBox").GetComponent<CanvasGroup>();
+        nickNameIF = childs.First(tr => tr.name == "NickName IF").GetComponent<TMP_InputField>();
         registerIdIF = childs.First(tr => tr.name == "RegisterID IF").GetComponent<TMP_InputField>();
         registerPwIF = childs.First(tr => tr.name == "RegisterPW IF").GetComponent<TMP_InputField>();
         registerPwCheckIF = childs.First(tr => tr.name == "PWCheck IF").GetComponent<TMP_InputField>();
@@ -54,7 +58,14 @@ public class LoginPanel : MonoBehaviour
         loginPwIF.onValueChanged.AddListener(SetLoginBtn);
         loginBtn.onClick.AddListener(() =>
         {
-            PlayFabLogin.Login(loginIdIF.text, loginPwIF.text);
+            var request = new LoginWithPlayFabRequest() { Username = loginIdIF.text, Password = loginPwIF.text };
+            PlayFabClientAPI.LoginWithPlayFab(request,
+                (result) =>
+                {
+                },
+                (error) =>
+                {
+                });
         });
         registerOpenBtn.onClick.AddListener(() =>
         {
@@ -66,7 +77,8 @@ public class LoginPanel : MonoBehaviour
 
         void SetLoginBtn(string str)
         {
-            loginBtn.interactable = loginIdIF.text.Length >= 6 && loginPwIF.text.Length >= 6;
+            loginBtn.interactable = CheckLength(loginIdIF.text.Length) && 
+                                    CheckLength(loginPwIF.text.Length);
         }
     }
 
@@ -79,17 +91,28 @@ public class LoginPanel : MonoBehaviour
             registerIdIF.text = string.Empty;
             registerPwIF.text = string.Empty;
             registerPwCheckIF.text = string.Empty;
+            nickNameIF.text = string.Empty;
         });
+        
         registerIdIF.onValueChanged.AddListener(SetRegisterBtn);
         registerPwIF.onValueChanged.AddListener(SetRegisterBtn);
         registerPwCheckIF.onValueChanged.AddListener(SetRegisterBtn);
         registerBtn.onClick.AddListener(() =>
         {
-            PlayFabLogin.Register("", loginIdIF.text, loginPwIF.text);
+            PlayFabLogin.Register(nickNameIF.text, loginIdIF.text, loginPwIF.text);
         });
+        
         void SetRegisterBtn(string str)
         {
-            registerBtn.interactable = registerIdIF.text.Length >= 6 && registerPwIF.text.Length >= 6 && registerPwCheckIF.text.Length >= 6;
+            registerBtn.interactable = CheckLength(nickNameIF.text.Length) && 
+                                       CheckLength(registerIdIF.text.Length) &&
+                                       CheckLength(registerPwIF.text.Length) &&
+                                       CheckLength(registerPwCheckIF.text.Length);
         }
+    }
+
+    private bool CheckLength(int length)
+    {
+        return Define.accountMinLength <= length && length <= Define.accountMaxLength;
     }
 }

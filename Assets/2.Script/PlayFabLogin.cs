@@ -36,8 +36,6 @@ public static class PlayFabLogin
             (error) =>
             {
                 errorAction?.Invoke();
-                Debug.Log(error.Error);
             });
     }
-
 }
