@@ -1,15 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using PlayFab;
 using PlayFab.ClientModels;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class LoginPanel : MonoBehaviour
+public class LoginPanel : MonoBehaviour, ISetInspector
 {
     [SerializeField, FoldoutGroup("LoginBox")] private CanvasGroup loginGroup;
     [SerializeField, FoldoutGroup("LoginBox")] private TMP_InputField loginIdIF;
@@ -26,7 +24,7 @@ public class LoginPanel : MonoBehaviour
     [SerializeField, FoldoutGroup("RegisterPanel")] private Button registerBtn;
     [SerializeField, FoldoutGroup("RegisterPanel")] private Button registerCancelBtn;
     [Button,GUIColor(0, 1, 0)]
-    private void SetInspector()
+    public void SetInspector()
     {
         var childs = transform.GetAllChild();
         loginGroup = childs.First(tr => tr.name == "LoginBox").GetComponent<CanvasGroup>();
@@ -62,15 +60,21 @@ public class LoginPanel : MonoBehaviour
             PlayFabClientAPI.LoginWithPlayFab(request,
                 (result) =>
                 {
+                    SceneManager.LoadScene("1.Lobby");
                 },
                 (error) =>
                 {
+                    PopUp.I.ShowHideCG(true);
+                    PopUp.I.OpenPopUp($"{error.ErrorMessage}\n{(int)error.Error}", () =>
+                    {
+                        PopUp.I.ShowHideCG(false);
+                    }, "확인");
                 });
         });
         registerOpenBtn.onClick.AddListener(() =>
         {
-            loginGroup.SetActive(false);
-            registerGroup.SetActive(true);
+            loginGroup.ShowHideCG(false);
+            registerGroup.ShowHideCG(true);
             loginIdIF.text = string.Empty;
             loginPwIF.text = string.Empty;
         });
@@ -86,8 +90,8 @@ public class LoginPanel : MonoBehaviour
     {
         registerCancelBtn.onClick.AddListener(() =>
         {
-            loginGroup.SetActive(true);
-            registerGroup.SetActive(false);
+            loginGroup.ShowHideCG(true);
+            registerGroup.ShowHideCG(false);
             registerIdIF.text = string.Empty;
             registerPwIF.text = string.Empty;
             registerPwCheckIF.text = string.Empty;
@@ -99,7 +103,17 @@ public class LoginPanel : MonoBehaviour
         registerPwCheckIF.onValueChanged.AddListener(SetRegisterBtn);
         registerBtn.onClick.AddListener(() =>
         {
-            PlayFabLogin.Register(nickNameIF.text, loginIdIF.text, loginPwIF.text);
+            var request = new RegisterPlayFabUserRequest()
+            {
+                DisplayName = nickNameIF.text, Username = loginIdIF.text, Password = loginPwIF.text, RequireBothUsernameAndEmail = false
+            };
+            PlayFabClientAPI.RegisterPlayFabUser(request,
+                (result) =>
+                {
+                },
+                (error) =>
+                {
+                });
         });
         
         void SetRegisterBtn(string str)

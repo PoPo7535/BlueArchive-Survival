@@ -1,0 +1,4 @@
+interface ISetInspector
+{
+    void SetInspector();
+}
