@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -34,6 +35,25 @@ public class Tools : MonoBehaviour
         foreach (var canvas in canvasGroups)
         {
             canvas.blocksRaycasts = canvas.alpha != 0;
+        }
+    }
+    [Button,GUIColor(0, 1, 0)]
+    void SetPlaceholder()
+    {
+        var objs = FindObjectsOfType<TMP_Text>();
+        objs =  objs.Where(o => o.name == "Placeholder").ToArray();
+        foreach (var obj in objs)
+        {
+            obj.color = new Color32(200,200,200,255);
+        }
+    }
+    [Button,GUIColor(0, 1, 0)]
+    void SetText()
+    {
+        var objs = FindObjectsOfType<TMP_Text>();
+        foreach (var obj in objs)
+        {
+            obj.fontSizeMax = 40;
         }
     }
 }

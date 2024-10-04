@@ -1,4 +1,3 @@
-using System;
 using Sirenix.OdinInspector;
 using TMPro;
 using Unity.VisualScripting;
@@ -17,6 +16,8 @@ public class PopUp : MonoBehaviour, ISetInspector
     [SerializeField, FoldoutGroup("Button3")] private Button btn3;
     [SerializeField, FoldoutGroup("Button3")] private TMP_Text text3;
     
+    public static PopUp I;
+
     [Button,GUIColor(0, 1, 0)]
     public void SetInspector()
     {
@@ -31,7 +32,6 @@ public class PopUp : MonoBehaviour, ISetInspector
         text3 = list.Find(o => o.name == "Text3").GetComponent<TMP_Text>();
     }
 
-    public static PopUp I;
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);

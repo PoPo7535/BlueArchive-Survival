@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -34,13 +33,12 @@ public static class Extensions
 
                 _cg.alpha = _isShow ? 0 : 1;
                 _cg.blocksRaycasts = true;
-                _cg.gameObject.SetActive(true);
+                // _cg.gameObject.SetActive(true);
             })
             .OnComplete(() =>
             {
                 _cg.blocksRaycasts = _isShow;
-                _cg.gameObject.SetActive(_isShow);
-
+                // _cg.gameObject.SetActive(_isShow);
                 _complete?.Invoke();
             });
     }
