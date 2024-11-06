@@ -59,6 +59,9 @@ public class LoginPanel : MonoBehaviour, ISetInspector
 
     private void Start()
     {
+        Debug.Log(GameManager.I.gameObject);
+        Debug.Log(PopUp.I.gameObject);
+
         SetLoginBox();
         SetRegisterBox();
         SetWarningText();

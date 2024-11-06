@@ -13,10 +13,9 @@ public class App : SimulationBehaviour, ISpawned, IPlayerJoined
 
     private void Start()
     {
-        Debug.Log(GameManager.I.gameObject);
         I = this;
         runner = GetComponent<NetworkRunner>();
-        startBtn.onClick.AddListener(StartGame);
+        // startBtn.onClick.AddListener(StartGame);
     }
 
     private async void StartGame() 
