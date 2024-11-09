@@ -44,29 +44,25 @@ public class PopUp : MonoBehaviour, ISetInspector
     }
     
     public void OpenPopUp(string msg,
-        UnityAction buttonAction1, string buttonText1, Color buttonColor1 = new(),
+        UnityAction buttonAction1 = null, string buttonText1 = null, Color buttonColor1 = new(),
         UnityAction buttonAction2 = null, string buttonText2 = null, Color buttonColor2 = new(),
         UnityAction buttonAction3 = null, string buttonText3 = null, Color buttonColor3 = new())
     {
         this.msg.text = msg;
-        btn1.onClick.AddListener(buttonAction1);
-        text1.text = buttonText1;
-        // btn1.targetGraphic.color = buttonColor1;
-        
-        btn2.gameObject.SetActive(false == buttonAction2.IsUnityNull());
-        if (false == buttonAction2.IsUnityNull())
-        {
-            btn2.onClick.AddListener(buttonAction2);
-            text2.text = buttonText2;
-            // btn2.targetGraphic.color = buttonColor2;
-        }
-        btn3.gameObject.SetActive(false == buttonAction3.IsUnityNull());
-        if (false == buttonAction3.IsUnityNull())
-        {
-            btn3.onClick.AddListener(buttonAction3);
-            text3.text = buttonText3;
-            // btn3.targetGraphic.color = buttonColor3;
-        }
 
+        SetBtn(btn1, buttonAction1, buttonText1, buttonColor1);
+        SetBtn(btn2, buttonAction2, buttonText2, buttonColor2);
+        SetBtn(btn3, buttonAction3, buttonText3, buttonColor3);
+
+        void SetBtn(Button button, UnityAction buttonAction = null, string buttonText = null, Color buttonColor = new())
+        {
+            button.gameObject.SetActive(false == buttonAction.IsUnityNull());
+            if (false == buttonAction.IsUnityNull())
+            {
+                btn1.onClick.AddListener(buttonAction);
+                text1.text = buttonText;
+                // button.targetGraphic.color = buttonColor;
+            }
+        }
     }
 }

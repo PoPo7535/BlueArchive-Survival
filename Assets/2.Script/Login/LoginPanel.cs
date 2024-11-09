@@ -77,9 +77,12 @@ public class LoginPanel : MonoBehaviour, ISetInspector
         loginBtn.onClick.AddListener(() =>
         {
             var request = new LoginWithPlayFabRequest() { Username = loginIdIF.text, Password = loginPwIF.text };
+            PopUp.I.ShowHideCG(true);
+            PopUp.I.OpenPopUp("로그인 중입니다");
             PlayFabClientAPI.LoginWithPlayFab(request,
                 (result) =>
                 {
+                    PopUp.I.ShowHideCG(false);
                     SceneManager.LoadScene("1.Lobby");
                     PlayerPrefs.SetInt(IDSave, idSaveToggle.isOn ? 1 : 0);
                     PlayerPrefs.SetString(ID, idSaveToggle.isOn ? loginIdIF.text : string.Empty);

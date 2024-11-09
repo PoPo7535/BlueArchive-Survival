@@ -2,7 +2,7 @@ using Fusion;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Move : NetworkBehaviour, ISpawned
+public class PlayerMove : NetworkBehaviour, ISpawned
 {
     private Rigidbody rigi;
     private FindEnemy findEnemy;
@@ -35,12 +35,12 @@ public class Move : NetworkBehaviour, ISpawned
         if (GetInput(out Spawner.NetworkInputData data))
         {
             var dir = data.input.normalized * (moveSpeed * Runner.DeltaTime);
-            Move2(data.input, dir);
+            Move(data.input, dir);
             Rotation(data.input, dir);
         }
     }
 
-    private void Move2(Vector2 input, Vector2 dir)
+    private void Move(Vector2 input, Vector2 dir)
     {
         if (input is { x: 0, y: 0 })
         {
