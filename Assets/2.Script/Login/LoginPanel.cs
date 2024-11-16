@@ -77,29 +77,27 @@ public class LoginPanel : MonoBehaviour, ISetInspector
         loginBtn.onClick.AddListener(() =>
         {
             var request = new LoginWithPlayFabRequest() { Username = loginIdIF.text, Password = loginPwIF.text };
-            PopUp.I.ShowHideCG(true);
             PopUp.I.OpenPopUp("로그인 중입니다");
             PlayFabClientAPI.LoginWithPlayFab(request,
                 (result) =>
                 {
-                    PopUp.I.ShowHideCG(false);
+                    PopUp.I.ActiveCG(false);
                     SceneManager.LoadScene("1.Lobby");
                     PlayerPrefs.SetInt(IDSave, idSaveToggle.isOn ? 1 : 0);
                     PlayerPrefs.SetString(ID, idSaveToggle.isOn ? loginIdIF.text : string.Empty);
                 },
                 (error) =>
                 {
-                    PopUp.I.ShowHideCG(true);
                     PopUp.I.OpenPopUp($"{error.ErrorMessage}\n{(int)error.Error}", () =>
                     {
-                        PopUp.I.ShowHideCG(false);
+                        PopUp.I.ActiveCG(false);
                     }, "확인");
                 });
         });
         registerOpenBtn.onClick.AddListener(() =>
         {
-            loginGroup.ShowHideCG(false);
-            registerGroup.ShowHideCG(true);
+            loginGroup.ActiveCG(false);
+            registerGroup.ActiveCG(true);
             loginIdIF.text = string.Empty;
             loginPwIF.text = string.Empty;
         });
@@ -115,8 +113,8 @@ public class LoginPanel : MonoBehaviour, ISetInspector
     {
         registerCancelBtn.onClick.AddListener(() =>
         {
-            loginGroup.ShowHideCG(true);
-            registerGroup.ShowHideCG(false);
+            loginGroup.ActiveCG(true);
+            registerGroup.ActiveCG(false);
             registerIdIF.text = string.Empty;
             registerPwIF.text = string.Empty;
             registerPwCheckIF.text = string.Empty;
@@ -140,20 +138,18 @@ public class LoginPanel : MonoBehaviour, ISetInspector
             PlayFabClientAPI.RegisterPlayFabUser(request,
                 (result) =>
                 {
-                    PopUp.I.ShowHideCG(true);
                     PopUp.I.OpenPopUp($"회원가입에 성공하였습니다.", () =>
                     {
-                        PopUp.I.ShowHideCG(false);
+                        PopUp.I.ActiveCG(false);
                         registerCancelBtn.onClick.Invoke();
                     }, "확인");
                 },
                 (error) =>
                 {
-                    PopUp.I.ShowHideCG(true);
                     PopUp.I.OpenPopUp($"{error.ErrorMessage}\n{(int)error.Error}", 
                         () => 
                         { 
-                            PopUp.I.ShowHideCG(false); 
+                            PopUp.I.ActiveCG(false); 
                         }, "확인");
                 });
         });

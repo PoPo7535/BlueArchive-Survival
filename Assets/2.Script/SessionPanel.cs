@@ -1,15 +1,28 @@
+using System.Linq;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SessionPanel : MonoBehaviour
+public class SessionPanel : MonoBehaviour, ISetInspector
 {
-    public Button btn;
-    // Update is called once per frame
-    void Start()
+    [SerializeField] private Button createRoomPanelBtn;
+    [SerializeField] private CanvasGroup createRoomPanelCG;
+    
+    
+    [Button,GUIColor(0, 1, 0)]
+    public void SetInspector()
     {
-        btn.onClick.AddListener(() =>
+        var childs = transform.parent.GetAllChild();
+        createRoomPanelBtn = childs.First(tr => tr.name == "CrateRoom Btn").GetComponent<Button>();
+        createRoomPanelCG = childs.First(tr => tr.name == "CreateRoomPanel").GetComponent<CanvasGroup>();
+    }
+
+    private void Start()
+    {
+        createRoomPanelBtn.onClick.AddListener(() =>
         {
-            App.I.StartGame();
+            createRoomPanelCG.ActiveCG(true);
         });
     }
+
 }

@@ -1,3 +1,4 @@
+using Fusion;
 using Sirenix.OdinInspector;
 using TMPro;
 using Unity.VisualScripting;
@@ -38,31 +39,47 @@ public class PopUp : MonoBehaviour, ISetInspector
         I = this;
     }
 
-    public void ShowHideCG(bool isShow)
+    public void ActiveCG(bool active)
     {
-        cg.ShowHideCG(isShow);
+        cg.ActiveCG(active);
     }
-    
+    public void OpenPopUp(StartGameResult result)
+    {
+        SetBtn(btn1);
+        SetBtn(btn2);
+        SetBtn(btn3);
+        if (result.Ok)
+            ActiveCG(false);
+        else
+        {
+            msg.text = $"에러 {result.ErrorMessage}";
+            SetBtn(btn1, () =>
+            {
+                ActiveCG(false);
+            });
+        }
+    }
     public void OpenPopUp(string msg,
         UnityAction buttonAction1 = null, string buttonText1 = null, Color buttonColor1 = new(),
         UnityAction buttonAction2 = null, string buttonText2 = null, Color buttonColor2 = new(),
         UnityAction buttonAction3 = null, string buttonText3 = null, Color buttonColor3 = new())
     {
+        ActiveCG(true);
         this.msg.text = msg;
-
         SetBtn(btn1, buttonAction1, buttonText1, buttonColor1);
         SetBtn(btn2, buttonAction2, buttonText2, buttonColor2);
         SetBtn(btn3, buttonAction3, buttonText3, buttonColor3);
-
-        void SetBtn(Button button, UnityAction buttonAction = null, string buttonText = null, Color buttonColor = new())
+    }
+    
+    private void SetBtn(Button button, UnityAction buttonAction = null, string buttonText = null, Color buttonColor = new())
+    {
+        button.gameObject.SetActive(false == buttonAction.IsUnityNull());
+        if (false == buttonAction.IsUnityNull())
         {
-            button.gameObject.SetActive(false == buttonAction.IsUnityNull());
-            if (false == buttonAction.IsUnityNull())
-            {
-                btn1.onClick.AddListener(buttonAction);
-                text1.text = buttonText;
-                // button.targetGraphic.color = buttonColor;
-            }
+            button.onClick.RemoveAllListeners();
+            button.onClick.AddListener(buttonAction);
+            text1.text = buttonText;
+            // button.targetGraphic.color = buttonColor;
         }
     }
 }

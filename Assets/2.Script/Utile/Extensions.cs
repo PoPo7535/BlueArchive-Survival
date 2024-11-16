@@ -23,7 +23,7 @@ public static class Extensions
         }
         return list;
     }
-    public static Tween ShowHideCG(this CanvasGroup _cg, bool _isShow, float _duration = 0.3f, Action _start = null,
+    public static Tween ActiveCG(this CanvasGroup _cg, bool _isShow, float _duration = 0.3f, Action _start = null,
         Action _complete = null)
     {
         return DOTween.To(() => _cg.alpha, x => _cg.alpha = x, _isShow ? 1 : 0, _duration)

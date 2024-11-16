@@ -25,11 +25,12 @@ public class App : SimulationBehaviour, INetworkRunnerCallbacks
         var result = await runner.JoinSessionLobby(SessionLobby.ClientServer);
 
     }
-    public async void StartGame() 
+    public async void HostGame(GameMode gameMode, int password) 
     {
+        PopUp.I.OpenPopUp("호스트 중");
         var result = await runner.StartGame(new StartGameArgs()
         {
-            GameMode = GameMode.AutoHostOrClient,
+            GameMode = gameMode,
             SessionName = "SessionName",
             CustomLobbyName = "CustomLobbyName",
             IsOpen = true,
@@ -39,17 +40,32 @@ public class App : SimulationBehaviour, INetworkRunnerCallbacks
             ObjectProvider = gameObject.AddComponent<NetworkObjectProviderDefault>() ,
             SessionProperties = new Dictionary<string, SessionProperty>()
             {
-                {"Password",(int)3}
+                {"Password",password}
             }
             
         });
-        if (result.Ok)
+        PopUp.I.OpenPopUp(result);
+    }
+    public async void ClientGame(string sessionName) 
+    {
+        PopUp.I.OpenPopUp("조인 중");
+        var result = await runner.StartGame(new StartGameArgs()
         {
-            // if (runner.GameMode == GameMode.Host)
-            //     await runner.LoadScene("1.TestScene");
-        }
-        else
-            Debug.Log(result.ErrorMessage);
+            GameMode = GameMode.Client,
+            SessionName = sessionName,
+            CustomLobbyName = "CustomLobbyName",
+            IsOpen = true,
+            IsVisible = true,
+            PlayerCount = 3,
+            SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>(),
+            ObjectProvider = gameObject.AddComponent<NetworkObjectProviderDefault>() ,
+            SessionProperties = new Dictionary<string, SessionProperty>()
+            {
+                {"Password",int.MaxValue}
+            }
+            
+        });
+        PopUp.I.OpenPopUp(result);
     }
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
