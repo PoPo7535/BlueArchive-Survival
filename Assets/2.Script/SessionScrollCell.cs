@@ -1,5 +1,6 @@
 using EnhancedScrollerDemos.SuperSimpleDemo;
 using EnhancedUI.EnhancedScroller;
+using Fusion;
 using TMPro;
 
 public class SessionScrollCell : EnhancedScrollerCellView
@@ -13,9 +14,9 @@ public class SessionScrollCell : EnhancedScrollerCellView
     /// This function just takes the Demo data and displays it
     /// </summary>
     /// <param name="data"></param>
-    public void SetData(Data data)
+    public void SetData(SessionInfo data)
     {
         // update the UI text with the cell data
-        someTextText.text = data.someText;
+        someTextText.text = data.Name;
     }
 }

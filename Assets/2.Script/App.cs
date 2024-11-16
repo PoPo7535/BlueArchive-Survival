@@ -1,32 +1,46 @@
+using System;
+using System.Collections.Generic;
 using Fusion;
+using Fusion.Sockets;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class App : SimulationBehaviour, ISpawned, IPlayerJoined
+public class App : SimulationBehaviour, INetworkRunnerCallbacks
 {
     // Start is called before the first frame update
-    private NetworkRunner runner;
-    public Button startBtn;
+    public NetworkRunner runner;
     public static App I;
 
-    [Networked] public NetworkDictionary<PlayerRef, int> test => default;
 
     private void Start()
     {
         I = this;
         runner = GetComponent<NetworkRunner>();
-        // startBtn.onClick.AddListener(StartGame);
+        runner.AddCallbacks(this);
+        JoinSessionLobby();
     }
 
-    private async void StartGame() 
+    private async void JoinSessionLobby()
+    {
+        var result = await runner.JoinSessionLobby(SessionLobby.ClientServer);
+
+    }
+    public async void StartGame() 
     {
         var result = await runner.StartGame(new StartGameArgs()
         {
             GameMode = GameMode.AutoHostOrClient,
-            SessionName = "test",
+            SessionName = "SessionName",
+            CustomLobbyName = "CustomLobbyName",
             IsOpen = true,
+            IsVisible = true,
+            PlayerCount = 3,
             SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>(),
-            ObjectProvider = gameObject.AddComponent<NetworkObjectProviderDefault>() 
+            ObjectProvider = gameObject.AddComponent<NetworkObjectProviderDefault>() ,
+            SessionProperties = new Dictionary<string, SessionProperty>()
+            {
+                {"Password",(int)3}
+            }
             
         });
         if (result.Ok)
@@ -38,13 +52,72 @@ public class App : SimulationBehaviour, ISpawned, IPlayerJoined
             Debug.Log(result.ErrorMessage);
     }
 
-    public void Spawned()
+    public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
+        Debug.Log(player);
+    }
+    public void OnSessionListUpdated(NetworkRunner runner, List<SessionInfo> sessionList)
+    {
+        Debug.Log(sessionList.Count);
+        foreach (var info in sessionList)
+        {
+            foreach (var Properties in info.Properties)
+            {
+                Debug.Log(Properties.Key);
+            }
+        }
     }
 
-    public void PlayerJoined(PlayerRef player)
+    public void OnObjectExitAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player) { }
+    public void OnObjectEnterAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player) { }
+    public void OnPlayerLeft(NetworkRunner runner, PlayerRef player) { }
+    public void OnInput(NetworkRunner runner, NetworkInput input) { }
+    public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input) { }
+    public void OnShutdown(NetworkRunner runner, ShutdownReason shutdownReason) { }
+
+    public void OnConnectedToServer(NetworkRunner runner)
     {
-        Runner.Spawn(GameManager.I.playerInfo, inputAuthority: player);
+        Debug.Log(nameof(OnConnectedToServer));
+    }
+    public void OnDisconnectedFromServer(NetworkRunner runner, NetDisconnectReason reason)
+    {
+        Debug.Log(nameof(OnDisconnectedFromServer));
+    }
+    public void OnConnectRequest(NetworkRunner runner, NetworkRunnerCallbackArgs.ConnectRequest request, byte[] token)
+    {
+        Debug.Log(nameof(OnConnectRequest));
+    }
+    public void OnConnectFailed(NetworkRunner runner, NetAddress remoteAddress, NetConnectFailedReason reason)
+    {
+        Debug.Log(nameof(OnConnectFailed));
+    }
+    public void OnUserSimulationMessage(NetworkRunner runner, SimulationMessagePtr message)
+    {
+        Debug.Log(nameof(OnUserSimulationMessage));
+    }
+    public void OnCustomAuthenticationResponse(NetworkRunner runner, Dictionary<string, object> data)
+    {
+        Debug.Log(nameof(OnCustomAuthenticationResponse));
+    }
+    public void OnHostMigration(NetworkRunner runner, HostMigrationToken hostMigrationToken)
+    {
+        Debug.Log(nameof(OnHostMigration));
+    }
+    public void OnReliableDataReceived(NetworkRunner runner, PlayerRef player, ReliableKey key, ArraySegment<byte> data)
+    {
+        Debug.Log(nameof(OnReliableDataReceived));
+    }
+    public void OnReliableDataProgress(NetworkRunner runner, PlayerRef player, ReliableKey key, float progress)
+    {
+        Debug.Log(nameof(OnReliableDataProgress));
+    }
+    public void OnSceneLoadDone(NetworkRunner runner)
+    {
+        Debug.Log(nameof(OnSceneLoadDone));
+    }
+    public void OnSceneLoadStart(NetworkRunner runner)
+    {
+        Debug.Log(nameof(OnSceneLoadStart));
     }
 }
 
