@@ -25,7 +25,8 @@ public class App : SimulationBehaviour, INetworkRunnerCallbacks
         var result = await runner.JoinSessionLobby(SessionLobby.ClientServer);
 
     }
-    public async void HostGame(GameMode gameMode, int password) 
+
+    public async void HostGame(GameMode gameMode, int password, Action okAction = null, Action errorAction =null) 
     {
         PopUp.I.OpenPopUp("호스트 중");
         var result = await runner.StartGame(new StartGameArgs()
@@ -44,6 +45,11 @@ public class App : SimulationBehaviour, INetworkRunnerCallbacks
             }
             
         });
+        if(result.Ok)
+            okAction?.Invoke();
+        else
+            errorAction?.Invoke();
+
         PopUp.I.OpenPopUp(result);
     }
     public async void ClientGame(string sessionName) 

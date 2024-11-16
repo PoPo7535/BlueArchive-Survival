@@ -2371,8 +2371,10 @@ namespace Fusion.Statistics {
     private FusionStatBuffer _bufferValues;
     private float[] _bufferNormalizedValues;
 
+#pragma warning disable CS0414
     private int _bufferHead;
     private int _bufferTail;
+#pragma warning restore CS0414
 
     private float _headerHeight = 25;
     private float _renderHeight = 125;

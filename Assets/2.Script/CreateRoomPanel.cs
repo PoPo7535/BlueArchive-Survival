@@ -32,10 +32,9 @@ public class CreateRoomPanel : MonoBehaviour, ISetInspector
         passwordIF  = childs.First(tr => tr.name == "Password IF").GetComponent<TMP_InputField>();
         createBtn = childs.First(tr => tr.name == "Create Btn").GetComponent<Button>();
         cancelBtn = childs.First(tr => tr.name == "Cancel Btn").GetComponent<Button>();
-
     }
 
-    void Start()
+    private void Start()
     {
         singleToggle.onValueChanged.AddListener(isOn =>
         {
@@ -73,7 +72,8 @@ public class CreateRoomPanel : MonoBehaviour, ISetInspector
 
             App.I.HostGame(
                 singleToggle.isOn ? GameMode.Single : GameMode.Host,
-                passwordIF.text.IsNullOrEmpty() ? int.MaxValue : int.Parse(passwordIF.text));
+                passwordIF.text.IsNullOrEmpty() ? int.MaxValue : int.Parse(passwordIF.text),
+                () => cg.ActiveCG(false));
         });
         
         cancelBtn.onClick.AddListener(() =>
