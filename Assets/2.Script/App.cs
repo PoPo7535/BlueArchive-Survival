@@ -2,28 +2,33 @@ using System;
 using System.Collections.Generic;
 using Fusion;
 using Fusion.Sockets;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class App : SimulationBehaviour, INetworkRunnerCallbacks
 {
     // Start is called before the first frame update
-    public NetworkRunner runner;
     public static App I;
+    [Fusion.ReadOnly] public NetworkRunner runner;
+    // public PlayerInfo playerInfo;
 
-
-    private void Start()
+    private void Awake()
     {
         I = this;
         runner = GetComponent<NetworkRunner>();
         runner.AddCallbacks(this);
+    }
+    private void Start()
+    {
         JoinSessionLobby();
     }
 
     private async void JoinSessionLobby()
     {
+        PopUp.I.OpenPopUp("세션에 참가 중");
         var result = await runner.JoinSessionLobby(SessionLobby.ClientServer);
-
+        PopUp.I.OpenPopUp(result);
     }
 
     public async void HostGame(GameMode gameMode, int password, Action okAction = null, Action errorAction =null) 
@@ -74,13 +79,8 @@ public class App : SimulationBehaviour, INetworkRunnerCallbacks
         PopUp.I.OpenPopUp(result);
     }
 
-    public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
-    {
-        Debug.Log(player);
-    }
     public void OnSessionListUpdated(NetworkRunner runner, List<SessionInfo> sessionList)
     {
-        Debug.Log(sessionList.Count);
         foreach (var info in sessionList)
         {
             foreach (var Properties in info.Properties)
@@ -89,57 +89,23 @@ public class App : SimulationBehaviour, INetworkRunnerCallbacks
             }
         }
     }
-
+    public void OnPlayerJoined(NetworkRunner runner, PlayerRef player) { }
+    public void OnPlayerLeft(NetworkRunner runner, PlayerRef player) { }
     public void OnObjectExitAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player) { }
     public void OnObjectEnterAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player) { }
-    public void OnPlayerLeft(NetworkRunner runner, PlayerRef player) { }
     public void OnInput(NetworkRunner runner, NetworkInput input) { }
     public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input) { }
     public void OnShutdown(NetworkRunner runner, ShutdownReason shutdownReason) { }
-
-    public void OnConnectedToServer(NetworkRunner runner)
-    {
-        Debug.Log(nameof(OnConnectedToServer));
-    }
-    public void OnDisconnectedFromServer(NetworkRunner runner, NetDisconnectReason reason)
-    {
-        Debug.Log(nameof(OnDisconnectedFromServer));
-    }
-    public void OnConnectRequest(NetworkRunner runner, NetworkRunnerCallbackArgs.ConnectRequest request, byte[] token)
-    {
-        Debug.Log(nameof(OnConnectRequest));
-    }
-    public void OnConnectFailed(NetworkRunner runner, NetAddress remoteAddress, NetConnectFailedReason reason)
-    {
-        Debug.Log(nameof(OnConnectFailed));
-    }
-    public void OnUserSimulationMessage(NetworkRunner runner, SimulationMessagePtr message)
-    {
-        Debug.Log(nameof(OnUserSimulationMessage));
-    }
-    public void OnCustomAuthenticationResponse(NetworkRunner runner, Dictionary<string, object> data)
-    {
-        Debug.Log(nameof(OnCustomAuthenticationResponse));
-    }
-    public void OnHostMigration(NetworkRunner runner, HostMigrationToken hostMigrationToken)
-    {
-        Debug.Log(nameof(OnHostMigration));
-    }
-    public void OnReliableDataReceived(NetworkRunner runner, PlayerRef player, ReliableKey key, ArraySegment<byte> data)
-    {
-        Debug.Log(nameof(OnReliableDataReceived));
-    }
-    public void OnReliableDataProgress(NetworkRunner runner, PlayerRef player, ReliableKey key, float progress)
-    {
-        Debug.Log(nameof(OnReliableDataProgress));
-    }
-    public void OnSceneLoadDone(NetworkRunner runner)
-    {
-        Debug.Log(nameof(OnSceneLoadDone));
-    }
-    public void OnSceneLoadStart(NetworkRunner runner)
-    {
-        Debug.Log(nameof(OnSceneLoadStart));
-    }
+    public void OnConnectedToServer(NetworkRunner runner) { }
+    public void OnDisconnectedFromServer(NetworkRunner runner, NetDisconnectReason reason) { }
+    public void OnConnectRequest(NetworkRunner runner, NetworkRunnerCallbackArgs.ConnectRequest request, byte[] token) { }
+    public void OnConnectFailed(NetworkRunner runner, NetAddress remoteAddress, NetConnectFailedReason reason) {    }
+    public void OnUserSimulationMessage(NetworkRunner runner, SimulationMessagePtr message) {    }
+    public void OnCustomAuthenticationResponse(NetworkRunner runner, Dictionary<string, object> data) { }
+    public void OnHostMigration(NetworkRunner runner, HostMigrationToken hostMigrationToken) { }
+    public void OnReliableDataReceived(NetworkRunner runner, PlayerRef player, ReliableKey key, ArraySegment<byte> data) { }
+    public void OnReliableDataProgress(NetworkRunner runner, PlayerRef player, ReliableKey key, float progress) { }
+    public void OnSceneLoadDone(NetworkRunner runner) { }
+    public void OnSceneLoadStart(NetworkRunner runner) { }
 }
 

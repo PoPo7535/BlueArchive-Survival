@@ -1,14 +1,11 @@
 using System.Linq;
 using Sirenix.OdinInspector;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LobbyRoomPanel : MonoBehaviour, ISetInspector
 {
-    
-    // [SerializeField] private Button slots;
-    [SerializeField] private CanvasGroup cg;
+    public CanvasGroup cg;
     [SerializeField] private Button readyBtn;
     [SerializeField] private Button cancelBtn;
 

@@ -6676,7 +6676,7 @@ CanvasGroup:
   m_Enabled: 1
   m_Alpha: 0
   m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &2136885869
 MonoBehaviour:
@@ -6704,6 +6704,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cg: {fileID: 2136885868}
+  playerInfo: {fileID: 1734125769452678798, guid: 562dc621784a3824d8008d3a9c35be93, type: 3}
+  lobbyRoomPanel: {fileID: 189670261}
   singleToggle: {fileID: 987144307}
   multiToggle: {fileID: 275896731}
   roomNameIF: {fileID: 1556399084}

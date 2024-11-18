@@ -45,7 +45,7 @@ public class SessionScroll : MonoBehaviour, IEnhancedScrollerDelegate, INetworkR
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
-        Debug.Log(player);
+        // Debug.Log(player);
     }
     public void OnSessionListUpdated(NetworkRunner runner, List<SessionInfo> sessionList)
     {
