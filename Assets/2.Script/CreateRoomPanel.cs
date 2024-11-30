@@ -87,6 +87,7 @@ public class CreateRoomPanel : MonoBehaviour, ISetInspector, INetworkRunnerCallb
                 {
                     cg.ActiveCG(false);
                     lobbyRoomPanel.cg.ActiveCG(true);
+                    
                 });
         });
         

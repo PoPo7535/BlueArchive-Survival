@@ -4,6 +4,7 @@ using Fusion;
 using Fusion.Sockets;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class App : SimulationBehaviour, INetworkRunnerCallbacks
@@ -43,18 +44,19 @@ public class App : SimulationBehaviour, INetworkRunnerCallbacks
             IsVisible = true,
             PlayerCount = 3,
             SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>(),
-            ObjectProvider = gameObject.AddComponent<NetworkObjectProviderDefault>() ,
-            SessionProperties = new Dictionary<string, SessionProperty>()
-            {
-                {"Password",password}
-            }
-            
+            ObjectProvider = gameObject.AddComponent<NetworkObjectProviderDefault>(),
+            SessionProperties = new Dictionary<string, SessionProperty>() { { "Password", password } },
+            Scene = new SceneRef() { RawValue = 2 }
         });
-        if(result.Ok)
+        if (result.Ok)
+        {
             okAction?.Invoke();
+        }
         else
             errorAction?.Invoke();
 
+        var re= runner.LoadScene("2.Room");
+        
         PopUp.I.OpenPopUp(result);
     }
     public async void ClientGame(string sessionName) 

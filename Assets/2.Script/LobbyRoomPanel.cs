@@ -1,6 +1,7 @@
 using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LobbyRoomPanel : MonoBehaviour, ISetInspector
@@ -19,15 +20,14 @@ public class LobbyRoomPanel : MonoBehaviour, ISetInspector
     }
     private void Start()
     {
-        cancelBtn.onClick.AddListener((() =>
+        cancelBtn.onClick.AddListener((async () =>
         {
-            cg.ActiveCG(false);
-            App.I.runner.Shutdown(false);
+            await App.I.runner.Shutdown(false);
+            SceneManager.LoadScene("1.Lobby");
         }));
-    }
-
-    private void Update()
-    {
-        
+        readyBtn.onClick.AddListener(() =>
+        {
+            App.I.runner.LoadScene("3.Battle");
+        });
     }
 }
