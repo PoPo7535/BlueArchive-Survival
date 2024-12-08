@@ -42,7 +42,8 @@ namespace Utility
 							Debug.Log("[Singleton] Using instance already created: " + _I.gameObject.name);
 						}
 
-						if (Application.isPlaying)
+
+						if (Application.isPlaying && _I.gameObject.transform.parent == null)
 							DontDestroyOnLoad(_I.gameObject);
 					}
 
@@ -55,7 +56,8 @@ namespace Utility
 
 		public void OnDestroy()
 		{
-			applicationIsQuitting = true;
+			// applicationIsQuitting = true;
+			_I = null;
 		}
 	}
 }

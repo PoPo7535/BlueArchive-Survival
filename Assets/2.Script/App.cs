@@ -2,10 +2,7 @@ using System;
 using System.Collections.Generic;
 using Fusion;
 using Fusion.Sockets;
-using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class App : SimulationBehaviour, INetworkRunnerCallbacks
 {

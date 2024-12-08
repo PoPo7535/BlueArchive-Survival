@@ -441,7 +441,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e7840dd783a0434a8ec2dd023a40bb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: []
+  playerName:
+  - {fileID: 106124579}
+  - {fileID: 370582655}
+  - {fileID: 310005387}
 --- !u!1 &189670257
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,6 +540,7 @@ MonoBehaviour:
   cg: {fileID: 189670262}
   readyBtn: {fileID: 1429952644}
   cancelBtn: {fileID: 1630546492}
+  playerSlot: {fileID: 160647352}
 --- !u!225 &189670262
 CanvasGroup:
   m_ObjectHideFlags: 0

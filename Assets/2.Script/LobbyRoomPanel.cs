@@ -3,13 +3,14 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Utility;
 
-public class LobbyRoomPanel : MonoBehaviour, ISetInspector
+public class LobbyRoomPanel : Singleton<LobbyRoomPanel>, ISetInspector
 {
     public CanvasGroup cg;
     [SerializeField] private Button readyBtn;
     [SerializeField] private Button cancelBtn;
-
+    public PlayerSlot playerSlot;
     [Button,GUIColor(0, 1, 0)]
     public void SetInspector()
     {
@@ -17,6 +18,7 @@ public class LobbyRoomPanel : MonoBehaviour, ISetInspector
         cg = GetComponent<CanvasGroup>();
         readyBtn = childs.First(tr => tr.name == "Ready Btn").GetComponent<Button>();
         cancelBtn = childs.First(tr => tr.name == "Cancel Btn").GetComponent<Button>();
+        playerSlot = childs.First(tr => tr.name == "PlayerSlot").GetComponent<PlayerSlot>();
     }
     private void Start()
     {

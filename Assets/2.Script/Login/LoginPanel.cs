@@ -85,6 +85,8 @@ public class LoginPanel : MonoBehaviour, ISetInspector
                     SceneManager.LoadScene("1.Lobby");
                     PlayerPrefs.SetInt(IDSave, idSaveToggle.isOn ? 1 : 0);
                     PlayerPrefs.SetString(ID, idSaveToggle.isOn ? loginIdIF.text : string.Empty);
+                    GameManager.I.playFabEntity = result.EntityToken;
+                    GameManager.I.ID = result.PlayFabId;
                 },
                 (error) =>
                 {
