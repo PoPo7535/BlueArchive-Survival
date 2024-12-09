@@ -1,11 +1,12 @@
 using System.Linq;
+using Fusion;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Utility;
 
-public class LobbyRoomPanel : Singleton<LobbyRoomPanel>, ISetInspector
+public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IPlayerJoined
 {
     public CanvasGroup cg;
     [SerializeField] private Button readyBtn;
@@ -31,5 +32,10 @@ public class LobbyRoomPanel : Singleton<LobbyRoomPanel>, ISetInspector
         {
             App.I.runner.LoadScene("3.Battle");
         });
+    }
+    
+    public void PlayerJoined(PlayerRef player)
+    {
+        Debug.Log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
     }
 }

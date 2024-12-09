@@ -39,7 +39,7 @@ public class PlayerInfo : NetworkBehaviour
 
     }
 
-    [Rpc(RpcSources.InputAuthority, RpcTargets.InputAuthority)]
+    [Rpc(RpcSources.InputAuthority, RpcTargets.All)]
     private void RPC_SetName(string str)
     {
         Debug.Log("2222222222222222222222222222222222222222222222222222222");

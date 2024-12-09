@@ -105,8 +105,8 @@ public class CreateRoomPanel : MonoBehaviour, ISetInspector, INetworkRunnerCallb
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
-        var obj = App.I.runner.Spawn(playerInfo, Vector3.zero, Quaternion.identity, player);
-        App.I.runner.SetPlayerObject(player, obj.Object);
+        var obj = runner.Spawn(playerInfo, Vector3.zero, Quaternion.identity, player);
+        runner.SetPlayerObject(player, obj.Object);
     }
 
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)

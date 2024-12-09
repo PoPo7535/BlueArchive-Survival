@@ -5811,6 +5811,12 @@ MonoBehaviour:
   kayoko: {fileID: 7719790744615435754, guid: e6c2f09528e44ef489dff9db1d26645f, type: 3}
   kayoko2: {fileID: 3743993230031203688, guid: 6907d2c0d5253a94aa319d8b3cbcc8e7, type: 3}
   playerInfo: {fileID: 1734125769452678798, guid: 562dc621784a3824d8008d3a9c35be93, type: 3}
+  playFabEntity:
+    Entity:
+      Id: 
+      Type: 
+    EntityToken: 
+  ID: 
 --- !u!4 &1658367476
 Transform:
   m_ObjectHideFlags: 0
@@ -6521,6 +6527,7 @@ GameObject:
   - component: {fileID: 1827565841}
   - component: {fileID: 1827565842}
   - component: {fileID: 1827565843}
+  - component: {fileID: 1827565844}
   m_Layer: 5
   m_Name: LoginPanel
   m_TagString: Untagged
@@ -6587,6 +6594,18 @@ MonoBehaviour:
   registerPwCheckPwWarningText: {fileID: 1333671966}
   registerBtn: {fileID: 120819202}
   registerCancelBtn: {fileID: 1945294252}
+--- !u!114 &1827565844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827565840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb1b254020d14ef41853f06950f0e06f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1918653652
 GameObject:
   m_ObjectHideFlags: 0
