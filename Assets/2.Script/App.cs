@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Fusion;
 using Fusion.Sockets;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class App : SimulationBehaviour, INetworkRunnerCallbacks
 {
@@ -32,6 +33,8 @@ public class App : SimulationBehaviour, INetworkRunnerCallbacks
     public async void HostGame(GameMode gameMode, int password, Action okAction = null, Action errorAction =null) 
     {
         PopUp.I.OpenPopUp("호스트 중");
+        var asd  = SceneManager.LoadSceneAsync("2.Room");
+        
         var result = await runner.StartGame(new StartGameArgs()
         {
             GameMode = gameMode,
