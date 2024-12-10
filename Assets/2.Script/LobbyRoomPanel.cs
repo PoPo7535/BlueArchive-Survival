@@ -23,11 +23,11 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
     }
     private void Start()
     {
-        cancelBtn.onClick.AddListener((async () =>
+        cancelBtn.onClick.AddListener(async () =>
         {
             await App.I.runner.Shutdown(false);
             SceneManager.LoadScene("1.Lobby");
-        }));
+        });
         readyBtn.onClick.AddListener(() =>
         {
             App.I.runner.LoadScene("3.Battle");
@@ -36,6 +36,25 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
     
     public void PlayerJoined(PlayerRef player)
     {
-        Debug.Log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        if (false == Object.HasStateAuthority)
+            return;
+        var runner = App.I.runner;
+        var obj = runner.Spawn(GameManager.I.playerInfo, Vector3.zero, Quaternion.identity, player,onBeforeSpawned:
+            (y,r) =>
+            {
+                
+            });
+        runner.SetPlayerObject(player, obj.Object);
+    }
+
+    
+    public void SetSlot()
+    {
+        var list = Object.Runner.ActivePlayers.ToList();
+        list.Sort((p1, p2) => p1.PlayerId.CompareTo(p2.PlayerId));
+        for (int i = 0; i < list.Count; ++i)
+        {
+            playerSlot.SetSlot(i, Object.Runner.GetPlayerObject(list[i]).GetComponent<PlayerInfo>().PlayerName.Value);
+        }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Cysharp.Threading.Tasks;
 using Fusion;
 using Fusion.Sockets;
 using Sirenix.OdinInspector;
@@ -9,12 +10,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using WebSocketSharp;
 
-public class CreateRoomPanel : MonoBehaviour, ISetInspector, INetworkRunnerCallbacks
+public class CreateRoomPanel : MonoBehaviour, ISetInspector
 {
     [SerializeField] private CanvasGroup cg;
-    [SerializeField] private PlayerInfo playerInfo;
-    [SerializeField] private LobbyRoomPanel lobbyRoomPanel;
-    
 
     [SerializeField, FoldoutGroup("UIs")] private Toggle singleToggle;
     [SerializeField, FoldoutGroup("UIs")] private Toggle multiToggle;
@@ -31,7 +29,6 @@ public class CreateRoomPanel : MonoBehaviour, ISetInspector, INetworkRunnerCallb
     {
         var childs = transform.parent.GetAllChild();
         cg = gameObject.GetComponent<CanvasGroup>();
-        lobbyRoomPanel = childs.First(tr => tr.name == "LobbyRoomPanel").GetComponent<LobbyRoomPanel>();
         singleToggle = childs.First(tr => tr.name == "Single Toggle").GetComponent<Toggle>();
         multiToggle = childs.First(tr => tr.name == "Multi Toggle").GetComponent<Toggle>();
         roomNameIF = childs.First(tr => tr.name == "RoomName IF").GetComponent<TMP_InputField>();
@@ -43,8 +40,6 @@ public class CreateRoomPanel : MonoBehaviour, ISetInspector, INetworkRunnerCallb
 
     private void Start()
     {
-        App.I.runner.AddCallbacks(this);
-
         #region SetButtons
         singleToggle.onValueChanged.AddListener(isOn =>
         {
@@ -79,15 +74,13 @@ public class CreateRoomPanel : MonoBehaviour, ISetInspector, INetworkRunnerCallb
                     "닫기");
                 return;
             }
-
+            
             App.I.HostGame(
                 singleToggle.isOn ? GameMode.Single : GameMode.Host,
                 passwordIF.text.IsNullOrEmpty() ? int.MaxValue : int.Parse(passwordIF.text),
                 () =>
                 {
                     cg.ActiveCG(false);
-                    lobbyRoomPanel.cg.ActiveCG(true);
-                    
                 });
         });
         
@@ -97,37 +90,4 @@ public class CreateRoomPanel : MonoBehaviour, ISetInspector, INetworkRunnerCallb
         });
         #endregion
     }
-
-    private void OnDestroy()
-    {
-        App.I.runner.AddCallbacks(this);
-    }
-
-    public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
-    {
-        var obj = runner.Spawn(playerInfo, Vector3.zero, Quaternion.identity, player);
-        runner.SetPlayerObject(player, obj.Object);
-    }
-
-    public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
-    {
-        App.I.runner.Despawn(App.I.runner.GetPlayerObject(player));
-    }
-    public void OnSessionListUpdated(NetworkRunner runner, List<SessionInfo> sessionList) { }
-    public void OnObjectExitAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player) { }
-    public void OnObjectEnterAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player) { }
-    public void OnInput(NetworkRunner runner, NetworkInput input) { }
-    public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input) { }
-    public void OnShutdown(NetworkRunner runner, ShutdownReason shutdownReason) { }
-    public void OnConnectedToServer(NetworkRunner runner) { }
-    public void OnDisconnectedFromServer(NetworkRunner runner, NetDisconnectReason reason) { }
-    public void OnConnectRequest(NetworkRunner runner, NetworkRunnerCallbackArgs.ConnectRequest request, byte[] token) { }
-    public void OnConnectFailed(NetworkRunner runner, NetAddress remoteAddress, NetConnectFailedReason reason) { }
-    public void OnUserSimulationMessage(NetworkRunner runner, SimulationMessagePtr message) { }
-    public void OnCustomAuthenticationResponse(NetworkRunner runner, Dictionary<string, object> data) { }
-    public void OnHostMigration(NetworkRunner runner, HostMigrationToken hostMigrationToken) { }
-    public void OnReliableDataReceived(NetworkRunner runner, PlayerRef player, ReliableKey key, ArraySegment<byte> data) { }
-    public void OnReliableDataProgress(NetworkRunner runner, PlayerRef player, ReliableKey key, float progress) { }
-    public void OnSceneLoadDone(NetworkRunner runner) { }
-    public void OnSceneLoadStart(NetworkRunner runner) { }
 }

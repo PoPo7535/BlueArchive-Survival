@@ -1,13 +1,14 @@
-using System;
+using System.Collections.Generic;
+using System.Linq;
 using Fusion;
 using PlayFab;
-using PlayFab.AuthenticationModels;
 using PlayFab.ClientModels;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerInfo : NetworkBehaviour
 {
-    [Networked, OnChangedRender(nameof(OnChangedName))] public NetworkString<_16> PlayerName { get; set; }
+    [Networked] public NetworkString<_16> PlayerName { get; set; }
     [Networked] public int CharIndex { get; set; }
 
 
@@ -24,13 +25,12 @@ public class PlayerInfo : NetworkBehaviour
     {
         if (false == Object.HasInputAuthority)
             return;
+
         PlayFabClientAPI.GetPlayerProfile(new GetPlayerProfileRequest() 
                 { PlayFabId = GameManager.I.ID },
             result =>
             {
-                Debug.Log(result.PlayerProfile.DisplayName);
-                RPC_SetName(result.PlayerProfile.DisplayName);
-
+                RPC_SetInfo(result.PlayerProfile.DisplayName);
             },
             error =>
             {
@@ -40,10 +40,10 @@ public class PlayerInfo : NetworkBehaviour
     }
 
     [Rpc(RpcSources.InputAuthority, RpcTargets.All)]
-    private void RPC_SetName(string str)
+    private void RPC_SetInfo(string str)
     {
-        Debug.Log("2222222222222222222222222222222222222222222222222222222");
         PlayerName = str;
-        LobbyRoomPanel.I.playerSlot.SetSlot(1, PlayerName.Value);
+        gameObject.name = $"{str} Info";
+        LobbyRoomPanel.I.SetSlot();
     }
 }

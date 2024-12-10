@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using Fusion;
 using Fusion.Sockets;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -33,7 +36,8 @@ public class App : SimulationBehaviour, INetworkRunnerCallbacks
     public async void HostGame(GameMode gameMode, int password, Action okAction = null, Action errorAction =null) 
     {
         PopUp.I.OpenPopUp("호스트 중");
-        var asd  = SceneManager.LoadSceneAsync("2.Room");
+        // var loadSceneAsync  = SceneManager.LoadSceneAsync("2.Room");
+        // await UniTask.WaitUntil(() => loadSceneAsync.isDone);
         
         var result = await runner.StartGame(new StartGameArgs()
         {
@@ -46,16 +50,14 @@ public class App : SimulationBehaviour, INetworkRunnerCallbacks
             SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>(),
             ObjectProvider = gameObject.AddComponent<NetworkObjectProviderDefault>(),
             SessionProperties = new Dictionary<string, SessionProperty>() { { "Password", password } },
-            Scene = new SceneRef() { RawValue = 2 }
+            Scene = new SceneRef() { RawValue = 3 }
         });
         if (result.Ok)
-        {
             okAction?.Invoke();
-        }
         else
             errorAction?.Invoke();
 
-        var re= runner.LoadScene("2.Room");
+        // var re= runner.LoadScene("2.Room").IsDone;
         
         PopUp.I.OpenPopUp(result);
     }
