@@ -442,8 +442,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName:
-  - {fileID: 106124579}
   - {fileID: 370582655}
+  - {fileID: 106124579}
   - {fileID: 310005387}
 --- !u!1 &189670257
 GameObject:

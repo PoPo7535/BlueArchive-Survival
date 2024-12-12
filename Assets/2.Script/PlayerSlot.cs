@@ -12,10 +12,9 @@ public class PlayerSlot : MonoBehaviour, ISetInspector
     {
         var childs = transform.GetAllChild();
         playerName = new TMP_Text[3];
-        playerName[0] = childs.First(tr => tr.name == "PlayerSlot Text (1)").GetComponent<TMP_Text>();
-        playerName[1] = childs.First(tr => tr.name == "PlayerSlot Text (2)").GetComponent<TMP_Text>();
+        playerName[1] = childs.First(tr => tr.name == "PlayerSlot Text (1)").GetComponent<TMP_Text>();
+        playerName[0] = childs.First(tr => tr.name == "PlayerSlot Text (2)").GetComponent<TMP_Text>();
         playerName[2] = childs.First(tr => tr.name == "PlayerSlot Text (3)").GetComponent<TMP_Text>();
-        
     }
 
     public void Start()
@@ -29,5 +28,9 @@ public class PlayerSlot : MonoBehaviour, ISetInspector
     public void SetSlot(int i, string str)
     {
         playerName[i].text = str;
+    }
+    public void SetSlot(int i)
+    {
+        playerName[i].text = string.Empty;
     }
 }

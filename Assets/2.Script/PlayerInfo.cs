@@ -3,10 +3,11 @@ using System.Linq;
 using Fusion;
 using PlayFab;
 using PlayFab.ClientModels;
+using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerInfo : NetworkBehaviour
+public class PlayerInfo : NetworkBehaviour, IPlayerLeft
 {
     [Networked] public NetworkString<_16> PlayerName { get; set; }
     [Networked] public int CharIndex { get; set; }
@@ -17,12 +18,10 @@ public class PlayerInfo : NetworkBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void OnChangedName()
-    {
-        gameObject.name = $"{PlayerName} Info";
-    }
     public override void Spawned()
     {
+        Object.Runner.SetPlayerObject(Object.InputAuthority, Object);
+
         if (false == Object.HasInputAuthority)
             return;
 
@@ -39,11 +38,30 @@ public class PlayerInfo : NetworkBehaviour
 
     }
 
-    [Rpc(RpcSources.InputAuthority, RpcTargets.All)]
-    private void RPC_SetInfo(string str)
+    public override void Despawned(NetworkRunner runner, bool hasState)
     {
-        PlayerName = str;
-        gameObject.name = $"{str} Info";
+        if(Object.Runner.IsShutdown)
+            return;
+        
         LobbyRoomPanel.I.SetSlot();
+    }
+ 
+    [Rpc(RpcSources.InputAuthority, RpcTargets.All)]
+    private void RPC_SetInfo(string name)
+    {
+        PlayerName = name;
+        gameObject.name = $"{name} Info";
+        LobbyRoomPanel.I.SetSlot();
+    }
+
+    public void PlayerLeft(PlayerRef player)
+    {
+        if (false == Object.HasStateAuthority) 
+            return;
+
+        if (player == Object.InputAuthority)
+        {
+            Object.Runner.Despawn(Object);
+        }
     }
 }
