@@ -25,16 +25,10 @@ public class PlayerInfo : NetworkBehaviour, IPlayerLeft
         if (false == Object.HasInputAuthority)
             return;
 
-        PlayFabClientAPI.GetPlayerProfile(new GetPlayerProfileRequest() 
-                { PlayFabId = GameManager.I.ID },
-            result =>
-            {
-                RPC_SetInfo(result.PlayerProfile.DisplayName);
-            },
-            error =>
-            {
-                Debug.Log(error.Error);
-            });
+        PlayFabClientAPI.GetPlayerProfile(
+            new GetPlayerProfileRequest() { PlayFabId = GameManager.I.ID },
+            result => RPC_SetInfo(result.PlayerProfile.DisplayName),
+            error => Debug.Log(error.Error));
 
     }
 

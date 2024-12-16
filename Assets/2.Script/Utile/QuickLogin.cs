@@ -1,10 +1,8 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using PlayFab;
 using PlayFab.ClientModels;
+using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class QuickLogin : MonoBehaviour
 {
@@ -36,7 +34,7 @@ public class QuickLogin : MonoBehaviour
             (result) =>
             {
                 PopUp.I.ActiveCG(false);
-                SceneManager.LoadScene("1.Lobby");
+                // SceneManager.LoadScene("1.Lobby");
                 GameManager.I.playFabEntity = result.EntityToken;
                 GameManager.I.ID = result.PlayFabId;
                 isLogin = true;
@@ -50,4 +48,46 @@ public class QuickLogin : MonoBehaviour
             });
     }
     #endif
+
+    [Button]
+    public void Test1()
+    {
+        var dic = new Dictionary<string, int>()
+        {
+            {"A", 3},
+            {"B", 4},
+            {"C", 5},
+            {"D", 6},
+            {"E", 7},
+        };
+        PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest()
+            {
+                Data = new Dictionary<string, string>()
+                {
+                    { "Ancestor", JsonUtility.ToJson(dic) },
+                },
+                Permission = UserDataPermission.Private
+            },
+            result => Debug.Log("Successfully updated user data"),
+            error =>
+            {
+                Debug.Log("Got error setting user data Ancestor to Arthur");
+                Debug.Log(error.GenerateErrorReport());
+            });
+        // PlayFabClientAPI.GetUserData(new GetUserDataRequest()
+        //     {
+        //         Keys = new List<string>()
+        //         {
+        //             "lqwdlq"
+        //         },
+        //         PlayFabId = ""
+        //     }, 
+        //     result => Debug.Log("Successfully updated user data"),
+        //     error =>
+        //     {
+        //         Debug.Log("Got error setting user data Ancestor to Arthur");
+        //         Debug.Log(error.GenerateErrorReport());
+        //     });
+        
+    }
 }
