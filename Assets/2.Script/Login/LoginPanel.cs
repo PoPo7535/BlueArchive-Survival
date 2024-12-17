@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using PlayFab;
@@ -106,8 +107,8 @@ public class LoginPanel : MonoBehaviour, ISetInspector
 
         void SetLoginBtn(string str)
         {
-            loginBtn.interactable = Define.accountMinLength < loginIdIF.text.Length &&
-                                    Define.accountMinLength < loginPwIF.text.Length;
+            loginBtn.interactable = Define.accountMinLength <= loginIdIF.text.Length &&
+                                    Define.accountMinLength <= loginPwIF.text.Length;
         }
     }
 
@@ -140,11 +141,21 @@ public class LoginPanel : MonoBehaviour, ISetInspector
             PlayFabClientAPI.RegisterPlayFabUser(request,
                 (result) =>
                 {
+                    Debug.Log(1);
+                    PlayFabEx.InitStateDate(_ =>
+                    {
+                        Debug.Log(2);
+                    }, _ =>
+                    {
+                        Debug.Log(3);
+                    });
+                    
                     PopUp.I.OpenPopUp($"회원가입에 성공하였습니다.", () =>
                     {
                         PopUp.I.ActiveCG(false);
                         registerCancelBtn.onClick.Invoke();
                     }, "확인");
+                    
                 },
                 (error) =>
                 {

@@ -1,18 +1,16 @@
 using System.Collections.Generic;
+using System.Linq;
 using PlayFab;
 using PlayFab.ClientModels;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Newtonsoft.Json;
 
 public class QuickLogin : MonoBehaviour
 {
-    private bool isLogin = false;
     #if UNITY_EDITOR
     private void OnGUI()
     {
-        if (isLogin)
-            return;
-        
         if (GUI.Button(new Rect(new Vector2(50, 50), new Vector2(300, 150)),
                 "A"))
         {
@@ -37,7 +35,6 @@ public class QuickLogin : MonoBehaviour
                 // SceneManager.LoadScene("1.Lobby");
                 GameManager.I.playFabEntity = result.EntityToken;
                 GameManager.I.ID = result.PlayFabId;
-                isLogin = true;
             },
             (error) =>
             {
@@ -48,6 +45,27 @@ public class QuickLogin : MonoBehaviour
             });
     }
     #endif
+
+    [Button]
+    public void Test133()
+    {
+        var dic = new Dictionary<string, float>()
+        {
+            { "A", 3 },
+            { "B", 4 },
+            { "C", 5 },
+            { "D", 6 },
+            { "E", 7 },
+        };
+
+        var str = JsonConvert.SerializeObject(dic);
+        Debug.Log(str);
+        var asd = JsonConvert.DeserializeObject<Dictionary<string, int>>(str);
+        foreach (var VARIABLE in asd)
+        {
+            Debug.Log(VARIABLE);
+        }
+    }
 
     [Button]
     public void Test1()
