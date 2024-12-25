@@ -5,6 +5,7 @@ using PlayFab.ClientModels;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Newtonsoft.Json;
+using UnityEngine.SceneManagement;
 
 public class QuickLogin : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class QuickLogin : MonoBehaviour
             (result) =>
             {
                 PopUp.I.ActiveCG(false);
-                // SceneManager.LoadScene("1.Lobby");
+                SceneManager.LoadScene("1.Lobby");
                 GameManager.I.playFabEntity = result.EntityToken;
                 GameManager.I.ID = result.PlayFabId;
             },

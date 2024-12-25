@@ -540,6 +540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cg: {fileID: 189670262}
   readyBtn: {fileID: 1429952644}
+  readyText: {fileID: 1028652645}
   cancelBtn: {fileID: 1630546492}
   playerSlot: {fileID: 160647352}
 --- !u!225 &189670262
@@ -1506,7 +1507,7 @@ GameObject:
   - component: {fileID: 1028652646}
   - component: {fileID: 1028652645}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Ready Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1860,7 +1861,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 119
 --- !u!114 &1377514525
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,8 +15,11 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
     [SerializeField] private TMP_Text readyText;
     [SerializeField] private Button cancelBtn;
     public PlayerSlot playerSlot;
-
+    
     private Dictionary<PlayerRef, bool> ready = new Dictionary<PlayerRef, bool>();
+
+    private bool isReady;    
+    
     [Button,GUIColor(0, 1, 0)]
     public void SetInspector()
     {
@@ -34,32 +37,29 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
             await App.I.runner.Shutdown(false);
             SceneManager.LoadScene("1.Lobby");
         });
-        readyBtn.onClick.AddListener(() =>
-        {
-            App.I.runner.LoadScene("3.Battle");
-        });
+
     }
     
     public void PlayerJoined(PlayerRef player)
     {
-        if (false == Object.HasStateAuthority)
-            return;
-        
-        App.I.runner.Spawn(GameManager.I.playerInfo, Vector3.zero, Quaternion.identity, player);
-        
-        if (Object.StateAuthority != player)
+        if (Object.HasStateAuthority)
+            App.I.runner.Spawn(GameManager.I.playerInfo, Vector3.zero, Quaternion.identity, player);
+
+        if (Runner.LocalPlayer != player)
+        {
             ready.Add(player, false);
+            RefreshStartBtn();
+        }
         
-        RefreshStartBtn();
     }
     
     public void PlayerLeft(PlayerRef player)
     {
-        if (false == Object.HasStateAuthority)
-            return;
-        
-        if (Object.StateAuthority != player)
+        if (Runner.LocalPlayer != player)
+        {
             ready.Remove(player);
+            RefreshStartBtn();
+        }
     }
     
     public void SetSlot()
@@ -78,23 +78,39 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
         if (Object.HasStateAuthority)
         {
             readyText.text = "Start";
+            readyBtn.onClick.AddListener(() =>
+            {
+                App.I.runner.LoadScene("3.Battle");
+            });
         }
         else
         {
             readyText.text = "Ready";
-            
+            readyBtn.image.color = isReady ? Color.white : Color.gray;
+
+            readyBtn.onClick.AddListener(() =>
+            {
+                isReady = false == isReady;
+                readyBtn.image.color = isReady ? Color.white : Color.gray;
+                RPC_InputReadyBtn(Runner.LocalPlayer, isReady);
+            });
         }
+
     }
 
-    [Rpc(RpcSources.InputAuthority,RpcTargets.StateAuthority)]
+    [Rpc(RpcSources.All,RpcTargets.StateAuthority)]
     private void RPC_InputReadyBtn(PlayerRef playerRef, bool isOn)
     {
         ready[playerRef] = isOn;
+        RefreshStartBtn();
     }
 
     private void RefreshStartBtn()
     {
-        readyBtn.interactable = false == ready.Values.Any(value => false == value);
+        if (ready.Count == 0)
+            readyBtn.interactable = true;
+        else
+            readyBtn.interactable = false == ready.Values.Any(value => false == value);
     }
 
 }
