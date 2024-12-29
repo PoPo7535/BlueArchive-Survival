@@ -7,6 +7,7 @@ using Fusion.Sockets;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using WebSocketSharp;
 
 public class App : SimulationBehaviour, INetworkRunnerCallbacks
 {
@@ -33,23 +34,26 @@ public class App : SimulationBehaviour, INetworkRunnerCallbacks
         PopUp.I.OpenPopUp(result);
     }
 
-    public async void HostGame(GameMode gameMode, int password, Action okAction = null, Action errorAction =null) 
+    public async void HostGame(GameMode gameMode, string sessionName, string password, Action okAction = null, Action errorAction =null) 
     {
         PopUp.I.OpenPopUp("호스트 중");
         // var loadSceneAsync  = SceneManager.LoadSceneAsync("2.Room");
         // await UniTask.WaitUntil(() => loadSceneAsync.isDone);
+        var sessionProperties = new Dictionary<string, SessionProperty>();
+        
+        if (false == password.IsNullOrEmpty())
+            sessionProperties.Add("Password", int.Parse(password));
         
         var result = await runner.StartGame(new StartGameArgs()
         {
             GameMode = gameMode,
-            SessionName = "SessionName",
+            SessionName = sessionName,
             CustomLobbyName = "CustomLobbyName",
-            IsOpen = true,
-            IsVisible = true,
+            IsOpen = true, IsVisible = true,
             PlayerCount = 3,
             SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>(),
             ObjectProvider = gameObject.AddComponent<NetworkObjectProviderDefault>(),
-            SessionProperties = new Dictionary<string, SessionProperty>() { { "Password", password } },
+            SessionProperties = sessionProperties,
             Scene = new SceneRef() { RawValue = 3 }
         });
         if (result.Ok)
@@ -74,25 +78,11 @@ public class App : SimulationBehaviour, INetworkRunnerCallbacks
             PlayerCount = 3,
             SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>(),
             ObjectProvider = gameObject.AddComponent<NetworkObjectProviderDefault>() ,
-            SessionProperties = new Dictionary<string, SessionProperty>()
-            {
-                {"Password",int.MaxValue}
-            }
-            
         });
         PopUp.I.OpenPopUp(result);
     }
 
-    public void OnSessionListUpdated(NetworkRunner runner, List<SessionInfo> sessionList)
-    {
-        foreach (var info in sessionList)
-        {
-            foreach (var Properties in info.Properties)
-            {
-                Debug.Log(Properties.Key);
-            }
-        }
-    }
+    public void OnSessionListUpdated(NetworkRunner runner, List<SessionInfo> sessionList) { }
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player) { }
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player) { }
     public void OnObjectExitAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player) { }

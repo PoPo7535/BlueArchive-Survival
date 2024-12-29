@@ -45,10 +45,11 @@ public class CreateRoomPanel : MonoBehaviour, ISetInspector
         {
             if (false == isOn)
                 return;
+            createBtn.interactable = true;
             roomNameIF.interactable = false;
-            roomNameIF.text = string.Empty;
             passwordToggle.isOn = false;
             passwordToggle.interactable = false;
+            roomNameIF.text = string.Empty;
         });
         multiToggle.onValueChanged.AddListener(isOn =>
         {
@@ -56,11 +57,17 @@ public class CreateRoomPanel : MonoBehaviour, ISetInspector
                 return;
             roomNameIF.interactable = true;
             passwordToggle.interactable = true;
+            SetCreateBtn(string.Empty);
         });
         passwordToggle.onValueChanged.AddListener(isOn =>
         {
             if (false == isOn)
+            {
                 passwordIF.text = string.Empty;
+                SetCreateBtn(string.Empty);
+            }
+            else
+                createBtn.interactable = false;
             passwordIF.interactable = isOn;
         });
         
@@ -77,17 +84,41 @@ public class CreateRoomPanel : MonoBehaviour, ISetInspector
             
             App.I.HostGame(
                 singleToggle.isOn ? GameMode.Single : GameMode.Host,
-                passwordIF.text.IsNullOrEmpty() ? int.MaxValue : int.Parse(passwordIF.text),
-                () =>
-                {
-                    cg.ActiveCG(false);
-                });
+                roomNameIF.text, 
+                passwordIF.text,
+                () => { cg.ActiveCG(false); });
         });
         
-        cancelBtn.onClick.AddListener(() =>
+        roomNameIF.onValueChanged.AddListener(SetCreateBtn);
+        passwordIF.onValueChanged.AddListener(SetCreateBtn);
+        
+        cancelBtn.onClick.AddListener(() => { cg.ActiveCG(false); });
+
+        void SetCreateBtn(string _)
         {
-            cg.ActiveCG(false);
-        });
+            if (singleToggle.isOn)
+            {
+                createBtn.interactable = true;
+                return;
+            }
+
+            if (passwordToggle.isOn &&
+                false == roomNameIF.text.IsNullOrEmpty() ||
+                false == passwordIF.text.IsNullOrEmpty())
+            {
+                createBtn.interactable = true;
+                return;
+            }
+
+            if (multiToggle.isOn &&
+                false == roomNameIF.text.IsNullOrEmpty())
+            {
+                createBtn.interactable = true;
+                return;
+            }
+            
+            createBtn.interactable = false;
+        }
         #endregion
     }
 }

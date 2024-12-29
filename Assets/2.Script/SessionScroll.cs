@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using EnhancedScrollerDemos.SuperSimpleDemo;
-using EnhancedUI;
 using EnhancedUI.EnhancedScroller;
 using Fusion;
 using Fusion.Sockets;
