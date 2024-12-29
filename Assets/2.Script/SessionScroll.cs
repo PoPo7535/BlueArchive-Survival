@@ -8,9 +8,7 @@ using UnityEngine;
 public class SessionScroll : MonoBehaviour, IEnhancedScrollerDelegate, INetworkRunnerCallbacks
 {
     private List<SessionInfo> _data = new();
-
     public EnhancedScroller scroller;
-
     public EnhancedScrollerCellView cellViewPrefab;
 
     public void Start()

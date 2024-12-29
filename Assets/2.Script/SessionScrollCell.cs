@@ -1,29 +1,44 @@
+using System;
 using EnhancedScrollerDemos.SuperSimpleDemo;
 using EnhancedUI.EnhancedScroller;
 using Fusion;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class SessionScrollCell : EnhancedScrollerCellView
 {
-    /// <summary>
-    /// A reference to the UI Text element to display the cell data
-    /// </summary>
     public TMP_Text someTextText;
     public Button btn;
 
-    /// <summary>
-    /// This function just takes the Demo data and displays it
-    /// </summary>
-    /// <param name="data"></param>
     public void SetData(SessionInfo data)
     {
-        // update the UI text with the cell data
         someTextText.text = data.Name;
+
         btn.onClick.RemoveAllListeners();
         btn.onClick.AddListener(() =>
         {
-            App.I.ClientGame(data.Name);
+            var password = App.Property.Password.ToString();
+            if (data.Properties.TryGetValue(password, out var property))
+            {
+                var result = (int)property.PropertyValue;
+                PopUp.I.OpenInputPopUp("비밀번호 입력",
+                    (input) =>
+                    {
+                        if (int.Parse(input) == result)
+                            App.I.JoinGame(data.Name);
+                        else
+                        {
+                            PopUp.I.OpenPopUp("비밀번호 오류",
+                                () => { PopUp.I.ActiveCG(false); },
+                                "확인");
+                        }
+                    }, "확인");
+            }
+            else
+            {
+                App.I.JoinGame(data.Name);
+            }
         });
     }
 }

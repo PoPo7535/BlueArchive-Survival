@@ -11,11 +11,14 @@ using WebSocketSharp;
 
 public class App : SimulationBehaviour, INetworkRunnerCallbacks
 {
-    // Start is called before the first frame update
     public static App I;
-    [Fusion.ReadOnly] public NetworkRunner runner;
-    // public PlayerInfo playerInfo;
+    [ReadOnly] public NetworkRunner runner;
 
+    public enum Property
+    {
+        Password
+    }
+    
     private void Awake()
     {
         I = this;
@@ -42,7 +45,7 @@ public class App : SimulationBehaviour, INetworkRunnerCallbacks
         var sessionProperties = new Dictionary<string, SessionProperty>();
         
         if (false == password.IsNullOrEmpty())
-            sessionProperties.Add("Password", int.Parse(password));
+            sessionProperties.Add(Property.Password.ToString(), int.Parse(password));
         
         var result = await runner.StartGame(new StartGameArgs()
         {
@@ -65,7 +68,7 @@ public class App : SimulationBehaviour, INetworkRunnerCallbacks
         
         PopUp.I.OpenPopUp(result);
     }
-    public async void ClientGame(string sessionName) 
+    public async void JoinGame(string sessionName) 
     {
         PopUp.I.OpenPopUp("조인 중");
         var result = await runner.StartGame(new StartGameArgs()
