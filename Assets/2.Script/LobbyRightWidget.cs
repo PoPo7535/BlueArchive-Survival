@@ -26,6 +26,10 @@ public class LobbyRightWidget : MonoBehaviour, ISetInspector
         sessionBtn.onClick.AddListener(() =>
         {
             sessionPanel.ActiveCG(true);
+            BG.GetBG(sessionPanel.transform, () =>
+            {
+                sessionPanel.ActiveCG(false);
+            });
         });
         statusBtn.onClick.AddListener(() =>
         {
