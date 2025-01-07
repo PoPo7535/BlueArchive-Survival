@@ -5,18 +5,21 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
+using Serial = UnityEngine.SerializeField;
+using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public class PopUp : MonoBehaviour, ISetInspector
 {
-    [SerializeField] private CanvasGroup cg;
-    [SerializeField] private TMP_Text msg;
-    [SerializeField] private TMP_InputField inputField;
-    [SerializeField, FoldoutGroup("Button1")] private Button btn1;
-    [SerializeField, FoldoutGroup("Button1")] private TMP_Text text1;
-    [SerializeField, FoldoutGroup("Button2")] private Button btn2;
-    [SerializeField, FoldoutGroup("Button2")] private TMP_Text text2;
-    [SerializeField, FoldoutGroup("Button3")] private Button btn3;
-    [SerializeField, FoldoutGroup("Button3")] private TMP_Text text3;
+    [Serial, Read] private CanvasGroup cg;
+    [Serial, Read] private TMP_Text msg;
+    [Serial, Read] private TMP_InputField inputField;
+    [Serial, Read, Fold("Button1")] private Button btn1;
+    [Serial, Read, Fold("Button1")] private TMP_Text text1;
+    [Serial, Read, Fold("Button2")] private Button btn2;
+    [Serial, Read, Fold("Button2")] private TMP_Text text2;
+    [Serial, Read, Fold("Button3")] private Button btn3;
+    [Serial, Read, Fold("Button3")] private TMP_Text text3;
     
     public static PopUp I;
 

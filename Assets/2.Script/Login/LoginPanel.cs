@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using PlayFab;
 using PlayFab.ClientModels;
@@ -8,27 +6,30 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
+using Serial = UnityEngine.SerializeField;
+using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public class LoginPanel : MonoBehaviour, ISetInspector
 {
-    [SerializeField, FoldoutGroup("LoginBox")] private CanvasGroup loginGroup;
-    [SerializeField, FoldoutGroup("LoginBox")] private TMP_InputField loginIdIF;
-    [SerializeField, FoldoutGroup("LoginBox")] private TMP_InputField loginPwIF;
-    [SerializeField, FoldoutGroup("LoginBox")] private Toggle idSaveToggle;
-    [SerializeField, FoldoutGroup("LoginBox")] private Button loginBtn;
-    [SerializeField, FoldoutGroup("LoginBox")] private Button registerOpenBtn;
+    [Serial, Read, Fold("LoginBox")] private CanvasGroup loginGroup;
+    [Serial, Read, Fold("LoginBox")] private TMP_InputField loginIdIF;
+    [Serial, Read, Fold("LoginBox")] private TMP_InputField loginPwIF;
+    [Serial, Read, Fold("LoginBox")] private Toggle idSaveToggle;
+    [Serial, Read, Fold("LoginBox")] private Button loginBtn;
+    [Serial, Read, Fold("LoginBox")] private Button registerOpenBtn;
     
-    [SerializeField, FoldoutGroup("RegisterPanel")] private CanvasGroup registerGroup;
-    [SerializeField, FoldoutGroup("RegisterPanel")] private TMP_InputField nickNameIF;
-    [SerializeField, FoldoutGroup("RegisterPanel")] private TMP_Text nickNameWarningText;
-    [SerializeField, FoldoutGroup("RegisterPanel")] private TMP_InputField registerIdIF;
-    [SerializeField, FoldoutGroup("RegisterPanel")] private TMP_Text registerIdWarningText;
-    [SerializeField, FoldoutGroup("RegisterPanel")] private TMP_InputField registerPwIF;
-    [SerializeField, FoldoutGroup("RegisterPanel")] private TMP_Text registerPwWarningText;
-    [SerializeField, FoldoutGroup("RegisterPanel")] private TMP_InputField registerPwCheckIF;
-    [SerializeField, FoldoutGroup("RegisterPanel")] private TMP_Text registerPwCheckPwWarningText;
-    [SerializeField, FoldoutGroup("RegisterPanel")] private Button registerBtn;
-    [SerializeField, FoldoutGroup("RegisterPanel")] private Button registerCancelBtn;
+    [Serial, Read, Fold("RegisterPanel")] private CanvasGroup registerGroup;
+    [Serial, Read, Fold("RegisterPanel")] private TMP_InputField nickNameIF;
+    [Serial, Read, Fold("RegisterPanel")] private TMP_Text nickNameWarningText;
+    [Serial, Read, Fold("RegisterPanel")] private TMP_InputField registerIdIF;
+    [Serial, Read, Fold("RegisterPanel")] private TMP_Text registerIdWarningText;
+    [Serial, Read, Fold("RegisterPanel")] private TMP_InputField registerPwIF;
+    [Serial, Read, Fold("RegisterPanel")] private TMP_Text registerPwWarningText;
+    [Serial, Read, Fold("RegisterPanel")] private TMP_InputField registerPwCheckIF;
+    [Serial, Read, Fold("RegisterPanel")] private TMP_Text registerPwCheckPwWarningText;
+    [Serial, Read, Fold("RegisterPanel")] private Button registerBtn;
+    [Serial, Read, Fold("RegisterPanel")] private Button registerCancelBtn;
 
     private const string IDSave = "IDSave";
     private const string ID = "ID";
@@ -142,7 +143,7 @@ public class LoginPanel : MonoBehaviour, ISetInspector
                 (result) =>
                 {
                     Debug.Log(1);
-                    PlayFabEx.InitStateDate(_ =>
+                    PlayFabEx.InitStatusDate(_ =>
                     {
                         Debug.Log(2);
                     }, _ =>
@@ -197,3 +198,4 @@ public class LoginPanel : MonoBehaviour, ISetInspector
     }
 
 }
+

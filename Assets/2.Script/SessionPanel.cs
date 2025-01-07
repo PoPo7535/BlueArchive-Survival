@@ -2,11 +2,14 @@ using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
+using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
+using Serial = UnityEngine.SerializeField;
+using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public class SessionPanel : MonoBehaviour, ISetInspector
 {
-    [SerializeField] private Button createRoomPanelBtn;
-    [SerializeField] private CanvasGroup createRoomPanelCG;
+    [Serial, Read] private Button createRoomPanelBtn;
+    [Serial, Read] private CanvasGroup createRoomPanelCG;
     
     
     [Button,GUIColor(0, 1, 0)]

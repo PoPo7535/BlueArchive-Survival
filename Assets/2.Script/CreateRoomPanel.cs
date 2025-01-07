@@ -1,29 +1,28 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using Cysharp.Threading.Tasks;
 using Fusion;
-using Fusion.Sockets;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using WebSocketSharp;
+using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
+using Serial = UnityEngine.SerializeField;
+using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public class CreateRoomPanel : MonoBehaviour, ISetInspector
 {
-    [SerializeField] private CanvasGroup cg;
-
-    [SerializeField, FoldoutGroup("UIs")] private Toggle singleToggle;
-    [SerializeField, FoldoutGroup("UIs")] private Toggle multiToggle;
-    [SerializeField, FoldoutGroup("UIs")] private TMP_InputField roomNameIF;
-    
-    [SerializeField, FoldoutGroup("UIs")] private Toggle passwordToggle;
-    [SerializeField, FoldoutGroup("UIs")] private TMP_InputField passwordIF;
-    
-    [SerializeField, FoldoutGroup("UIs")] private Button createBtn;
-    [SerializeField, FoldoutGroup("UIs")] private Button cancelBtn;
-
+    [Serial] private CanvasGroup cg;
+           
+    [Serial, Read, Fold("UIs")] private Toggle singleToggle;
+    [Serial, Read, Fold("UIs")] private Toggle multiToggle;
+    [Serial, Read, Fold("UIs")] private TMP_InputField roomNameIF;
+           
+    [Serial, Read, Fold("UIs")] private Toggle passwordToggle;
+    [Serial, Read, Fold("UIs")] private TMP_InputField passwordIF;
+           
+    [Serial, Read, Fold("UIs")] private Button createBtn;                                                                                    
+    [Serial, Read, Fold("UIs")] private Button cancelBtn;
+           
     [Button,GUIColor(0, 1, 0)]
     public void SetInspector()
     {

@@ -8,6 +8,7 @@ using UnityEngine;
 public static class PlayFabEx
 {
 
+    #region Status
     private static Dictionary<PlayerStatus, float> GetStateData()
     {
         return new Dictionary<PlayerStatus, float>()
@@ -16,14 +17,13 @@ public static class PlayFabEx
             { PlayerStatus.Speed, 1F },
         };
     }
-
     public enum PlayerStatus
     {
         Attack,
         Speed
     }
 
-    public static void InitStateDate(Action<UpdateUserDataResult> result = null, Action<PlayFabError> error = null)
+    public static void InitStatusDate(Action<UpdateUserDataResult> result = null, Action<PlayFabError> error = null)
     {
         Debug.Log(JsonConvert.SerializeObject(GetStateData()));
         PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest()
@@ -33,7 +33,7 @@ public static class PlayFabEx
             _result => result?.Invoke(_result),
             _error => error?.Invoke(_error));
     }
-    public static void UpdateStateData(Action<UpdateUserDataResult> result, Action<PlayFabError> error, Dictionary<PlayerStatus, float> data)
+    public static void UpdateStatusData(Action<UpdateUserDataResult> result, Action<PlayFabError> error, Dictionary<PlayerStatus, float> data)
     {
         PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest()
             {
@@ -42,7 +42,7 @@ public static class PlayFabEx
             _result => result?.Invoke(_result),
             _error => error?.Invoke(_error));
     }
-    public static void GetStateData(Action<GetUserDataResult> result, Action<PlayFabError> error, Action<Dictionary<PlayerStatus, float>> data)
+    public static void GetStatusData(Action<GetUserDataResult> result, Action<PlayFabError> error, Action<Dictionary<PlayerStatus, float>> data)
     {
         PlayFabClientAPI.GetUserData(new GetUserDataRequest()
             {
@@ -64,6 +64,7 @@ public static class PlayFabEx
                 data?.Invoke(newState);
             },
             _error => error?.Invoke(_error));
-        
     }
+    #endregion
+
 }

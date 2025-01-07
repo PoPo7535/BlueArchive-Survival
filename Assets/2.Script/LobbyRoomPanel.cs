@@ -7,13 +7,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Utility;
+using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
+using Serial = UnityEngine.SerializeField;
+using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IPlayerJoined, IPlayerLeft
 {
     public CanvasGroup cg;
-    [SerializeField] private Button readyBtn;
-    [SerializeField] private TMP_Text readyText;
-    [SerializeField] private Button cancelBtn;
+    [Serial, Read] private Button readyBtn;
+    [Serial, Read] private TMP_Text readyText;
+    [Serial, Read] private Button cancelBtn;
     public PlayerSlot playerSlot;
     
     private Dictionary<PlayerRef, bool> ready = new Dictionary<PlayerRef, bool>();
