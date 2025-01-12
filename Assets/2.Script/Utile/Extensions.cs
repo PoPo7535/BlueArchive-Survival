@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -41,5 +42,16 @@ public static class Extensions
                 // _cg.gameObject.SetActive(_isShow);
                 _complete?.Invoke();
             });
+    }
+    
+    public static void SetParent(this RectTransform rect, Transform parent, Vector2 anchorMin, Vector2 anchorMax)
+    {
+        var pos = rect.anchoredPosition;
+        var size = rect.sizeDelta;
+        rect.parent = parent;
+        rect.anchorMax = anchorMax;
+        rect.anchorMin = anchorMin;
+        rect.anchoredPosition = pos;
+        rect.sizeDelta = size;
     }
 }

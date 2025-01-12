@@ -33,7 +33,7 @@ public class LobbyRightWidget : MonoBehaviour, ISetInspector
         });
         statusBtn.onClick.AddListener(() =>
         {
-            statusPanel.ActiveCG(true);
+            // statusPanel.ActiveCG(true);
         });
     }
 
