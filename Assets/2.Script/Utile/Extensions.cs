@@ -33,13 +33,13 @@ public static class Extensions
                 _start?.Invoke();
 
                 _cg.alpha = _isShow ? 0 : 1;
-                _cg.blocksRaycasts = true;
-                // _cg.gameObject.SetActive(true);
+                _cg.blocksRaycasts = false;
+                // _cg.interactable = false;
             })
             .OnComplete(() =>
             {
                 _cg.blocksRaycasts = _isShow;
-                // _cg.gameObject.SetActive(_isShow);
+                // _cg.interactable = _isShow;
                 _complete?.Invoke();
             });
     }
@@ -48,7 +48,7 @@ public static class Extensions
     {
         var pos = rect.anchoredPosition;
         var size = rect.sizeDelta;
-        rect.parent = parent;
+        rect.SetParent(parent);
         rect.anchorMax = anchorMax;
         rect.anchorMin = anchorMin;
         rect.anchoredPosition = pos;

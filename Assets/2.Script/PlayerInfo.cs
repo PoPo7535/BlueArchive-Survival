@@ -1,16 +1,13 @@
-using System.Collections.Generic;
-using System.Linq;
+using System;
 using Fusion;
 using PlayFab;
 using PlayFab.ClientModels;
-using Sirenix.OdinInspector;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerInfo : NetworkBehaviour, IPlayerLeft
 {
     [Networked] public NetworkString<_16> PlayerName { get; set; }
-    [Networked] public int CharIndex { get; set; }
+    [Networked] public int CharIndex { get; set; } = -1;
 
 
     public void Awake()
@@ -37,7 +34,7 @@ public class PlayerInfo : NetworkBehaviour, IPlayerLeft
         if(Object.Runner.IsShutdown)
             return;
         
-        LobbyRoomPanel.I.SetSlot();
+        PlayerName = string.Empty;
     }
  
     [Rpc(RpcSources.InputAuthority, RpcTargets.All)]
@@ -45,7 +42,6 @@ public class PlayerInfo : NetworkBehaviour, IPlayerLeft
     {
         PlayerName = name;
         gameObject.name = $"{name} Info";
-        LobbyRoomPanel.I.SetSlot();
     }
 
     public void PlayerLeft(PlayerRef player)
@@ -54,8 +50,24 @@ public class PlayerInfo : NetworkBehaviour, IPlayerLeft
             return;
 
         if (player == Object.InputAuthority)
-        {
             Object.Runner.Despawn(Object);
+    }
+
+    public void OnGUI()
+    {
+        if (false == Object.HasInputAuthority)
+            return;
+        if (GUI.Button(new Rect(50, 50, 150, 100), "카요코"))
+        {
+            RPC_CharIndex(1);
+        }
+        
+        if (GUI.Button(new Rect(50, 150, 150, 100), "카요코2"))
+        {
+            RPC_CharIndex(2);
         }
     }
+
+    [Rpc(RpcSources.InputAuthority, RpcTargets.All)]
+    private void RPC_CharIndex(int index) => CharIndex = index;
 }

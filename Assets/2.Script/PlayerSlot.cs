@@ -32,7 +32,11 @@ public class PlayerSlot : MonoBehaviour, ISetInspector
     {
         playerName[i].text = str;
     }
-    public void SetSlot(int i)
+    public void WaitSlot(int i)
+    {
+        playerName[i].text = "Wait";
+    }
+    public void ClearSlot(int i)
     {
         playerName[i].text = string.Empty;
     }

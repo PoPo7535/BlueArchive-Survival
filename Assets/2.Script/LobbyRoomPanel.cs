@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Cysharp.Threading.Tasks;
 using Fusion;
 using Sirenix.OdinInspector;
 using TMPro;
@@ -42,9 +43,10 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
         });
 
     }
-    
+
     public void PlayerJoined(PlayerRef player)
     {
+        Debug.Log(Object.Runner.ActivePlayers.Count());
         if (Object.HasStateAuthority)
             App.I.runner.Spawn(GameManager.I.playerInfo, Vector3.zero, Quaternion.identity, player);
 
@@ -53,9 +55,10 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
             ready.Add(player, false);
             RefreshStartBtn();
         }
-        
+
+        SetSlot(player);
     }
-    
+
     public void PlayerLeft(PlayerRef player)
     {
         if (Runner.LocalPlayer != player)
@@ -63,17 +66,44 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
             ready.Remove(player);
             RefreshStartBtn();
         }
-    }
-    
-    public void SetSlot()
-    {
-        var list = Object.Runner.ActivePlayers.ToList();
-        list.Sort((p1, p2) => p1.PlayerId.CompareTo(p2.PlayerId));
-        for (int i = 0; i < list.Count; ++i)
-            playerSlot.SetSlot(i, Object.Runner.GetPlayerObject(list[i]).GetComponent<PlayerInfo>().PlayerName.Value);
         
-        for (int i = list.Count; i < 3; ++i)
-            playerSlot.SetSlot(i);
+        SetSlot(player);
+    }
+
+    private async void SetSlot(PlayerRef player)
+    {
+        playerSlot.WaitSlot(Object.Runner.ActivePlayers.Count() - 1);
+        await UniTask.WaitUntil(() => null != Object.Runner.GetPlayerObject(player) ||
+                                      default == Object.Runner.ActivePlayers.First(p => p == player));
+
+        if (null != Object.Runner.GetPlayerObject(player))
+        {
+            var info = Object.Runner.GetPlayerObject(player).GetComponent<PlayerInfo>();
+            await UniTask.WaitUntil(() => info.PlayerName != string.Empty);
+            SetSlot();
+        }
+
+        if (PlayerRef.None == Object.Runner.ActivePlayers.First(p => p == player))
+        {
+            Debug.Log(2);   
+            playerSlot.ClearSlot(Object.Runner.ActivePlayers.Count());
+        }
+    }
+
+    private void SetSlot()
+    {
+        var players = Object.Runner.ActivePlayers.ToList();
+        players.Sort((p1, p2) => p1.PlayerId.CompareTo(p2.PlayerId));
+        for (int i = 0; i < players.Count; ++i)
+        {
+            var playerInfo = Object.Runner.GetPlayerObject(players[i]).GetComponent<PlayerInfo>();
+            playerSlot.SetSlot(
+                i, 
+                playerInfo.PlayerName.Value);
+        }
+        
+        for (int i = players.Count; i < 3; ++i)
+            playerSlot.ClearSlot(i);
     }
 
     public override void Spawned()
@@ -98,6 +128,7 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
                 RPC_InputReadyBtn(Runner.LocalPlayer, isReady);
             });
         }
+        SetSlot();
 
     }
 
