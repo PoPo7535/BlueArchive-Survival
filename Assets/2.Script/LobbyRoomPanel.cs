@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using Fusion;
 using Sirenix.OdinInspector;
@@ -18,10 +19,10 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
     [Serial, Read] private Button readyBtn;
     [Serial, Read] private TMP_Text readyText;
     [Serial, Read] private Button cancelBtn;
-    public PlayerSlot playerSlot;
+    [Serial, Read]private PlayerSlot playerSlot;
     
+    private PlayerInfo localPlayerInfo;
     private Dictionary<PlayerRef, bool> ready = new Dictionary<PlayerRef, bool>();
-
     private bool isReady;    
     
     [Button,GUIColor(0, 1, 0)]
@@ -43,10 +44,8 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
         });
 
     }
-
     public void PlayerJoined(PlayerRef player)
     {
-        Debug.Log(Object.Runner.ActivePlayers.Count());
         if (Object.HasStateAuthority)
             App.I.runner.Spawn(GameManager.I.playerInfo, Vector3.zero, Quaternion.identity, player);
 
@@ -56,7 +55,7 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
             RefreshStartBtn();
         }
 
-        SetSlot(player);
+        playerSlot.SetPlayerSlot(player);
     }
 
     public void PlayerLeft(PlayerRef player)
@@ -66,44 +65,8 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
             ready.Remove(player);
             RefreshStartBtn();
         }
-        
-        SetSlot(player);
-    }
 
-    private async void SetSlot(PlayerRef player)
-    {
-        playerSlot.WaitSlot(Object.Runner.ActivePlayers.Count() - 1);
-        await UniTask.WaitUntil(() => null != Object.Runner.GetPlayerObject(player) ||
-                                      default == Object.Runner.ActivePlayers.First(p => p == player));
-
-        if (null != Object.Runner.GetPlayerObject(player))
-        {
-            var info = Object.Runner.GetPlayerObject(player).GetComponent<PlayerInfo>();
-            await UniTask.WaitUntil(() => info.PlayerName != string.Empty);
-            SetSlot();
-        }
-
-        if (PlayerRef.None == Object.Runner.ActivePlayers.First(p => p == player))
-        {
-            Debug.Log(2);   
-            playerSlot.ClearSlot(Object.Runner.ActivePlayers.Count());
-        }
-    }
-
-    private void SetSlot()
-    {
-        var players = Object.Runner.ActivePlayers.ToList();
-        players.Sort((p1, p2) => p1.PlayerId.CompareTo(p2.PlayerId));
-        for (int i = 0; i < players.Count; ++i)
-        {
-            var playerInfo = Object.Runner.GetPlayerObject(players[i]).GetComponent<PlayerInfo>();
-            playerSlot.SetSlot(
-                i, 
-                playerInfo.PlayerName.Value);
-        }
-        
-        for (int i = players.Count; i < 3; ++i)
-            playerSlot.ClearSlot(i);
+        playerSlot.SetAllPlayerSlot();
     }
 
     public override void Spawned()
@@ -128,8 +91,30 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
                 RPC_InputReadyBtn(Runner.LocalPlayer, isReady);
             });
         }
-        SetSlot();
+    
+        playerSlot.SetAllPlayerSlot();
+        // localPlayerInfo = Object.Runner.GetPlayerObject(Object.Runner.LocalPlayer).GetComponent<PlayerInfo>();
+    }
 
+    public void OnGUI()
+    {
+        if (false == Object.HasInputAuthority)
+            return;
+        if (GUI.Button(new Rect(50, 50, 150, 100), "카요코"))
+        {
+            RPC_CharIndex(1);
+        }
+        
+        if (GUI.Button(new Rect(50, 150, 150, 100), "카요코2"))
+        {
+            RPC_CharIndex(2);
+        }
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    private void RPC_CharIndex(int index)
+    {
+        localPlayerInfo.CharIndex = index;
     }
 
     [Rpc(RpcSources.All,RpcTargets.StateAuthority)]
@@ -146,5 +131,4 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
         else
             readyBtn.interactable = false == ready.Values.Any(value => false == value);
     }
-
 }
