@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
+using ColorUtility = UnityEngine.ColorUtility;
 
 
 public static class Extensions
@@ -53,5 +55,46 @@ public static class Extensions
         rect.anchorMin = anchorMin;
         rect.anchoredPosition = pos;
         rect.sizeDelta = size;
+    }
+
+    private static string TextColor(this object _object, Color _clr) => $"<color=#{ColorUtility.ToHtmlStringRGBA(_clr)}>{_object}</color>";
+    private static string TextSize (this object _object, int _fontSize = 13) => $"<size={_fontSize}>{_object}</size>";
+    private static string Text     (this object _object, Color _clr, int _fontSize = 13) => _object.TextColor(_clr).TextSize(_fontSize);
+
+    private static string StackTransValue(int _fontSize)
+    {
+#if !UNITY_EDITOR && (UNITY_WEBGL || UNITY_ANDROID || UNITY_STANDALONE_WIN)
+        var str = "";
+#else
+        var sf = new StackTrace(true).GetFrame(2);
+
+        var str = sf.GetMethod().ReflectedType!.Name.TextColor(Color.blue * 0.8f) +
+                  ".".TextColor(Color.white) +
+                  sf.GetMethod().Name.TextColor(Color.magenta * 0.8f) +
+                  ":".TextColor(Color.white) +
+                  sf.GetFileLineNumber().TextColor(Color.green);
+        str = (Time.time + "[" + str + "]").Text(Color.black, _fontSize);
+#endif
+        return str;
+    }
+    public static object Log(this object _string, Color _clr = default, int _fontSize = 14)
+    {
+        _clr = _clr == default ? Color.white : _clr;
+        UnityEngine.Debug.Log(StackTransValue(_fontSize) + Text(_string, _clr, _fontSize));
+        return _string;
+    }
+
+    public static object WarningLog(this object _string, Color _clr = default, int _fontSize = 14)
+    {
+        _clr = _clr == default ? Color.yellow : _clr;
+        UnityEngine.Debug.LogWarning(StackTransValue(_fontSize) + Text(_string, _clr, _fontSize));
+        return _string;
+    }
+
+    public static object ErrorLog(this object _string, Color _clr = default, int _fontSize = 16)
+    {
+        _clr = _clr == default ? Color.red : _clr;
+        UnityEngine.Debug.LogError(StackTransValue(_fontSize) + Text(_string, _clr, _fontSize));
+        return _string;
     }
 }

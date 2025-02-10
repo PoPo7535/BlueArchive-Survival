@@ -20,8 +20,8 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
     [Serial, Read] private TMP_Text readyText;
     [Serial, Read] private Button cancelBtn;
     [Serial, Read]private PlayerSlot playerSlot;
-    
-    private PlayerInfo localPlayerInfo;
+
+    private PlayerInfo localPlayerInfo => Object.Runner.GetPlayerObject(Object.Runner.LocalPlayer).GetComponent<PlayerInfo>();
     private Dictionary<PlayerRef, bool> ready = new Dictionary<PlayerRef, bool>();
     private bool isReady;    
     
@@ -91,15 +91,12 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
                 RPC_InputReadyBtn(Runner.LocalPlayer, isReady);
             });
         }
-    
+
         playerSlot.SetAllPlayerSlot();
-        // localPlayerInfo = Object.Runner.GetPlayerObject(Object.Runner.LocalPlayer).GetComponent<PlayerInfo>();
     }
 
     public void OnGUI()
     {
-        if (false == Object.HasInputAuthority)
-            return;
         if (GUI.Button(new Rect(50, 50, 150, 100), "카요코"))
         {
             RPC_CharIndex(1);
@@ -115,6 +112,7 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
     private void RPC_CharIndex(int index)
     {
         localPlayerInfo.CharIndex = index;
+        index.Log();
     }
 
     [Rpc(RpcSources.All,RpcTargets.StateAuthority)]

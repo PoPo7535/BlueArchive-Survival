@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
+using Sirenix.Utilities;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,8 +15,11 @@ public static class BG
     private static readonly List<GameObject> objects = new();
     public static void GetBG(Transform tr, Action action)
     {
-        foreach (var destroyObj in objects.Where(destroyObj => destroyObj.IsUnityNull()))
-            objects.Remove(destroyObj);
+        for (int i = objects.Count - 1; i >= 0; i--)
+        {
+            if (objects[i].SafeIsUnityNull())
+                objects.RemoveAt(i);
+        }
         
         var obj = objects.Find((obj) => obj.activeSelf == false);
         if (obj.IsUnityNull())
@@ -38,6 +42,6 @@ public static class BG
 
         ((RectTransform)obj.transform).SetParent(tr.parent, new Vector2(0,0), new Vector2(1,1));
         var siblingIndex = tr.GetSiblingIndex();
-        obj.transform.SetSiblingIndex(siblingIndex == 0 ? 0 : siblingIndex - 1);
+        obj.transform.SetSiblingIndex(siblingIndex == 0 ? 0 : siblingIndex);
     }
 }
