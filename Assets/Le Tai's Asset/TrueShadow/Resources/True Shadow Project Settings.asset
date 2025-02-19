@@ -41,8 +41,3 @@ MonoBehaviour:
     spread: 0
     distance: 21
     alpha: 0.15
-  - name: xxl
-    size: 35
-    spread: 0
-    distance: 29
-    alpha: 0.15
