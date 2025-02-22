@@ -19,7 +19,7 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
     [Serial, Read] private Button readyBtn;
     [Serial, Read] private TMP_Text readyText;
     [Serial, Read] private Button cancelBtn;
-    [Serial, Read]private PlayerSlot playerSlot;
+    [Serial, Read] private PlayerSlot playerSlot;
 
     private PlayerInfo localPlayerInfo => Object.Runner.GetPlayerObject(Object.Runner.LocalPlayer).GetComponent<PlayerInfo>();
     private Dictionary<PlayerRef, bool> ready = new Dictionary<PlayerRef, bool>();

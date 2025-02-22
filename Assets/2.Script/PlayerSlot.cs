@@ -6,21 +6,22 @@ using Fusion;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Serial = UnityEngine.SerializeField;
 using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public class PlayerSlot : MonoBehaviour, ISetInspector
 {
-    [Serial, Read] private TMP_Text[] playerName;
+    [Serial, Read] private PlayerSlotItem[] playerSlots;
     [Button,GUIColor(0, 1, 0)]
     public void SetInspector()
     {
         var childs = transform.GetAllChild();
-        playerName = new TMP_Text[3];
-        playerName[1] = childs.First(tr => tr.name == "PlayerSlot Text (1)").GetComponent<TMP_Text>();
-        playerName[0] = childs.First(tr => tr.name == "PlayerSlot Text (2)").GetComponent<TMP_Text>();
-        playerName[2] = childs.First(tr => tr.name == "PlayerSlot Text (3)").GetComponent<TMP_Text>();
+        playerSlots = new PlayerSlotItem[3];
+        playerSlots[1] = childs.First(tr => tr.name == "PlayerSlot (1)").GetComponent<PlayerSlotItem>();
+        playerSlots[0] = childs.First(tr => tr.name == "PlayerSlot (2)").GetComponent<PlayerSlotItem>();
+        playerSlots[2] = childs.First(tr => tr.name == "PlayerSlot (3)").GetComponent<PlayerSlotItem>();
     }
 
     public void Start()
@@ -39,11 +40,11 @@ public class PlayerSlot : MonoBehaviour, ISetInspector
         for (int i = 0; i < players.Count; ++i)
         {
             var playerInfo = App.I.Runner.GetPlayerObject(players[i]).GetComponent<PlayerInfo>();
-            SetSlot(i, playerInfo.PlayerName.Value);
+            playerSlots[i].SetSlot(playerInfo.PlayerName.Value);
         }
         
         for (int i = players.Count; i < 3; ++i)
-            ClearSlot(i);
+            playerSlots[i].ClearSlot();
     }
 
     public async void SetPlayerSlot(PlayerRef playerRef)
@@ -57,7 +58,7 @@ public class PlayerSlot : MonoBehaviour, ISetInspector
             if (players[i] == playerRef)
             {
                 var playerInfo = App.I.Runner.GetPlayerObject(playerRef).GetComponent<PlayerInfo>();
-                SetSlot(i, playerInfo.PlayerName.Value);
+                playerSlots[i].SetSlot(playerInfo.PlayerName.Value);
                 break;
             }
 
@@ -70,17 +71,4 @@ public class PlayerSlot : MonoBehaviour, ISetInspector
         await UniTask.WaitUntil(() => info.PlayerName != string.Empty);
     }
 
-    private void SetSlot(int i, string str)
-    {
-        
-        playerName[i].text = str;
-    }
-    public void WaitSlot(int i)
-    {
-        playerName[i].text = "Wait";
-    }
-    private void ClearSlot(int i)
-    {
-        playerName[i].text = string.Empty;
-    }
 }
