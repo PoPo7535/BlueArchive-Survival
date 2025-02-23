@@ -4,9 +4,7 @@ using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using Fusion;
 using Sirenix.OdinInspector;
-using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Serial = UnityEngine.SerializeField;
 using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
@@ -61,7 +59,6 @@ public class PlayerSlot : MonoBehaviour, ISetInspector
                 playerSlots[i].SetSlot(playerInfo.PlayerName.Value);
                 break;
             }
-
         }
     }
     private async Task ConnectingPlayer(PlayerRef player)
