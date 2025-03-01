@@ -21,6 +21,9 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
     [Serial, Read] private Button cancelBtn;
     [Serial, Read] private PlayerSlot playerSlot;
 
+
+    [SerializeField] public int a = 0;
+
     private PlayerInfo localPlayerInfo => Object.Runner.GetPlayerObject(Object.Runner.LocalPlayer).GetComponent<PlayerInfo>();
     private Dictionary<PlayerRef, bool> ready = new Dictionary<PlayerRef, bool>();
     private bool isReady;    
