@@ -6,7 +6,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Kayoko_Original_Body
+  m_Name: Model 1
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -31,14 +31,14 @@ Mesh:
       m_Extent: {x: 0.0020027757, y: 0.0025331974, z: 0.0023215597}
   - serializedVersion: 2
     firstByte: 37272
-    indexCount: 498
+    indexCount: 402
     topology: 0
     baseVertex: 0
     firstVertex: 5682
-    vertexCount: 158
+    vertexCount: 120
     localAABB:
-      m_Center: {x: -0.000069191505, y: -0.00026894754, z: 0.00821555}
-      m_Extent: {x: 0.0011924128, y: 0.0006007365, z: 0.0011622242}
+      m_Center: {x: -0.0000000026193447, y: -0.00066856225, z: 0.0074530914}
+      m_Extent: {x: 0.0010548171, y: 0.00020112179, z: 0.00039976533}
   - serializedVersion: 2
     firstByte: 38076
     indexCount: 1980

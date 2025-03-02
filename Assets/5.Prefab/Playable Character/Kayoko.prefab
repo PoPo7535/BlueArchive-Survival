@@ -1857,7 +1857,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300000, guid: a58116a541e82c5408c2f8c28c6dfd94, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 9ef02c391e93ff441b81c863cdb9f034, type: 2}
   m_Bones:
   - {fileID: 5880511449393782023}
   - {fileID: 3172915111648286232}
@@ -3134,7 +3134,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7801237129058422238}
-  - component: {fileID: 2205843518549104470}
   - component: {fileID: 5294705500639434005}
   m_Layer: 6
   m_Name: Kayoko_Original
@@ -3163,27 +3162,6 @@ Transform:
   - {fileID: 7678773677588933842}
   m_Father: {fileID: 6474012141797672915}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2205843518549104470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5524658098135526105}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 584e41cec515af64bbd268f73f0f2c6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  faceMeshIndex: 2
-  subMeshMaxCount: 5
-  _skinned: {fileID: 4300000, guid: a58116a541e82c5408c2f8c28c6dfd94, type: 2}
-  startIndex: 0
-  offSet: {x: 0, y: 0, z: 0}
-  endIndex: 96
-  mat: {fileID: 2100000, guid: fcac28aed62310c4da1b79f5a41e40ea, type: 2}
-  tx: {fileID: 2800000, guid: 0e54b9c71850da745b72039e06013ce5, type: 3}
-  showGizmo: 0
 --- !u!95 &5294705500639434005
 Animator:
   serializedVersion: 5
@@ -4469,7 +4447,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6474012141797672915}
-  - component: {fileID: 2744876686228599386}
   - component: {fileID: 132331849369872619}
   - component: {fileID: 3652655460484466727}
   - component: {fileID: 6444458462060479781}
@@ -4489,7 +4466,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9012993738355288034}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4497,20 +4474,6 @@ Transform:
   - {fileID: 7801237129058422238}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2744876686228599386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9012993738355288034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1541381998, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Guid:
-    RawGuidValue: e14bc6eb0f1e6fa4cb0d59e650a25f77
 --- !u!95 &132331849369872619
 Animator:
   serializedVersion: 5
@@ -4562,14 +4525,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   faceMeshIndex: 2
-  subMeshMaxCount: 5
-  _skinned: {fileID: 4300000, guid: a58116a541e82c5408c2f8c28c6dfd94, type: 2}
-  startIndex: 0
+  _skinned: {fileID: 4300000, guid: 9ef02c391e93ff441b81c863cdb9f034, type: 2}
   offSet: {x: 0, y: 0, z: 0}
+  startIndex: 0
   endIndex: 96
   mat: {fileID: 2100000, guid: fcac28aed62310c4da1b79f5a41e40ea, type: 2}
   tx: {fileID: 2800000, guid: 0e54b9c71850da745b72039e06013ce5, type: 3}
   showGizmo: 0
+  isSet: 1
 --- !u!114 &887924283465116595
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,35 +1,49 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Rendering;
 public class Test : MonoBehaviour
 {
     public int faceMeshIndex = 2;
-    public int subMeshMaxCount = 5;
     
     public Mesh _skinned;
-    public int startIndex = 0;
     public Vector3 offSet;
+    
+    private bool IndexError(int value) => value % 3 == 0;
+    [ValidateInput("IndexError", "startIndex값은 3의 배수여야 합니다")]
+    public int startIndex = 0;
+    
+    [ValidateInput("IndexError", "endIndex값은 3의 배수여야 합니다")]
     public int endIndex = 96;
     
     public Material mat;
     public Texture2D tx;
 
     public bool showGizmo = false;
+    public bool isSet;
 
+    [Button]
     private void Awake()
     {
-        Mouth();
+        if (false == isSet)
+            Mouth();
         Set(4, 0);
     }
 
     private void Mouth()
     {
         var subMeshDescriptor = _skinned.GetSubMesh(faceMeshIndex);
-        if (subMeshMaxCount != _skinned.subMeshCount)
-            return;
-
-        _skinned.subMeshCount = subMeshMaxCount + 1;
-        _skinned.SetSubMesh(faceMeshIndex, new SubMeshDescriptor(subMeshDescriptor.indexStart + endIndex, subMeshDescriptor.indexCount));
-        _skinned.SetSubMesh(subMeshMaxCount, new SubMeshDescriptor(subMeshDescriptor.indexStart, endIndex));
+        _skinned.subMeshCount += 1;
+        if (startIndex == 0)
+            _skinned.SetSubMesh(faceMeshIndex, new SubMeshDescriptor(subMeshDescriptor.indexStart + endIndex, subMeshDescriptor.indexCount - endIndex));
+        else
+        {
+            var subMesh1 = new SubMeshDescriptor(subMeshDescriptor.indexStart, startIndex);
+            var subMesh2 = new SubMeshDescriptor(subMeshDescriptor.indexStart + endIndex, subMeshDescriptor.indexCount - endIndex);
+            _skinned.SetSubMesh(faceMeshIndex, subMesh1);
+            _skinned.SetSubMesh(_skinned.subMeshCount - 1, subMesh2);
+            _skinned.subMeshCount += 1;
+        }
+        _skinned.SetSubMesh(_skinned.subMeshCount - 1, new SubMeshDescriptor(subMeshDescriptor.indexStart + startIndex, endIndex - startIndex));
     }
 
     private void Set(int x, int y)
@@ -47,7 +61,7 @@ public class Test : MonoBehaviour
         
         var subMeshDescriptor = _skinned.GetSubMesh(faceMeshIndex);
         for (var i = subMeshDescriptor.indexStart + startIndex;
-             i < subMeshDescriptor.indexStart + subMeshDescriptor.indexCount;
+             i < subMeshDescriptor.indexStart + endIndex;
              i += 3) 
         {
             var position = transform.position+offSet;
