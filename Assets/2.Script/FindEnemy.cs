@@ -1,8 +1,5 @@
-using System;
 using System.Linq;
-using Fusion;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class FindEnemy : MonoBehaviour

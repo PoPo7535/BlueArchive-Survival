@@ -6,8 +6,8 @@ public class PlayerMove : NetworkBehaviour, ISpawned
 {
     private Rigidbody rigi;
     private FindEnemy findEnemy;
-    public Animator ani;
-    public Camera mainCamera;
+    [ReadOnly] public Animator ani;
+    [ReadOnly] public Camera mainCamera;
     public GameObject bullet;
     [Networked] private int aniTrigger { get; set; }
     public float moveSpeed = 30;
@@ -19,6 +19,7 @@ public class PlayerMove : NetworkBehaviour, ISpawned
     {
         rigi = GetComponent<Rigidbody>();
         findEnemy = GetComponent<FindEnemy>();
+        // ani = gameObject.transform.GetChild(0).GetComponent<Animator>();
     }
 
     public override void Spawned()

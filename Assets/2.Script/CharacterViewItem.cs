@@ -8,8 +8,8 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public class CharacterViewItem : MonoBehaviour, ISetInspector
 {
-    [Serial, Read] private GameObject character;
-    [Serial, Read] private GameObject camera;
+    [Serial, Read] public GameObject character;
+    [Serial, Read] private new GameObject camera;
     [Read] private Dictionary<string, GameObject> dic = new();
 
     [Button, GUIColor(0, 1, 0)]
