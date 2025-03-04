@@ -2056,7 +2056,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2854155166852420474}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2114,14 +2114,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584e41cec515af64bbd268f73f0f2c6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  modelMesh: {fileID: 4300000, guid: 04761d1108357d54a9631401be7818db, type: 2}
+  mouthMat: {fileID: 2100000, guid: fcac28aed62310c4da1b79f5a41e40ea, type: 2}
+  mouthTx: {fileID: 2800000, guid: 986800c8d29ee3a478de1ca77320f002, type: 3}
+  meshRender: {fileID: 774589094691686898}
   faceMeshIndex: 2
-  _skinned: {fileID: 4300000, guid: 04761d1108357d54a9631401be7818db, type: 2}
-  offSet: {x: 0.97, y: 0, z: -1.71}
-  startIndex: 192
-  endIndex: 288
-  mat: {fileID: 2100000, guid: fcac28aed62310c4da1b79f5a41e40ea, type: 2}
-  tx: {fileID: 2800000, guid: 0e54b9c71850da745b72039e06013ce5, type: 3}
+  meshCutStartIndex: 0
+  meshCutEndIndex: 96
   showGizmo: 0
+  scale: 1
   isSet: 1
 --- !u!114 &6744917956224555874
 MonoBehaviour:
