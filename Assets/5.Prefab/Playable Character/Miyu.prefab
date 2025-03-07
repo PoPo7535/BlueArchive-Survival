@@ -102,10 +102,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4617612330109146738}
-  - component: {fileID: 780754717296813829}
   - component: {fileID: 3836235442199602716}
   m_Layer: 6
-  m_Name: Miyu_Original
+  m_Name: CH0145
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -134,27 +133,6 @@ Transform:
   - {fileID: 2461569265420370673}
   m_Father: {fileID: 6338534888012049282}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &780754717296813829
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 463689436091219871}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cb9422a6e9dee684890fa9e887a46931, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &3836235442199602716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2539,6 +2517,7 @@ GameObject:
   - component: {fileID: 3190570180013176794}
   - component: {fileID: 192214032225266924}
   - component: {fileID: 2906653367521042108}
+  - component: {fileID: 5363072886613982707}
   m_Layer: 6
   m_Name: Miyu
   m_TagString: Untagged
@@ -2554,7 +2533,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4638829935162154918}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2619,6 +2598,27 @@ MonoBehaviour:
   showGizmo: 0
   scale: 14.39
   isSet: 1
+--- !u!95 &5363072886613982707
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4638829935162154918}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cb9422a6e9dee684890fa9e887a46931, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4660753982905456276
 GameObject:
   m_ObjectHideFlags: 0
