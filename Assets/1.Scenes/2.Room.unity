@@ -2724,15 +2724,10 @@ MonoBehaviour:
   bodySource: {fileID: 2100000, guid: dc24902e3e89b3440b12366aa0b5f8cd, type: 2}
   eyeMouthSource: {fileID: 2100000, guid: 873248fc9081e724dad49545483ddb73, type: 2}
   faceSource: {fileID: 2100000, guid: 81772ccc45b169041b2beb8aacd39724, type: 2}
-  normalTarget:
-  - {fileID: 2100000, guid: eb6f7ee551831414299b4250af8bb5bf, type: 2}
-  - {fileID: 2100000, guid: c7a574023f4d686409daac4d2787a272, type: 2}
-  bodyTarget:
-  - {fileID: 2100000, guid: 1649ec5fad6f60c47b09dd15236aff72, type: 2}
-  eyeMouthTarget:
-  - {fileID: 2100000, guid: 3c870be159cb3b140936a45bf7c4383b, type: 2}
-  faceTarget:
-  - {fileID: 2100000, guid: 7afec6604ed09d6489f78c7c3cd6b9a3, type: 2}
+  normalTarget: []
+  bodyTarget: []
+  eyeMouthTarget: []
+  faceTarget: []
   targetMesh: {fileID: 3259508658984272779}
 --- !u!1 &1425766244
 GameObject:

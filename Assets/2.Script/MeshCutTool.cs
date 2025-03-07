@@ -4,13 +4,13 @@ using UnityEngine.Rendering;
 using Serial = UnityEngine.SerializeField;
 using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
-public class MeshCutToolIsMouth : MonoBehaviour
+public class MeshCutTool : MonoBehaviour
 {
     [Fold("Base")] public Mesh modelMesh;
     [Fold("Base")] public Material mouthMat;
     [Fold("Base")] public Texture2D mouthTx;
-    [Fold("Base")] public SkinnedMeshRenderer meshRender;
     
+    [Fold("Mesh Cut")] public SkinnedMeshRenderer meshRender;
     [Fold("Mesh Cut")] public int faceMeshIndex = 2;
     private bool IndexError(int value) => value % 3 == 0;
     [ValidateInput("IndexError", "startIndex값은 3의 배수여야 합니다")]
@@ -52,9 +52,12 @@ public class MeshCutToolIsMouth : MonoBehaviour
             
             modelMesh.SetSubMesh(faceMeshIndex, subMesh1);
             modelMesh.SetSubMesh(modelMesh.subMeshCount - 1, subMesh2);
+            meshRender.sharedMaterials[modelMesh.subMeshCount - 1] = meshRender.sharedMaterials[faceMeshIndex];
             modelMesh.subMeshCount += 1;
         }
         modelMesh.SetSubMesh(modelMesh.subMeshCount - 1, new SubMeshDescriptor(subMeshDescriptor.indexStart + meshCutStartIndex, meshCutEndIndex - meshCutStartIndex));
+        var sharedMaterials = meshRender.sharedMaterials;
+        sharedMaterials[modelMesh.subMeshCount - 1] = mouthMat;
     }
 
     [Button]
