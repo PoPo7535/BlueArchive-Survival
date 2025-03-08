@@ -8,7 +8,6 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public class CharacterView : MonoBehaviour, ISetInspector
 {
-    public GameObject characterBase;
     public GameObject[] playableChar;
     [Read, Serial]public CharacterViewItem[] views;
     
@@ -23,23 +22,9 @@ public class CharacterView : MonoBehaviour, ISetInspector
     }
     
     [Button]
-    public void Test()
+    public void Test(int num, PlayableChar ch)
     {
-        // var obj = Instantiate(characterBase,Vector3.zero, Quaternion.identity, views[0].character.transform);
-        // obj.transform.localPosition = Vector3.zero;
-
-        var playerChar = Instantiate(playableChar[0], Vector3.zero, Quaternion.identity, views[0].character.transform);
-        playerChar.transform.localPosition = Vector3.zero;
-        playerChar.transform.localScale = Vector3.one * 900;
+        views[num].SetChar(ch);
     }
 
-    public void Test2()
-    {
-        var playerChar = Instantiate(playableChar[0], Vector3.zero, Quaternion.identity, views[0].character.transform);
-        playerChar.transform.localPosition = Vector3.zero;
-        playerChar.transform.localScale = Vector3.one * 900;
-        playerChar.AddComponent<NetworkRigidbody3D>();
-        // playerChar.GetComponent<CapsuleCollider>().enabled = false;
-        playerChar.AddComponent<PlayerMove>().enabled = false;
-    }
 }

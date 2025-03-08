@@ -10,7 +10,22 @@ public class CharacterViewItem : MonoBehaviour, ISetInspector
 {
     [Serial, Read] public GameObject character;
     [Serial, Read] private new GameObject camera;
-    [Read] private Dictionary<string, GameObject> dic = new();
+    private readonly Dictionary<PlayableChar, GameObject> dic = new();
+    [Read] private PlayableChar previous = PlayableChar.None;
+
+    public void SetChar(PlayableChar ch)
+    {
+        if (previous == ch)
+            return;
+        if (previous != PlayableChar.None)
+            dic[previous].gameObject.SetActive(false);
+        previous = ch;
+
+        var playerChar = Instantiate(GameManager.I.playableChar[ch], Vector3.zero, Quaternion.identity, character.transform);
+        playerChar.transform.localPosition = Vector3.zero;
+        playerChar.transform.GetChild(0).transform.localScale = Vector3.one * 900;
+        dic.Add(ch,playerChar);
+    }
 
     [Button, GUIColor(0, 1, 0)]
     public void SetInspector()

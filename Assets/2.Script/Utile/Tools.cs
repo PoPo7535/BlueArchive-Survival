@@ -13,7 +13,7 @@ public class Tools : MonoBehaviour
 #if UNITY_EDITOR
     [Fold("UI_Tools")]
     [Button,GUIColor(0, 1, 0)]
-    void SetNavigation()
+    private void SetNavigation()
     {
         var newNavigation = new Navigation
         {
@@ -34,7 +34,7 @@ public class Tools : MonoBehaviour
     
     [Fold("UI_Tools")]
     [Button,GUIColor(0, 1, 0)]
-    void SetCanvasGroupBlockRayCast()
+    private void SetCanvasGroupBlockRayCast()
     {
         var canvasGroups = FindObjectsOfType<CanvasGroup>();
         foreach (var canvas in canvasGroups)
@@ -45,7 +45,7 @@ public class Tools : MonoBehaviour
     
     [Fold("UI_Tools")]
     [Button,GUIColor(0, 1, 0)]
-    void SetPlaceholder()
+    private void SetPlaceholder()
     {
         var objs = FindObjectsOfType<TMP_Text>();
         objs =  objs.Where(o => o.name == "Placeholder").ToArray();
@@ -57,7 +57,7 @@ public class Tools : MonoBehaviour
     
     [Fold("UI_Tools")]
     [Button,GUIColor(0, 1, 0)]
-    void SetText()
+    private void SetText()
     {
         var objs = FindObjectsOfType<TMP_Text>();
         foreach (var obj in objs)
@@ -65,46 +65,31 @@ public class Tools : MonoBehaviour
             obj.fontSizeMax = 40;
         }
     }
-
-    [Fold("AnimationClipTool")]
-    [Button]
-    void ChangeClipRoot()
-    {
-        ReplacePartialNameInClip();
-    }
     [Fold("AnimationClipTool")] public AnimationClip clip;
     [Fold("AnimationClipTool")] public string oldName;
     [Fold("AnimationClipTool")] public string newName;
-
-    void ReplacePartialNameInClip()
+    [Fold("AnimationClipTool")]
+    [Button]
+    private void ChangeClipRoot()
     {
-        // 해당 애니메이션 클립의 모든 커브(키프레임)를 확인
         var bindings = AnimationUtility.GetCurveBindings(clip);
-
         foreach (var binding in bindings)
         {
-            // 경로에서 "CH0101_Mesh" 부분을 "New_Mesh"로 변경
-            if (binding.path.Contains(oldName))
+            if (!binding.path.Contains(oldName)) 
+                continue;
+            var newPath = binding.path.Replace(oldName, newName);
+
+            var curve = AnimationUtility.GetEditorCurve(clip, binding);
+            var newBinding = new EditorCurveBinding
             {
-                // 새 경로 생성: "CH0101_Mesh/SomeOtherObject" => "New_Mesh/SomeOtherObject"
-                string newPath = binding.path.Replace(oldName, newName);
+                path = newPath,
+                type = binding.type,
+                propertyName = binding.propertyName
+            };
 
-                var curve = AnimationUtility.GetEditorCurve(clip, binding);
-                // 해당 키프레임을 새 경로로 설정
-                var newBinding = new EditorCurveBinding
-                {
-                    path = newPath,
-                    type = binding.type,
-                    propertyName = binding.propertyName
-                };
-
-                // 새 경로에 커브를 설정
-                AnimationUtility.SetEditorCurve(clip, newBinding, curve);
-
-                // 이전 경로의 커브를 삭제 (불필요한 커브 제거)
-                AnimationUtility.SetEditorCurve(clip, binding, null);
-                Debug.Log($"경로 '{binding.path}'이(가) '{newPath}'으로 변경되었습니다.");
-            }
+            AnimationUtility.SetEditorCurve(clip, newBinding, curve);
+            AnimationUtility.SetEditorCurve(clip, binding, null);
+            Debug.Log($"경로 '{binding.path}'이(가) '{newPath}'으로 변경되었습니다.");
         }
         EditorUtility.SetDirty(clip);
         AssetDatabase.SaveAssets();

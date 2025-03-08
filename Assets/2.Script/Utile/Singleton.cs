@@ -1,4 +1,5 @@
 using Fusion;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Utility

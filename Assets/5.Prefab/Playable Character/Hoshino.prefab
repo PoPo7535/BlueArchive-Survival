@@ -3111,7 +3111,7 @@ GameObject:
   - component: {fileID: 1328337967076005858}
   - component: {fileID: 3905118903259379538}
   m_Layer: 0
-  m_Name: Hoshino_Original
+  m_Name: Hoshino
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
