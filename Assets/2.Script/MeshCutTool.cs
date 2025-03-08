@@ -12,14 +12,14 @@ public class MeshCutTool : MonoBehaviour
     
     [Fold("Mesh Cut")] public SkinnedMeshRenderer meshRender;
     [Fold("Mesh Cut")] public int faceMeshIndex = 2;
-    private bool IndexError(int value) => value % 3 == 0;
-    [ValidateInput("IndexError", "startIndex값은 3의 배수여야 합니다")]
     [Fold("Mesh Cut")]
     public int meshCutStartIndex = 0;
     
-    [ValidateInput("IndexError", "endIndex값은 3의 배수여야 합니다")]
     [Fold("Mesh Cut")]
-    public int meshCutEndIndex = 96;
+    public int meshCutEndIndex = 32;
+
+    private int MeshCutStartIndex => meshCutStartIndex*3;
+    private int MeshCutEndIndex => meshCutEndIndex * 3;
 
     [Fold("Gizmo")]
     public bool showGizmo = false;
@@ -43,19 +43,20 @@ public class MeshCutTool : MonoBehaviour
     {
         var subMeshDescriptor = modelMesh.GetSubMesh(faceMeshIndex);
         modelMesh.subMeshCount += 1;
-        if (meshCutStartIndex == 0)
-            modelMesh.SetSubMesh(faceMeshIndex, new SubMeshDescriptor(subMeshDescriptor.indexStart + meshCutEndIndex, subMeshDescriptor.indexCount - meshCutEndIndex));
+        if (MeshCutStartIndex == 0)
+            modelMesh.SetSubMesh(faceMeshIndex, new SubMeshDescriptor(subMeshDescriptor.indexStart + MeshCutEndIndex, subMeshDescriptor.indexCount - MeshCutEndIndex));
         else
         {
-            var subMesh1 = new SubMeshDescriptor(subMeshDescriptor.indexStart, meshCutStartIndex);
-            var subMesh2 = new SubMeshDescriptor(subMeshDescriptor.indexStart + meshCutEndIndex, subMeshDescriptor.indexCount - meshCutEndIndex);
+            var subMesh1 = new SubMeshDescriptor(subMeshDescriptor.indexStart, MeshCutStartIndex);
+            var subMesh2 = new SubMeshDescriptor(subMeshDescriptor.indexStart + MeshCutEndIndex, subMeshDescriptor.indexCount - MeshCutEndIndex);
             
             modelMesh.SetSubMesh(faceMeshIndex, subMesh1);
             modelMesh.SetSubMesh(modelMesh.subMeshCount - 1, subMesh2);
-            meshRender.sharedMaterials[modelMesh.subMeshCount - 1] = meshRender.sharedMaterials[faceMeshIndex];
+            var materials = meshRender.sharedMaterials;
+            materials[modelMesh.subMeshCount - 1] = materials[faceMeshIndex];
             modelMesh.subMeshCount += 1;
         }
-        modelMesh.SetSubMesh(modelMesh.subMeshCount - 1, new SubMeshDescriptor(subMeshDescriptor.indexStart + meshCutStartIndex, meshCutEndIndex - meshCutStartIndex));
+        modelMesh.SetSubMesh(modelMesh.subMeshCount - 1, new SubMeshDescriptor(subMeshDescriptor.indexStart + MeshCutStartIndex, MeshCutEndIndex - MeshCutStartIndex));
         var sharedMaterials = meshRender.sharedMaterials;
         sharedMaterials[modelMesh.subMeshCount - 1] = mouthMat;
     }
@@ -103,8 +104,8 @@ public class MeshCutTool : MonoBehaviour
             return;
         
         var subMeshDescriptor = modelMesh.GetSubMesh(faceMeshIndex);
-        for (var i = subMeshDescriptor.indexStart + meshCutStartIndex;
-             i < subMeshDescriptor.indexStart + meshCutEndIndex;
+        for (var i = subMeshDescriptor.indexStart + MeshCutStartIndex;
+             i < subMeshDescriptor.indexStart + MeshCutEndIndex;
              i += 3)
         {
             var position = transform.position ; 
