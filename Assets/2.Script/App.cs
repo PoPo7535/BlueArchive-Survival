@@ -13,6 +13,7 @@ public class App : SimulationBehaviour, INetworkRunnerCallbacks
 {
     public static App I;
     [ReadOnly] public NetworkRunner runner;
+    public PlayerInfo localPlayerInfo => Object.Runner.GetPlayerObject(Object.Runner.LocalPlayer).GetComponent<PlayerInfo>();
 
     public enum Property
     {

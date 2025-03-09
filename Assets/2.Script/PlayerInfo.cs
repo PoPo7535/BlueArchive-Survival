@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerInfo : NetworkBehaviour, IPlayerLeft
 {
     [Networked] public NetworkString<_16> PlayerName { get; set; }
-    [Networked] public int CharIndex { get; set; } = -1;
+    [Networked] public PlayableChar CharIndex { get; set; } = PlayableChar.None;
 
     public void Awake()
     {

@@ -42,7 +42,7 @@ public class MeshCutTool : MonoBehaviour
     private void MeshCutMouth()
     {
         var subMeshDescriptor = modelMesh.GetSubMesh(faceMeshIndex);
-        modelMesh.subMeshCount += 1;
+        AddSubMeshCount();
         if (MeshCutStartIndex == 0)
             modelMesh.SetSubMesh(faceMeshIndex, new SubMeshDescriptor(subMeshDescriptor.indexStart + MeshCutEndIndex, subMeshDescriptor.indexCount - MeshCutEndIndex));
         else
@@ -52,13 +52,25 @@ public class MeshCutTool : MonoBehaviour
             
             modelMesh.SetSubMesh(faceMeshIndex, subMesh1);
             modelMesh.SetSubMesh(modelMesh.subMeshCount - 1, subMesh2);
+            
             var materials = meshRender.sharedMaterials;
             materials[modelMesh.subMeshCount - 1] = materials[faceMeshIndex];
-            modelMesh.subMeshCount += 1;
+            AddSubMeshCount();
         }
         modelMesh.SetSubMesh(modelMesh.subMeshCount - 1, new SubMeshDescriptor(subMeshDescriptor.indexStart + MeshCutStartIndex, MeshCutEndIndex - MeshCutStartIndex));
         var sharedMaterials = meshRender.sharedMaterials;
         sharedMaterials[modelMesh.subMeshCount - 1] = mouthMat;
+
+
+        void AddSubMeshCount()
+        {
+            modelMesh.subMeshCount += 1;
+            var materials = meshRender.sharedMaterials;
+            var newMaterials = new Material[materials.Length + 1];
+            for (int i = 0; i < materials.Length; i++)
+                newMaterials[i] = materials[i];
+            meshRender.sharedMaterials = newMaterials;
+        }
     }
 
     [Button]

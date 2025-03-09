@@ -22,7 +22,7 @@ public class CharacterView : MonoBehaviour, ISetInspector
     }
     
     [Button]
-    public void Test(int num, PlayableChar ch)
+    public void SetChar(int num, PlayableChar ch)
     {
         views[num].SetChar(ch);
     }

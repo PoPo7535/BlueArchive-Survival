@@ -23,7 +23,7 @@ public class CharacterViewItem : MonoBehaviour, ISetInspector
 
         var playerChar = Instantiate(GameManager.I.playableChar[ch], Vector3.zero, Quaternion.identity, character.transform);
         playerChar.transform.localPosition = Vector3.zero;
-        playerChar.transform.GetChild(0).transform.localScale = Vector3.one * 900;
+        playerChar.transform.localScale = Vector3.one * 900;
         dic.Add(ch,playerChar);
     }
 
