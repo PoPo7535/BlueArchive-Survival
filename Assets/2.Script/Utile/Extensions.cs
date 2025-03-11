@@ -26,6 +26,7 @@ public static class Extensions
         }
         return list;
     }
+
     public static Tween ActiveCG(this CanvasGroup _cg, bool _isShow, float _duration = 0.3f, Action _start = null,
         Action _complete = null)
     {
@@ -44,6 +45,12 @@ public static class Extensions
                 // _cg.interactable = _isShow;
                 _complete?.Invoke();
             });
+    }
+    public static T Next<T>(this T value) where T : struct, Enum
+    {
+        var values = (T[])Enum.GetValues(typeof(T));
+        var index = Array.IndexOf(values, value);
+        return Enum.Parse<T>(values[(index + 1) % values.Length].ToString());
     }
     
     public static void SetParent(this RectTransform rect, Transform parent, Vector2 anchorMin, Vector2 anchorMax)

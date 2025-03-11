@@ -20,11 +20,16 @@ public class CharacterViewItem : MonoBehaviour, ISetInspector
         if (current != PlayableChar.None)
             dic[current].gameObject.SetActive(false);
         current = ch;
+        if (dic.TryGetValue(ch, out var value))
+        {
+            value.gameObject.SetActive(true);
+            return;
+        }
 
         var playerChar = Instantiate(GameManager.I.playableChar[ch], Vector3.zero, Quaternion.identity, character.transform);
         playerChar.transform.localPosition = Vector3.zero;
         playerChar.transform.localScale = Vector3.one * 900;
-        dic.Add(ch,playerChar);
+        dic.Add(ch, playerChar);
     }
 
     public void Clear()

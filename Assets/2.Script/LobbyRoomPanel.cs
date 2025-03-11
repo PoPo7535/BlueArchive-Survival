@@ -33,8 +33,14 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
     {
         cancelBtn.onClick.AddListener(async () =>
         {
-            await App.I.runner.Shutdown(false);
-            SceneManager.LoadScene("1.Lobby");
+            // await App.I.runner.Shutdown(false);
+            // SceneManager.LoadScene("1.Lobby");
+            var localInfo = App.I.GetPlayerInfo(Runner.LocalPlayer);
+            localInfo.CharIndex = localInfo.CharIndex.Next();
+            if (localInfo.CharIndex == PlayableChar.None)
+                localInfo.CharIndex = localInfo.CharIndex.Next();
+
+            characterView.SetChar(Runner.LocalPlayer, localInfo.CharIndex);
         });
     }
     public async void PlayerJoined(PlayerRef player)

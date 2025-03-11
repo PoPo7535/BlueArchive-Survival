@@ -8,7 +8,6 @@ public class MeshCutTool : MonoBehaviour
 {
     [Fold("Base")] public Mesh modelMesh;
     [Fold("Base")] public Material mouthMat;
-    [Fold("Base")] public Texture2D mouthTx;
     
     [Fold("Mesh Cut")] public SkinnedMeshRenderer meshRender;
     [Fold("Mesh Cut")] public int faceMeshIndex = 2;
@@ -73,24 +72,6 @@ public class MeshCutTool : MonoBehaviour
         }
     }
 
-    [Button]
-    private void TestSetMouth(int x, int y)
-    {
-        // var materials = meshRender.materials;
-        // var lastMaterial = materials[^1];
-        //
-        // mouthMat = new Material(mouthMat);
-        var pixels = mouthTx.GetPixels(128 * x, 128 * (7 - y), 128, 128);
-        var texture = new Texture2D(128, 128);
-        texture.SetPixels(pixels);
-        texture.Apply(); 
-        mouthMat.mainTexture = texture;
-        // meshRender.materials[^1] = mouthMat;
-        //
-        // lastMaterial.mainTexture = texture;
-        // materials[^1] = lastMaterial;  
-        // meshRender.materials = materials;
-    }
 
     [Button, Fold("Mesh Cut")]
     private void MoveMeshForwardMouth() => MoveMeshMouth(new Vector3(0, -0.000001f, 0));

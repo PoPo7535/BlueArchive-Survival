@@ -2518,6 +2518,7 @@ GameObject:
   - component: {fileID: 192214032225266924}
   - component: {fileID: 2906653367521042108}
   - component: {fileID: 5363072886613982707}
+  - component: {fileID: 5324391568493096450}
   m_Layer: 6
   m_Name: Miyu
   m_TagString: Untagged
@@ -2619,6 +2620,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5324391568493096450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4638829935162154918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd3740588affcf544ad4be9c1d5defaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouthMat: {fileID: 2100000, guid: fcac28aed62310c4da1b79f5a41e40ea, type: 2}
+  mouthTx: {fileID: 2800000, guid: 0e54b9c71850da745b72039e06013ce5, type: 3}
+  meshRender: {fileID: 1738667985652346873}
 --- !u!1 &4660753982905456276
 GameObject:
   m_ObjectHideFlags: 0

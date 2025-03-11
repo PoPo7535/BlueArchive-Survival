@@ -6,45 +6,25 @@ using UnityEngine;
 public class SetMat : MonoBehaviour
 {
 
-    public Material mat;
+    public Material mouthMat;
+    public Texture2D mouthTx;
+    public SkinnedMeshRenderer meshRender;
     
-    [Button]
-    public void SetMatt()
+    private void Awake()
     {
-        var renderers = transform.GetComponentsInChildren<MeshRenderer>();
-        foreach (var meshRenderer in renderers)
-        {
-            meshRenderer.material = mat;
-        }
-        var SkinnedMeshRenderer = transform.GetComponentsInChildren<SkinnedMeshRenderer>();
-        foreach (var meshRenderer in SkinnedMeshRenderer)
-        {
-            meshRenderer.material = mat;
-        }
+        var materials = meshRender.materials;
+        meshRender.materials = materials;
+        mouthMat = meshRender.materials[^1];
+        SetMouth(0, 0);
     }
+
     [Button]
-    public void AddCollider()
+    private void SetMouth(int x, int y)
     {
-        var renderers = transform.GetComponentsInChildren<MeshRenderer>();
-        foreach (var meshRenderer in renderers)
-        {
-            if (false == meshRenderer.gameObject.TryGetComponent<MeshCollider>(out _))
-            {
-                meshRenderer.gameObject.AddComponent<MeshCollider>();
-            }
-        }
-        var SkinnedMeshRenderer = transform.GetComponentsInChildren<SkinnedMeshRenderer>();
-        foreach (var meshRenderer in SkinnedMeshRenderer)
-        {
-            if (false == meshRenderer.gameObject.TryGetComponent<MeshCollider>(out _))
-            {
-                meshRenderer.gameObject.AddComponent<MeshCollider>();
-            }
-        }
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
+        var pixels = mouthTx.GetPixels(128 * x, 128 * (7 - y), 128, 128);
+        var texture = new Texture2D(128, 128);
+        texture.SetPixels(pixels);
+        texture.Apply(); 
+        mouthMat.mainTexture = texture;
     }
 }

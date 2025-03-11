@@ -23,7 +23,7 @@ public class PlayerInfo : NetworkBehaviour, IPlayerLeft
             return;
         PlayFabClientAPI.GetPlayerProfile(
             new GetPlayerProfileRequest() { PlayFabId = GameManager.I.ID },
-            result => RPC_SetInfo(result.PlayerProfile.DisplayName, PlayableChar.Kyoko),
+            result => RPC_SetInfo(result.PlayerProfile.DisplayName, PlayableChar.Aris),
             error => Debug.Log(error.Error));
     }
 

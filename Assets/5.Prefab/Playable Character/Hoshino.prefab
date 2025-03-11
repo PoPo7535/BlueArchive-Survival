@@ -3112,6 +3112,7 @@ GameObject:
   - component: {fileID: 6815884821102944881}
   - component: {fileID: 1328337967076005858}
   - component: {fileID: 3905118903259379538}
+  - component: {fileID: 38960049871505500}
   m_Layer: 6
   m_Name: Hoshino
   m_TagString: Untagged
@@ -3174,6 +3175,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 5
+--- !u!114 &38960049871505500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5622018250881000323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd3740588affcf544ad4be9c1d5defaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouthMat: {fileID: 2100000, guid: fcac28aed62310c4da1b79f5a41e40ea, type: 2}
+  mouthTx: {fileID: 2800000, guid: 0e54b9c71850da745b72039e06013ce5, type: 3}
+  meshRender: {fileID: 5135713935476231195}
 --- !u!1 &5721941792917946181
 GameObject:
   m_ObjectHideFlags: 0

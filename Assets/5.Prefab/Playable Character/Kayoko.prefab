@@ -4429,6 +4429,7 @@ GameObject:
   - component: {fileID: 3652655460484466727}
   - component: {fileID: 6444458462060479781}
   - component: {fileID: 887924283465116595}
+  - component: {fileID: -2616845493335112550}
   m_Layer: 6
   m_Name: Kayoko
   m_TagString: Untagged
@@ -4530,6 +4531,21 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 3652655460484466727}
+--- !u!114 &-2616845493335112550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9012993738355288034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd3740588affcf544ad4be9c1d5defaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouthMat: {fileID: 2100000, guid: fcac28aed62310c4da1b79f5a41e40ea, type: 2}
+  mouthTx: {fileID: 2800000, guid: 0e54b9c71850da745b72039e06013ce5, type: 3}
+  meshRender: {fileID: 4524110889138244884}
 --- !u!1 &9028005857445563446
 GameObject:
   m_ObjectHideFlags: 0
