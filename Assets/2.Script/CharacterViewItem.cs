@@ -11,20 +11,25 @@ public class CharacterViewItem : MonoBehaviour, ISetInspector
     [Serial, Read] public GameObject character;
     [Serial, Read] private new GameObject camera;
     private readonly Dictionary<PlayableChar, GameObject> dic = new();
-    [Read] private PlayableChar previous = PlayableChar.None;
+    [Read] private PlayableChar current = PlayableChar.None;
 
     public void SetChar(PlayableChar ch)
     {
-        if (previous == ch)
+        if (current == ch)
             return;
-        if (previous != PlayableChar.None)
-            dic[previous].gameObject.SetActive(false);
-        previous = ch;
+        if (current != PlayableChar.None)
+            dic[current].gameObject.SetActive(false);
+        current = ch;
 
         var playerChar = Instantiate(GameManager.I.playableChar[ch], Vector3.zero, Quaternion.identity, character.transform);
         playerChar.transform.localPosition = Vector3.zero;
         playerChar.transform.localScale = Vector3.one * 900;
         dic.Add(ch,playerChar);
+    }
+
+    public void Clear()
+    {
+        dic[current].gameObject.SetActive(false);
     }
 
     [Button, GUIColor(0, 1, 0)]

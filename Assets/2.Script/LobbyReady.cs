@@ -28,9 +28,6 @@ public class LobbyReady : NetworkBehaviour, IPlayerJoined, IPlayerLeft
     
     public void PlayerJoined(PlayerRef player)
     {
-        if (Object.HasStateAuthority)
-            App.I.runner.Spawn(GameManager.I.playerInfo, Vector3.zero, Quaternion.identity, player);
-
         if (Runner.LocalPlayer != player)
         {
             ready.Add(player, false);

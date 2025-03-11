@@ -37,29 +37,36 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
             SceneManager.LoadScene("1.Lobby");
         });
     }
-    public void PlayerJoined(PlayerRef player)
+    public async void PlayerJoined(PlayerRef player)
     {
-        if (Object.HasStateAuthority)
-            App.I.runner.Spawn(GameManager.I.playerInfo, Vector3.zero, Quaternion.identity, player);
-
+        var obj = App.I.runner.Spawn(GameManager.I.playerInfo, Vector3.zero, Quaternion.identity, player);
+        await App.I.ConnectingPlayer(player);
         playerSlot.SetPlayerSlot(player);
+        
+        var info = obj.GetComponent<PlayerInfo>();
+        characterView.SetChar(player, info.CharIndex);
+
     }
 
     public void PlayerLeft(PlayerRef player)
     {
         playerSlot.SetAllPlayerSlot();
+        characterView.Clear(App.I.GetPlayerIndex(player));
     }
 
     public override void Spawned()
     {
         playerSlot.SetAllPlayerSlot();
+        characterView.SetAllChar();
     }
 
 
     [Rpc(RpcSources.All, RpcTargets.All)]
-    private void RPC_CharIndex(PlayableChar ch)
+    private void RPC_CharIndex(PlayableChar ch, RpcInfo info = default)
+
     {
-        App.I.localPlayerInfo.CharIndex = ch;
-        characterView.SetChar(0, ch);
+        App.I.GetPlayerInfo(info.Source).CharIndex = ch;
+        playerSlot.SetPlayerSlot(info.Source);
+        characterView.SetChar(info.Source, ch);
     }
 }

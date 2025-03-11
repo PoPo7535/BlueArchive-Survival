@@ -426,7 +426,7 @@ MonoBehaviour:
   cg: {fileID: 189670262}
   cancelBtn: {fileID: 1630546492}
   playerSlot: {fileID: 160647352}
-  characterView: {fileID: 0}
+  characterView: {fileID: 1425766246}
 --- !u!225 &189670262
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -715,8 +715,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6415094, g: 0.62235403, b: 0.43271625, a: 1}
-  m_RaycastTarget: 1
+  m_Color: {r: 0.3679245, g: 0.32986337, b: 0, a: 1}
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -731,7 +731,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 6.56
+  m_PixelsPerUnitMultiplier: 5.65
 --- !u!222 &256472461
 CanvasRenderer:
   m_ObjectHideFlags: 0

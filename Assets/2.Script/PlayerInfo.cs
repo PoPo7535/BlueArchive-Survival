@@ -1,12 +1,15 @@
+using System;
 using Fusion;
 using PlayFab;
 using PlayFab.ClientModels;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerInfo : NetworkBehaviour, IPlayerLeft
 {
     [Networked] public NetworkString<_16> PlayerName { get; set; }
-    [Networked] public PlayableChar CharIndex { get; set; } = PlayableChar.None;
+    [Networked] public PlayableChar CharIndex { get; set; }
+    [Networked] public bool isSpawned { get; set; }
 
     public void Awake()
     {
@@ -16,15 +19,12 @@ public class PlayerInfo : NetworkBehaviour, IPlayerLeft
     public override void Spawned()
     {
         Object.Runner.SetPlayerObject(Object.InputAuthority, Object);
-
         if (false == Object.HasInputAuthority)
             return;
-
         PlayFabClientAPI.GetPlayerProfile(
             new GetPlayerProfileRequest() { PlayFabId = GameManager.I.ID },
-            result => RPC_SetInfo(result.PlayerProfile.DisplayName),
+            result => RPC_SetInfo(result.PlayerProfile.DisplayName, PlayableChar.Kyoko),
             error => Debug.Log(error.Error));
-
     }
 
     public override void Despawned(NetworkRunner runner, bool hasState)
@@ -36,10 +36,12 @@ public class PlayerInfo : NetworkBehaviour, IPlayerLeft
     }
  
     [Rpc(RpcSources.InputAuthority, RpcTargets.All)]
-    private void RPC_SetInfo(string name)
+    private void RPC_SetInfo(string name, PlayableChar charIndex)
     {
         PlayerName = name;
         gameObject.name = $"{name} Info";
+        CharIndex = charIndex;
+        isSpawned = true;
     }
 
     public void PlayerLeft(PlayerRef player)

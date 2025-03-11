@@ -1,7 +1,4 @@
-using System;
 using System.Linq;
-using System.Threading.Tasks;
-using Cysharp.Threading.Tasks;
 using Fusion;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -32,9 +29,9 @@ public class PlayerSlot : MonoBehaviour, ISetInspector
 
     public async void SetAllPlayerSlot()
     {
-        await ConnectingPlayer(App.I.Runner.LocalPlayer);
-        var players = App.I.Runner.ActivePlayers.ToList();
-        players.Sort((p1, p2) => p1.PlayerId.CompareTo(p2.PlayerId));
+        await App.I.ConnectingPlayer(App.I.Runner.LocalPlayer);
+        var players = App.I.GetPlayers();
+
         for (int i = 0; i < players.Count; ++i)
         {
             var playerInfo = App.I.Runner.GetPlayerObject(players[i]).GetComponent<PlayerInfo>();
@@ -47,10 +44,8 @@ public class PlayerSlot : MonoBehaviour, ISetInspector
 
     public async void SetPlayerSlot(PlayerRef playerRef)
     {
-        await ConnectingPlayer(playerRef);
-        var players = App.I.Runner.ActivePlayers.ToList();
-        players.Sort((p1, p2) => p1.PlayerId.CompareTo(p2.PlayerId));
-
+        await App.I.ConnectingPlayer(playerRef);
+        var players = App.I.GetPlayers();
         for (int i = 0; i < players.Count; ++i)
         {
             if (players[i] == playerRef)
@@ -61,11 +56,6 @@ public class PlayerSlot : MonoBehaviour, ISetInspector
             }
         }
     }
-    private async Task ConnectingPlayer(PlayerRef player)
-    {
-        await UniTask.WaitUntil(() => null != App.I.Runner.GetPlayerObject(player));
-        var info = App.I.Runner.GetPlayerObject(player).GetComponent<PlayerInfo>();
-        await UniTask.WaitUntil(() => info.PlayerName != string.Empty);
-    }
+
 
 }

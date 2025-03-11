@@ -1,19 +1,17 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using Fusion;
 using Fusion.Sockets;
-using Unity.VisualScripting;
-using UnityEngine;
-using UnityEngine.SceneManagement;
 using WebSocketSharp;
 
 public class App : SimulationBehaviour, INetworkRunnerCallbacks
 {
     public static App I;
     [ReadOnly] public NetworkRunner runner;
-    public PlayerInfo localPlayerInfo => Object.Runner.GetPlayerObject(Object.Runner.LocalPlayer).GetComponent<PlayerInfo>();
+    public PlayerInfo GetPlayerInfo(PlayerRef playerRef) => Object.Runner.GetPlayerObject(playerRef).GetComponent<PlayerInfo>();
 
     public enum Property
     {
@@ -85,7 +83,31 @@ public class App : SimulationBehaviour, INetworkRunnerCallbacks
         });
         PopUp.I.OpenPopUp(result);
     }
+    public async Task ConnectingPlayer(PlayerRef player)
+    {
+        await UniTask.WaitUntil(() => null != Runner.GetPlayerObject(player));
+        var info = Runner.GetPlayerObject(player).GetComponent<PlayerInfo>();
+        await UniTask.WaitUntil(() => info.PlayerName != string.Empty && info.isSpawned);
+    }
 
+    public List<PlayerRef> GetPlayers()
+    {
+        var players = Runner.ActivePlayers.ToList();
+        players.Sort((p1, p2) => p1.PlayerId.CompareTo(p2.PlayerId));
+        return players;
+    }
+    
+    public int GetPlayerIndex(PlayerRef playerRef)
+    {
+        var players = GetPlayers();
+        for (int i = 0; i < players.Count; ++i)
+        {
+            if (players[i].PlayerId == playerRef.PlayerId)
+                return i;
+        }
+
+        return -1;
+    }
     public void OnSessionListUpdated(NetworkRunner runner, List<SessionInfo> sessionList) { }
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player) { }
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player) { }

@@ -1,5 +1,5 @@
 using System.Linq;
-using Fusion.Addons.Physics;
+using Fusion;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Serial = UnityEngine.SerializeField;
@@ -22,9 +22,30 @@ public class CharacterView : MonoBehaviour, ISetInspector
     }
     
     [Button]
-    public void SetChar(int num, PlayableChar ch)
+    public void SetChar(PlayerRef playerRef, PlayableChar ch)
     {
-        views[num].SetChar(ch);
+        views[App.I.GetPlayerIndex(playerRef)].SetChar(ch);
+    }
+    
+    [Button]
+    public async void SetAllChar()
+    {
+        
+        var players = App.I.GetPlayers();
+
+        for (int i = 0; i < players.Count; ++i)
+        {
+            await App.I.ConnectingPlayer(players[i]);
+            views[i].SetChar(App.I.GetPlayerInfo(players[i]).CharIndex);
+        }
+        
+    }
+
+    
+    [Button]
+    public void Clear(int num)
+    {
+        views[num].Clear();
     }
 
 }
