@@ -40,7 +40,7 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
             if (localInfo.CharIndex == PlayableChar.None)
                 localInfo.CharIndex = localInfo.CharIndex.Next();
 
-            characterView.SetChar(Runner.LocalPlayer, localInfo.CharIndex);
+            RPC_SetChar(localInfo.CharIndex, Runner.LocalPlayer);
         });
     }
     public async void PlayerJoined(PlayerRef player)
@@ -57,7 +57,7 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
     public void PlayerLeft(PlayerRef player)
     {
         playerSlot.SetAllPlayerSlot();
-        characterView.Clear(App.I.GetPlayerIndex(player));
+        characterView.SetAllChar(); 
     }
 
     public override void Spawned()
@@ -68,11 +68,13 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
 
 
     [Rpc(RpcSources.All, RpcTargets.All)]
-    private void RPC_CharIndex(PlayableChar ch, RpcInfo info = default)
-
+    private void RPC_SetChar(PlayableChar ch, PlayerRef other)
     {
-        App.I.GetPlayerInfo(info.Source).CharIndex = ch;
-        playerSlot.SetPlayerSlot(info.Source);
-        characterView.SetChar(info.Source, ch);
+        App.I.GetPlayerInfo(other).CharIndex = ch;
+        playerSlot.SetPlayerSlot(other);
+        if (ch == PlayableChar.None)
+            characterView.Clear(other);
+        else
+            characterView.SetChar(other, ch);
     }
 }

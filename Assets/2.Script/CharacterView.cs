@@ -21,7 +21,6 @@ public class CharacterView : MonoBehaviour, ISetInspector
         views[2] = childs.First(tr => tr.name == "View (3)").GetComponent<CharacterViewItem>();
     }
     
-    [Button]
     public void SetChar(PlayerRef playerRef, PlayableChar ch)
     {
         views[App.I.GetPlayerIndex(playerRef)].SetChar(ch);
@@ -32,20 +31,23 @@ public class CharacterView : MonoBehaviour, ISetInspector
     {
         
         var players = App.I.GetPlayers();
-
-        for (int i = 0; i < players.Count; ++i)
+        for (int i = 0; i < 3; ++i)
         {
-            await App.I.ConnectingPlayer(players[i]);
-            views[i].SetChar(App.I.GetPlayerInfo(players[i]).CharIndex);
+            if (i < players.Count)
+            {
+                await App.I.ConnectingPlayer(players[i]);
+                views[i].SetChar(App.I.GetPlayerInfo(players[i]).CharIndex);
+            }
+            else
+                views[i].Clear();
         }
-        
     }
 
     
     [Button]
-    public void Clear(int num)
+    public void Clear(PlayerRef playerRef)
     {
-        views[num].Clear();
+         views[App.I.GetPlayerIndex(playerRef)].Clear();
     }
 
 }

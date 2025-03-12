@@ -34,6 +34,8 @@ public class CharacterViewItem : MonoBehaviour, ISetInspector
 
     public void Clear()
     {
+        if(current == PlayableChar.None)
+            return;
         dic[current].gameObject.SetActive(false);
     }
 

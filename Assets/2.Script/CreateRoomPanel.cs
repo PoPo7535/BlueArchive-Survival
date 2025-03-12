@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Fusion;
 using Sirenix.OdinInspector;
@@ -120,4 +121,17 @@ public class CreateRoomPanel : MonoBehaviour, ISetInspector
         }
         #endregion
     }
+
+    #if UNITY_EDITOR
+    private void OnGUI()
+    {
+        if (GUI.Button(new Rect(100, 100, 200, 200), "Host"))
+        {
+            App.I.HostGame(
+                GameMode.Host,
+                "Host",
+                passwordIF.text);
+        }
+    }
+    #endif
 }
