@@ -267,7 +267,7 @@ namespace EnhancedScrollerDemos.Chat
         /// <param name="dataIndex"></param>
         /// <param name="cellIndex"></param>
         /// <returns></returns>
-        public EnhancedScrollerCellView GetCellView(EnhancedScroller scroller, int dataIndex, int cellIndex)
+        public EnhancedScrollerCellView GetCellView(EnhancedScroller scroller, int dataIndex, int _)
         {
             CellView cellView;
 
