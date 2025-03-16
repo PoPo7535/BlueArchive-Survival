@@ -6,6 +6,7 @@ using Fusion;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Serial = UnityEngine.SerializeField;
 using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
@@ -14,26 +15,26 @@ public class ChatPanel : NetworkBehaviour, IEnhancedScrollerDelegate, ISetInspec
 {
     [Serial, Read] private EnhancedScroller scroller;
     [Serial, Read] private TMP_InputField chatIF;
-    [Serial, Read] private EnhancedScrollerCellView chatCellView;
+    [Serial, Read] private EnhancedScrollerCellView view;
+    [Serial, Read] private TMP_Text helperText;
     private float totalCellSize;
-    [Serial, Read] private List<ChatData> data = new(); 
+    [Serial, Read] private List<ChatData> data; 
     [Button, GUIColor(0, 1, 0)]
     public void SetInspector()
     {
         var childs = transform.GetAllChild();
         chatIF = childs.First(tr => tr.name == "Chat IF").GetComponent<TMP_InputField>();
         scroller = childs.First(tr => tr.name == "Scroll View").GetComponent<EnhancedScroller>();
-        chatCellView = childs.First(tr => tr.name == "ChatCellView").GetComponent<EnhancedScrollerCellView>();
+        view = childs.First(tr => tr.name == "ChatCellView").GetComponent<EnhancedScrollerCellView>();
+        helperText = childs.First(tr => tr.name == "ChatText").GetComponent<TMP_Text>();
     }
 
     public void Start()
     {
+        data = new List<ChatData>();
         scroller.Delegate = this;
         scroller.ReloadData();
-        data.Add(new ChatData(string.Empty, default)
-        {
-            size = 1000f
-        });
+        data.Add(new ChatData(string.Empty, default, 1000, true)); 
 
         chatIF.onSubmit.AddListener((chat) =>
         {
@@ -42,10 +43,7 @@ public class ChatPanel : NetworkBehaviour, IEnhancedScrollerDelegate, ISetInspec
         });
     }
 
-    public void Update()
-    {
 
-    }
     [Button]
     public void SendChat(string chat, RpcInfo info = default)
     {
@@ -60,7 +58,8 @@ public class ChatPanel : NetworkBehaviour, IEnhancedScrollerDelegate, ISetInspec
 
     private void Send(string chat, RpcInfo info = default)
     {
-        data.Add(new ChatData(chat, info.Source));
+        helperText.text = chat;
+        data.Add(new ChatData(chat, info.Source, helperText.preferredHeight + 10f));
         ResizeScroller();
         scroller.JumpToDataIndex(data.Count - 1, 1f, 1f, tweenType: EnhancedScroller.TweenType.easeInOutSine, tweenTime: 0.5f, jumpComplete: ResetSpacer);
         void ResetSpacer()
@@ -98,24 +97,26 @@ public class ChatPanel : NetworkBehaviour, IEnhancedScrollerDelegate, ISetInspec
 
     public EnhancedScrollerCellView GetCellView(EnhancedScroller scroller, int dataIndex, int cellIndex)
     {
-        var cellView = scroller.GetCellView(chatCellView) as ChatCellView;
+        var cellView = scroller.GetCellView(view) as ChatCellView;
         cellView.SetData(data[dataIndex]);
+        
         return cellView;
     }
-    
+
     [Serializable]
     public class ChatData
     {
-        public ChatData(string text, PlayerRef other)
+        public ChatData(string text, PlayerRef other, float size, bool isSpacer = false)
         {
             this.text = text;
             this.other = other;
+            this.isSpacer = isSpacer;
+            this.size = size;
         }
+
+        public bool isSpacer;
         public string text;
         public PlayerRef other;
-        public float size = 100f;
+        public float size;
     }
-
 }
-
-
