@@ -13,10 +13,6 @@ public class App : SimulationBehaviour, INetworkRunnerCallbacks
     [ReadOnly] public NetworkRunner runner;
     public PlayerInfo GetPlayerInfo(PlayerRef playerRef)
     {
-        Runner.Log();
-        playerRef.Log();
-        Runner.GetPlayerObject(playerRef).Log();
-        Runner.GetPlayerObject(playerRef).GetComponent<PlayerInfo>().Log();
         return Runner.GetPlayerObject(playerRef).GetComponent<PlayerInfo>();
     }
 
@@ -108,7 +104,6 @@ public class App : SimulationBehaviour, INetworkRunnerCallbacks
     public int GetPlayerIndex(PlayerRef playerRef)
     {
         var players = GetPlayers();
-        players.Count.Log();
         for (int i = 0; i < players.Count; ++i)
         {
             if (players[i].PlayerId == playerRef.PlayerId)

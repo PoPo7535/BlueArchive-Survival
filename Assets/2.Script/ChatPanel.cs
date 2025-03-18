@@ -38,7 +38,8 @@ public class ChatPanel : NetworkBehaviour, IEnhancedScrollerDelegate, ISetInspec
 
         chatIF.onSubmit.AddListener((chat) =>
         {
-            $"onSubmit {chat}".Log();
+            if (chat != string.Empty)
+                RPC_SendChat(chat);
             chatIF.text = string.Empty;
         });
     }
@@ -51,15 +52,19 @@ public class ChatPanel : NetworkBehaviour, IEnhancedScrollerDelegate, ISetInspec
     }
     
     [Rpc(RpcSources.All,RpcTargets.All, HostMode = RpcHostMode.SourceIsHostPlayer)]
-    public void RPC_SendChat(string chat, RpcInfo info = default)
+    private void RPC_SendChat(string chat, RpcInfo info = default)
     {
         Send(chat, info);
     }
 
     private void Send(string chat, RpcInfo info = default)
     {
-        helperText.text = chat;
-        data.Add(new ChatData(chat, info.Source, helperText.preferredHeight + 10f));
+        var playerName = App.I.GetPlayerInfo(info.Source).PlayerName.Value;
+        var isLocal = Runner.LocalPlayer == info.Source;
+        helperText.text = isLocal ? 
+            $"<color=red>{playerName}</color> : {chat}" :
+            $"<color=blue>{playerName}</color> : {chat}";
+        data.Add(new ChatData(helperText.text, info.Source, helperText.preferredHeight));
         ResizeScroller();
         scroller.JumpToDataIndex(data.Count - 1, 1f, 1f, tweenType: EnhancedScroller.TweenType.easeInOutSine, tweenTime: 0.5f, jumpComplete: ResetSpacer);
         void ResetSpacer()
@@ -92,7 +97,9 @@ public class ChatPanel : NetworkBehaviour, IEnhancedScrollerDelegate, ISetInspec
 
     public float GetCellViewSize(EnhancedScroller scroller, int dataIndex)
     {
+        data[dataIndex].size.Log();
         return data[dataIndex].size;
+        
     }
 
     public EnhancedScrollerCellView GetCellView(EnhancedScroller scroller, int dataIndex, int cellIndex)
@@ -111,6 +118,7 @@ public class ChatPanel : NetworkBehaviour, IEnhancedScrollerDelegate, ISetInspec
             this.text = text;
             this.other = other;
             this.isSpacer = isSpacer;
+            $"size {size}".Log();
             this.size = size;
         }
 

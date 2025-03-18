@@ -17,7 +17,6 @@ public class PlayerInfo : NetworkBehaviour, IPlayerLeft
     public override void Spawned()
     {
         Object.Runner.SetPlayerObject(Object.InputAuthority, Object);
-        Object.Runner.GetPlayerObject(Runner.LocalPlayer).Log();
         if (false == Object.HasInputAuthority)
             return;
         PlayFabClientAPI.GetPlayerProfile(
