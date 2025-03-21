@@ -34,7 +34,7 @@ public class ChatPanel : NetworkBehaviour, IEnhancedScrollerDelegate, ISetInspec
         data = new List<ChatData>();
         scroller.Delegate = this;
         scroller.ReloadData();
-        data.Add(new ChatData(string.Empty, default, 1000, true)); 
+        data.Add(new ChatData(string.Empty, default, 100)); 
 
         chatIF.onSubmit.AddListener((chat) =>
         {
@@ -113,16 +113,13 @@ public class ChatPanel : NetworkBehaviour, IEnhancedScrollerDelegate, ISetInspec
     [Serializable]
     public class ChatData
     {
-        public ChatData(string text, PlayerRef other, float size, bool isSpacer = false)
+        public ChatData(string text, PlayerRef other, float size)
         {
             this.text = text;
             this.other = other;
-            this.isSpacer = isSpacer;
-            $"size {size}".Log();
             this.size = size;
         }
 
-        public bool isSpacer;
         public string text;
         public PlayerRef other;
         public float size;

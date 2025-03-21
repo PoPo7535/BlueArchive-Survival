@@ -9,12 +9,16 @@ public class SetMat : MonoBehaviour
     public Material mouthMat;
     public Texture2D mouthTx;
     public SkinnedMeshRenderer meshRender;
-    
+    public bool instMat = true;    
     private void Awake()
     {
-        var materials = meshRender.materials;
-        meshRender.materials = materials;
-        mouthMat = meshRender.materials[^1];
+        if (instMat)
+        {
+            var materials = meshRender.materials;
+            meshRender.materials = materials;
+            mouthMat = meshRender.materials[^1];
+        }
+
         SetMouth(0, 0);
     }
 

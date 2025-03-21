@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using Fusion;
 using Sirenix.OdinInspector;
@@ -17,7 +16,6 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
     [Serial, Read] private PlayerSlot playerSlot;
     [Serial, Read] private CharacterView characterView;
 
-    private readonly Dictionary<PlayerRef, bool> ready = new();
     private bool isReady;    
     
     [Button,GUIColor(0, 1, 0)]
@@ -68,7 +66,7 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
 
 
     [Rpc(RpcSources.All, RpcTargets.All, HostMode = RpcHostMode.SourceIsHostPlayer)]
-    private void RPC_SetChar(PlayableChar ch, RpcInfo info =default)
+    public void RPC_SetChar(PlayableChar ch, RpcInfo info =default)
     {
         App.I.GetPlayerInfo(info.Source).CharIndex = ch;
         playerSlot.SetPlayerSlot(info.Source);
