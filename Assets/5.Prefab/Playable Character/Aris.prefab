@@ -2157,6 +2157,7 @@ MonoBehaviour:
   mouthMat: {fileID: 2100000, guid: fcac28aed62310c4da1b79f5a41e40ea, type: 2}
   mouthTx: {fileID: 2800000, guid: 0e54b9c71850da745b72039e06013ce5, type: 3}
   meshRender: {fileID: 774589094691686898}
+  instMat: 0
 --- !u!1 &2928164847065673032
 GameObject:
   m_ObjectHideFlags: 0

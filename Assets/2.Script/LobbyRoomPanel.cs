@@ -2,7 +2,6 @@ using System.Linq;
 using Fusion;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Utility;
 using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
@@ -12,7 +11,6 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IPlayerJoined, IPlayerLeft
 {
     [Serial, Read] private CanvasGroup cg;
-    [Serial, Read] private Button cancelBtn;
     [Serial, Read] private PlayerSlot playerSlot;
     [Serial, Read] private CharacterView characterView;
 
@@ -23,23 +21,8 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
     {
         var childs = transform.GetAllChild();
         cg = GetComponent<CanvasGroup>();
-        cancelBtn = childs.First(tr => tr.name == "Cancel Btn").GetComponent<Button>();
         playerSlot = childs.First(tr => tr.name == "PlayerSlot").GetComponent<PlayerSlot>();
         characterView = FindObjectOfType<CharacterView>();
-    }
-    private void Start()
-    {
-        cancelBtn.onClick.AddListener(async () =>
-        {
-            // await App.I.runner.Shutdown(false);
-            // SceneManager.LoadScene("1.Lobby");
-            var localInfo = App.I.GetPlayerInfo(Runner.LocalPlayer);
-            localInfo.CharIndex = localInfo.CharIndex.Next();
-            if (localInfo.CharIndex == PlayableChar.None)
-                localInfo.CharIndex = localInfo.CharIndex.Next();
-
-            RPC_SetChar(localInfo.CharIndex);
-        });
     }
     public async void PlayerJoined(PlayerRef player)
     {

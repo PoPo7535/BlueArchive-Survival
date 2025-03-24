@@ -1,8 +1,10 @@
+using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Serial = UnityEngine.SerializeField;
 using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
@@ -94,6 +96,25 @@ public class Tools : MonoBehaviour
         EditorUtility.SetDirty(clip);
         AssetDatabase.SaveAssets();
         AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(clip));
+    }
+    [Button,GUIColor(0, 1, 0)]
+
+    public void SetInspector()
+    {
+        var inter = new List<ISetInspector>();
+        var allObj = FindObjectsOfType<MonoBehaviour>();
+        foreach (var obj in allObj)
+        {
+            if (obj is ISetInspector ins)
+            {
+                inter.Add(ins);
+            }
+        }
+
+        foreach (var inspector in inter)
+        {
+            inspector.SetInspector();
+        }
     }
 #endif
 }

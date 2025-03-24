@@ -27,7 +27,6 @@ Material:
   - _LIGHTAFFECTRIMLIGHTCOLOR_OFF
   - _LIGHTAFFECTSHADOW_OFF
   - _LIGHTFALLOFFAFFECTSHADOWT_OFF
-  - _LIGIGNOYNORDIR_OFF
   - _MCIALO_OFF
   - _MIXMAINTEXTOOUTLINE_OFF
   - _MVCOL_OFF
@@ -210,7 +209,7 @@ Material:
     - _GlossyReflections: 1
     - _Glow_Edge_Width: 1
     - _HighlightColorPower: 1
-    - _LigIgnoYNorDir: 0
+    - _LigIgnoYNorDir: 1
     - _LightAffectOutlineColor: 0
     - _LightAffectRimLightColor: 0
     - _LightAffectShadow: 0
@@ -265,7 +264,7 @@ Material:
     - _OutlineExtrudeMethod: 0
     - _OutlineWidth: 0.002
     - _OutlineWidthAffectedByViewDistance: 0
-    - _OutlineZPostionInCamera: 0
+    - _OutlineZPostionInCamera: -3
     - _OverallShadowColorPower: 1
     - _PSGLOTEX: 0
     - _PTexturePower: 1
@@ -340,7 +339,7 @@ Material:
     - _MainColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineOffset: {r: 0, g: 0, b: 0, a: 1}
-    - _OverallShadowColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OverallShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _PTCol: {r: 0, g: 0, b: 0, a: 1}
     - _RimLightColor: {r: 1, g: 1, b: 1, a: 1}
     - _SSAOColor: {r: 0, g: 0, b: 0, a: 0}

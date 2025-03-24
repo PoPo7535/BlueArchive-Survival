@@ -2591,7 +2591,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modelMesh: {fileID: 4300000, guid: 123f7f7ef75aafc42a9ccbe33a611ba0, type: 2}
   mouthMat: {fileID: 2100000, guid: fcac28aed62310c4da1b79f5a41e40ea, type: 2}
-  mouthTx: {fileID: 2800000, guid: 0e54b9c71850da745b72039e06013ce5, type: 3}
   meshRender: {fileID: 1738667985652346873}
   faceMeshIndex: 2
   meshCutStartIndex: 0
@@ -2635,6 +2634,7 @@ MonoBehaviour:
   mouthMat: {fileID: 2100000, guid: fcac28aed62310c4da1b79f5a41e40ea, type: 2}
   mouthTx: {fileID: 2800000, guid: 0e54b9c71850da745b72039e06013ce5, type: 3}
   meshRender: {fileID: 1738667985652346873}
+  instMat: 0
 --- !u!1 &4660753982905456276
 GameObject:
   m_ObjectHideFlags: 0

@@ -42,6 +42,6 @@ public static class BG
 
         ((RectTransform)obj.transform).SetParent(tr.parent, new Vector2(0,0), new Vector2(1,1));
         var siblingIndex = tr.GetSiblingIndex();
-        obj.transform.SetSiblingIndex(siblingIndex == 0 ? 0 : siblingIndex);
+        obj.transform.SetSiblingIndex(Mathf.Max(0, siblingIndex - 1));
     }
 }

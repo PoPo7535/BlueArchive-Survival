@@ -42,6 +42,7 @@ public static class PlayFabEx
             _result => result?.Invoke(_result),
             _error => error?.Invoke(_error));
     }
+    // https://docs.google.com/spreadsheets/d/1sJYV-jYntE5F164HziNjNWVZhTuSyU3a5v8vflrA89Y/edit?usp=drive_link
     public static void GetStatusData(Action<GetUserDataResult> result, Action<PlayFabError> error, Action<Dictionary<PlayerStatus, float>> data)
     {
         PlayFabClientAPI.GetUserData(new GetUserDataRequest()
