@@ -1,6 +1,5 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Networking;
 using Serial = UnityEngine.SerializeField;
@@ -10,16 +9,28 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 public class DummyTest : MonoBehaviour
 {
 
-    private readonly string R = "A2:D";
-    private readonly string sheet = "A2:D";
-    private async void Start()
-    {
-        // var asd = UnityWebRequest.Get()
-    }
+    private string csvUrl = $"https://docs.google.com/spreadsheets/d/{API.GoogleSheetAPI}/gviz/tq?tqx=out:csv";
 
-    public static string Get(string address, string range, long sheetID)
+    void Start()
     {
-        return $"{address}/export?format=tsv&range={range}&fid={sheetID}";
+        StartCoroutine(ReadCSV());
+    }
+    
+    [Button]
+    IEnumerator ReadCSV()
+    {
+        using UnityWebRequest www = UnityWebRequest.Get(csvUrl);
+        yield return www.SendWebRequest();
+
+        if (www.result == UnityWebRequest.Result.Success)
+        {
+            string csvData = www.downloadHandler.text;
+            Debug.Log("Received CSV: " + csvData);
+        }
+        else
+        {
+            Debug.LogError("Error: " + www.error);
+        }
     }
 
 }
