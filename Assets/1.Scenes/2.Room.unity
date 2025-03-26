@@ -5047,6 +5047,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed2d425b60534674cb5a43aa698e3cd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: dic
+      Entry: 6
+      Data: 
   clip: {fileID: 0}
   oldName: 
   newName: 
