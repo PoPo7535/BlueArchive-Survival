@@ -25,6 +25,7 @@ public class Tools : SerializedMonoBehaviour
     [Button,GUIColor(0, 1, 0)]
     private void SetNavigation()
     {
+    
         var newNavigation = new Navigation
         {
             mode = Navigation.Mode.None
