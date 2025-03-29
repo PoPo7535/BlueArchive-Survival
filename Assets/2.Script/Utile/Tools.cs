@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
-using Sirenix.Serialization;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -10,16 +9,8 @@ using Serial = UnityEngine.SerializeField;
 using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
-public class Tools : SerializedMonoBehaviour
+public class Tools : MonoBehaviour
 {
-    [OdinSerialize]
-    private Dictionary<PlayFabEx.StatusType, List<CSVParse.StatusUpgrade>> dic;
-    [Button]
-    private async void Test()
-    {
-        var result = await CSVParse.ReadCSV();
-        dic = result;
-    }
 #if UNITY_EDITOR
     [Fold("UI_Tools")]
     [Button,GUIColor(0, 1, 0)]
