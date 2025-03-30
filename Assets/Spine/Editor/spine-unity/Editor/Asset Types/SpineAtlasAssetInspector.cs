@@ -36,6 +36,7 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 using Spine;
+#pragma warning disable CS0618
 
 namespace Spine.Unity.Editor {
 	using Event = UnityEngine.Event;
@@ -379,5 +380,5 @@ namespace Spine.Unity.Editor {
 			Debug.Log(string.Format("Applied sprite slices to {2}. {0} added. {1} updated.", addedCount, updatedCount, texture.name));
 		}
 	}
-
 }
+#pragma warning restore CS0618

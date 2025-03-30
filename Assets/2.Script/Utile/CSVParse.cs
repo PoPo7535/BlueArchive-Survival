@@ -16,52 +16,54 @@ public static class CSVParse
     }
     public static async Task<Dictionary<PlayFabEx.StatusType, List<StatusUpgrade>>> ReadCSV()
     {
-        using var sheet1 = UnityWebRequest.Get(GetCSVUrl(API.GoogleSheetAPI, API.Sheet));
-        await sheet1.SendWebRequest();
+        using var upgradeValue = UnityWebRequest.Get(GetCSVUrl(API.SheetURL, API.UpgradeValue));
+        await upgradeValue.SendWebRequest();
         
-        using var sheet2 = UnityWebRequest.Get(GetCSVUrl(API.GoogleSheetAPI, API.Sheet));
-        await sheet2.SendWebRequest();
+        using var upgradeCost = UnityWebRequest.Get(GetCSVUrl(API.SheetURL, API.UpgradeCost));
+        await upgradeCost.SendWebRequest();
 
-        if (sheet1.result == UnityWebRequest.Result.Success && sheet2.result == UnityWebRequest.Result.Success)
-            return ParseCSVToStatusUpgrade(sheet1.downloadHandler.text, sheet2.downloadHandler.text);
-        
-        $"Error : {sheet1.error} \n{sheet2.error}".Log();
-        return null;
+        if (upgradeValue.result != UnityWebRequest.Result.Success ||
+            upgradeCost.result != UnityWebRequest.Result.Success)
+        {
+            $"Error : {upgradeValue.error} \n{upgradeCost.error}".Log();
+            return null;
+        }
+
+        var upValueCSV = ParseCSV(upgradeValue.downloadHandler.text);
+        var upCostCSV = ParseCSV(upgradeCost.downloadHandler.text);
+        var dic = new Dictionary<PlayFabEx.StatusType, List<StatusUpgrade>>();
+        foreach (PlayFabEx.StatusType statusType in Enum.GetValues(typeof(PlayFabEx.StatusType)))
+        {
+            dic.Add(statusType, new List<StatusUpgrade>());
+
+            for (int i = 0; i < upValueCSV[statusType].Count; ++i)
+            {
+                dic[statusType].Add(new StatusUpgrade(upValueCSV[statusType][i], (int)upCostCSV[statusType][i]));
+            }
+        }
+        return dic;
     }
 
-    private static Dictionary<PlayFabEx.StatusType, List<StatusUpgrade>> ParseCSVToStatusUpgrade(string csv1, string csv2)
+    private static Dictionary<PlayFabEx.StatusType, List<float>> ParseCSV(string csv)
     {
-        var dic = new Dictionary<PlayFabEx.StatusType, List<StatusUpgrade>>();
-        var lines = csv1.Split('\n');
-        var lines2 = csv2.Split('\n');
-        for (int y = 0; y < lines.Length; ++y)
+        csv = csv.Replace("\"", "");
+        var dic = new Dictionary<PlayFabEx.StatusType, List<float>>();
+        var lines = csv.Split('\n');
+        foreach (var str in lines)
         {
-            var values = lines[y].Split(',');
-            var values2 = lines2[y].Split(',');
-            
-            
-            var curType = PlayFabEx.StatusType.MaxHP;
-            if (Enum.TryParse<PlayFabEx.StatusType>(values[0].Trim('\"'), out var statusType))
+            var values = str.Split(',');
+            if (Enum.TryParse<PlayFabEx.StatusType>(values[0], out var statusType))
             {
-                dic.Add(statusType, new List<StatusUpgrade>( ));
-                curType = statusType;
+                dic.Add(statusType, new List<float>( ));
+                for (int i = 1; i < values.Length; ++i)
+                {
+                    if (string.Empty == values[i])
+                        break;
+                    dic[statusType].Add(float.Parse(values[i]));
+                }
             }
             else
-            {
-                Debug.LogWarning(values[0].Trim('\"'));
-            }
-            
-
-            
-            for (int i = 1; i < values.Length; ++i)
-            {
-                var val = values[i].Trim('\"');
-                var goldCost = values2[i].Trim('\"');
-                if(string.Empty ==val)
-                    break;
-                var statusUpgrade = new StatusUpgrade(float.Parse(val), int.Parse(goldCost));
-                dic[curType].Add(statusUpgrade);
-            }
+                Debug.LogWarning(values[0]);
         }
         return dic;
     }
@@ -76,14 +78,5 @@ public static class CSVParse
         public float value;
         public int goldCost;
     }
-
-    private static void Test2()
-    {
-        var dic = new Dictionary<PlayFabEx.StatusType, List<StatusUpgrade>>();
-        foreach (var status in Enum.GetValues(typeof(PlayFabEx.StatusType)))
-        {
-            dic.Add(Enum.Parse<PlayFabEx.StatusType>(status.ToString()), new List<StatusUpgrade>());
-        }
-    }
-
+    
 }

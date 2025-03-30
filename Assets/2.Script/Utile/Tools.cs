@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -9,7 +10,7 @@ using Serial = UnityEngine.SerializeField;
 using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
-public class Tools : MonoBehaviour
+public class Tools : SerializedMonoBehaviour
 {
 #if UNITY_EDITOR
     [Fold("UI_Tools")]
@@ -97,8 +98,8 @@ public class Tools : MonoBehaviour
         AssetDatabase.SaveAssets();
         AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(clip));
     }
+    
     [Button,GUIColor(0, 1, 0)]
-
     public void SetInspector()
     {
         var inter = new List<ISetInspector>();
@@ -115,6 +116,14 @@ public class Tools : MonoBehaviour
         {
             inspector.SetInspector();
         }
+    }
+
+    [OdinSerialize, Fold("CSVTest")] private Dictionary<PlayFabEx.StatusType, List<CSVParse.StatusUpgrade>> dic;
+    [Button, GUIColor(0,1,0), Fold("CSVTest")]
+    public async void CSVTest()
+    {
+        var result = await CSVParse.ReadCSV();
+        dic = result;
     }
 #endif
 }
