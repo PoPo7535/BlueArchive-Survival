@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -51,6 +52,16 @@ public static class Extensions
         var values = (T[])Enum.GetValues(typeof(T));
         var index = Array.IndexOf(values, value);
         return Enum.Parse<T>(values[(index + 1) % values.Length].ToString());
+    }
+    public static bool IsLast<T>(this T value) where T : struct, Enum
+    {
+        var values = Enum.GetValues(value.GetType()).Cast<T>().ToArray();
+        return EqualityComparer<T>.Default.Equals(value, values.Last());
+    }
+
+    public static T[] ToArray<T>(this T value) where T : Enum
+    {
+        return Enum.GetValues(value.GetType()).Cast<T>().ToArray();
     }
     
     public static void SetParent(this RectTransform rect, Transform parent, Vector2 anchorMin, Vector2 anchorMax)

@@ -14,13 +14,11 @@ public class StatusPanel : SerializedMonoBehaviour, ISetInspector
     public void SetInspector()
     {
         dic = new Dictionary<PlayFabEx.StatusType, Sprite>();
-        string path = "Assets/0.UI/UpGradeIcon/";
-        
         foreach (PlayFabEx.StatusType type in Enum.GetValues(typeof(PlayFabEx.StatusType)))
         {
-            $"{path}{type}_Icon".Log();
-            var sprite = AssetDatabase.LoadAssetAtPath<Sprite>($"{path}{type}_Icon.png");
+            var sprite = LoadHelper.LoadUpGradeIcon<Sprite>($"{type}_Icon");
             dic.Add(type, sprite);
         }
+        
     }
 }

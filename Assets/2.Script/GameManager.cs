@@ -9,11 +9,7 @@ public class GameManager : SerializedMonoBehaviour
     public void Awake()
     {
         if (null != I)
-        {
-            "인스턴스 중복".Log();
             Destroy(I.gameObject);
-        }
-        
         I = this;
     }
 
@@ -32,7 +28,7 @@ public class GameManager : SerializedMonoBehaviour
 public enum PlayableChar
 {
     None,
-    Kyoko,
+    Kayoko,
     Neru,
     Miyu,
     Hoshino,

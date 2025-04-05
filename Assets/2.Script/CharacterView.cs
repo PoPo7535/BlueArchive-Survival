@@ -26,10 +26,8 @@ public class CharacterView : MonoBehaviour, ISetInspector
         views[App.I.GetPlayerIndex(playerRef)].SetChar(ch);
     }
     
-    [Button]
     public async void SetAllChar()
     {
-        
         var players = App.I.GetPlayers();
         for (int i = 0; i < 3; ++i)
         {
@@ -42,9 +40,7 @@ public class CharacterView : MonoBehaviour, ISetInspector
                 views[i].Clear();
         }
     }
-
     
-    [Button]
     public void Clear(PlayerRef playerRef)
     {
          views[App.I.GetPlayerIndex(playerRef)].Clear();

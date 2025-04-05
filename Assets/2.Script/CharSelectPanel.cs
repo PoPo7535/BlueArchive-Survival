@@ -13,6 +13,7 @@ public class CharSelectPanel : MonoBehaviour, ISetInspector
 {
     [Read, Serial] private GridLayoutGroup gridLayout;
     [Read, Serial] private RectTransform rt;
+    [Read, Serial] private Image[] Images;
     [Read, Serial] private Button[] buttons;
     [Read, Serial] private TMP_Text[] texts;
     [Read, Serial, Fold("Size")] private Vector2 gridSize;
@@ -21,6 +22,7 @@ public class CharSelectPanel : MonoBehaviour, ISetInspector
     public void SetInspector()
     {
         rt = GetComponent<RectTransform>();
+        Images = GetComponentsInChildren<Image>().Skip(1).ToArray();
         buttons = GetComponentsInChildren<Button>();
         texts = GetComponentsInChildren<TMP_Text>();
         gridLayout = GetComponent<GridLayoutGroup>();
@@ -28,7 +30,6 @@ public class CharSelectPanel : MonoBehaviour, ISetInspector
 
     public void Start()
     {
-        // Close(0);
         var activeColum  = Set();
         var count = gridLayout.constraintCount;
         var xCount = activeColum <= count ? count : activeColum;
@@ -41,25 +42,25 @@ public class CharSelectPanel : MonoBehaviour, ISetInspector
 
     }
 
-    [Button]
-    public int Set()
+    private int Set()
     {
-        var arr = Enum.GetValues(typeof(PlayableChar)).Cast<PlayableChar>().ToArray();
-        int num = 0;
+        var arr = PlayableChar.None.ToArray();
+        var num = 0;
         for (var i = 0; i < buttons.Length; ++i)
         {
             buttons[i].gameObject.SetActive(i < arr.Length - 1);
 
-            if (i < arr.Length - 1)
+            if (false == i < arr.Length - 1)
+                continue;
+            
+            ++num;
+            texts[i].text = arr[i + 1].ToString();
+            Images[i].sprite = LoadHelper.LoadPortrait<Sprite>(arr[i + 1].ToString());
+            var a = i + 1;
+            buttons[i].onClick.AddListener(() =>
             {
-                texts[i].text = arr[i + 1].ToString();
-                ++num;
-                var a = i + 1;
-                buttons[i].onClick.AddListener(() =>
-                {
-                    LobbyRoomPanel.I.RPC_SetChar(arr[a]);
-                });
-            }
+                LobbyRoomPanel.I.RPC_SetChar(arr[a]);
+            });
         }
 
         return num;
