@@ -118,12 +118,6 @@ public class Tools : SerializedMonoBehaviour
         }
     }
 
-    [OdinSerialize, Fold("CSVTest")] private Dictionary<PlayFabEx.StatusType, List<CSVParse.StatusUpgrade>> dic;
-    [Button, GUIColor(0,1,0), Fold("CSVTest")]
-    public async void CSVTest()
-    {
-        var result = await CSVParse.ReadCSV();
-        dic = result;
-    }
+
 #endif
 }

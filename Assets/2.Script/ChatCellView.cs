@@ -12,6 +12,7 @@ public class ChatCellView : EnhancedScrollerCellView, ISetInspector
     
     public void SetData(ChatPanel.ChatData chatData)
     {
+        text.alignment = chatData.notice ? TextAlignmentOptions.Midline : TextAlignmentOptions.MidlineLeft;
         text.text = chatData.text;
     }
     [Button, GUIColor(0,1,0)]

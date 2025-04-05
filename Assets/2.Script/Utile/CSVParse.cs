@@ -10,7 +10,7 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public static class CSVParse
 {
-    private static string GetCSVUrl(string api, string sheetName)
+    private static string GetCSVUrl(string api, string sheetName) 
     {
         return$"https://docs.google.com/spreadsheets/d/{api}/gviz/tq?tqx=out:csv&sheet={sheetName}";
     }

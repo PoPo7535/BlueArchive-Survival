@@ -11,6 +11,7 @@ public class App : SimulationBehaviour, INetworkRunnerCallbacks
 {
     public static App I;
     [ReadOnly] public NetworkRunner runner;
+    public bool IsHost => Runner.GetPlayerObject(Runner.LocalPlayer).HasStateAuthority;
     public PlayerInfo GetPlayerInfo(PlayerRef playerRef)
     {
         return Runner.GetPlayerObject(playerRef).GetComponent<PlayerInfo>();
