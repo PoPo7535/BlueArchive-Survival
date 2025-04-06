@@ -14,7 +14,7 @@ namespace EnhancedUI.EnhancedScroller
         /// to handle different types of cells in a single list. Each type
         /// of cell should have its own identifier
         /// </summary>
-        public string cellIdentifier;
+        [HideInInspector] public string cellIdentifier;
 
         /// <summary>
         /// The cell index of the cell view

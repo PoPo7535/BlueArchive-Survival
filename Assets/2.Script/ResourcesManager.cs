@@ -17,15 +17,13 @@ public class ResourcesManager : SerializedMonoBehaviour, ISetInspector
     public void SetInspector()
     {
         dic = new Dictionary<PlayableChar, TTTT>();
-        var none = PlayableChar.None;
-        foreach (var playable in none.ToArray().Skip(1))
+        foreach (var playable in PlayableChar.None.ToArray().Skip(1))
         {
             dic.Add(playable, new TTTT
             {
                 portrait = LoadHelper.LoadPortrait<Sprite>($"{playable.ToString()}"),
             });
         }
-
     }
 
     [Serializable]

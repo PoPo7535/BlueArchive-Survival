@@ -32,7 +32,6 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
         
         var info = obj.GetComponent<PlayerInfo>();
         characterView.SetChar(player, info.CharIndex);
-
     }
 
     public void PlayerLeft(PlayerRef player)
