@@ -16,6 +16,7 @@ public class SessionScroll : MonoBehaviour, IEnhancedScrollerDelegate, INetworkR
         scroller.Delegate = this;
         scroller.ReloadData();
         App.I.runner.AddCallbacks(this);
+        cellViewPrefab.gameObject.SetActive(false);
     }
 
     public int GetNumberOfCells(EnhancedScroller scroller)
