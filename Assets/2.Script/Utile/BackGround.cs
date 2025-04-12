@@ -38,10 +38,11 @@ public static class BG
         {
             action?.Invoke();
             obj.SetActive(false);
+            obj.transform.SetAsLastSibling();
         });
 
         ((RectTransform)obj.transform).SetParent(tr.parent, new Vector2(0,0), new Vector2(1,1));
         var siblingIndex = tr.GetSiblingIndex();
-        obj.transform.SetSiblingIndex(Mathf.Max(0, siblingIndex - 1));
+        obj.transform.SetSiblingIndex(Mathf.Max(0, siblingIndex ));
     }
 }

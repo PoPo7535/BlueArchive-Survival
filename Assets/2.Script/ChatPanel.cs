@@ -71,8 +71,8 @@ public class ChatPanel : NetworkBehaviour, IEnhancedScrollerDelegate, ISetInspec
         var playerName = App.I.GetPlayerInfo(info.Source).PlayerName.Value;
         var isLocal = Runner.LocalPlayer == info.Source;
         helperText.text = isLocal
-            ? $"<color=red>{playerName}</color> : {chat}"
-            : $"<color=blue>{playerName}</color> : {chat}";
+            ? $"<color=#003B73>{playerName}</color> : <color=#1F2D3D>{chat}</color>"
+            : $"<color=#6A3000>{playerName}</color> : <color=#1F2D3D>{chat}</color>";
         data.Add(new ChatData(helperText.text, info.Source, helperText.preferredHeight, false));
         UpdateChat();
     }

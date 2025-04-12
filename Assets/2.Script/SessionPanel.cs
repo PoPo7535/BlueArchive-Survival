@@ -9,6 +9,7 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 public class SessionPanel : MonoBehaviour, ISetInspector
 {
     [Serial, Read] private Button createRoomPanelBtn;
+    [Serial, Read] private CreateRoomPanel createRoomPanel;
     [Serial, Read] private CanvasGroup createRoomPanelCG;
     
     
@@ -18,6 +19,7 @@ public class SessionPanel : MonoBehaviour, ISetInspector
         var childs = transform.parent.GetAllChild();
         createRoomPanelBtn = childs.First(tr => tr.name == "CrateRoom Btn").GetComponent<Button>();
         createRoomPanelCG = childs.First(tr => tr.name == "CreateRoomPanel").GetComponent<CanvasGroup>();
+        createRoomPanel = childs.First(tr => tr.name == "CreateRoomPanel").GetComponent<CreateRoomPanel>();
     }
 
     private void Start()
@@ -25,6 +27,10 @@ public class SessionPanel : MonoBehaviour, ISetInspector
         createRoomPanelBtn.onClick.AddListener(() =>
         {
             createRoomPanelCG.ActiveCG(true);
+            BG.GetBG(createRoomPanelCG.transform, () =>
+            {
+                createRoomPanel.Disable();
+            });
         });
     }
 

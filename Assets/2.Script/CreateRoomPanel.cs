@@ -17,12 +17,15 @@ public class CreateRoomPanel : MonoBehaviour, ISetInspector
     [Serial, Read, Fold("UIs")] private Toggle singleToggle;
     [Serial, Read, Fold("UIs")] private Toggle multiToggle;
     [Serial, Read, Fold("UIs")] private TMP_InputField roomNameIF;
-           
-    [Serial, Read, Fold("UIs")] private Toggle passwordToggle;
     [Serial, Read, Fold("UIs")] private TMP_InputField passwordIF;
-           
     [Serial, Read, Fold("UIs")] private Button createBtn;                                                                                    
     [Serial, Read, Fold("UIs")] private Button cancelBtn;
+    
+    
+    [Serial, Read, Fold("UIs")] private Image lookImg;
+    [Serial, Read, Fold("UIs")] private TMP_Text lookText;
+    [Serial, Fold("UIs")] private Sprite lookSpr;
+    [Serial, Fold("UIs")] private Sprite openSpr;
            
     [Button,GUIColor(0, 1, 0)]
     public void SetInspector()
@@ -32,10 +35,11 @@ public class CreateRoomPanel : MonoBehaviour, ISetInspector
         singleToggle = childs.First(tr => tr.name == "Single Toggle").GetComponent<Toggle>();
         multiToggle = childs.First(tr => tr.name == "Multi Toggle").GetComponent<Toggle>();
         roomNameIF = childs.First(tr => tr.name == "RoomName IF").GetComponent<TMP_InputField>();
-        passwordToggle = childs.First(tr => tr.name == "Password Toggle").GetComponent<Toggle>();
         passwordIF  = childs.First(tr => tr.name == "Password IF").GetComponent<TMP_InputField>();
         createBtn = childs.First(tr => tr.name == "Create Btn").GetComponent<Button>();
         cancelBtn = childs.First(tr => tr.name == "Cancel Btn").GetComponent<Button>();
+        lookImg = childs.First(tr => tr.name == "Look").GetComponent<Image>();
+        lookText = childs.First(tr => tr.name == "Look Text").GetComponent<TMP_Text>();
     }
 
     private void Start()
@@ -47,41 +51,24 @@ public class CreateRoomPanel : MonoBehaviour, ISetInspector
                 return;
             createBtn.interactable = true;
             roomNameIF.interactable = false;
-            passwordToggle.isOn = false;
-            passwordToggle.interactable = false;
             roomNameIF.text = string.Empty;
+            passwordIF.interactable = false;
+            lookImg.gameObject.SetActive(false);
         });
         multiToggle.onValueChanged.AddListener(isOn =>
         {
             if (false == isOn)
                 return;
             roomNameIF.interactable = true;
-            passwordToggle.interactable = true;
+            passwordIF.interactable = true;
             SetCreateBtn(string.Empty);
+            lookImg.gameObject.SetActive(true);
         });
-        passwordToggle.onValueChanged.AddListener(isOn =>
-        {
-            if (false == isOn)
-            {
-                passwordIF.text = string.Empty;
-                SetCreateBtn(string.Empty);
-            }
-            else
-                createBtn.interactable = false;
-            passwordIF.interactable = isOn;
-        });
+
         
         createBtn.onClick.AddListener(() =>
         {
-            if (passwordToggle.isOn && passwordIF.text.IsNullOrEmpty())
-            {
-                PopUp.I.OpenPopUp(
-                    "비밀번호 입력",
-                    () => PopUp.I.ActiveCG(false),
-                    "닫기");
-                return;
-            }
-            
+
             App.I.HostGame(
                 singleToggle.isOn ? GameMode.Single : GameMode.Host,
                 roomNameIF.text, 
@@ -92,19 +79,22 @@ public class CreateRoomPanel : MonoBehaviour, ISetInspector
         roomNameIF.onValueChanged.AddListener(SetCreateBtn);
         passwordIF.onValueChanged.AddListener(SetCreateBtn);
         
-        cancelBtn.onClick.AddListener(() => { cg.ActiveCG(false); });
+        cancelBtn.onClick.AddListener(Disable);
 
         void SetCreateBtn(string _)
         {
-            if (singleToggle.isOn)
+            if (passwordIF.text.IsNullOrEmpty())
             {
-                createBtn.interactable = true;
-                return;
+                lookImg.sprite = openSpr;
+                lookText.text = "현재 공개 방입니다.";
             }
-
-            if (passwordToggle.isOn &&
-                false == roomNameIF.text.IsNullOrEmpty() ||
-                false == passwordIF.text.IsNullOrEmpty())
+            else 
+            {
+                lookImg.sprite = lookSpr;
+                lookText.text = "현재 비공개 방입니다.";
+            }
+            
+            if (singleToggle.isOn)
             {
                 createBtn.interactable = true;
                 return;
@@ -116,12 +106,18 @@ public class CreateRoomPanel : MonoBehaviour, ISetInspector
                 createBtn.interactable = true;
                 return;
             }
-            
             createBtn.interactable = false;
         }
         #endregion
     }
 
+    public void Disable()
+    {
+        cg.ActiveCG(false);
+        roomNameIF.text = string.Empty;
+        passwordIF.text = string.Empty;
+        singleToggle.isOn = true;
+    }
     #if UNITY_EDITOR
     private void OnGUI()
     {
