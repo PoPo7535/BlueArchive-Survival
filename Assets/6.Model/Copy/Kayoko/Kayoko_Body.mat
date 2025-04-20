@@ -29,6 +29,7 @@ Material:
   - N_F_O_ON
   - N_F_RDC_ON
   - N_F_RELGI_ON
+  - N_F_SL_ON
   - N_F_SS_ON
   - N_F_TRANSAFFSHA_ON
   m_InvalidKeywords:
@@ -51,6 +52,7 @@ Material:
   - _OUTLINEWIDTHAFFECTEDBYVIEWDISTANCE_OFF
   - _OUTLINE_NML
   - _PSGLOTEX_OFF
+  - _SELFLITHIGHCONTRAST_OFF
   - _SELFSHADOWAFFECTEDBYLIGHTSHADOWSTRENGTH_OFF
   - _SELFSHADOWSHADOWTATVIEWDIRECTION_OFF
   - _SHOWNORMAL_OFF
@@ -61,7 +63,7 @@ Material:
   - _VERTEXCOLORBLUEAFFECTOUTLINEWITDH_OFF
   - _VERTEXCOLORGREENCONTROLSELFSHADOWTHRESHOLD_OFF
   - _VERTEXCOLORREDCONTROLSMOOTHOBJECTNORMAL_OFF
-  m_LightmapFlags: 0
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -158,7 +160,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskSelfLit:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 4f751707a229b064aa1526cdf95b52a3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTransparency:
@@ -419,7 +421,7 @@ Material:
     - _N_F_RDC: 1
     - _N_F_RL: 0
     - _N_F_SCT: 0
-    - _N_F_SL: 0
+    - _N_F_SL: 1
     - _N_F_SON: 0
     - _N_F_SS: 1
     - _N_F_ST: 0
@@ -480,13 +482,13 @@ Material:
     - _Saturation: 1
     - _Scroll_EmissiveU: 0
     - _Scroll_EmissiveV: 0
-    - _SelfLitHighContrast: 1
-    - _SelfLitIntensity: 0
-    - _SelfLitPower: 2
+    - _SelfLitHighContrast: 0
+    - _SelfLitIntensity: 1
+    - _SelfLitPower: 1
     - _SelfShadowAffectedByLightShadowStrength: 0
     - _SelfShadowHardness: 1
     - _SelfShadowRealTimeShadowColorPower: 1
-    - _SelfShadowRealtimeShadowIntensity: 0.439
+    - _SelfShadowRealtimeShadowIntensity: 0.6
     - _SelfShadowShadowTAtViewDirection: 0
     - _SelfShadowThreshold: 0.93
     - _Set_SystemShadowsToBase: 1
@@ -519,7 +521,7 @@ Material:
     - _StencilOpPass: 0
     - _StepOffset: 0
     - _Surface: 0
-    - _TEXMCOLINT: 1
+    - _TEXMCOLINT: 0
     - _TRANSMODE: 0
     - _TexturePatternStyle: 0
     - _TransAffSha: 1
@@ -586,7 +588,7 @@ Material:
     - _RimLightColor: {r: 1, g: 1, b: 1, a: 1}
     - _SSAOColor: {r: 0, g: 0, b: 0, a: 0}
     - _SelfLitColor: {r: 1, g: 1, b: 1, a: 1}
-    - _SelfShadowRealTimeShadowColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SelfShadowRealTimeShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _ShadowMapColor: {r: 1, g: 0.825, b: 0.78, a: 1}
     - _ShadowTColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}

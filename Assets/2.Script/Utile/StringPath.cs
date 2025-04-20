@@ -18,7 +18,6 @@ public static class LoadHelper
     private static T Load<T>(string folderPath, string fileName) where T : Object
     {
         var path = $"{folderPath}{fileName}.png";
-        path.Log();
         return AssetDatabase.LoadAssetAtPath<T>(path);
     }
 }
