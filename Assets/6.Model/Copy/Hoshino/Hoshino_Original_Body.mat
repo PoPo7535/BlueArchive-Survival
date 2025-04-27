@@ -107,7 +107,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskSelfLit:
-        m_Texture: {fileID: 2800000, guid: 911924f4e4b45f548aac52c83da7a5c2, type: 3}
+        m_Texture: {fileID: 2800000, guid: fa2b9172d3f9c8c4b9164088ef0c669d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTransparency:
