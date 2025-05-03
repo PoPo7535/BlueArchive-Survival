@@ -1,10 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
+using Fusion;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
+using Sirenix.Utilities;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Serial = UnityEngine.SerializeField;
 using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
@@ -102,22 +105,18 @@ public class Tools : SerializedMonoBehaviour
     [Button,GUIColor(0, 1, 0)]
     public void SetInspector()
     {
-        var inter = new List<ISetInspector>();
-        var allObj = FindObjectsOfType<MonoBehaviour>();
-        foreach (var obj in allObj)
+        var allObjects = FindObjectsOfType<GameObject>(true);
+        foreach (var go in allObjects)
         {
-            if (obj is ISetInspector ins)
+            var components = go.GetComponents<MonoBehaviour>();
+            foreach (var comp in components)
             {
-                inter.Add(ins);
+                if (comp is ISetInspector my)
+                {
+                    my.SetInspector();
+                }
             }
         }
-
-        foreach (var inspector in inter)
-        {
-            inspector.SetInspector();
-        }
     }
-
-
 #endif
 }

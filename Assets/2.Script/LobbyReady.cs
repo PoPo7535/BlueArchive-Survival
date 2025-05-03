@@ -4,16 +4,18 @@ using Fusion;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Serial = UnityEngine.SerializeField;
 using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
-public class LobbyReady : NetworkBehaviour, IPlayerJoined, IPlayerLeft
+public class LobbyReady : NetworkBehaviour, IPlayerJoined, IPlayerLeft, ISetInspector
 {
     
     [Serial, Read] private Button readyBtn;
     [Serial, Read] private TMP_Text readyText;
+    [Serial, Read] private PlayerSlot playerSlot;
 
     private readonly Dictionary<PlayerRef, bool> ready = new();
     private bool isReady;    
@@ -24,6 +26,8 @@ public class LobbyReady : NetworkBehaviour, IPlayerJoined, IPlayerLeft
         var childs = transform.GetAllChild();
         readyBtn = childs.First(tr => tr.name == "Ready Btn").GetComponent<Button>();
         readyText = childs.First(tr => tr.name == "Ready Text").GetComponent<TMP_Text>();
+        playerSlot = FindObjectOfType<PlayerSlot>();
+
     }
     
     public void PlayerJoined(PlayerRef player)
@@ -45,9 +49,10 @@ public class LobbyReady : NetworkBehaviour, IPlayerJoined, IPlayerLeft
     }
     
     [Rpc(RpcSources.All,RpcTargets.StateAuthority)]
-    private void RPC_InputReadyBtn(PlayerRef playerRef, bool isOn)
+    private void RPC_InputReadyBtn(PlayerRef playerRef, bool isReady)
     {
-        ready[playerRef] = isOn;
+        ready[playerRef] = isReady;
+        playerSlot.SetReady(playerRef, isReady);
         RefreshStartBtn();
     }
 

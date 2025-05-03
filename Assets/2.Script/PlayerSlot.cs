@@ -57,5 +57,17 @@ public class PlayerSlot : MonoBehaviour, ISetInspector
         }
     }
 
-
+    public async void SetReady(PlayerRef playerRef, bool isReady)
+    {
+        await App.I.ConnectingPlayer(playerRef);
+        var players = App.I.GetPlayers();
+        for (int i = 0; i < players.Count; ++i)
+        {
+            if (players[i] == playerRef)
+            {
+                playerSlots[i].SetReady(isReady);
+                break;
+            }
+        }
+    }
 }

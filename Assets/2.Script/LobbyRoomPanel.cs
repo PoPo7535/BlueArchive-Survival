@@ -2,7 +2,6 @@ using System.Linq;
 using Fusion;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.UI;
 using Utility;
 using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Serial = UnityEngine.SerializeField;
@@ -14,8 +13,6 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
     [Serial, Read] private PlayerSlot playerSlot;
     [Serial, Read] private CharacterView characterView;
 
-    private bool isReady;    
-    
     [Button,GUIColor(0, 1, 0)]
     public void SetInspector()
     {
