@@ -4,11 +4,9 @@ using Fusion;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Serial = UnityEngine.SerializeField;
 using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
-using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public class LobbyReady : NetworkBehaviour, IPlayerJoined, IPlayerLeft, ISetInspector
 {
@@ -27,7 +25,6 @@ public class LobbyReady : NetworkBehaviour, IPlayerJoined, IPlayerLeft, ISetInsp
         readyBtn = childs.First(tr => tr.name == "Ready Btn").GetComponent<Button>();
         readyText = childs.First(tr => tr.name == "Ready Text").GetComponent<TMP_Text>();
         playerSlot = FindObjectOfType<PlayerSlot>();
-
     }
     
     public void PlayerJoined(PlayerRef player)

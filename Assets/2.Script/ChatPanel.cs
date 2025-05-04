@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using EnhancedUI.EnhancedScroller;
 using Fusion;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Serial = UnityEngine.SerializeField;
 using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
@@ -17,6 +19,7 @@ public class ChatPanel : NetworkBehaviour, IEnhancedScrollerDelegate, ISetInspec
     [Serial, Read] private List<ChatData> data;
     [Serial, Read] private TMP_InputField chatIF;
     [Serial, Read] private TMP_Text helperText;
+    [Serial, Read] private RectTransform chatBg;
 
     private Dictionary<PlayerRef, string> playerNames = new();
     private float totalCellSize;
@@ -25,6 +28,7 @@ public class ChatPanel : NetworkBehaviour, IEnhancedScrollerDelegate, ISetInspec
     public void SetInspector()
     {
         var childs = transform.GetAllChild();
+        chatBg = childs.First(tr => tr.name == "ChatBg").GetComponent<RectTransform>();
         chatIF = childs.First(tr => tr.name == "Chat IF").GetComponent<TMP_InputField>();
         scroller = childs.First(tr => tr.name == "Scroll View").GetComponent<EnhancedScroller>();
         view = childs.First(tr => tr.name == "ChatCellView").GetComponent<EnhancedScrollerCellView>();
@@ -38,11 +42,20 @@ public class ChatPanel : NetworkBehaviour, IEnhancedScrollerDelegate, ISetInspec
         scroller.ReloadData();
         data.Add(new ChatData(string.Empty, default, 100, false));
 
-        chatIF.onSubmit.AddListener((chat) =>
+        chatIF.onSubmit.AddListener(chat =>
         {
             if (chat != string.Empty)
                 RPC_SendChat(chat);
             chatIF.text = string.Empty;
+            chatIF.ActivateInputField();
+        });
+        chatIF.onSelect.AddListener((_) =>
+        {
+            chatBg.DOSizeDelta(new Vector2(400, 400), 0.3f);
+        });
+        chatIF.onDeselect.AddListener((_) =>
+        {
+            chatBg.DOSizeDelta(new Vector2(400, 200), 0.3f);
         });
     }
 
