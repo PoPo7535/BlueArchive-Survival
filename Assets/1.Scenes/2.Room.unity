@@ -415,7 +415,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 400}
+  m_SizeDelta: {x: 0, y: 600}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &54789714
 CanvasRenderer:
@@ -868,6 +868,7 @@ MonoBehaviour:
   chatIF: {fileID: 712398294}
   helperText: {fileID: 1810454885}
   chatBg: {fileID: 375494148}
+  chatBox: {fileID: 54789712}
 --- !u!114 &165452950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6236,7 +6237,7 @@ PrefabInstance:
       objectReference: {fileID: 3829867290579899190, guid: e457514119eebd043af88831bdc1ecc8, type: 3}
     - target: {fileID: 5871503437819658818, guid: e457514119eebd043af88831bdc1ecc8, type: 3}
       propertyPath: m_Name
-      value: GameManager
+      value: 'GameManager '
       objectReference: {fileID: 0}
     - target: {fileID: 6295950478097833964, guid: e457514119eebd043af88831bdc1ecc8, type: 3}
       propertyPath: m_LocalPosition.x

@@ -25,7 +25,6 @@ public class CharacterViewItem : MonoBehaviour, ISetInspector
             value.gameObject.SetActive(true);
             return;
         }
-
         var playerChar = Instantiate(GameManager.I.playableChar[ch], Vector3.zero, Quaternion.identity, character.transform);
         playerChar.transform.localPosition = Vector3.zero;
         playerChar.transform.localScale = Vector3.one * 900;
@@ -37,6 +36,7 @@ public class CharacterViewItem : MonoBehaviour, ISetInspector
         if(current == PlayableChar.None)
             return;
         dic[current].gameObject.SetActive(false);
+        current = PlayableChar.None;
     }
 
     [Button, GUIColor(0, 1, 0)]

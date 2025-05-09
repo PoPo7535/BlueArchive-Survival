@@ -9,7 +9,6 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IPlayerJoined, IPlayerLeft
 {
-    [Serial, Read] private CanvasGroup cg;
     [Serial, Read] private PlayerSlot playerSlot;
     [Serial, Read] private CharacterView characterView;
 
@@ -17,7 +16,7 @@ public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IP
     public void SetInspector()
     {
         var childs = transform.GetAllChild();
-        cg = GetComponent<CanvasGroup>();
+        GetComponent<CanvasGroup>();
         playerSlot = childs.First(tr => tr.name == "PlayerSlot").GetComponent<PlayerSlot>();
         characterView = FindObjectOfType<CharacterView>();
     }

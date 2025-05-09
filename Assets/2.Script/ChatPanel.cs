@@ -20,6 +20,7 @@ public class ChatPanel : NetworkBehaviour, IEnhancedScrollerDelegate, ISetInspec
     [Serial, Read] private TMP_InputField chatIF;
     [Serial, Read] private TMP_Text helperText;
     [Serial, Read] private RectTransform chatBg;
+    [Serial, Read] private RectTransform chatBox;
 
     private Dictionary<PlayerRef, string> playerNames = new();
     private float totalCellSize;
@@ -29,6 +30,7 @@ public class ChatPanel : NetworkBehaviour, IEnhancedScrollerDelegate, ISetInspec
     {
         var childs = transform.GetAllChild();
         chatBg = childs.First(tr => tr.name == "ChatBg").GetComponent<RectTransform>();
+        chatBox = childs.First(tr => tr.name == "ChatBox").GetComponent<RectTransform>();
         chatIF = childs.First(tr => tr.name == "Chat IF").GetComponent<TMP_InputField>();
         scroller = childs.First(tr => tr.name == "Scroll View").GetComponent<EnhancedScroller>();
         view = childs.First(tr => tr.name == "ChatCellView").GetComponent<EnhancedScrollerCellView>();
@@ -51,7 +53,7 @@ public class ChatPanel : NetworkBehaviour, IEnhancedScrollerDelegate, ISetInspec
         });
         chatIF.onSelect.AddListener((_) =>
         {
-            chatBg.DOSizeDelta(new Vector2(400, 400), 0.3f);
+            chatBg.DOSizeDelta(new Vector2(400, chatBox.sizeDelta.y), 0.3f);
         });
         chatIF.onDeselect.AddListener((_) =>
         {

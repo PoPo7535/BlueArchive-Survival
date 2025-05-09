@@ -29,24 +29,18 @@ public class LobbyReady : NetworkBehaviour, IPlayerJoined, IPlayerLeft, ISetInsp
     
     public void PlayerJoined(PlayerRef player)
     {
-        if (Runner.LocalPlayer != player)
-        {
-            ready.Add(player, false);
-            RefreshStartBtn();
-        }
+        ready.Add(player, false);
+        RefreshStartBtn();
     }
 
     public void PlayerLeft(PlayerRef player)
     {
-        if (Runner.LocalPlayer != player)
-        {
-            ready.Remove(player);
-            RefreshStartBtn();
-        }
+        ready.Remove(player);
+        RefreshStartBtn();
     }
     
-    [Rpc(RpcSources.All,RpcTargets.StateAuthority)]
-    private void RPC_InputReadyBtn(PlayerRef playerRef, bool isReady)
+    [Rpc(RpcSources.All, RpcTargets.All, HostMode = RpcHostMode.SourceIsHostPlayer)]
+    private void RPC_InputReadyBtn(PlayerRef playerRef, bool isReady, RpcInfo info = new())
     {
         ready[playerRef] = isReady;
         playerSlot.SetReady(playerRef, isReady);
@@ -55,6 +49,9 @@ public class LobbyReady : NetworkBehaviour, IPlayerJoined, IPlayerLeft, ISetInsp
 
     private void RefreshStartBtn()
     {
+        if (false == Object.HasStateAuthority)
+            return;
+        
         if (ready.Count == 0)
             readyBtn.interactable = true;
         else
@@ -79,7 +76,6 @@ public class LobbyReady : NetworkBehaviour, IPlayerJoined, IPlayerLeft, ISetInsp
             readyBtn.onClick.AddListener(() =>
             {
                 isReady = false == isReady;
-                readyBtn.image.color = isReady ? Color.white : Color.gray;
                 RPC_InputReadyBtn(Runner.LocalPlayer, isReady);
             });
         }
