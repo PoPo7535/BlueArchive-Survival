@@ -2038,10 +2038,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4436439700980356856}
   - component: {fileID: 7261009368604252205}
-  - component: {fileID: 7558306649097542696}
-  - component: {fileID: 5521480009728615577}
-  - component: {fileID: 6744917956224555874}
   - component: {fileID: -1396084755437275671}
+  - component: {fileID: 3623664938111085042}
   m_Layer: 6
   m_Name: Aris
   m_TagString: Untagged
@@ -2086,62 +2084,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7558306649097542696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2854155166852420474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b957f4326df7ef546a65eb202e8c04b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ani: {fileID: 0}
-  mainCamera: {fileID: 0}
-  bullet: {fileID: 970238790205541930, guid: 165c5e191bafd4b4a83b899f0a386523, type: 3}
-  moveSpeed: 100
-  rotateSpeed: 10
---- !u!114 &5521480009728615577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2854155166852420474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 584e41cec515af64bbd268f73f0f2c6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modelMesh: {fileID: 4300000, guid: 04761d1108357d54a9631401be7818db, type: 2}
-  mouthMat: {fileID: 2100000, guid: fcac28aed62310c4da1b79f5a41e40ea, type: 2}
-  meshRender: {fileID: 774589094691686898}
-  faceMeshIndex: 2
-  meshCutStartIndex: 0
-  meshCutEndIndex: 96
-  showGizmo: 0
-  scale: 1
-  isSet: 1
---- !u!114 &6744917956224555874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2854155166852420474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SortKey: 1513612525
-  ObjectInterest: 1
-  Flags: 262145
-  NestedObjects: []
-  NetworkedBehaviours:
-  - {fileID: 7558306649097542696}
 --- !u!114 &-1396084755437275671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2158,6 +2100,23 @@ MonoBehaviour:
   mouthTx: {fileID: 2800000, guid: 0e54b9c71850da745b72039e06013ce5, type: 3}
   meshRender: {fileID: 774589094691686898}
   instMat: 0
+--- !u!114 &3623664938111085042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2854155166852420474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 3837689867
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects: []
+  NetworkedBehaviours: []
 --- !u!1 &2928164847065673032
 GameObject:
   m_ObjectHideFlags: 0

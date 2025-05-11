@@ -14,6 +14,7 @@ public class SetMat : MonoBehaviour
     {
         if (instMat)
         {
+            gameObject.name.Log();
             var materials = meshRender.materials;
             meshRender.materials = materials;
             mouthMat = meshRender.materials[^1];

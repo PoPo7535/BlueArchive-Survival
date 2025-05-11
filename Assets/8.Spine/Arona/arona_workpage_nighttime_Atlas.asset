@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
   m_Name: arona_workpage_nighttime_Atlas
   m_EditorClassIdentifier: 
-  textureLoadingMode: 0
-  onDemandTextureLoader: {fileID: 0}
   atlasFile: {fileID: 4900000, guid: 072af3fedfb9747448afb41f0b221357, type: 3}
   materials:
   - {fileID: 2100000, guid: 3e6cecda2ac390a46ad3dd0952629f7b, type: 2}

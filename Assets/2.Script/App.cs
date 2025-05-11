@@ -95,7 +95,7 @@ public class App : SimulationBehaviour, INetworkRunnerCallbacks
         await UniTask.WaitUntil(() => info.PlayerName != string.Empty && info.isSpawned);
     }
 
-    public List<PlayerRef> GetPlayers()
+    public List<PlayerRef> GetAllPlayers()
     {
         var players = Runner.ActivePlayers.ToList();
         players.Sort((p1, p2) => p1.PlayerId.CompareTo(p2.PlayerId));
@@ -104,7 +104,7 @@ public class App : SimulationBehaviour, INetworkRunnerCallbacks
     
     public int GetPlayerIndex(PlayerRef playerRef)
     {
-        var players = GetPlayers();
+        var players = GetAllPlayers();
         for (int i = 0; i < players.Count; ++i)
         {
             if (players[i].PlayerId == playerRef.PlayerId)

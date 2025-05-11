@@ -1,18 +1,21 @@
 using System.Collections.Generic;
 using System.Linq;
+using Fusion;
 using PlayFab.ClientModels;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
-using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
-using SerializationUtility = Sirenix.Serialization.SerializationUtility;
 
 public class GameManager : SerializedMonoBehaviour, ISetInspector
 {
     public static GameManager I;
     [OdinSerialize] public Dictionary<PlayableChar, GameObject> playableChar = new ();
-   
+    public NetworkObject playerBase;
+    public PlayerInfo playerInfo;
+    public EntityTokenResponse playFabEntity;
+    [Sirenix.OdinInspector.ReadOnly] public string ID;
+    
     [Button, GUIColor(0,1,0)]
     public void SetInspector()
     {
@@ -40,16 +43,6 @@ public class GameManager : SerializedMonoBehaviour, ISetInspector
         DontDestroyOnLoad(gameObject);
         I = this;
     }
-
-
-    public GameObject player;
-    public GameObject kayoko;
-    public GameObject kayoko2;
-
-    public PlayerInfo playerInfo;
-    public EntityTokenResponse playFabEntity;
-    [ReadOnly] public string ID;
-    
 }
 
 public enum PlayableChar

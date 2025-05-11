@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using Fusion;
+using Fusion.Addons.Physics;
 using Fusion.Sockets;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Spawner : NetworkBehaviour, INetworkRunnerCallbacks
@@ -63,16 +65,45 @@ public class Spawner : NetworkBehaviour, INetworkRunnerCallbacks
         input.Set(data);
     }
 
-    public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
+    public override void Spawned()
     {
-         if (HasStateAuthority)
-         {
-             var obj = player == Runner.LocalPlayer ? GameManager.I.kayoko : GameManager.I.kayoko2;
-             var playerObj = Runner.Spawn(
-                 obj, 
-                 playerPoint.position, 
-                 Quaternion.identity,player);
-         }
+        if (Object.HasStateAuthority)
+        {
+            var players = App.I.GetAllPlayers();
+            foreach (var player in players)
+            {
+                var baseObj = Runner.Spawn(
+                    GameManager.I.playerBase, 
+                    playerPoint.position, 
+                    Quaternion.identity,player);
+                
+                var charIndex = App.I.GetPlayerInfo(player).CharIndex;
+                var model = GameManager.I.playableChar[charIndex];
+                var modelObj = Runner.Spawn(
+                    model, 
+                    playerPoint.position, 
+                    Quaternion.identity,player);
+                modelObj.transform.SetParent(baseObj.transform);
+                baseObj.transform.localScale = Vector3.one * 100;
+            }
+        }
+    }
+    public async void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
+    {
+        player.Log();
+        await App.I.ConnectingPlayer(player);
+        player.Log();
+        if (Object.HasStateAuthority)
+        {
+            var charIndex = App.I.GetPlayerInfo(player).CharIndex;
+            charIndex.Log();
+            var obj = GameManager.I.playableChar[charIndex];
+            var playerObj = Runner.Spawn(
+                obj, 
+                playerPoint.position, 
+                Quaternion.identity,player);
+            playerObj.name.Log();
+        }
     }
     
     #region

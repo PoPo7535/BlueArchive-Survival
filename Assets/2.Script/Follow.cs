@@ -9,6 +9,6 @@ public class Follow : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.position = GameManager.I.player.transform.position + off;
+        // transform.position = GameManager.I.player.transform.position + off;
     }
 }

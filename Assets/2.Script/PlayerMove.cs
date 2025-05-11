@@ -1,13 +1,14 @@
 using Fusion;
+using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerMove : NetworkBehaviour, ISpawned
+public class PlayerMove : NetworkBehaviour
 {
-    private Rigidbody rigi;
-    private FindEnemy findEnemy;
-    [ReadOnly] public Animator ani;
-    [ReadOnly] public Camera mainCamera;
+    [ShowInInspector] private Rigidbody rigi;
+    [ShowInInspector] private FindEnemy findEnemy;
+    [Fusion.ReadOnly] public Animator ani;
+    [Fusion.ReadOnly] public Camera mainCamera;
     public GameObject bullet;
     [Networked] private int aniTrigger { get; set; }
     public float moveSpeed = 30;
@@ -22,17 +23,11 @@ public class PlayerMove : NetworkBehaviour, ISpawned
         // ani = gameObject.transform.GetChild(0).GetComponent<Animator>();
     }
 
-    public override void Spawned()
-    {
-        if (HasInputAuthority)
-            GameManager.I.player = gameObject;
-    }
-
     public override void FixedUpdateNetwork()
     {
         // if (false == HasStateAuthority)
         //     return;
-        ani.SetTrigger(aniTrigger);
+        // ani.SetTrigger(aniTrigger);
         if (GetInput(out Spawner.NetworkInputData data))
         {
             var dir = data.input.normalized * (moveSpeed * Runner.DeltaTime);
@@ -46,10 +41,10 @@ public class PlayerMove : NetworkBehaviour, ISpawned
         if (input is { x: 0, y: 0 })
         {
             rigi.velocity = new Vector3(0, rigi.velocity.y, 0); 
-            aniTrigger = StringToHash.Idle;
+            //aniTrigger = StringToHash.Idle;
             return; 
         }
-        aniTrigger = StringToHash.Move;
+        //aniTrigger = StringToHash.Move;
         rigi.velocity = new Vector3(dir.x, rigi.velocity.y, dir.y);
     }
 
@@ -57,8 +52,8 @@ public class PlayerMove : NetworkBehaviour, ISpawned
     {
 
         attackDelay += Runner.DeltaTime;
-        if (ani.GetCurrentAnimatorStateInfo(0).shortNameHash == StringToHash.Attack)
-            return;
+        // if (ani.GetCurrentAnimatorStateInfo(0).shortNameHash == StringToHash.Attack)
+        //     return;
         
         if (false == findEnemy.nearObj.IsUnityNull() &&attackDelayMax < attackDelay) 
         {
@@ -75,7 +70,7 @@ public class PlayerMove : NetworkBehaviour, ISpawned
         var targetRotation = Quaternion.LookRotation(new Vector3(dir.x, 0, dir.y));
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotateSpeed * Runner.DeltaTime);
     }
-    private void Shot()
+    private void Shot() 
     {
         // var ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         // var plane = new Plane(Vector3.up, transform.position);

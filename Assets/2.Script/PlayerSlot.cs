@@ -30,7 +30,7 @@ public class PlayerSlot : MonoBehaviour, ISetInspector
     public async void SetAllPlayerSlot()
     {
         await App.I.ConnectingPlayer(App.I.Runner.LocalPlayer);
-        var players = App.I.GetPlayers();
+        var players = App.I.GetAllPlayers();
 
         for (int i = 0; i < players.Count; ++i)
         {
@@ -45,7 +45,7 @@ public class PlayerSlot : MonoBehaviour, ISetInspector
     public async void SetPlayerSlot(PlayerRef playerRef)
     {
         await App.I.ConnectingPlayer(playerRef);
-        var players = App.I.GetPlayers();
+        var players = App.I.GetAllPlayers();
         for (int i = 0; i < players.Count; ++i)
         {
             if (players[i] == playerRef)
@@ -60,7 +60,7 @@ public class PlayerSlot : MonoBehaviour, ISetInspector
     public async void SetReady(PlayerRef playerRef, bool isReady)
     {
         await App.I.ConnectingPlayer(playerRef);
-        var players = App.I.GetPlayers();
+        var players = App.I.GetAllPlayers();
         for (int i = 0; i < players.Count; ++i)
         {
             if (players[i] == playerRef)

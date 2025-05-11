@@ -2514,11 +2514,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6338534888012049282}
-  - component: {fileID: 3190570180013176794}
-  - component: {fileID: 192214032225266924}
-  - component: {fileID: 2906653367521042108}
   - component: {fileID: 5363072886613982707}
   - component: {fileID: 5324391568493096450}
+  - component: {fileID: 7336266697550783640}
   m_Layer: 6
   m_Name: Miyu
   m_TagString: Untagged
@@ -2542,62 +2540,6 @@ Transform:
   - {fileID: 4617612330109146738}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3190570180013176794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4638829935162154918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b957f4326df7ef546a65eb202e8c04b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ani: {fileID: 0}
-  mainCamera: {fileID: 0}
-  bullet: {fileID: 970238790205541930, guid: 165c5e191bafd4b4a83b899f0a386523, type: 3}
-  moveSpeed: 100
-  rotateSpeed: 10
---- !u!114 &192214032225266924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4638829935162154918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SortKey: 2529908992
-  ObjectInterest: 1
-  Flags: 262145
-  NestedObjects: []
-  NetworkedBehaviours:
-  - {fileID: 3190570180013176794}
---- !u!114 &2906653367521042108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4638829935162154918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 584e41cec515af64bbd268f73f0f2c6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modelMesh: {fileID: 4300000, guid: 123f7f7ef75aafc42a9ccbe33a611ba0, type: 2}
-  mouthMat: {fileID: 2100000, guid: fcac28aed62310c4da1b79f5a41e40ea, type: 2}
-  meshRender: {fileID: 1738667985652346873}
-  faceMeshIndex: 2
-  meshCutStartIndex: 0
-  meshCutEndIndex: 96
-  showGizmo: 0
-  scale: 14.39
-  isSet: 1
 --- !u!95 &5363072886613982707
 Animator:
   serializedVersion: 5
@@ -2635,6 +2577,23 @@ MonoBehaviour:
   mouthTx: {fileID: 2800000, guid: 0e54b9c71850da745b72039e06013ce5, type: 3}
   meshRender: {fileID: 1738667985652346873}
   instMat: 0
+--- !u!114 &7336266697550783640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4638829935162154918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 3902823512
+  ObjectInterest: 1
+  Flags: 1
+  NestedObjects: []
+  NetworkedBehaviours: []
 --- !u!1 &4660753982905456276
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ public class Monster : NetworkBehaviour
     public override void FixedUpdateNetwork()
     {
         ani.SetTrigger(StringToHash.Move);
-
+        /*
         if (false == HasStateAuthority)
             return;
         
@@ -20,6 +20,7 @@ public class Monster : NetworkBehaviour
         rigi.velocity = new Vector3(dir.x, rigi.velocity.y, dir.z);
         var targetRotation = Quaternion.LookRotation(new Vector3(dir.x, 0, dir.z));
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotateSpeed * Runner.DeltaTime);
+        */
     }
 
     public void Damage()

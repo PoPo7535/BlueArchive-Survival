@@ -29,13 +29,15 @@ public class LobbyReady : NetworkBehaviour, IPlayerJoined, IPlayerLeft, ISetInsp
     
     public void PlayerJoined(PlayerRef player)
     {
-        ready.Add(player, false);
+        if (Runner.LocalPlayer != player)
+            ready.Add(player, false);
         RefreshStartBtn();
     }
 
     public void PlayerLeft(PlayerRef player)
     {
-        ready.Remove(player);
+        if (Runner.LocalPlayer != player)
+            ready.Remove(player);
         RefreshStartBtn();
     }
     

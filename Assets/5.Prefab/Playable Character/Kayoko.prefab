@@ -4426,10 +4426,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6474012141797672915}
   - component: {fileID: 132331849369872619}
-  - component: {fileID: 3652655460484466727}
-  - component: {fileID: 6444458462060479781}
-  - component: {fileID: 887924283465116595}
   - component: {fileID: -2616845493335112550}
+  - component: {fileID: 2658979476075828230}
   m_Layer: 6
   m_Name: Kayoko
   m_TagString: Untagged
@@ -4474,62 +4472,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3652655460484466727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9012993738355288034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b957f4326df7ef546a65eb202e8c04b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ani: {fileID: 0}
-  mainCamera: {fileID: 0}
-  bullet: {fileID: 970238790205541930, guid: 165c5e191bafd4b4a83b899f0a386523, type: 3}
-  moveSpeed: 100
-  rotateSpeed: 10
---- !u!114 &6444458462060479781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9012993738355288034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 584e41cec515af64bbd268f73f0f2c6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modelMesh: {fileID: 4300000, guid: 9ef02c391e93ff441b81c863cdb9f034, type: 2}
-  mouthMat: {fileID: 2100000, guid: fcac28aed62310c4da1b79f5a41e40ea, type: 2}
-  meshRender: {fileID: 4524110889138244884}
-  faceMeshIndex: 2
-  meshCutStartIndex: 0
-  meshCutEndIndex: 96
-  showGizmo: 0
-  scale: 8
-  isSet: 1
---- !u!114 &887924283465116595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9012993738355288034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SortKey: 4263069807
-  ObjectInterest: 1
-  Flags: 262145
-  NestedObjects: []
-  NetworkedBehaviours:
-  - {fileID: 3652655460484466727}
 --- !u!114 &-2616845493335112550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4546,6 +4488,23 @@ MonoBehaviour:
   mouthTx: {fileID: 2800000, guid: 0e54b9c71850da745b72039e06013ce5, type: 3}
   meshRender: {fileID: 4524110889138244884}
   instMat: 0
+--- !u!114 &2658979476075828230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9012993738355288034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 614429419
+  ObjectInterest: 1
+  Flags: 1
+  NestedObjects: []
+  NetworkedBehaviours: []
 --- !u!1 &9028005857445563446
 GameObject:
   m_ObjectHideFlags: 0
