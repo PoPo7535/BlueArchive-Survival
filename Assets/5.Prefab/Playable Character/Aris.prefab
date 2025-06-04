@@ -2040,6 +2040,7 @@ GameObject:
   - component: {fileID: 7261009368604252205}
   - component: {fileID: -1396084755437275671}
   - component: {fileID: 3623664938111085042}
+  - component: {fileID: 3547214542061529680}
   m_Layer: 6
   m_Name: Aris
   m_TagString: Untagged
@@ -2073,7 +2074,7 @@ Animator:
   m_GameObject: {fileID: 2854155166852420474}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d9ed58e832be75948936a27794f47836, type: 2}
+  m_Controller: {fileID: 9100000, guid: f3eddeb0ee9030448a7a59d84c215125, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2117,6 +2118,24 @@ MonoBehaviour:
   Flags: 262145
   NestedObjects: []
   NetworkedBehaviours: []
+--- !u!114 &3547214542061529680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2854155166852420474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 364457a66d77f2d41afc6a085d4ea3cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ani: {fileID: 7261009368604252205}
+  animClips:
+  - {fileID: 7400000, guid: 163337eced5b1214ca66e1d34c465a00, type: 2}
+  - {fileID: 7400000, guid: 40556d814a2c032459ae74aaa6c51614, type: 2}
+  - {fileID: 7400000, guid: b9b7043d93dd04f4c8adf9782423b3d4, type: 2}
+  - {fileID: 7400000, guid: e202012a33c21fb4290c7b00408430b0, type: 2}
 --- !u!1 &2928164847065673032
 GameObject:
   m_ObjectHideFlags: 0

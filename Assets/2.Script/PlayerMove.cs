@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlayerMove : PlayerComponent
 {
     [ShowInInspector] private Rigidbody rigi;
-    private FindEnemy findEnemy;
     [Fusion.ReadOnly] public Animator ani;
     [Fusion.ReadOnly] public Camera mainCamera;
     public GameObject bullet;
@@ -51,7 +50,7 @@ public class PlayerMove : PlayerComponent
     {
         attackDelay += Runner.DeltaTime;
 
-        if (false == findEnemy.nearObj.IsUnityNull() && attackDelayMax < attackDelay) 
+        if (false == PB.findEnemy.nearObj.IsUnityNull() && attackDelayMax < attackDelay) 
         {
             Shot();
             attackDelay = 0;
@@ -73,7 +72,7 @@ public class PlayerMove : PlayerComponent
         //     return;
         // var targetPoint = ray.GetPoint(distance);
         
-        var targetPoint = findEnemy.nearObj.transform.position;
+        var targetPoint = PB.findEnemy.nearObj.transform.position;
         var dir = (targetPoint - transform.position).normalized;
         var lookRotation = Quaternion.LookRotation(new Vector3(dir.x, 0, dir.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 10000);

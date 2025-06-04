@@ -3,13 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using Fusion;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Serial = UnityEngine.SerializeField;
 using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public class PlayerAniController : PlayerComponent
 {
-    [Read] private Animator ani;
+    public PlayerAni playerAni;
+    public Animator ani => playerAni.ani;
     [Networked] private int aniTrigger { get; set; }
 
     public override void Init(PlayerBase player)
@@ -18,14 +20,16 @@ public class PlayerAniController : PlayerComponent
         PB = player;
         PB.aniController = this;
     }
-    public override void FixedUpdateNetwork()
+
+    public void Awake()
     {
-        if (false == HasStateAuthority)
-            return;
-        ani.SetTrigger(aniTrigger);
+        playerAni = transform.GetChild(0).GetComponent<PlayerAni>();
     }
 
-    public void ASD()
-    {
-    }
+    // public override void FixedUpdateNetwork()
+    // {
+    //     if (false == HasStateAuthority)
+    //         return;
+    //     ani.SetTrigger(aniTrigger);
+    // }
 }

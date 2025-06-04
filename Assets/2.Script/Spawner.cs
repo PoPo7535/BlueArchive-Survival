@@ -79,10 +79,10 @@ public class Spawner : NetworkBehaviour, INetworkRunnerCallbacks
                 
                 var charIndex = App.I.GetPlayerInfo(player).CharIndex;
                 var model = GameManager.I.playableChar[charIndex];
-                var modelObj = Runner.Spawn(
-                    model, 
-                    playerPoint.position, 
-                    Quaternion.identity,player);
+                var modelObj = Instantiate(
+                    model,
+                    playerPoint.position,
+                    Quaternion.identity);
                 modelObj.transform.SetParent(baseObj.transform);
                 baseObj.transform.localScale = Vector3.one * 100;
             }

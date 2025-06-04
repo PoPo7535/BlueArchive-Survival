@@ -577,7 +577,7 @@ Animator:
   m_GameObject: {fileID: 1082433566095990754}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e831b0ba5b305f140ba9de71d0bb80cc, type: 2}
+  m_Controller: {fileID: 9100000, guid: f3eddeb0ee9030448a7a59d84c215125, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -618,7 +618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SortKey: 2216863445
   ObjectInterest: 1
-  Flags: 1
+  Flags: 262145
   NestedObjects: []
   NetworkedBehaviours: []
 --- !u!1 &1083101455940455079

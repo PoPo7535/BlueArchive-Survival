@@ -63,9 +63,9 @@ public class ChatPanel : NetworkBehaviour, IEnhancedScrollerDelegate, ISetInspec
 
     public async void PlayerJoined(PlayerRef player)
     {
+        await App.I.ConnectingPlayer(player);
         if (false == App.I.IsHost)
             return;
-        await App.I.ConnectingPlayer(player);
         var name = App.I.GetPlayerInfo(player).PlayerName.Value;
         playerNames.Add(player, name);
         RPC_NoticeSend(player, name, true);
