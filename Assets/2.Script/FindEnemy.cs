@@ -2,10 +2,15 @@ using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class FindEnemy : MonoBehaviour
+public class FindEnemy
 {
+    public FindEnemy(Transform transform)
+    {
+        this.transform = transform;
+    }
     public float radius = 5;
     private int frameCount = 0;
+    private Transform transform;
     public GameObject nearObj
     {
         get

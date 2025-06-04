@@ -3598,7 +3598,6 @@ GameObject:
   - component: {fileID: 1045847734138903264}
   - component: {fileID: 832328503041314972}
   - component: {fileID: 8930458751826804551}
-  - component: {fileID: 377901874750698743}
   - component: {fileID: 4446647335603666684}
   - component: {fileID: -8750236703293195644}
   m_Layer: 0
@@ -3707,15 +3706,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584e41cec515af64bbd268f73f0f2c6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  modelMesh: {fileID: 0}
+  mouthMat: {fileID: 0}
+  meshRender: {fileID: 0}
   faceMeshIndex: 2
-  subMeshMaxCount: 5
-  _skinned: {fileID: 4300000, guid: a58116a541e82c5408c2f8c28c6dfd94, type: 2}
-  startIndex: 0
-  offSet: {x: 0, y: 0, z: 0}
-  endIndex: 96
-  mat: {fileID: 2100000, guid: fcac28aed62310c4da1b79f5a41e40ea, type: 2}
-  tx: {fileID: 2800000, guid: 0e54b9c71850da745b72039e06013ce5, type: 3}
+  meshCutStartIndex: 0
+  meshCutEndIndex: 32
   showGizmo: 0
+  scale: 1
+  isSet: 0
 --- !u!114 &8930458751826804551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3733,19 +3732,6 @@ MonoBehaviour:
   bullet: {fileID: 970238790205541930, guid: 165c5e191bafd4b4a83b899f0a386523, type: 3}
   moveSpeed: 100
   rotateSpeed: 10
---- !u!114 &377901874750698743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7719790744615435754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61c2038333fc17d42a2c482149ea65dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 5
 --- !u!114 &4446647335603666684
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1814,7 +1814,6 @@ GameObject:
   - component: {fileID: 2292325231256168174}
   - component: {fileID: 7414801345685089400}
   - component: {fileID: 92098575219925754}
-  - component: {fileID: 6894134822112072377}
   - component: {fileID: 2973129764714938468}
   - component: {fileID: 8139427570689370941}
   m_Layer: 0
@@ -1928,19 +1927,6 @@ MonoBehaviour:
   bullet: {fileID: 970238790205541930, guid: 165c5e191bafd4b4a83b899f0a386523, type: 3}
   moveSpeed: 100
   rotateSpeed: 10
---- !u!114 &6894134822112072377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3743993230031203688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61c2038333fc17d42a2c482149ea65dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 5
 --- !u!114 &2973129764714938468
 MonoBehaviour:
   m_ObjectHideFlags: 0

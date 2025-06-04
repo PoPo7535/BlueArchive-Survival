@@ -25,11 +25,10 @@ public class GameManager : SerializedMonoBehaviour, ISetInspector
         foreach (var playable in arr.Skip(1))
         {
             var root = $"Assets/5.Prefab/Playable Character/{playable.ToString()}.prefab";
-            root.Log();
             var obj = AssetDatabase.LoadAssetAtPath<GameObject>(root);
             playableChar.Add(playable, obj);
         }
-        GameObject prefabRoot = PrefabUtility.GetOutermostPrefabInstanceRoot(gameObject);
+        var prefabRoot = PrefabUtility.GetOutermostPrefabInstanceRoot(gameObject);
         PrefabUtility.ApplyPrefabInstance(prefabRoot , InteractionMode.UserAction);
 #endif
     }
