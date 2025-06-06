@@ -41,9 +41,12 @@ public class PlayerMove : PlayerComponent
         if (input is { x: 0, y: 0 })
         {
             rigi.velocity = new Vector3(0, rigi.velocity.y, 0); 
+            PB.aniController.SetTrigger(StringToHash.Idle);
             return; 
         }
         rigi.velocity = new Vector3(dir.x, rigi.velocity.y, dir.y);
+        PB.aniController.SetTrigger(StringToHash.Move);
+
     }
 
     private void Rotation(Vector2 input, Vector2 dir)
@@ -57,7 +60,7 @@ public class PlayerMove : PlayerComponent
             Runner.Spawn(bullet, transform.position + (transform.forward + Vector3.up) * 0.5f, transform.rotation);
             return;
         }
-
+        
         if (input is { x: 0, y: 0 })
             return;
         

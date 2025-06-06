@@ -2133,7 +2133,7 @@ MonoBehaviour:
   ani: {fileID: 7261009368604252205}
   animClips:
   - {fileID: 7400000, guid: 163337eced5b1214ca66e1d34c465a00, type: 2}
-  - {fileID: 7400000, guid: 40556d814a2c032459ae74aaa6c51614, type: 2}
+  - {fileID: 7400000, guid: 1efd564204d55884dba6526f53b1482d, type: 2}
   - {fileID: 7400000, guid: b9b7043d93dd04f4c8adf9782423b3d4, type: 2}
   - {fileID: 7400000, guid: e202012a33c21fb4290c7b00408430b0, type: 2}
 --- !u!1 &2928164847065673032

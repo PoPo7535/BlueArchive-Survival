@@ -780,7 +780,6 @@ GameObject:
   - component: {fileID: 100308195}
   - component: {fileID: 100308196}
   - component: {fileID: 100308194}
-  - component: {fileID: 100308197}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -846,87 +845,6 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 100308194}
---- !u!114 &100308197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100308193}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -232609262, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnInput:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 100308194}
-        m_TargetAssemblyTypeName: Spawner, Assembly-CSharp
-        m_MethodName: OnInput
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnInputMissing:
-    m_PersistentCalls:
-      m_Calls: []
-  OnConnectedToServer:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDisconnectedFromServer:
-    m_PersistentCalls:
-      m_Calls: []
-  OnConnectRequest:
-    m_PersistentCalls:
-      m_Calls: []
-  OnConnectFailed:
-    m_PersistentCalls:
-      m_Calls: []
-  PlayerJoined:
-    m_PersistentCalls:
-      m_Calls: []
-  PlayerLeft:
-    m_PersistentCalls:
-      m_Calls: []
-  OnSimulationMessage:
-    m_PersistentCalls:
-      m_Calls: []
-  OnShutdown:
-    m_PersistentCalls:
-      m_Calls: []
-  OnSessionListUpdate:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCustomAuthenticationResponse:
-    m_PersistentCalls:
-      m_Calls: []
-  OnHostMigration:
-    m_PersistentCalls:
-      m_Calls: []
-  OnSceneLoadDone:
-    m_PersistentCalls:
-      m_Calls: []
-  OnSceneLoadStart:
-    m_PersistentCalls:
-      m_Calls: []
-  OnReliableData:
-    m_PersistentCalls:
-      m_Calls: []
-  OnReliableProgress:
-    m_PersistentCalls:
-      m_Calls: []
-  OnObjectEnterAOI:
-    m_PersistentCalls:
-      m_Calls: []
-  OnObjectExitAOI:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!64 &103022000
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17651,9 +17569,6 @@ PrefabInstance:
       insertIndex: 195
       addedObject: {fileID: 16306114}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cbd3c582c7c83264f99a3ed890539100, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2076583320}
     - targetCorrespondingSourceObject: {fileID: -2734097729576993907, guid: cbd3c582c7c83264f99a3ed890539100, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2076583875}
@@ -19305,29 +19220,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1022563789}
   m_SourcePrefab: {fileID: 100100000, guid: cbd3c582c7c83264f99a3ed890539100, type: 3}
---- !u!1 &2076583318 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cbd3c582c7c83264f99a3ed890539100, type: 3}
-  m_PrefabInstance: {fileID: 2076583317}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2076583319 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8828396784247586997, guid: cbd3c582c7c83264f99a3ed890539100, type: 3}
   m_PrefabInstance: {fileID: 2076583317}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2076583320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2076583318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd3740588affcf544ad4be9c1d5defaf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: f6f0ba379b5a82a41806d1a1fb78278b, type: 2}
 --- !u!1 &2076583321 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8387091422192159491, guid: cbd3c582c7c83264f99a3ed890539100, type: 3}

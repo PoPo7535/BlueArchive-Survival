@@ -67,27 +67,18 @@ public class Spawner : NetworkBehaviour, INetworkRunnerCallbacks
 
     public override void Spawned()
     {
-        if (Object.HasStateAuthority)
+        if (false == Object.HasStateAuthority)
+            return;
+        var players = App.I.GetAllPlayers();
+        foreach (var player in players)
         {
-            var players = App.I.GetAllPlayers();
-            foreach (var player in players)
-            {
-                var baseObj = Runner.Spawn(
-                    GameManager.I.playerBase, 
-                    playerPoint.position, 
-                    Quaternion.identity,player);
-                
-                var charIndex = App.I.GetPlayerInfo(player).CharIndex;
-                var model = GameManager.I.playableChar[charIndex];
-                var modelObj = Instantiate(
-                    model,
-                    playerPoint.position,
-                    Quaternion.identity);
-                modelObj.transform.SetParent(baseObj.transform);
-                baseObj.transform.localScale = Vector3.one * 100;
-            }
+            var baseObj = Runner.Spawn(
+                GameManager.I.playerBase, 
+                playerPoint.position, 
+                Quaternion.identity,player);
         }
     }
+
     public async void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
         player.Log();

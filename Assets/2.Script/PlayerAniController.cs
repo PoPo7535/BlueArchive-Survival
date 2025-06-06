@@ -12,7 +12,7 @@ public class PlayerAniController : PlayerComponent
 {
     public PlayerAni playerAni;
     public Animator ani => playerAni.ani;
-    [Networked] private int aniTrigger { get; set; }
+    private int aniTrigger { get; set; }
 
     public override void Init(PlayerBase player)
     {
@@ -21,15 +21,13 @@ public class PlayerAniController : PlayerComponent
         PB.aniController = this;
     }
 
-    public void Awake()
+    public void SetTrigger(int aniTrigger)
     {
-        playerAni = transform.GetChild(0).GetComponent<PlayerAni>();
+        this.aniTrigger = aniTrigger;
     }
-
-    // public override void FixedUpdateNetwork()
-    // {
-    //     if (false == HasStateAuthority)
-    //         return;
-    //     ani.SetTrigger(aniTrigger);
-    // }
+    public void LateUpdate()
+    {
+        aniTrigger.Log();
+        ani.SetTrigger(aniTrigger);
+    }
 }

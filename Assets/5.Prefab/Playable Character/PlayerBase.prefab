@@ -56,6 +56,7 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 3745889242541957618}
+  - {fileID: 8822829247813531345}
   - {fileID: 3981787209828191049}
   - {fileID: 7120439622682882317}
 --- !u!54 &106529659304070036
@@ -83,7 +84,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!135 &-5724702452444608168
 SphereCollider:
@@ -173,4 +174,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PB: {fileID: 0}
-  ani: {fileID: 0}
+  playerAni: {fileID: 0}
