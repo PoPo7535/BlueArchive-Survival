@@ -11,6 +11,7 @@ public class PlayerBase : NetworkBehaviour
 {
     [Read] public PlayerAniController aniController;
     [Read] public PlayerMove playerMove;
+    [Read] public PlayerStateController playerStateController;
     public FindEnemy findEnemy;
     private void Awake()
     {

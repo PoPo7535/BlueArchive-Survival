@@ -17,7 +17,6 @@ public class PlayerAniController : PlayerComponent
     public override void Init(PlayerBase player)
     {
         base.Init(player);
-        PB = player;
         PB.aniController = this;
     }
 

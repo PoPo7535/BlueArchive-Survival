@@ -6,7 +6,7 @@ using Serial = UnityEngine.SerializeField;
 using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
-public class PlayerMove : PlayerComponent ,ISetInspector
+public class PlayerMove : PlayerComponent, ISetInspector
 {
     [Serial, Read] private Rigidbody rigi;
     [Read] public Animator ani;
@@ -28,7 +28,6 @@ public class PlayerMove : PlayerComponent ,ISetInspector
     public override void Init(PlayerBase player)
     {
         base.Init(player);
-        PB = player;
         PB.playerMove = this;
     }
 
