@@ -2,12 +2,15 @@ using Fusion;
 using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 using UnityEngine;
+using Serial = UnityEngine.SerializeField;
+using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
+using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
-public class PlayerMove : PlayerComponent
+public class PlayerMove : PlayerComponent ,ISetInspector
 {
-    [ShowInInspector] private Rigidbody rigi;
-    [Fusion.ReadOnly] public Animator ani;
-    [Fusion.ReadOnly] public Camera mainCamera;
+    [Serial, Read] private Rigidbody rigi;
+    [Read] public Animator ani;
+    [Read] public Camera mainCamera;
     public GameObject bullet;
     public float moveSpeed = 30;
     public float rotateSpeed = 30;
@@ -15,15 +18,18 @@ public class PlayerMove : PlayerComponent
     private float attackDelay = 0;
     private const float attackDelayMax = 2f;
 
+    [Button, GUIColor(0, 1, 0)]
+    public void SetInspector()
+    {
+        rigi = GetComponent<Rigidbody>();
+    }
+    
+    
     public override void Init(PlayerBase player)
     {
         base.Init(player);
         PB = player;
         PB.playerMove = this;
-    }
-    private void Awake()
-    {
-        rigi = GetComponent<Rigidbody>();
     }
 
     public override void FixedUpdateNetwork()
@@ -80,6 +86,4 @@ public class PlayerMove : PlayerComponent
         var lookRotation = Quaternion.LookRotation(new Vector3(dir.x, 0, dir.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 10000);
     }
-
-
 }

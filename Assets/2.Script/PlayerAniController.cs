@@ -27,7 +27,6 @@ public class PlayerAniController : PlayerComponent
     }
     public void LateUpdate()
     {
-        aniTrigger.Log();
         ani.SetTrigger(aniTrigger);
     }
 }

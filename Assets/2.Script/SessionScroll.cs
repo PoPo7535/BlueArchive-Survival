@@ -31,11 +31,8 @@ public class SessionScroll : MonoBehaviour, IEnhancedScrollerDelegate, INetworkR
     public EnhancedScrollerCellView GetCellView(EnhancedScroller scroller, int dataIndex, int cellIndex)
     {
         var cellView = scroller.GetCellView(cellViewPrefab) as SessionScrollCell;
-
         cellView.name = $"Cell {dataIndex}";
-
         cellView.SetData(_data[dataIndex]);
-
         return cellView;
     }
 

@@ -4428,6 +4428,7 @@ GameObject:
   - component: {fileID: 132331849369872619}
   - component: {fileID: -2616845493335112550}
   - component: {fileID: 2658979476075828230}
+  - component: {fileID: -8767344695064594881}
   m_Layer: 6
   m_Name: Kayoko
   m_TagString: Untagged
@@ -4505,6 +4506,24 @@ MonoBehaviour:
   Flags: 262145
   NestedObjects: []
   NetworkedBehaviours: []
+--- !u!114 &-8767344695064594881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9012993738355288034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 364457a66d77f2d41afc6a085d4ea3cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ani: {fileID: 132331849369872619}
+  animClips:
+  - {fileID: 7400000, guid: 67bf829d5a077ee4cab5664d9d681010, type: 2}
+  - {fileID: 7400000, guid: f9bd5a4ecf2d47d4e904531a3ef779bd, type: 2}
+  - {fileID: 7400000, guid: 56d701ec0738d8540b36339690787fcf, type: 2}
+  - {fileID: 7400000, guid: 88007510b5f10074cbbdf8ff9826fbc5, type: 2}
 --- !u!1 &9028005857445563446
 GameObject:
   m_ObjectHideFlags: 0

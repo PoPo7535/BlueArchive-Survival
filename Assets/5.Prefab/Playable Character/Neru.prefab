@@ -544,6 +544,7 @@ GameObject:
   - component: {fileID: 7984810376399560655}
   - component: {fileID: 2761008949578555476}
   - component: {fileID: 831009052394401316}
+  - component: {fileID: 923940862363882180}
   m_Layer: 6
   m_Name: Neru
   m_TagString: Untagged
@@ -621,6 +622,24 @@ MonoBehaviour:
   Flags: 262145
   NestedObjects: []
   NetworkedBehaviours: []
+--- !u!114 &923940862363882180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082433566095990754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 364457a66d77f2d41afc6a085d4ea3cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ani: {fileID: 7984810376399560655}
+  animClips:
+  - {fileID: 7400000, guid: 435ffbed71179334c8ec9d7df979c566, type: 2}
+  - {fileID: 7400000, guid: dd50a6779fd92854c9ae023582e8e700, type: 2}
+  - {fileID: 7400000, guid: 124aa43450782e64b8adc6c0794e1fbc, type: 2}
+  - {fileID: 7400000, guid: ecc29f386b571ae4d86f8da7876789e2, type: 2}
 --- !u!1 &1083101455940455079
 GameObject:
   m_ObjectHideFlags: 0

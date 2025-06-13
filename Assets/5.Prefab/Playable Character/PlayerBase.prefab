@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PB: {fileID: 0}
+  rigi: {fileID: 106529659304070036}
   ani: {fileID: 0}
   mainCamera: {fileID: 0}
   bullet: {fileID: 0}

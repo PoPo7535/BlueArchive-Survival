@@ -46,12 +46,4 @@ public class CharacterView : MonoBehaviour, ISetInspector
     {
          views[App.I.GetPlayerIndex(playerRef)].Clear();
     }
-
-    [Button]
-    public void Test(int number, PlayableChar ch)
-    {
-        if (Application.isPlaying)
-            views[number].SetChar(ch);
-    }
-
 }
