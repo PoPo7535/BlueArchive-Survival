@@ -10,7 +10,7 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public class PlayerAniController : PlayerComponent
 {
-    public PlayerAni playerAni;
+    [Serial, Read]public PlayerAni playerAni;
     public Animator ani => playerAni.ani;
     private int aniTrigger { get; set; }
 

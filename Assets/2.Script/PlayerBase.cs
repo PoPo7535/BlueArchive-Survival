@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Fusion;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Serial = UnityEngine.SerializeField;
 using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
@@ -10,8 +11,7 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 public class PlayerBase : NetworkBehaviour
 {
     [Read] public PlayerAniController aniController;
-    [Read] public PlayerMove playerMove;
-    [Read] public PlayerStateController playerStateController;
+    [FormerlySerializedAs("stateController")] [Read] public PlayerFsmController fsmController;
     public FindEnemy findEnemy;
     private void Awake()
     {
