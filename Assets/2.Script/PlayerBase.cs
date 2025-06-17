@@ -11,7 +11,7 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 public class PlayerBase : NetworkBehaviour
 {
     [Read] public PlayerAniController aniController;
-    [FormerlySerializedAs("stateController")] [Read] public PlayerFsmController fsmController;
+    [Read] public PlayerFsmController fsmController;
     public FindEnemy findEnemy;
     private void Awake()
     {

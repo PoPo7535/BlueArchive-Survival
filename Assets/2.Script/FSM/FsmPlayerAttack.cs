@@ -8,18 +8,26 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public class FsmPlayerAttack : FsmPlayerBase
 {
+    private bool doAttack = true;
+    public override void OnInit(IFsmStateOther other)
+    {
+        base.OnInit(other);
+        _controller.attackFun = Shot;
+    }
+
     public override void OnEnter()
     {
+        doAttack = true;
         ani.SetTrigger(StringToHash.Attack);   
         ani.Update(0f);
     }
     public override void OnUpdate(Spawner.NetworkInputData data)
     {
-        RotateFromTarget();
+        if (doAttack)
+            RotateFromTarget();
         var stateInfo = ani.GetCurrentAnimatorStateInfo(0); 
         if (stateInfo.shortNameHash != StringToHash.Attack)
         {
-            Shot();
             _other.ChangeState(FsmState.Idle);
         }
 
@@ -35,8 +43,9 @@ public class FsmPlayerAttack : FsmPlayerBase
         var lookRotation = Quaternion.LookRotation(new Vector3(dir.x, 0, dir.z));
         tr.rotation = Quaternion.Slerp(tr.rotation, lookRotation, 10000);
     }
-    private void Shot() 
+    private void Shot()
     {
+        doAttack = false;
         var tr = _controller.transform;
         _controller.attackDelay = 0;
         _controller.Runner.Spawn(_controller.bullet, tr.position + (tr.forward + Vector3.up) * 0.5f, tr.rotation);

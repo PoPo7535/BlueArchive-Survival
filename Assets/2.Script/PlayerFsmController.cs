@@ -8,7 +8,6 @@ using Serial = UnityEngine.SerializeField;
 using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
-
 public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspector
 {
     private IFsmStateTarget _idleStateTarget;
@@ -24,13 +23,13 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
     [Fold("State")] public float rotateSpeed = 30;
     [Fold("State")] public float attackDelay = 0;
     [Fold("State")] public float attackDelayMax = 2f;
+    public Action attackFun;
 
     [Button, GUIColor(0, 1, 0)]
     public void SetInspector()
     {
         rigi = GetComponent<Rigidbody>();
     }
-
 
     public override void Init(PlayerBase player)
     {
@@ -71,6 +70,11 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
         _currentStateTarget.OnEnter();
     }
 
+
+    public void OnAttack()
+    {
+        attackFun?.Invoke();
+    }
 
     public void Move(Spawner.NetworkInputData data)
     {
