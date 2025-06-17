@@ -142,8 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aniController: {fileID: 0}
-  playerMove: {fileID: 0}
-  stateController: {fileID: 0}
+  fsmController: {fileID: 0}
 --- !u!114 &7120439622682882317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,5 +170,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigi: {fileID: 106529659304070036}
   bullet: {fileID: 970238790205541930, guid: 165c5e191bafd4b4a83b899f0a386523, type: 3}
-  moveSpeed: 30
+  moveSpeed: 150
   rotateSpeed: 30

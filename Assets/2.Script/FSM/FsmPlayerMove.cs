@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FsmPlayerIdle : FsmPlayerBase
+public class FsmPlayerMove : FsmPlayerBase
 {
     public override void OnUpdate(Spawner.NetworkInputData data)
     {
@@ -9,16 +9,17 @@ public class FsmPlayerIdle : FsmPlayerBase
             _other.ChangeState(FsmState.Attack);
             return;
         }
-        if (data.input != Vector2.zero)
+        if (data.input == Vector2.zero)
         {
-            _other.ChangeState(FsmState.Move);
+            _other.ChangeState(FsmState.Idle);
             return;
         }
-        ani.SetTrigger(StringToHash.Idle);
+        _other.Move(data);
+        _other.Rotation(data);
+        ani.SetTrigger(StringToHash.Move);   
     }
-
     public override void OnExit()
     {
-        ani.ResetTrigger(StringToHash.Idle);
+        ani.ResetTrigger(StringToHash.Move);
     }
 }

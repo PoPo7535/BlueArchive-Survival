@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Fusion;
-using Fusion.Addons.Physics;
 using Fusion.Sockets;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Spawner : NetworkBehaviour, INetworkRunnerCallbacks
