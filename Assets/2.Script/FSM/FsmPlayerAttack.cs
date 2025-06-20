@@ -12,7 +12,7 @@ public class FsmPlayerAttack : FsmPlayerBase
     public override void OnInit(IFsmStateOther other)
     {
         base.OnInit(other);
-        _controller.attackFun = Shot;
+        _controller.attackAction = Shot;
     }
 
     public override void OnEnter()
@@ -25,6 +25,7 @@ public class FsmPlayerAttack : FsmPlayerBase
     {
         if (doAttack)
             RotateFromTarget();
+        
         var stateInfo = ani.GetCurrentAnimatorStateInfo(0); 
         if (stateInfo.shortNameHash != StringToHash.Attack)
         {

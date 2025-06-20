@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -13,15 +14,18 @@ public class PlayerAni : MonoBehaviour, ISetInspector
     [Read] public Animator ani;
     public AnimationClip[] animClips;
     private PlayerBase pb;
+    
     [Button, GUIColor(0,1,0)]
     public void SetInspector()
     {
         ani = GetComponent<Animator>();
+
     }
 
     private void Awake()
     {
         SetAnimatorController();
+        
     }
     public void OnAttack()
     {

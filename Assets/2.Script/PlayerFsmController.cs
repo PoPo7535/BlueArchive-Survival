@@ -23,7 +23,7 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
     [Fold("State")] public float rotateSpeed = 30;
     [Fold("State")] public float attackDelay = 0;
     [Fold("State")] public float attackDelayMax = 2f;
-    public Action attackFun;
+    public Action attackAction;
 
     [Button, GUIColor(0, 1, 0)]
     public void SetInspector()
@@ -58,8 +58,9 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
 
     public void ChangeState(FsmState newState)
     {
+        PB.aniController.ChangeSpeed(1);
         _currentStateTarget.OnExit();
-        $"Changed {newState}".Log();
+        // $"Changed {newState}".Log();
         _currentStateTarget = newState switch
         {
             FsmState.Idle => _idleStateTarget,
@@ -73,7 +74,7 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
 
     public void OnAttack()
     {
-        attackFun?.Invoke();
+        attackAction?.Invoke();
     }
 
     public void Move(Spawner.NetworkInputData data)
