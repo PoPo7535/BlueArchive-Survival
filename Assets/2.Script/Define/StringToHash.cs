@@ -9,5 +9,11 @@ public static class StringToHash
     public static readonly int Attack = Animator.StringToHash("Attack");
     public static readonly int Formation_Idle = Animator.StringToHash("Formation Idle");
 
-    
+    public static readonly Dictionary<FsmState, int> StateHash = new()
+    {
+        { FsmState.Idle, Idle },
+        { FsmState.Move, Move },
+        { FsmState.Attack, Attack },
+    };
+
 }

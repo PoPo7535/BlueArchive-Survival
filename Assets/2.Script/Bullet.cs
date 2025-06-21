@@ -20,11 +20,14 @@ public class Bullet : NetworkBehaviour
     {
         if (false == HasStateAuthority)
             return;
-        
+
         if (timer.ExpiredOrNotRunning(Runner))
+        {
             Runner.Despawn(Object);
+            return;
+        }
         
-        transform.Translate(Vector3.forward * (speed * Time.deltaTime),Space.Self);
+        transform.Translate(Vector3.forward * (speed * Runner.DeltaTime),Space.Self);
     }
 
     private void OnTriggerEnter(Collider other)

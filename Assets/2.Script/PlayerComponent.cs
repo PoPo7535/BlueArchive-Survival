@@ -5,12 +5,11 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public class PlayerComponent : NetworkBehaviour, IPlayerComponent
 {
-    [Read] public PlayerBase PB => playerBase;
-    private PlayerBase playerBase;
+    [Read] public PlayerBase Player { get; private set; }
 
     public virtual void Init(PlayerBase player)
     {
-        playerBase = player;
+        Player = player;
     }
 }
 

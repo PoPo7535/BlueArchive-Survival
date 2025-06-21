@@ -636,7 +636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ani: {fileID: 7984810376399560655}
   animClips:
-  - {fileID: 7400000, guid: 435ffbed71179334c8ec9d7df979c566, type: 2}
+  - {fileID: 7400000, guid: 37ee25fa86183e14f8694faa145d16fb, type: 2}
   - {fileID: 7400000, guid: dd50a6779fd92854c9ae023582e8e700, type: 2}
   - {fileID: 7400000, guid: 124aa43450782e64b8adc6c0794e1fbc, type: 2}
   - {fileID: 7400000, guid: ecc29f386b571ae4d86f8da7876789e2, type: 2}

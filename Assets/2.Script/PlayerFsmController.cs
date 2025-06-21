@@ -34,7 +34,7 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
     public override void Init(PlayerBase player)
     {
         base.Init(player);
-        PB.fsmController = this;
+        Player.fsm = this;
         
         _idleStateTarget = new FsmPlayerIdle();
         _moveStateTarget = new FsmPlayerMove();
@@ -58,9 +58,8 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
 
     public void ChangeState(FsmState newState)
     {
-        PB.aniController.ChangeSpeed(1);
+        Player.ani.ChangeSpeed(newState);
         _currentStateTarget.OnExit();
-        // $"Changed {newState}".Log();
         _currentStateTarget = newState switch
         {
             FsmState.Idle => _idleStateTarget,
@@ -92,7 +91,7 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
 
     public bool CanAttack()
     {
-        return false == PB.findEnemy.nearObj.IsUnityNull() && attackDelayMax < attackDelay;
+        return false == Player.findEnemy.nearObj.IsUnityNull() && attackDelayMax < attackDelay;
     }
 }
 

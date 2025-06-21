@@ -8,34 +8,35 @@ using UnityEngine.Serialization;
 using Serial = UnityEngine.SerializeField;
 using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
+using Random = UnityEngine.Random;
 
 public class PlayerAniController : PlayerComponent
 {
     [Serial, Read] public PlayerAni playerAni;
     public Animator ani => playerAni.ani;
 
-    private Dictionary<int, float> dic = new();
+    private Dictionary<FsmState, float> dic = new();
     public override void Init(PlayerBase player)
     {
         base.Init(player);
-        PB.aniController = this;
+        Player.ani = this;
     }
 
     public void Start()
     {
         var controller = ani.runtimeAnimatorController;
-        foreach (var clip in controller.animationClips)
+        foreach (var clip in FsmState.Idle.ToArray())
         {
-            dic.Add(Animator.StringToHash(clip.name.Split('_')[1]), 1f);
+            dic.Add(clip, 1f);
         }
+        
         var ac = controller.animationClips.FirstOrDefault
             (c => c.name.Split('_')[1] == nameof(StringToHash.Attack));
-        dic[StringToHash.Attack] = ac.length > 0 ? 1f / ac.length : 1.0f;
-        dic[StringToHash.Attack].Log();
+        dic[FsmState.Attack] = ac.length / 2f;
     }
 
-    public void ChangeSpeed(int stringHash)
+    public void ChangeSpeed(FsmState state, float speed = 1f)
     {
-        ani.speed = dic[stringHash];
+        ani.speed = dic[state] * speed;
     }
 }

@@ -10,8 +10,9 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public class PlayerBase : NetworkBehaviour
 {
-    [Read] public PlayerAniController aniController;
-    [Read] public PlayerFsmController fsmController;
+    [Read] public PlayerAniController ani;
+    [Read] public PlayerFsmController fsm;
+    [Read] public PlayerState state;
     public FindEnemy findEnemy;
     private void Awake()
     {
@@ -34,7 +35,7 @@ public class PlayerBase : NetworkBehaviour
             Quaternion.identity);
         modelObj.transform.SetParent(transform);
         transform.localScale = Vector3.one * 100;
-        aniController.playerAni = modelObj.GetComponent<PlayerAni>();
+        ani.playerAni = modelObj.GetComponent<PlayerAni>();
     }
 }
 

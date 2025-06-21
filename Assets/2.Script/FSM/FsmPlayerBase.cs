@@ -5,7 +5,7 @@ public class FsmPlayerBase : IFsmStateTarget
 {
     protected IFsmStateOther _other;
     protected PlayerFsmController _controller;
-    protected Animator ani => _controller.PB.aniController.ani;
+    protected Animator ani => _controller.Player.ani.ani;
     public virtual void OnInit(IFsmStateOther other)
     {
         _other = other;

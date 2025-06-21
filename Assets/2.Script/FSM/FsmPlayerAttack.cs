@@ -39,7 +39,7 @@ public class FsmPlayerAttack : FsmPlayerBase
     private void RotateFromTarget()
     {
         var tr = _controller.transform;
-        var targetPoint = _controller.PB.findEnemy.nearObj.transform.position;
+        var targetPoint = _controller.Player.findEnemy.nearObj.transform.position;
         var dir = (targetPoint - tr.position).normalized;
         var lookRotation = Quaternion.LookRotation(new Vector3(dir.x, 0, dir.z));
         tr.rotation = Quaternion.Slerp(tr.rotation, lookRotation, 10000);
