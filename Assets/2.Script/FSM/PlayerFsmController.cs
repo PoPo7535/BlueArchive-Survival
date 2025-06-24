@@ -19,7 +19,6 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
 
     [Serial, Read] public Rigidbody rigi;
     public GameObject bullet;
-    [Fold("State")] public float moveSpeed = 30;
     [Fold("State")] public float rotateSpeed = 30;
     [Fold("State")] public float attackDelay = 0;
     [Fold("State")] public float attackDelayMax = 2f;
@@ -78,13 +77,13 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
 
     public void Move(Spawner.NetworkInputData data)
     {
-        var dir = data.input.normalized * (moveSpeed * Runner.DeltaTime);
+        var dir = data.input.normalized * (Player.state.moveSpeed * Runner.DeltaTime);
         rigi.velocity = new Vector3(dir.x,  rigi.velocity.y, dir.y);
     }
 
     public void Rotation(Spawner.NetworkInputData data)
     {
-        var dir = data.input.normalized * (moveSpeed * Runner.DeltaTime);
+        var dir = data.input.normalized * (Player.state.moveSpeed * Runner.DeltaTime);
         var targetRotation = Quaternion.LookRotation(new Vector3(dir.x, 0, dir.y));
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotateSpeed * Runner.DeltaTime);
     }

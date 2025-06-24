@@ -70,28 +70,26 @@ public class Spawner : NetworkBehaviour, INetworkRunnerCallbacks
         var players = App.I.GetAllPlayers();
         foreach (var player in players)
         {
+            var playerInfo = App.I.GetPlayerInfo(player);
             var baseObj = Runner.Spawn(
                 GameManager.I.playerBase, 
                 playerPoint.position, 
                 Quaternion.identity,player);
+            playerInfo.Obj = baseObj;
         }
     }
 
     public async void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
-        player.Log();
         await App.I.ConnectingPlayer(player);
-        player.Log();
         if (Object.HasStateAuthority)
         {
             var charIndex = App.I.GetPlayerInfo(player).CharIndex;
-            charIndex.Log();
             var obj = GameManager.I.playableChar[charIndex];
             var playerObj = Runner.Spawn(
                 obj, 
                 playerPoint.position, 
                 Quaternion.identity,player);
-            playerObj.name.Log();
         }
     }
     
@@ -114,5 +112,4 @@ public class Spawner : NetworkBehaviour, INetworkRunnerCallbacks
     public void OnSceneLoadDone(NetworkRunner runner) { }
     public void OnSceneLoadStart(NetworkRunner runner) { }
     #endregion
-
 }

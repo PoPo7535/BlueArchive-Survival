@@ -16,9 +16,10 @@ GameObject:
   - component: {fileID: 8822829247813531345}
   - component: {fileID: 7120439622682882317}
   - component: {fileID: 2076192928926661857}
+  - component: {fileID: 2583031555111653973}
   m_Layer: 0
   m_Name: PlayerBase
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59,6 +60,7 @@ MonoBehaviour:
   - {fileID: 8822829247813531345}
   - {fileID: 7120439622682882317}
   - {fileID: 2076192928926661857}
+  - {fileID: 2583031555111653973}
 --- !u!54 &106529659304070036
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -141,8 +143,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 254a43596f771a946bce94219e68a762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aniController: {fileID: 0}
-  fsmController: {fileID: 0}
+  ani: {fileID: 0}
+  fsm: {fileID: 0}
+  state: {fileID: 0}
 --- !u!114 &7120439622682882317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,5 +173,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigi: {fileID: 106529659304070036}
   bullet: {fileID: 970238790205541930, guid: 165c5e191bafd4b4a83b899f0a386523, type: 3}
-  moveSpeed: 150
   rotateSpeed: 30
+  attackDelay: 0
+  attackDelayMax: 2
+--- !u!114 &2583031555111653973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8533673056719659803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91bb7999731a1f408db125fc5e43310, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
+  maxHp: 100
+  attack: 0
+  defensive: 0
+  moveSpeed: 100
+  exp: 0

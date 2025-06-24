@@ -1,12 +1,16 @@
+using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-using Fusion;
-using PlayFab.ClientModels;
-using Sirenix.OdinInspector;
 using Sirenix.Serialization;
+using Sirenix.OdinInspector;
+using PlayFab.ClientModels;
+using Fusion;
+#if UNITY_EDITOR   
 using UnityEditor;
-using UnityEngine;
-
+#endif
+using Serial = UnityEngine.SerializeField;
+using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
+using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 public class GameManager : SerializedMonoBehaviour, ISetInspector
 {
     public static GameManager I;
@@ -14,7 +18,7 @@ public class GameManager : SerializedMonoBehaviour, ISetInspector
     public NetworkObject playerBase;
     public PlayerInfo playerInfo;
     public EntityTokenResponse playFabEntity;
-    [Sirenix.OdinInspector.ReadOnly] public string ID;
+    [Read] public string ID;
     
     [Button, GUIColor(0,1,0)]
     public void SetInspector()

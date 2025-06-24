@@ -54,6 +54,8 @@ MonoBehaviour:
   moveSpeed: 100
   rotateSpeed: 10
   ani: {fileID: 2116902545299958876}
+  expObj: {fileID: 4342336887132166862, guid: eb851445ec132a446996b66a398ccd3d, type: 3}
+  target: {fileID: 0}
 --- !u!136 &2828713654158980025
 CapsuleCollider:
   m_ObjectHideFlags: 0
