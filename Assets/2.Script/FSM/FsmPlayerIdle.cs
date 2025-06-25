@@ -2,16 +2,20 @@ using UnityEngine;
 
 public class FsmPlayerIdle : FsmPlayerBase
 {
+    public FsmPlayerIdle(IFsmStateOther other) : base(other)
+    {
+    }
+
     public override void OnUpdate(Spawner.NetworkInputData data)
     {
-        if (_other.CanAttack())
+        if (other.CanAttack())
         {
-            _other.ChangeState(FsmState.Attack);
+            other.ChangeState(FsmState.Attack);
             return;
         }
         if (data.input != Vector2.zero)
         {
-            _other.ChangeState(FsmState.Move);
+            other.ChangeState(FsmState.Move);
             return;
         }
         ani.SetTrigger(StringToHash.Idle);

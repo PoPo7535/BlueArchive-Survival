@@ -35,12 +35,9 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
         base.Init(player);
         Player.fsm = this;
         
-        _idleStateTarget = new FsmPlayerIdle();
-        _moveStateTarget = new FsmPlayerMove();
-        _attackStateTarget = new FsmPlayerAttack();
-        _idleStateTarget.OnInit(this);
-        _moveStateTarget.OnInit(this);
-        _attackStateTarget.OnInit(this);
+        _idleStateTarget = new FsmPlayerIdle(this);
+        _moveStateTarget = new FsmPlayerMove(this);
+        _attackStateTarget = new FsmPlayerAttack(this);
         // _skillStateTarget.OnInit(this);
 
         _currentStateTarget = _idleStateTarget;

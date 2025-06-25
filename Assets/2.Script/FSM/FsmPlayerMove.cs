@@ -2,20 +2,24 @@ using UnityEngine;
 
 public class FsmPlayerMove : FsmPlayerBase
 {
+    public FsmPlayerMove(IFsmStateOther other) : base(other)
+    {
+    }
+
     public override void OnUpdate(Spawner.NetworkInputData data)
     {
-        if (_other.CanAttack())
+        if (other.CanAttack())
         {
-            _other.ChangeState(FsmState.Attack);
+            other.ChangeState(FsmState.Attack);
             return;
         }
         if (data.input == Vector2.zero)
         {
-            _other.ChangeState(FsmState.Idle);
+            other.ChangeState(FsmState.Idle);
             return;
         }
-        _other.Move(data);
-        _other.Rotation(data);
+        other.Move(data);
+        other.Rotation(data);
         ani.SetTrigger(StringToHash.Move);   
     }
     public override void OnExit()

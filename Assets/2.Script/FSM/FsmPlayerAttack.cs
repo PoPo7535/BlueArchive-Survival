@@ -9,9 +9,10 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 public class FsmPlayerAttack : FsmPlayerBase
 {
     private bool doAttack = true;
-    public override void OnInit(IFsmStateOther other)
+
+    public 
+        FsmPlayerAttack(IFsmStateOther other) : base(other)
     {
-        base.OnInit(other);
         _controller.attackAction = Shot;
     }
 
@@ -29,10 +30,10 @@ public class FsmPlayerAttack : FsmPlayerBase
         var stateInfo = ani.GetCurrentAnimatorStateInfo(0); 
         if (stateInfo.shortNameHash != StringToHash.Attack)
         {
-            _other.ChangeState(FsmState.Idle);
+            other.ChangeState(FsmState.Idle);
         }
 
-        _other.Move(data);
+        other.Move(data);
         // _other.Rotation(data);
     }
 
