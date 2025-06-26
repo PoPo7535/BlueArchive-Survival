@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8642006753014968080}
-  - component: {fileID: 1043814493303837670}
   - component: {fileID: 2828713654158980025}
   - component: {fileID: 2116902545299958876}
   - component: {fileID: 269341265931728516}
   - component: {fileID: 315022046038129406}
   - component: {fileID: 6520990288503470339}
+  - component: {fileID: 7918903665182491294}
   m_Layer: 0
   m_Name: Sweeper
   m_TagString: Enemy
@@ -38,24 +38,6 @@ Transform:
   - {fileID: 2723112129763048563}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1043814493303837670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3286513706925757525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ec6fcdd6a00b2b4991c5570dde67519, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rigi: {fileID: 315022046038129406}
-  moveSpeed: 100
-  rotateSpeed: 10
-  ani: {fileID: 2116902545299958876}
-  expObj: {fileID: 4342336887132166862, guid: eb851445ec132a446996b66a398ccd3d, type: 3}
-  target: {fileID: 0}
 --- !u!136 &2828713654158980025
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -117,8 +99,8 @@ MonoBehaviour:
   Flags: 262145
   NestedObjects: []
   NetworkedBehaviours:
-  - {fileID: 1043814493303837670}
   - {fileID: 6520990288503470339}
+  - {fileID: 7918903665182491294}
 --- !u!54 &315022046038129406
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -168,6 +150,23 @@ MonoBehaviour:
     Position: 0.01
     Rotation: 0.01
     Scale: 0.01
+--- !u!114 &7918903665182491294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3286513706925757525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72d3ead7e1ad963479c644fa1872adf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigi: {fileID: 315022046038129406}
+  ani: {fileID: 2116902545299958876}
+  expObj: {fileID: 4342336887132166862, guid: eb851445ec132a446996b66a398ccd3d, type: 3}
+  moveSpeed: 100
+  rotateSpeed: 100
 --- !u!1001 &2468194081166597016
 PrefabInstance:
   m_ObjectHideFlags: 0

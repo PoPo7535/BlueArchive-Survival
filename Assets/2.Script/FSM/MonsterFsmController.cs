@@ -10,14 +10,17 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public class MonsterFsmController : NetworkBehaviour, IFsmStateOther, ISetInspector
 {
-    [Serial, Read] private Rigidbody rigi;
-    [Serial, Read] private Animator ani;
-    [Button, GUIColor(0, 1, 0)]
-    
+    [Serial, Read] public Rigidbody rigi;
+    [Serial, Read] public Animator ani;
+    public GameObject expObj;
     
     private IFsmStateTarget _moveStateTarget;
     private IFsmStateTarget _currentStateTarget;
 
+    public float moveSpeed = 100f;
+    public float rotateSpeed = 100f;
+    
+    [Button, GUIColor(0, 1, 0)]
     public void SetInspector()
     {
         rigi = GetComponent<Rigidbody>();
@@ -27,8 +30,8 @@ public class MonsterFsmController : NetworkBehaviour, IFsmStateOther, ISetInspec
     public void Start()
     {
         _moveStateTarget = new FsmMonsterMove(this);
-
         _currentStateTarget = _moveStateTarget;
+        _currentStateTarget.OnEnter();
     }
     public override void FixedUpdateNetwork()
     {
@@ -42,19 +45,34 @@ public class MonsterFsmController : NetworkBehaviour, IFsmStateOther, ISetInspec
             FsmState.Move => _moveStateTarget,
             _ => _currentStateTarget
         };
-        _currentStateTarget.OnEnter(); // 오늘치 집중력이 다 떨어졌어
+        _currentStateTarget.OnEnter(); 
     }
 
-    public void Move(Spawner.NetworkInputData data)
+    public void Move(Spawner.NetworkInputData _, Transform target)
     {
+        ani.SetTrigger(StringToHash.Move);
+        if (false == HasStateAuthority)
+            return;
+        var dir = (target.position - transform.position).normalized *
+                  (moveSpeed * Runner.DeltaTime);
+        rigi.velocity = new Vector3(dir.x, rigi.velocity.y, dir.z);
     }
 
-    public void Rotation(Spawner.NetworkInputData data)
+    public void Rotation(Spawner.NetworkInputData _ , Transform target)
     {
+        var dir = (target.position - transform.position).normalized *
+                  (moveSpeed * Runner.DeltaTime);
+        var targetRotation = Quaternion.LookRotation(new Vector3(dir.x, 0, dir.z));
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotateSpeed * Runner.DeltaTime);
     }
 
     public bool CanAttack()
     {
         return true;
+    }
+    public void Damage(PlayerRef other = default)
+    {
+        Instantiate(expObj, transform.position, Quaternion.identity);
+        Runner.Despawn(Object);
     }
 }

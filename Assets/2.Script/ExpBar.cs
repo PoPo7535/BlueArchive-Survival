@@ -6,7 +6,16 @@ using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 
-public class FsmMonsterBase : FsmBase
-{ 
-    public FsmMonsterBase(IFsmStateOther other) : base(other) { }
+public class ExpBar : MonoBehaviour
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 }

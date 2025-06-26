@@ -41,6 +41,7 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
         // _skillStateTarget.OnInit(this);
 
         _currentStateTarget = _idleStateTarget;
+        _currentStateTarget.OnEnter();
     }
 
     public override void FixedUpdateNetwork()
@@ -72,13 +73,13 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
         attackAction?.Invoke();
     }
 
-    public void Move(Spawner.NetworkInputData data)
+    public void Move(Spawner.NetworkInputData data, Transform _)
     {
         var dir = data.input.normalized * (Player.state.moveSpeed * Runner.DeltaTime);
         rigi.velocity = new Vector3(dir.x,  rigi.velocity.y, dir.y);
     }
 
-    public void Rotation(Spawner.NetworkInputData data)
+    public void Rotation(Spawner.NetworkInputData data, Transform _)
     {
         var dir = data.input.normalized * (Player.state.moveSpeed * Runner.DeltaTime);
         var targetRotation = Quaternion.LookRotation(new Vector3(dir.x, 0, dir.y));

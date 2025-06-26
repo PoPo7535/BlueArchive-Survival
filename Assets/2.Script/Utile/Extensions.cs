@@ -21,9 +21,8 @@ public static class Extensions
             var tr = queue.Dequeue();
             list.Add(tr);
             for (int i = 0; i<tr.childCount; ++i)
-            {
+            
                 queue.Enqueue(tr.GetChild(i));
-            }
         }
         return list;
     }

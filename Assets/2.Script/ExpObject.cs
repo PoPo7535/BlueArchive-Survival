@@ -10,13 +10,31 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public class ExpObject : MonoBehaviour
 {
+    private PlayerBase target;
+
+    private void FixedUpdate()
+    {
+        if (false == target)
+            return;
+        var dir = (target.transform.position - transform.position).normalized;
+        transform.position += Time.fixedTime * 0.001f*  dir;
+        var dis = Vector3.Distance(target.transform.position, transform.position);
+        if (dis <= 1f)
+        {
+            Foo();
+        }
+    }
+
+    public void Foo()
+    {
+        gameObject.SetActive(false);
+    }
+    
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            var playerBase = other.GetComponent<PlayerBase>();
-            playerBase.state.exp += 1f;
-        }   
-        Destroy(gameObject);
+        if (false == other.CompareTag("Player"))
+            return;
+        var playerBase = other.GetComponent<PlayerBase>();
+        target = playerBase;
     }
 }

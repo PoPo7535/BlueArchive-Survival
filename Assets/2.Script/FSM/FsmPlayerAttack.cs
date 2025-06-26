@@ -10,8 +10,7 @@ public class FsmPlayerAttack : FsmPlayerBase
 {
     private bool doAttack = true;
 
-    public 
-        FsmPlayerAttack(IFsmStateOther other) : base(other)
+    public FsmPlayerAttack(IFsmStateOther other) : base(other)
     {
         _controller.attackAction = Shot;
     }
