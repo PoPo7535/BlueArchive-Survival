@@ -5,15 +5,18 @@ public class Bullet : NetworkBehaviour
 {
     public float speed = 100f;
     [Networked] private TickTimer timer { get; set; }
+    private bool _spawn = false;
 
     public override void Spawned()
     {
         timer = TickTimer.CreateFromSeconds(Runner, 3f);
+        _spawn = true;
     }
 
     public override void Despawned(NetworkRunner runner, bool hasState)
     {
         timer = TickTimer.None;
+        _spawn = false;
     }
     
     public override void FixedUpdateNetwork()
@@ -32,6 +35,9 @@ public class Bullet : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (false == _spawn)
+            return;
+        
         if (other.CompareTag($"Enemy"))
         {
             other.GetComponent<MonsterFsmController>().Damage();
