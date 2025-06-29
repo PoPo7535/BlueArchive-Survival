@@ -9,7 +9,7 @@ using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Serial = UnityEngine.SerializeField;
 using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
-public class PopUp : MonoBehaviour, ISetInspector
+public class PopUp : Utility.Singleton<PopUp>, ISetInspector
 {
     [Serial, Read] private CanvasGroup cg;
     [Serial, Read] private TMP_Text msg;
@@ -21,7 +21,6 @@ public class PopUp : MonoBehaviour, ISetInspector
     [Serial, Read, Fold("Button3")] private Button btn3;
     [Serial, Read, Fold("Button3")] private TMP_Text text3;
     
-    public static PopUp I;
 
     [Button,GUIColor(0, 1, 0)]
     public void SetInspector()
@@ -38,13 +37,8 @@ public class PopUp : MonoBehaviour, ISetInspector
         text3 = list.Find(o => o.name == "Text3").GetComponent<TMP_Text>();
     }
 
-    private void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-        I = this;
-    }
 
-    public void ActiveCG(bool active)
+    public void ActiveCg(bool active)
     {
         cg.ActiveCG(active);
     }
@@ -54,13 +48,13 @@ public class PopUp : MonoBehaviour, ISetInspector
         SetBtn(btn2, text2);
         SetBtn(btn3, text3);
         if (result.Ok)
-            ActiveCG(false);
+            ActiveCg(false);
         else
         {
             msg.text = $"에러 {result.ErrorMessage}";
             SetBtn(btn1, text1, () =>
             {
-                ActiveCG(false);
+                ActiveCg(false);
             });
         }
     }
@@ -69,7 +63,7 @@ public class PopUp : MonoBehaviour, ISetInspector
         UnityAction buttonAction2 = null, string buttonText2 = null, Color buttonColor2 = new(),
         UnityAction buttonAction3 = null, string buttonText3 = null, Color buttonColor3 = new())
     {
-        ActiveCG(true);
+        ActiveCg(true);
         inputField.gameObject.SetActive(false);
         this.msg.text = msg;
 
@@ -83,7 +77,7 @@ public class PopUp : MonoBehaviour, ISetInspector
         UnityAction<string> buttonAction2 = null, string buttonText2 = null, Color buttonColor2 = new(),
         UnityAction<string> buttonAction3 = null, string buttonText3 = null, Color buttonColor3 = new())
     {
-        ActiveCG(true);
+        ActiveCg(true);
         inputField.gameObject.SetActive(true);
         this.msg.text = msg;
         

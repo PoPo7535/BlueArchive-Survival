@@ -5,18 +5,17 @@ using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using Fusion;
 using Fusion.Sockets;
+using Utility;
 using WebSocketSharp;
 
-public class App : SimulationBehaviour, INetworkRunnerCallbacks
+public class App : SimulationSingleton<App>, INetworkRunnerCallbacks
 {
-    public static App I;
     [ReadOnly] public NetworkRunner runner;
     public bool IsHost => Runner.GetPlayerObject(Runner.LocalPlayer).HasStateAuthority;
     public PlayerInfo GetPlayerInfo(PlayerRef playerRef)
     {
         return Runner.GetPlayerObject(playerRef).GetComponent<PlayerInfo>();
     }
-
 
     public enum Property
     {
@@ -25,7 +24,6 @@ public class App : SimulationBehaviour, INetworkRunnerCallbacks
     
     private void Awake()
     {
-        I = this;
         runner = GetComponent<NetworkRunner>();
         runner.AddCallbacks(this);
     }

@@ -32,7 +32,7 @@ public class QuickLogin : MonoBehaviour
         PlayFabClientAPI.LoginWithPlayFab(request,
             (result) =>
             {
-                PopUp.I.ActiveCG(false);
+                PopUp.I.ActiveCg(false);
                 SceneManager.LoadScene("1.Lobby");
                 GameManager.I.playFabEntity = result.EntityToken;
                 GameManager.I.ID = result.PlayFabId;
@@ -41,7 +41,7 @@ public class QuickLogin : MonoBehaviour
             {
                 PopUp.I.OpenPopUp($"{error.ErrorMessage}\n{(int)error.Error}", () =>
                 {
-                    PopUp.I.ActiveCG(false);
+                    PopUp.I.ActiveCg(false);
                 }, "확인");
             });
     }

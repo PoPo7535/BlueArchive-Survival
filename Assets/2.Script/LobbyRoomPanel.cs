@@ -7,7 +7,7 @@ using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Serial = UnityEngine.SerializeField;
 using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
-public class LobbyRoomPanel : FusionSingleton<LobbyRoomPanel>, ISetInspector, IPlayerJoined, IPlayerLeft
+public class LobbyRoomPanel : LocalFusionSingleton<LobbyRoomPanel>, ISetInspector, IPlayerJoined, IPlayerLeft
 {
     [Serial, Read] private PlayerSlot playerSlot;
     [Serial, Read] private CharacterView characterView;

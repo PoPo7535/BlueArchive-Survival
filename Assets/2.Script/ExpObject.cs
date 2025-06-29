@@ -34,6 +34,7 @@ public class ExpObject : SimulationBehaviour
         
         var easedValue = DOVirtual.EasedValue(0f, 1f, _time / FollowingTime, Ease.InOutBack);
         transform.position = Vector3.LerpUnclamped(_startPos, _targetPos, easedValue);
+        
         if (1f <= easedValue)
             Foo();
     }

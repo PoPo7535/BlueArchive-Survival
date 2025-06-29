@@ -30,7 +30,7 @@ public class SessionScrollCell : EnhancedScrollerCellView
                         else
                         {
                             PopUp.I.OpenPopUp("비밀번호 오류",
-                                () => { PopUp.I.ActiveCG(false); },
+                                () => { PopUp.I.ActiveCg(false); },
                                 "확인");
                         }
                     }, "확인");

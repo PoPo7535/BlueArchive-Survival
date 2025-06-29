@@ -83,7 +83,7 @@ public class LoginPanel : MonoBehaviour, ISetInspector
             PlayFabClientAPI.LoginWithPlayFab(request,
                 (result) =>
                 {
-                    PopUp.I.ActiveCG(false);
+                    PopUp.I.ActiveCg(false);
                     SceneManager.LoadScene("1.Lobby");
                     PlayerPrefs.SetInt(IDSave, idSaveToggle.isOn ? 1 : 0);
                     PlayerPrefs.SetString(ID, idSaveToggle.isOn ? loginIdIF.text : string.Empty);
@@ -94,7 +94,7 @@ public class LoginPanel : MonoBehaviour, ISetInspector
                 {
                     PopUp.I.OpenPopUp($"{error.ErrorMessage}\n{(int)error.Error}", () =>
                     {
-                        PopUp.I.ActiveCG(false);
+                        PopUp.I.ActiveCg(false);
                     }, "확인");
                 });
         });
@@ -153,7 +153,7 @@ public class LoginPanel : MonoBehaviour, ISetInspector
                     
                     PopUp.I.OpenPopUp($"회원가입에 성공하였습니다.", () =>
                     {
-                        PopUp.I.ActiveCG(false);
+                        PopUp.I.ActiveCg(false);
                         registerCancelBtn.onClick.Invoke();
                     }, "확인");
                     
@@ -163,7 +163,7 @@ public class LoginPanel : MonoBehaviour, ISetInspector
                     PopUp.I.OpenPopUp($"{error.ErrorMessage}\n{(int)error.Error}", 
                         () => 
                         { 
-                            PopUp.I.ActiveCG(false); 
+                            PopUp.I.ActiveCg(false); 
                         }, "확인");
                 });
         });
