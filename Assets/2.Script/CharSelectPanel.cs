@@ -39,7 +39,6 @@ public class CharSelectPanel : MonoBehaviour, ISetInspector
         var xSize = xCount * gridLayout.cellSize.x + xSpacingSize + sizeOff;
         var ySize = yCount * gridLayout.cellSize.y + ySpacingSize + sizeOff;
         gridSize = new Vector2(xSize, ySize);
-
     }
 
     private int Set()

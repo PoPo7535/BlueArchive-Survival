@@ -1,6 +1,7 @@
 using Fusion;
 using PlayFab;
 using PlayFab.ClientModels;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerInfo : NetworkBehaviour, IPlayerLeft
@@ -9,17 +10,20 @@ public class PlayerInfo : NetworkBehaviour, IPlayerLeft
     [Networked] public NetworkObject Obj { get; set; }
     [Networked] public PlayableChar CharIndex { get; set; }
     [Networked] public bool isSpawned { get; set; }
-
+    
+    public static PlayerInfo Local;
+    
     public void Awake()
     {
         DontDestroyOnLoad(gameObject);
     }
-
+    
     public override void Spawned()
     {
         Object.Runner.SetPlayerObject(Object.InputAuthority, Object);
         if (false == Object.HasInputAuthority)
             return;
+        Local = this;
         PlayFabClientAPI.GetPlayerProfile(
             new GetPlayerProfileRequest() { PlayFabId = GameManager.I.ID },
             result => RPC_SetInfo(result.PlayerProfile.DisplayName, PlayableChar.Aris),

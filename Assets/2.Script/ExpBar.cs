@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Serial = UnityEngine.SerializeField;
 using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
@@ -8,14 +9,11 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public class ExpBar : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Image expBar;
+
+    public void SetBar(float val)
     {
+        expBar.fillAmount = val;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

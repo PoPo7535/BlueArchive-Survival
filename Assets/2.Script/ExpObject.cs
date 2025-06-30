@@ -8,9 +8,7 @@ using UnityEngine.EventSystems;
 using Serial = UnityEngine.SerializeField;
 using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
-
-
-public class ExpObject : SimulationBehaviour
+public class ExpObject : MonoBehaviour
 {
     private PlayerBase _target;
     private Vector3 _targetPos;
@@ -42,6 +40,7 @@ public class ExpObject : SimulationBehaviour
     public void Foo()
     {
         gameObject.SetActive(false);
+        BattleSceneManager.I.battleData.AddExp(40f);
     }
     
     private void OnTriggerEnter(Collider other)

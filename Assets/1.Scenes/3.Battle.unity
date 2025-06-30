@@ -2132,6 +2132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 305020610}
   - component: {fileID: 305020609}
+  - component: {fileID: 305020611}
   m_Layer: 0
   m_Name: BattleSceneManager
   m_TagString: Untagged
@@ -2151,6 +2152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490a54727b80ae54cb8cf8ddae76abb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _exp: 0
+  expBar: {fileID: 682258628}
 --- !u!4 &305020610
 Transform:
   m_ObjectHideFlags: 0
@@ -2166,6 +2169,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &305020611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305020608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 773807885
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 305020609}
 --- !u!64 &309647822
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4616,6 +4637,7 @@ GameObject:
   - component: {fileID: 682258625}
   - component: {fileID: 682258627}
   - component: {fileID: 682258626}
+  - component: {fileID: 682258628}
   m_Layer: 5
   m_Name: bar
   m_TagString: Untagged
@@ -4681,6 +4703,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 682258624}
   m_CullTransparentMesh: 1
+--- !u!114 &682258628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682258624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dfff5823ae5fc74ebd1ede94a5f5699, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expBar: {fileID: 1550964100}
 --- !u!64 &683474731
 MeshCollider:
   m_ObjectHideFlags: 0
