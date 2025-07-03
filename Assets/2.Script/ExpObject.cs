@@ -34,10 +34,10 @@ public class ExpObject : MonoBehaviour
         transform.position = Vector3.LerpUnclamped(_startPos, _targetPos, easedValue);
         
         if (1f <= easedValue)
-            Foo();
+            AddExp();
     }
 
-    public void Foo()
+    public void AddExp()
     {
         gameObject.SetActive(false);
         BattleSceneManager.I.battleData.AddExp(40f);

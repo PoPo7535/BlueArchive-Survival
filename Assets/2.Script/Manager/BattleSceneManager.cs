@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Fusion;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Utility;
 using Serial = UnityEngine.SerializeField;
@@ -8,17 +10,26 @@ using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 
-public class BattleSceneManager : LocalFusionSingleton<BattleSceneManager>
+public partial class BattleSceneManager : LocalFusionSingleton<BattleSceneManager>, IPlayerLeft, ISetInspector
 {
     [Networked, OnChangedRender(nameof(OnChangedExp))] public float exp { get; set; }
-    
     public BattleData battleData = new();
-    public ExpBar expBar;
-    private float _expUpdateTime = 0f;
-    public void Test()
+    private ExpBar expBar;
+    [Read, Serial] private const float ExpUpdateMaxTime = 1f;
+    [Read, Serial] private AbilitySelectPanel _selectPanel;
+    [Read, Serial] private float _expUpdateTime = 0f;
+    [Read, Serial] private float _levelUpValue = 100f;
+
+    [Button, GUIColor(0,1f,0)]
+    public void SetInspector()
     {
-        battleData.AddExp(3f);
     }
+    
+    private void Start()
+    {
+        ReadyInit();
+    }
+
     public override void FixedUpdateNetwork()
     {
         UpdateExp();
@@ -26,7 +37,7 @@ public class BattleSceneManager : LocalFusionSingleton<BattleSceneManager>
     private void UpdateExp()
     {
         _expUpdateTime += Runner.DeltaTime;
-        if (_expUpdateTime < 1f)
+        if (_expUpdateTime < ExpUpdateMaxTime)
             return;
         _expUpdateTime = 0f;
         if (0f < battleData.curExp)
@@ -44,8 +55,16 @@ public class BattleSceneManager : LocalFusionSingleton<BattleSceneManager>
 
     private void OnChangedExp()
     {
-        expBar.SetBar(exp / 100f);
-        if (exp < 100)
-            return;
+        var expValue = exp / _levelUpValue;
+        expBar.SetBar(expValue);
+        if (1f <= expValue)
+            LevelUp();
     }
+
+    private void LevelUp()
+    {
+        exp -= _levelUpValue;
+    }
+
+
 }
