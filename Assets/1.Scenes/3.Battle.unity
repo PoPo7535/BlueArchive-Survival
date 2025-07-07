@@ -940,7 +940,7 @@ MonoBehaviour:
   - {fileID: 1516747215}
   playerPoint: {fileID: 191907252}
   obj: {fileID: 3286513706925757525, guid: 7111124b948cb924981a0231273dc4bb, type: 3}
-  spawnDelayMax: 1
+  spawnDelayMax: 100
 --- !u!4 &100308195
 Transform:
   m_ObjectHideFlags: 0
@@ -2288,7 +2288,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _exp: 0
-  expBar: {fileID: 682258628}
+  _selectPanel: {fileID: 646514883}
+  _expBar: {fileID: 682258628}
+  _expUpdateTime: 0
+  _levelUpValue: 100
 --- !u!4 &305020610
 Transform:
   m_ObjectHideFlags: 0
@@ -4690,7 +4693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6d8a6731ee24a343abdc7a07b81433b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cg: {fileID: 646514884}
+  cg: {fileID: 646514884}
   _buttons:
   - {fileID: 305718130}
   - {fileID: 1816962010}
@@ -4703,9 +4706,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 646514881}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!64 &647697026
 MeshCollider:

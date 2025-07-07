@@ -48,7 +48,7 @@ public class MonsterFsmController : NetworkBehaviour, IFsmStateOther, ISetInspec
         _currentStateTarget.OnEnter(); 
     }
 
-    public void Move(Spawner.NetworkInputData _, Transform target)
+    public void Move(NetworkInputData _, Transform target)
     {
         ani.SetTrigger(StringToHash.Move);
         if (false == HasStateAuthority)
@@ -58,7 +58,7 @@ public class MonsterFsmController : NetworkBehaviour, IFsmStateOther, ISetInspec
         rigi.velocity = new Vector3(dir.x, rigi.velocity.y, dir.z);
     }
 
-    public void Rotation(Spawner.NetworkInputData _ , Transform target)
+    public void Rotation(NetworkInputData _ , Transform target)
     {
         var dir = (target.position - transform.position).normalized *
                   (moveSpeed * Runner.DeltaTime);

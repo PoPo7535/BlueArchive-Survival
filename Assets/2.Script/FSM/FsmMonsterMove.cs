@@ -18,7 +18,7 @@ public class FsmMonsterMove : FsmMonsterBase
         target = App.I.GetPlayerInfo(player[0]).Obj;
     }
 
-    public override void OnUpdate(Spawner.NetworkInputData _)
+    public override void OnUpdate(NetworkInputData _)
     {
         monster.ani.SetTrigger(StringToHash.Move);
         other.Move(target:target.transform);

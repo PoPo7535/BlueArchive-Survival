@@ -18,5 +18,5 @@ public class FsmBase : IFsmStateTarget
     }
     public virtual void OnEnter() { }
     public virtual void OnExit() { }
-    public virtual void OnUpdate(Spawner.NetworkInputData data) { }
+    public virtual void OnUpdate(NetworkInputData data) { }
 }

@@ -21,7 +21,7 @@ public class FsmPlayerAttack : FsmPlayerBase
         ani.SetTrigger(StringToHash.Attack);   
         ani.Update(0f);
     }
-    public override void OnUpdate(Spawner.NetworkInputData data)
+    public override void OnUpdate(NetworkInputData data)
     {
         if (doAttack)
             RotateFromTarget();

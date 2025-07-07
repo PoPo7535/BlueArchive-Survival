@@ -47,7 +47,7 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
     public override void FixedUpdateNetwork()
     {
         attackDelay += Runner.DeltaTime;
-        if (GetInput(out Spawner.NetworkInputData data))
+        if (GetInput(out NetworkInputData data))
         {
             _currentStateTarget.OnUpdate(data);
         }
@@ -55,7 +55,6 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
 
     public void ChangeState(FsmState newState)
     {
-        Player.ani.ChangeSpeed(newState);
         _currentStateTarget.OnExit();
         _currentStateTarget = newState switch
         {
@@ -67,19 +66,18 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
         _currentStateTarget.OnEnter();
     }
 
-
     public void OnAttack()
     {
         attackAction?.Invoke();
     }
 
-    public void Move(Spawner.NetworkInputData data, Transform _)
+    public void Move(NetworkInputData data, Transform _)
     {
         var dir = data.input.normalized * (Player.state.moveSpeed * Runner.DeltaTime);
         rigi.velocity = new Vector3(dir.x,  rigi.velocity.y, dir.y);
     }
 
-    public void Rotation(Spawner.NetworkInputData data, Transform _)
+    public void Rotation(NetworkInputData data, Transform _)
     {
         var dir = data.input.normalized * (Player.state.moveSpeed * Runner.DeltaTime);
         var targetRotation = Quaternion.LookRotation(new Vector3(dir.x, 0, dir.y));

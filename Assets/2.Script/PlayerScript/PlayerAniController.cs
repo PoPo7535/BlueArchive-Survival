@@ -15,7 +15,6 @@ public class PlayerAniController : PlayerComponent
     [Serial, Read] public PlayerAni playerAni;
     public Animator ani => playerAni.ani;
 
-    private Dictionary<FsmState, float> dic = new();
     public override void Init(PlayerBase player)
     {
         base.Init(player);
@@ -24,19 +23,21 @@ public class PlayerAniController : PlayerComponent
 
     public void Start()
     {
-        var controller = ani.runtimeAnimatorController;
-        foreach (var clip in FsmState.Idle.ToArray())
-        {
-            dic.Add(clip, 1f);
-        }
-        
-        var ac = controller.animationClips.FirstOrDefault
-            (c => c.name.Split('_')[1] == nameof(StringToHash.Attack));
-        dic[FsmState.Attack] = ac.length / 2f;
     }
 
     public void ChangeSpeed(FsmState state, float speed = 1f)
     {
-        ani.speed = dic[state] * speed;
+        switch (state)
+        {
+            case FsmState.Attack:
+                ani.SetFloat(StringToHash.AttackSpeed,3f);
+                break;
+            case FsmState.Move:
+                ani.SetFloat(StringToHash.MoveSpeed, speed);
+                break;
+            case FsmState.Idle:
+                break;
+        }
+        
     }
 }

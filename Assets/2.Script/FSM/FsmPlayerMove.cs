@@ -6,7 +6,7 @@ public class FsmPlayerMove : FsmPlayerBase
     {
     }
 
-    public override void OnUpdate(Spawner.NetworkInputData data)
+    public override void OnUpdate(NetworkInputData data)
     {
         if (other.CanAttack())
         {

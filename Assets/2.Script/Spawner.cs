@@ -9,58 +9,21 @@ public class Spawner : NetworkBehaviour, INetworkRunnerCallbacks
     public List<GameObject> spawnPoints = new();
     public Transform playerPoint;
     public GameObject obj;
-    private float spawnDelay = 0;
+    private float _spawnDelay = 0;
     public float spawnDelayMax = 2;
-
-    // Update is called once per frame
-    private bool _mouseButton0;
-
-    private void OnEnable()
-    {
-        App.I.Runner.AddCallbacks(this);
-    }
-
-    private void OnDisable()
-    {
-        App.I.Runner.RemoveCallbacks(this);
-    }
-
-    void Update()
-    {
-        _mouseButton0 |= Input.GetMouseButton(0);
-    }
 
     public override void FixedUpdateNetwork()
     {
         if (false == HasStateAuthority)
             return;
         
-        spawnDelay += Runner.DeltaTime;
-        if (spawnDelayMax < spawnDelay)
+        _spawnDelay += Runner.DeltaTime;
+        if (spawnDelayMax < _spawnDelay)
         {
-            spawnDelay = 0;
+            _spawnDelay = 0;
             var randomIndex =  UnityEngine.Random.Range(0, spawnPoints.Count);
             Runner.Spawn(obj, spawnPoints[randomIndex].transform.position, Quaternion.identity);
         }
-    }
-
-    public struct NetworkInputData : INetworkInput
-    {
-        public const byte MOUSEBUTTON0 = 1;
-
-        public NetworkButtons buttons;
-        public Vector2 input;
-    }
-    public void OnInput(NetworkRunner runner, NetworkInput input)
-    {
-        var data = new NetworkInputData();
-        data.buttons.Set( NetworkInputData.MOUSEBUTTON0, _mouseButton0);
-        _mouseButton0 = false;
-        
-        var x = Input.GetAxis("Horizontal");
-        var y = Input.GetAxis("Vertical");
-        data.input = new Vector2(x, y);
-        input.Set(data);
     }
 
     public override void Spawned()
@@ -97,6 +60,7 @@ public class Spawner : NetworkBehaviour, INetworkRunnerCallbacks
     public void OnObjectExitAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player) { }
     public void OnObjectEnterAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player) { }
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player) { }
+    public void OnInput(NetworkRunner runner, NetworkInput input) { }
     public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input) { }
     public void OnShutdown(NetworkRunner runner, ShutdownReason shutdownReason) { }
     public void OnConnectedToServer(NetworkRunner runner) { }
