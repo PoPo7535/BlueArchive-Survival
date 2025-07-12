@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Fusion;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -19,19 +20,17 @@ public class PlayerAni : MonoBehaviour, ISetInspector
     public void SetInspector()
     {
         ani = GetComponent<Animator>();
-
     }
 
     private void Awake()
     {
         SetAnimatorController();
-        
     }
     public void OnAttack()
     {
         if (pb == null)
             pb = transform.parent.GetComponent<PlayerBase>();
-        pb.fsm.OnAttack();
+        pb.fsmController.OnAttack();
     }
     private void SetAnimatorController()
     {

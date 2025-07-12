@@ -4519,6 +4519,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ani: {fileID: 132331849369872619}
+  netAni: {fileID: 0}
   animClips:
   - {fileID: 7400000, guid: 67bf829d5a077ee4cab5664d9d681010, type: 2}
   - {fileID: 7400000, guid: f9bd5a4ecf2d47d4e904531a3ef779bd, type: 2}

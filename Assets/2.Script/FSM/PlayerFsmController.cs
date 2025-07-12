@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Fusion;
 using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -14,15 +15,17 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
     private IFsmStateTarget _moveStateTarget;
     private IFsmStateTarget _attackStateTarget;
     private IFsmStateTarget _skillStateTarget;
-    
+
     private IFsmStateTarget _currentStateTarget;
 
-    [Serial, Read] public Rigidbody rigi;
     public GameObject bullet;
+    [Serial, Read] public Rigidbody rigi;
     [Fold("State")] public float rotateSpeed = 30;
     [Fold("State")] public float attackDelay = 0;
     [Fold("State")] public float attackDelayMax = 2f;
     public Action attackAction;
+
+    [Networked] private NetworkInputData data { get; set; }
 
     [Button, GUIColor(0, 1, 0)]
     public void SetInspector()
@@ -33,7 +36,7 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
     public override void Init(PlayerBase player)
     {
         base.Init(player);
-        Player.fsm = this;
+        Player.fsmController = this;
         
         _idleStateTarget = new FsmPlayerIdle(this);
         _moveStateTarget = new FsmPlayerMove(this);
@@ -48,9 +51,8 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
     {
         attackDelay += Runner.DeltaTime;
         if (GetInput(out NetworkInputData data))
-        {
-            _currentStateTarget.OnUpdate(data);
-        }
+            this.data = data;
+        _currentStateTarget.OnUpdate(this.data);
     }
 
     public void ChangeState(FsmState newState)
@@ -73,13 +75,13 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
 
     public void Move(NetworkInputData data, Transform _)
     {
-        var dir = data.input.normalized * (Player.state.moveSpeed * Runner.DeltaTime);
+        var dir = data.input.normalized * (Player.state.MoveSpeed * Runner.DeltaTime);
         rigi.velocity = new Vector3(dir.x,  rigi.velocity.y, dir.y);
     }
 
     public void Rotation(NetworkInputData data, Transform _)
     {
-        var dir = data.input.normalized * (Player.state.moveSpeed * Runner.DeltaTime);
+        var dir = data.input.normalized * (Player.state.MoveSpeed * Runner.DeltaTime);
         var targetRotation = Quaternion.LookRotation(new Vector3(dir.x, 0, dir.y));
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotateSpeed * Runner.DeltaTime);
     }

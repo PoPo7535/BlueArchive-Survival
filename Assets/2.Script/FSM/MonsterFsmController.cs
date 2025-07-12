@@ -27,7 +27,7 @@ public class MonsterFsmController : NetworkBehaviour, IFsmStateOther, ISetInspec
         ani = GetComponent<Animator>();
     }
 
-    public void Start()
+    public void Awake()
     {
         _moveStateTarget = new FsmMonsterMove(this);
         _currentStateTarget = _moveStateTarget;

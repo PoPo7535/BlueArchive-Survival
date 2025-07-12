@@ -13,19 +13,26 @@ public partial class BattleSceneManager // Ready
 {
     [Networked, Capacity(3), OnChangedRender(nameof(SelectChangedRender))] private NetworkDictionary<PlayerRef, bool> select => default;
     private bool CheckReady => select.All(kvp => kvp.Value);
-    [Networked] private TickTimer TickTimer { set; get; }
+    [Networked] public TickTimer SelectTimer { set; get; }
 
     public void Open()
     {
-        TickTimer = TickTimer.CreateFromSeconds(Runner, 10f);
     }
 
     private void SelectChangedRender()
     {
         if (CheckReady)
         {
-            _selectPanel.cg.ActiveCG(false);
+            SelectTimer = TickTimer.None;
+            selectPanel.Open(false);
+            ReSetSelect();
         }
+    }
+    private void LevelUp()
+    {
+        exp -= levelUpValue;
+        SelectTimer = TickTimer.CreateFromSeconds(Runner, 10f);
+        selectPanel.Open(true);
     }
     public void ReadyInit()
     {
@@ -33,17 +40,17 @@ public partial class BattleSceneManager // Ready
             select.Add(playerRef, false);
     }
 
-    public void OnPlayerLeft(NetworkRunner runner, PlayerRef player) 
-    {
-        select.Remove(player);
-    }
     public void ReSetSelect()
     {
         foreach (var playerRef in App.I.GetAllPlayers())
-            select.Set(playerRef,false);
+            select.Set(playerRef, false);
     }
-
-    [Rpc(RpcSources.All, RpcTargets.All, HostMode =RpcHostMode.SourceIsHostPlayer)]
+    
+    public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
+    {
+        select.Remove(player);
+    }
+    [Rpc(RpcSources.All, RpcTargets.All, HostMode = RpcHostMode.SourceIsHostPlayer)]
     public void Rpc_Ready(RpcInfo info = default)
     {
         select.Set(info.Source, true);

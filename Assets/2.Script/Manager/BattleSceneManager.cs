@@ -16,18 +16,18 @@ public partial class BattleSceneManager : LocalFusionSingleton<BattleSceneManage
 {
     [Networked, OnChangedRender(nameof(OnChangedExp))] public float exp { get; set; }
     public BattleData battleData = new();
-    [Read, Serial] private AbilitySelectPanel _selectPanel;
+    [Read, Serial] private AbilitySelectPanel selectPanel;
     
-    [Read, Serial] private ExpBar _expBar;
-    [Read, Serial] private float _expUpdateTime = 0f;
-    [Read, Serial] private float _levelUpValue = 100f;
+    [Read, Serial] private ExpBar expBar;
+    [Read, Serial] private float expUpdateTime = 0f;
+    [Read, Serial] private float levelUpValue = 100f;
     [Read, Serial] private const float ExpUpdateMaxTime = 1f;
 
     [Button, GUIColor(0,1f,0)]
     public void SetInspector()
     {
-        _selectPanel = FindObjectOfType<AbilitySelectPanel>();
-        _expBar = FindObjectOfType<ExpBar>();
+        selectPanel = FindObjectOfType<AbilitySelectPanel>();
+        expBar = FindObjectOfType<ExpBar>();
     }
 
     public override void Spawned()
@@ -41,10 +41,10 @@ public partial class BattleSceneManager : LocalFusionSingleton<BattleSceneManage
     }
     private void UpdateExp()
     {
-        _expUpdateTime += Runner.DeltaTime;
-        if (_expUpdateTime < ExpUpdateMaxTime)
+        expUpdateTime += Runner.DeltaTime;
+        if (expUpdateTime < ExpUpdateMaxTime)
             return;
-        _expUpdateTime = 0f;
+        expUpdateTime = 0f;
         if (0f < battleData.curExp)
         {
             RPC_AddExp(battleData.curExp);
@@ -60,17 +60,13 @@ public partial class BattleSceneManager : LocalFusionSingleton<BattleSceneManage
 
     private void OnChangedExp()
     {
-        var expValue = exp / _levelUpValue;
-        _expBar.SetBar(expValue);
+        var expValue = exp / levelUpValue;
+        expBar.SetBar(expValue);
         if (1f <= expValue)
             LevelUp();
     }
 
-    private void LevelUp()
-    {
-        exp -= _levelUpValue;
-        _selectPanel.cg.ActiveCG(true);
-    }
+
 
 #region UnUsedCallback
     public void OnObjectExitAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player) { }

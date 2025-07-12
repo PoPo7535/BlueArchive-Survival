@@ -940,7 +940,7 @@ MonoBehaviour:
   - {fileID: 1516747215}
   playerPoint: {fileID: 191907252}
   obj: {fileID: 3286513706925757525, guid: 7111124b948cb924981a0231273dc4bb, type: 3}
-  spawnDelayMax: 100
+  spawnDelayMax: 3
 --- !u!4 &100308195
 Transform:
   m_ObjectHideFlags: 0
@@ -2288,10 +2288,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _exp: 0
-  _selectPanel: {fileID: 646514883}
-  _expBar: {fileID: 682258628}
-  _expUpdateTime: 0
-  _levelUpValue: 100
+  selectPanel: {fileID: 646514883}
+  expBar: {fileID: 682258628}
+  expUpdateTime: 0
+  levelUpValue: 100
 --- !u!4 &305020610
 Transform:
   m_ObjectHideFlags: 0
@@ -4694,7 +4694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cg: {fileID: 646514884}
-  _buttons:
+  buttons:
   - {fileID: 305718130}
   - {fileID: 1816962010}
   - {fileID: 985129127}
@@ -4965,7 +4965,7 @@ GameObject:
   - component: {fileID: 682258626}
   - component: {fileID: 682258628}
   m_Layer: 5
-  m_Name: bar
+  m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

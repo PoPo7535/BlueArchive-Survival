@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using DG.Tweening;
+using Fusion;
 using Unity.VisualScripting;
 using UnityEngine;
 using ColorUtility = UnityEngine.ColorUtility;
@@ -46,6 +47,11 @@ public static class Extensions
                 _complete?.Invoke();
             });
     }
+
+    // public static bool Running(this TickTimer _timer)
+    // {
+    //     return _timer.ExpiredOrNotRunning(App.I.Runner);
+    // }
     public static T Next<T>(this T value) where T : struct, Enum
     {
         var values = (T[])Enum.GetValues(typeof(T));
