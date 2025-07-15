@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Fusion;
@@ -18,7 +19,7 @@ public partial class BattleSceneManager
         
         var x = Input.GetAxis("Horizontal");
         var y = Input.GetAxis("Vertical");
-        data.input = new Vector2(x, y);
+        data.dir = new Vector2(x, y);
         input.Set(data);
     }
 
@@ -40,5 +41,5 @@ public struct NetworkInputData : INetworkInput
 {
     public const byte MOUSEBUTTON0 = 1;
     public NetworkButtons buttons;
-    public Vector2 input;
+    public Vector2 dir;
 }

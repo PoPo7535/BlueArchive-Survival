@@ -10,6 +10,7 @@ using Utility;
 using Serial = UnityEngine.SerializeField;
 using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
+using Random = UnityEngine.Random;
 
 
 public partial class BattleSceneManager : LocalFusionSingleton<BattleSceneManager>, ISetInspector, INetworkRunnerCallbacks
@@ -35,6 +36,8 @@ public partial class BattleSceneManager : LocalFusionSingleton<BattleSceneManage
         App.I.Runner.AddCallbacks(this);
         ReadyInit();
     }
+    [Networked] public Vector2 Test { set; get; }
+
     public override void FixedUpdateNetwork()
     {
         UpdateExp();

@@ -18,8 +18,10 @@ public class FsmPlayerAttack : FsmPlayerBase
     public override void OnEnter()
     {
         doAttack = true;
-        ani.SetTrigger(StringToHash.Attack);   
-        ani.Update(0f);
+
+        _controller.AniTrigger = StringToHash.Attack;
+        // ani.SetTrigger(StringToHash.Attack);   
+        // ani.Update(0f);
     }
     public override void OnUpdate(NetworkInputData data)
     {

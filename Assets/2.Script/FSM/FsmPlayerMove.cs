@@ -13,17 +13,18 @@ public class FsmPlayerMove : FsmPlayerBase
             other.ChangeState(FsmState.Attack);
             return;
         }
-        if (data.input == Vector2.zero)
+        if (data.dir == Vector2.zero)
         {
             other.ChangeState(FsmState.Idle);
             return;
         }
         other.Move(data);
         other.Rotation(data);
-        ani.SetTrigger(StringToHash.Move);   
+        _controller.AniTrigger = StringToHash.Move;
+        // ani.SetTrigger(StringToHash.Move);   
     }
     public override void OnExit()
     {
-        ani.ResetTrigger(StringToHash.Move);
+        // ani.ResetTrigger(StringToHash.Move);
     }
 }

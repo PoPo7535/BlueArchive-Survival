@@ -42,23 +42,10 @@ public class Spawner : NetworkBehaviour, INetworkRunnerCallbacks
         }
     }
 
-    public async void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
-    {
-        await App.I.ConnectingPlayer(player);
-        if (Object.HasStateAuthority)
-        {
-            var charIndex = App.I.GetPlayerInfo(player).CharIndex;
-            var obj = GameManager.I.playableChar[charIndex];
-            var playerObj = Runner.Spawn(
-                obj, 
-                playerPoint.position, 
-                Quaternion.identity,player);
-        }
-    }
-    
     #region
     public void OnObjectExitAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player) { }
     public void OnObjectEnterAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player) { }
+    public void OnPlayerJoined(NetworkRunner runner, PlayerRef player) { }
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player) { }
     public void OnInput(NetworkRunner runner, NetworkInput input) { }
     public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input) { }
