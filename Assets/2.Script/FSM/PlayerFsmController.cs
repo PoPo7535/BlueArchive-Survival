@@ -25,10 +25,10 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
     [Fold("State")] public float attackDelayMax = 2f;
     public Action attackAction;
 
-    [Networked, OnChangedRender(nameof(Test))]
+    [Networked, OnChangedRender(nameof(SetAni))]
     public int AniTrigger { get; set; } = StringToHash.Idle;
 
-    public void Test(NetworkBehaviourBuffer previous)
+    public void SetAni(NetworkBehaviourBuffer previous)
     {
         var prevValue = GetPropertyReader<int>(nameof(AniTrigger)).Read(previous);
         Player.aniController.ani.ResetTrigger(prevValue);
@@ -101,6 +101,8 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
 
     public bool CanAttack()
     {
+        if (false == Player.HasStateAuthority)
+            return false;
         return false == Player.findEnemy.nearObj.IsUnityNull() && attackDelayMax < attackDelay;
     }
 }

@@ -11,48 +11,41 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public partial class BattleSceneManager // Ready
 {
-    [Networked, Capacity(3), OnChangedRender(nameof(SelectChangedRender))] private NetworkDictionary<PlayerRef, bool> select => default;
-    private bool CheckReady => select.All(kvp => kvp.Value);
+    private readonly Dictionary<PlayerRef, bool> _select = new();
+    public readonly HashSet<TimeStopObj> stopObjs = new();
+    private bool CheckReady => _select.All(kvp => kvp.Value);
     [Networked] public TickTimer SelectTimer { set; get; }
 
-    public void Open()
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All, HostMode = RpcHostMode.SourceIsHostPlayer)]
+    private void RPC_LevelUp()
     {
-    }
-
-    private void SelectChangedRender()
-    {
-        if (CheckReady)
-        {
-            SelectTimer = TickTimer.None;
-            selectPanel.Open(false);
-            ReSetSelect();
-        }
-    }
-    private void LevelUp()
-    {
+        selectPanel.Open(true);
+        if (false == Object.HasStateAuthority)
+            return;
         exp -= levelUpValue;
         SelectTimer = TickTimer.CreateFromSeconds(Runner, 10f);
-        selectPanel.Open(true);
     }
     public void ReadyInit()
     {
         foreach (var playerRef in App.I.GetAllPlayers())
-            select.Add(playerRef, false);
-    }
-
-    public void ReSetSelect()
-    {
-        foreach (var playerRef in App.I.GetAllPlayers())
-            select.Set(playerRef, false);
+            _select.Add(playerRef, false);
+        // YZHJK7G22G
     }
     
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
     {
-        select.Remove(player);
+        _select.Remove(player);
     }
     [Rpc(RpcSources.All, RpcTargets.All, HostMode = RpcHostMode.SourceIsHostPlayer)]
     public void Rpc_Ready(RpcInfo info = default)
     {
-        select.Set(info.Source, true);
+        _select[info.Source] = true;
+        if (CheckReady)
+        {
+            selectPanel.Open(false);
+            SelectTimer = TickTimer.None;
+            foreach (var playerRef in App.I.GetAllPlayers())
+                _select[playerRef] = false;
+        }
     }
 }

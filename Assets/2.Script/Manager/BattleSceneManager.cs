@@ -65,12 +65,11 @@ public partial class BattleSceneManager : LocalFusionSingleton<BattleSceneManage
     {
         var expValue = exp / levelUpValue;
         expBar.SetBar(expValue);
+        if (false == Object.HasStateAuthority)
+            return;
         if (1f <= expValue)
-            LevelUp();
+            RPC_LevelUp();
     }
-
-
-
 #region UnUsedCallback
     public void OnObjectExitAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player) { }
     public void OnObjectEnterAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player) { }

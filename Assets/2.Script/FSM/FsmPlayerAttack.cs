@@ -18,10 +18,7 @@ public class FsmPlayerAttack : FsmPlayerBase
     public override void OnEnter()
     {
         doAttack = true;
-
         _controller.AniTrigger = StringToHash.Attack;
-        // ani.SetTrigger(StringToHash.Attack);   
-        // ani.Update(0f);
     }
     public override void OnUpdate(NetworkInputData data)
     {
@@ -30,9 +27,7 @@ public class FsmPlayerAttack : FsmPlayerBase
         
         var stateInfo = ani.GetCurrentAnimatorStateInfo(0); 
         if (stateInfo.shortNameHash != StringToHash.Attack)
-        {
             other.ChangeState(FsmState.Idle);
-        }
 
         other.Move(data);
         // _other.Rotation(data);
@@ -51,6 +46,8 @@ public class FsmPlayerAttack : FsmPlayerBase
         doAttack = false;
         var tr = _controller.transform;
         _controller.attackDelay = 0;
+        if (false == _controller.HasStateAuthority)
+            return;
         _controller.Runner.Spawn(_controller.bullet, tr.position + (tr.forward + Vector3.up) * 0.5f, tr.rotation);
     }
 }
