@@ -17,10 +17,19 @@ public class Spawner : NetworkBehaviour, INetworkRunnerCallbacks
         if (false == HasStateAuthority)
             return;
         
-        _spawnDelay += Runner.DeltaTime;
-        if (spawnDelayMax < _spawnDelay)
+        // _spawnDelay += Runner.DeltaTime;
+        // if (spawnDelayMax < _spawnDelay)
+        // {
+        //     _spawnDelay = 0;
+        //     var randomIndex =  UnityEngine.Random.Range(0, spawnPoints.Count);
+        //     Runner.Spawn(obj, spawnPoints[randomIndex].transform.position, Quaternion.identity);
+        // }
+    }
+
+    public void OnGUI()
+    {
+        if (GUI.Button(new Rect(50,50,100,100), "Spawn"))
         {
-            _spawnDelay = 0;
             var randomIndex =  UnityEngine.Random.Range(0, spawnPoints.Count);
             Runner.Spawn(obj, spawnPoints[randomIndex].transform.position, Quaternion.identity);
         }

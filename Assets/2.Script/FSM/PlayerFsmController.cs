@@ -26,7 +26,7 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
     public Action attackAction;
 
     [Networked, OnChangedRender(nameof(SetAni))]
-    public int AniTrigger { get; set; } = StringToHash.Idle;
+    public int AniTrigger { get; set; }
 
     public void SetAni(NetworkBehaviourBuffer previous)
     {
@@ -43,6 +43,11 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
         rigi = GetComponent<Rigidbody>();
     }
 
+    public override void Spawned()
+    {
+        AniTrigger = StringToHash.Idle;
+    }
+
     public override void Init(PlayerBase player)
     {
         base.Init(player);
@@ -57,15 +62,21 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
         _currentStateTarget.OnEnter();
     }
 
+
     public override void FixedUpdateNetwork()
     {
-        if (StringToHash.Attack != AniTrigger)
-            Player.aniController.ani.SetTrigger(AniTrigger);
+        if (false == HasStateAuthority)
+            return;
         
         attackDelay += Runner.DeltaTime;
         if (GetInput(out NetworkInputData data)) 
             _currentStateTarget.OnUpdate(data);
 
+    }
+    public void LateUpdate()
+    {
+        if (StringToHash.Attack != AniTrigger)
+            Player.aniController.ani.SetTrigger(AniTrigger);
     }
 
     public void ChangeState(FsmState newState)

@@ -15,6 +15,7 @@ public class FsmBase : IFsmStateTarget
     {
         this.other = other;
         monster = other.GetComponent<MonsterFsmController>();
+        
     }
     public virtual void OnEnter() { }
     public virtual void OnExit() { }

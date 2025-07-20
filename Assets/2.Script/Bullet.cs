@@ -40,7 +40,7 @@ public class Bullet : NetworkBehaviour
         
         if (other.CompareTag($"Enemy"))
         {
-            other.GetComponent<MonsterFsmController>().Damage();
+            other.GetComponent<MonsterFsmController>().Damage(Object.InputAuthority);
             Runner.Despawn(Object);
         }
     }

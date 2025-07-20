@@ -7,6 +7,10 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 
 public class FsmMonsterBase : FsmBase
-{ 
-    public FsmMonsterBase(IFsmStateOther other) : base(other) { }
+{
+    [Read] public MonsterFsmController _controller { get; private set; }
+    public FsmMonsterBase(IFsmStateOther other) : base(other)
+    {
+        _controller = other.GetComponent<MonsterFsmController>();
+    }
 }

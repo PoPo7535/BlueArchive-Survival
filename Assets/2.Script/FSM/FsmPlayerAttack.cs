@@ -48,6 +48,6 @@ public class FsmPlayerAttack : FsmPlayerBase
         _controller.attackDelay = 0;
         if (false == _controller.HasStateAuthority)
             return;
-        _controller.Runner.Spawn(_controller.bullet, tr.position + (tr.forward + Vector3.up) * 0.5f, tr.rotation);
+        _controller.Runner.Spawn(_controller.bullet, tr.position + (tr.forward + Vector3.up) * 0.5f, tr.rotation, _controller.Object.InputAuthority);
     }
 }

@@ -20,7 +20,7 @@ public class FsmMonsterMove : FsmMonsterBase
 
     public override void OnUpdate(NetworkInputData _)
     {
-        monster.ani.SetTrigger(StringToHash.Move);
+        _controller.AniTrigger = StringToHash.Move;
         other.Move(target:target.transform);
         other.Rotation(target:target.transform);
     }

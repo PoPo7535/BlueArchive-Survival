@@ -9,15 +9,5 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public abstract class TimeStopObj : MonoBehaviour
 {
-    public bool CanMove { set; get; }
-
-    public void OnEnable()
-    {
-        BattleSceneManager.I.stopObjs.Add(this);
-    }
-
-    public void OnDisable()
-    {
-        BattleSceneManager.I.stopObjs.Remove(this);
-    }
+    public bool CanMove => BattleSceneManager.I.stopObjs;
 }

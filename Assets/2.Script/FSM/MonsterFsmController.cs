@@ -12,13 +12,28 @@ public class MonsterFsmController : NetworkBehaviour, IFsmStateOther, ISetInspec
 {
     [Serial, Read] public Rigidbody rigi;
     [Serial, Read] public Animator ani;
-    public GameObject expObj;
+    
     
     private IFsmStateTarget _moveStateTarget;
     private IFsmStateTarget _currentStateTarget;
 
     public float moveSpeed = 100f;
     public float rotateSpeed = 100f;
+    [Networked, OnChangedRender(nameof(SetAni))]
+    public int AniTrigger { get; set; }
+    public override void Spawned()
+    {
+        AniTrigger = StringToHash.Idle;
+    }
+
+    public void SetAni(NetworkBehaviourBuffer previous)
+    { 
+        var prevValue = GetPropertyReader<int>(nameof(AniTrigger)).Read(previous);
+        ani.ResetTrigger(prevValue);
+        ani.SetTrigger(AniTrigger);
+        if (StringToHash.Attack != AniTrigger)
+            ani.Update(0f);
+    }
     
     [Button, GUIColor(0, 1, 0)]
     public void SetInspector()
@@ -33,9 +48,21 @@ public class MonsterFsmController : NetworkBehaviour, IFsmStateOther, ISetInspec
         _currentStateTarget = _moveStateTarget;
         _currentStateTarget.OnEnter();
     }
+
+
+    public override void Despawned(NetworkRunner runner, bool hasState)
+    {
+
+    }
+
     public override void FixedUpdateNetwork()
     {
         _currentStateTarget.OnUpdate(default);
+    }
+    public void LateUpdate()
+    {
+        if (StringToHash.Attack != AniTrigger || 0 == AniTrigger)
+            ani.SetTrigger(AniTrigger);
     }
     public void ChangeState(FsmState newState)
     {
@@ -72,7 +99,7 @@ public class MonsterFsmController : NetworkBehaviour, IFsmStateOther, ISetInspec
     }
     public void Damage(PlayerRef other = default)
     {
-        Instantiate(expObj, transform.position, Quaternion.identity);
+        BattleSceneManager.I.battleData.AddExp(40f);
         Runner.Despawn(Object);
     }
 }
