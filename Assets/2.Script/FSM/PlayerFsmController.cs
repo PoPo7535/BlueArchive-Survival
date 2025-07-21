@@ -26,12 +26,13 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
     public Action attackAction;
 
     [Networked, OnChangedRender(nameof(SetAni))]
-    public int AniTrigger { get; set; }
+    public int AniTrigger { get; set; } = StringToHash.Idle;
 
     public void SetAni(NetworkBehaviourBuffer previous)
     {
         var prevValue = GetPropertyReader<int>(nameof(AniTrigger)).Read(previous);
-        Player.aniController.ani.ResetTrigger(prevValue);
+        if (prevValue != 0)
+            Player.aniController.ani.ResetTrigger(prevValue);
         Player.aniController.ani.SetTrigger(AniTrigger);
         if (StringToHash.Attack != AniTrigger)
             Player.aniController.ani.Update(0f);
@@ -41,11 +42,6 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
     public void SetInspector()
     {
         rigi = GetComponent<Rigidbody>();
-    }
-
-    public override void Spawned()
-    {
-        AniTrigger = StringToHash.Idle;
     }
 
     public override void Init(PlayerBase player)
@@ -65,7 +61,7 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
 
     public override void FixedUpdateNetwork()
     {
-        if (false == HasStateAuthority)
+        if (BattleSceneManager.I.StopObj)
             return;
         
         attackDelay += Runner.DeltaTime;
@@ -75,7 +71,7 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
     }
     public void LateUpdate()
     {
-        if (StringToHash.Attack != AniTrigger)
+        if (StringToHash.Attack != AniTrigger && 0 == AniTrigger)
             Player.aniController.ani.SetTrigger(AniTrigger);
     }
 

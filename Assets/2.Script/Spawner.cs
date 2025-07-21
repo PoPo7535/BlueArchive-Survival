@@ -9,7 +9,7 @@ public class Spawner : NetworkBehaviour, INetworkRunnerCallbacks
     public List<GameObject> spawnPoints = new();
     public Transform playerPoint;
     public GameObject obj;
-    private float _spawnDelay = 0;
+    // private float _spawnDelay = 0;
     public float spawnDelayMax = 2;
 
     public override void FixedUpdateNetwork()
@@ -26,14 +26,18 @@ public class Spawner : NetworkBehaviour, INetworkRunnerCallbacks
         // }
     }
 
+#if UNITY_EDITOR
     public void OnGUI()
     {
+        if (false == HasStateAuthority)
+            return;
         if (GUI.Button(new Rect(50,50,100,100), "Spawn"))
         {
             var randomIndex =  UnityEngine.Random.Range(0, spawnPoints.Count);
             Runner.Spawn(obj, spawnPoints[randomIndex].transform.position, Quaternion.identity);
         }
     }
+#endif
 
     public override void Spawned()
     {

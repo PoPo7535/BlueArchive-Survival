@@ -19,12 +19,9 @@ public class MonsterFsmController : NetworkBehaviour, IFsmStateOther, ISetInspec
 
     public float moveSpeed = 100f;
     public float rotateSpeed = 100f;
+
     [Networked, OnChangedRender(nameof(SetAni))]
-    public int AniTrigger { get; set; }
-    public override void Spawned()
-    {
-        AniTrigger = StringToHash.Idle;
-    }
+    public int AniTrigger { get; set; } = StringToHash.Idle;
 
     public void SetAni(NetworkBehaviourBuffer previous)
     { 
@@ -49,19 +46,16 @@ public class MonsterFsmController : NetworkBehaviour, IFsmStateOther, ISetInspec
         _currentStateTarget.OnEnter();
     }
 
-
-    public override void Despawned(NetworkRunner runner, bool hasState)
-    {
-
-    }
-
     public override void FixedUpdateNetwork()
     {
+        if (BattleSceneManager.I.StopObj)
+            return;
+        
         _currentStateTarget.OnUpdate(default);
     }
     public void LateUpdate()
     {
-        if (StringToHash.Attack != AniTrigger || 0 == AniTrigger)
+        if (StringToHash.Attack != AniTrigger && 0 == AniTrigger)
             ani.SetTrigger(AniTrigger);
     }
     public void ChangeState(FsmState newState)
@@ -77,7 +71,7 @@ public class MonsterFsmController : NetworkBehaviour, IFsmStateOther, ISetInspec
 
     public void Move(NetworkInputData _, Transform target)
     {
-        ani.SetTrigger(StringToHash.Move);
+        AniTrigger = StringToHash.Move;
         if (false == HasStateAuthority)
             return;
         var dir = (target.position - transform.position).normalized *

@@ -70,6 +70,19 @@ public partial class BattleSceneManager : LocalFusionSingleton<BattleSceneManage
         if (1f <= expValue)
             RPC_LevelUp();
     }
+#if UNITY_EDITOR
+    public void OnGUI()
+    {
+        if (false == HasStateAuthority)
+            return;
+        if (GUI.Button(new Rect(50,125,100,100), "Spawn"))
+        {
+            RPC_AddExp(60);
+        }
+    }
+#endif
+    
+    
 #region UnUsedCallback
     public void OnObjectExitAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player) { }
     public void OnObjectEnterAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player) { }

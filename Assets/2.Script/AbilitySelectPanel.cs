@@ -58,7 +58,6 @@ public class AbilitySelectPanel : MonoBehaviour, ISetInspector
     public void Open(bool active)
     {
         cg.ActiveCG(active);
-        // Foo();
     }
 
     private async void Foo()
