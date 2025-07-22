@@ -71,7 +71,7 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
     }
     public void LateUpdate()
     {
-        if (StringToHash.Attack != AniTrigger && 0 == AniTrigger)
+        if (StringToHash.Attack != AniTrigger && 0 != AniTrigger)
             Player.aniController.ani.SetTrigger(AniTrigger);
     }
 

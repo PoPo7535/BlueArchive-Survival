@@ -12,7 +12,7 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 public partial class BattleSceneManager // Ready
 {
     private readonly Dictionary<PlayerRef, bool> _select = new();
-    public bool StopObj => SelectTimer.ExpiredOrNotRunning(Runner);
+    public bool StopObj => false == SelectTimer.ExpiredOrNotRunning(Runner);
     private bool CheckReady => _select.All(kvp => kvp.Value);
     [Networked] public TickTimer SelectTimer { set; get; }
 

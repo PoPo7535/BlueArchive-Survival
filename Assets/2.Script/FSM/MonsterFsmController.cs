@@ -55,7 +55,7 @@ public class MonsterFsmController : NetworkBehaviour, IFsmStateOther, ISetInspec
     }
     public void LateUpdate()
     {
-        if (StringToHash.Attack != AniTrigger && 0 == AniTrigger)
+        if (StringToHash.Attack != AniTrigger && 0 != AniTrigger)
             ani.SetTrigger(AniTrigger);
     }
     public void ChangeState(FsmState newState)
