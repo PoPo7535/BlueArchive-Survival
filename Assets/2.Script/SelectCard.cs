@@ -43,14 +43,22 @@ public class SelectCard : MonoBehaviour, ISetInspector
         });
         _selectBtn.onClick.AddListener(() =>
         {
-            BattleSceneManager.I.Rpc_Ready();
-            myCard = 0;
+            Select();
         });
     }
 
     public void UpdateCard()
     {
         myCard = 1;
+    }
+
+    public void Select()
+    {
+        myCard.Log();
+        if (myCard == 0)
+            return;
+        BattleSceneManager.I.Rpc_Ready();
+        myCard = 0;
     }
 
 }

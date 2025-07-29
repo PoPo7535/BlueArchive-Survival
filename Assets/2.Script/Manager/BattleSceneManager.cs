@@ -65,10 +65,15 @@ public partial class BattleSceneManager : LocalFusionSingleton<BattleSceneManage
     {
         var expValue = exp / levelUpValue;
         expBar.SetBar(expValue);
-        if (false == Object.HasStateAuthority)
+        // if (false == Object.HasStateAuthority)
+        //     return;
+        if (PauseObject)
             return;
         if (1f <= expValue)
+        {
+            exp -= levelUpValue;
             RPC_LevelUp();
+        }
     }
 #if UNITY_EDITOR
     public void OnGUI()

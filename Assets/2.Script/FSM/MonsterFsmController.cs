@@ -48,7 +48,7 @@ public class MonsterFsmController : NetworkBehaviour, IFsmStateOther, ISetInspec
 
     public override void FixedUpdateNetwork()
     {
-        if (BattleSceneManager.I.StopObj)
+        if (BattleSceneManager.I.PauseObject)
             return;
         
         _currentStateTarget.OnUpdate(default);

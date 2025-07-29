@@ -92,10 +92,9 @@ public class LoginPanel : MonoBehaviour, ISetInspector
                 },
                 (error) =>
                 {
-                    PopUp.I.OpenPopUp($"{error.ErrorMessage}\n{(int)error.Error}", () =>
-                    {
-                        PopUp.I.ActiveCg(false);
-                    }, "확인");
+                    PopUp.I.OpenPopUp($"{error.ErrorMessage}\n{(int)error.Error}",
+                        () => PopUp.I.ActiveCg(false),
+                        "확인");
                 });
         });
         registerOpenBtn.onClick.AddListener(() =>

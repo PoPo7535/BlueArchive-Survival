@@ -1,9 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using Cysharp.Threading.Tasks;
-using Fusion;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -11,10 +7,12 @@ using UnityEngine.UI;
 using Serial = UnityEngine.SerializeField;
 using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
+using Random = UnityEngine.Random;
 
 public class AbilitySelectPanel : MonoBehaviour, ISetInspector
 {
     [Read, Serial] private CanvasGroup _cg;
+    [Read, Serial] private Image _timerBar;
     [Read, Serial] private SelectCard[] _selectCards;
     [Button, GUIColor(0,1,0)]
     public void SetInspector()
@@ -28,6 +26,7 @@ public class AbilitySelectPanel : MonoBehaviour, ISetInspector
         _selectCards[1].index = 1;
         _selectCards[2] = childs.First(tr => tr.name == "SelectCard (2)").GetComponent<SelectCard>();
         _selectCards[2].index = 2;
+        _timerBar = childs.First(tr => tr.name == "TimerBarFillAmount").GetComponent<Image>();
     }
 
     public void Open(bool active)
@@ -38,4 +37,19 @@ public class AbilitySelectPanel : MonoBehaviour, ISetInspector
             selectCard.UpdateCard();
         }
     }
+
+    public void Update()
+    {
+        if (Mathf.Approximately(0, _cg.alpha))
+            return;
+        var time = BattleSceneManager.I.SelectTimer.RemainingTime(App.I.Runner) / BattleSceneManager.I.selectTime;
+        if (null != time)
+        {
+            if (0 != time)
+                _timerBar.fillAmount = (float)time;
+            else
+                _selectCards[Random.Range(0, 2)].Select();
+        }
+    }
+
 }

@@ -61,7 +61,7 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
 
     public override void FixedUpdateNetwork()
     {
-        if (BattleSceneManager.I.StopObj)
+        if (BattleSceneManager.I.PauseObject)
             return;
         
         attackDelay += Runner.DeltaTime;
@@ -99,8 +99,10 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
         rigi.velocity = new Vector3(dir.x,  rigi.velocity.y, dir.y);
     }
 
+
     public void Rotation(NetworkInputData data, Transform _)
     {
+
         var dir = data.dir.normalized * (Player.state.MoveSpeed * Runner.DeltaTime);
         var targetRotation = Quaternion.LookRotation(new Vector3(dir.x, 0, dir.y));
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotateSpeed * Runner.DeltaTime);
