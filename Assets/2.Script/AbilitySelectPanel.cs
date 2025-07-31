@@ -32,10 +32,10 @@ public class AbilitySelectPanel : MonoBehaviour, ISetInspector
     public void Open(bool active)
     {
         _cg.ActiveCG(active);
+        if (false == active)
+            return;
         foreach (var selectCard in _selectCards)
-        {
             selectCard.UpdateCard();
-        }
     }
 
     public void Update()

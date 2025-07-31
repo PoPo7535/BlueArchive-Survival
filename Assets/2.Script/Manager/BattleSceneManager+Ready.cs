@@ -17,9 +17,9 @@ public partial class BattleSceneManager // Ready
     [Networked] public TickTimer SelectTimer { set; get; }
     [Read] public float selectTime = 10f;
     [Rpc(RpcSources.StateAuthority, RpcTargets.All, HostMode = RpcHostMode.SourceIsHostPlayer)]
-    private void RPC_LevelUp()
+    private void RPC_LevelUp(bool active)
     {
-        PanelOpen(true);
+        PanelOpen(active);
     }
     public void ReadyInit()
     {
@@ -42,7 +42,8 @@ public partial class BattleSceneManager // Ready
         if (exp < levelUpValue)
             PanelOpen(false);
         else
-            RPC_LevelUp();
+            PanelOpen(true);
+        // RPC_LevelUp();
     }
 
     private void PanelOpen(bool open)

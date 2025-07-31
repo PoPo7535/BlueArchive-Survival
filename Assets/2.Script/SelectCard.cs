@@ -19,13 +19,13 @@ public class SelectCard : MonoBehaviour, ISetInspector
     [Read, Serial] public int index;
     
     [Read] private static int[] num = new int[3];
-    [Read] private int myCard
+    [Read,ShowInInspector] private int myCard
     {
         get => num[index];
         set => num[index] = value;
     }
 
-    
+
     [Button, GUIColor(0,1,0)]
     public void SetInspector()
     {
@@ -54,11 +54,10 @@ public class SelectCard : MonoBehaviour, ISetInspector
 
     public void Select()
     {
-        myCard.Log();
         if (myCard == 0)
             return;
-        BattleSceneManager.I.Rpc_Ready();
         myCard = 0;
+        BattleSceneManager.I.Rpc_Ready();
     }
 
 }
