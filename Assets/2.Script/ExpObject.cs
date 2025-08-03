@@ -16,13 +16,14 @@ public class ExpObject : MonoBehaviour
     private float _time;
     private bool _triggerCheck = false;
     private const float FollowingTime = 1f;
+    private float addExpValue;
     private void OnEnable()
     {
         _time = 0;
         _triggerCheck = false;
     }
 
-    public  void Update()
+    public void Update()
     {
         if (false == _triggerCheck)
             return;
@@ -37,21 +38,28 @@ public class ExpObject : MonoBehaviour
             AddExp();
     }
 
+    public void Init(float addExpValue)
+    {
+        this.addExpValue = addExpValue;
+    }
     public void AddExp()
     {
         gameObject.SetActive(false);
         BattleSceneManager.I.battleData.AddExp(40f);
     }
     
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
+        nameof(OnTriggerStay).Log();
         if (_triggerCheck)
             return;
         if (false == other.CompareTag("Player"))
             return;
         var playerBase = other.GetComponent<PlayerBase>();
+        if (playerBase.Object.InputAuthority != App.I.Runner.LocalPlayer)
+            return;
+        _triggerCheck = true;
         _target = playerBase;
         _startPos = transform.position;
-        _triggerCheck = true;
     }
 }

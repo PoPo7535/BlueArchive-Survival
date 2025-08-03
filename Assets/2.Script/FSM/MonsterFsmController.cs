@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Fusion;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -12,8 +14,6 @@ public class MonsterFsmController : NetworkBehaviour, IFsmStateOther, ISetInspec
 {
     [Serial, Read] public Rigidbody rigi;
     [Serial, Read] public Animator ani;
-    
-    
     private IFsmStateTarget _moveStateTarget;
     private IFsmStateTarget _currentStateTarget;
 
@@ -53,11 +53,15 @@ public class MonsterFsmController : NetworkBehaviour, IFsmStateOther, ISetInspec
         
         _currentStateTarget.OnUpdate(default);
     }
+
+
     public void LateUpdate()
     {
         if (StringToHash.Attack != AniTrigger && 0 != AniTrigger)
             ani.SetTrigger(AniTrigger);
     }
+
+
     public void ChangeState(FsmState newState)
     {
         _currentStateTarget.OnExit();
@@ -91,9 +95,5 @@ public class MonsterFsmController : NetworkBehaviour, IFsmStateOther, ISetInspec
     {
         return true;
     }
-    public void Damage(PlayerRef other = default)
-    {
-        BattleSceneManager.I.battleData.AddExp(40f);
-        Runner.Despawn(Object);
-    }
+
 }
