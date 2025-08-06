@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +6,8 @@ using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 
-public abstract class TimeStopObj : MonoBehaviour
+public class SkillBase : MonoBehaviour
 {
-    public bool CanMove => BattleSceneManager.I.PauseObject;
+    public int maxLevel = 1;
+    public int currentLevel = 1;
 }

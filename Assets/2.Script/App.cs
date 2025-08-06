@@ -42,8 +42,6 @@ public class App : SimulationSingleton<App>, INetworkRunnerCallbacks
     public async void HostGame(GameMode gameMode, string sessionName, string password, Action okAction = null, Action errorAction =null) 
     {
         PopUp.I.OpenPopUp("호스트 중");
-        // var loadSceneAsync  = SceneManager.LoadSceneAsync("2.Room");
-        // await UniTask.WaitUntil(() => loadSceneAsync.isDone);
         var sessionProperties = new Dictionary<string, SessionProperty>();
         
         if (false == password.IsNullOrEmpty())
@@ -65,9 +63,6 @@ public class App : SimulationSingleton<App>, INetworkRunnerCallbacks
             okAction?.Invoke();
         else
             errorAction?.Invoke();
-
-        // var re= runner.LoadScene("2.Room").IsDone;
-        
         PopUp.I.OpenPopUp(result);
     }
     public async void JoinGame(string sessionName) 
