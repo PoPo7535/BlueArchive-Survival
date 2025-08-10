@@ -13,6 +13,7 @@ public class PlayerBase : NetworkBehaviour
     [Read] public PlayerAniController aniController;
     [Read] public PlayerFsmController fsmController;
     [Read] public PlayerState state;
+    [FormerlySerializedAs("playerSkillInventory")] [FormerlySerializedAs("playerInventory")] [FormerlySerializedAs("skillInventory")] [Read] public PlayerSkillInventory inventory;
     public FindEnemy findEnemy;
     private void Awake()
     {

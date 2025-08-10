@@ -6,8 +6,11 @@ using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 
-public interface IActiveSkill
+public class ActiveSkillTest : ActiveSkillBase
 {
-    public void Init(PlayerSkillInventory skillInventory);
-    public void StatusUpdate();
+
+
+    public override void StatusUpdate()
+    {
+    }
 }
