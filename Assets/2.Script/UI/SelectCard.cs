@@ -58,6 +58,7 @@ public class SelectCard : MonoBehaviour, ISetInspector
             return;
         myCard = 0;
         BattleSceneManager.I.Rpc_Ready();
+        Spawner.I.RPC_SpawnTest();
     }
 
 }

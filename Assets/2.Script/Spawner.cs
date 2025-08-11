@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using Fusion;
 using Fusion.Sockets;
 using UnityEngine;
+using Utility;
 
-public class Spawner : NetworkBehaviour, INetworkRunnerCallbacks
+public class Spawner : LocalFusionSingleton<Spawner>, INetworkRunnerCallbacks
 {
     public List<GameObject> spawnPoints = new();
     public Transform playerPoint;
@@ -16,16 +17,15 @@ public class Spawner : NetworkBehaviour, INetworkRunnerCallbacks
     {
         if (false == HasStateAuthority)
             return;
-        
-        // _spawnDelay += Runner.DeltaTime;
-        // if (spawnDelayMax < _spawnDelay)
-        // {
-        //     _spawnDelay = 0;
-        //     var randomIndex =  UnityEngine.Random.Range(0, spawnPoints.Count);
-        //     Runner.Spawn(obj, spawnPoints[randomIndex].transform.position, Quaternion.identity);
-        // }
+
     }
 
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority, HostMode = RpcHostMode.SourceIsHostPlayer)]
+    public void RPC_SpawnTest(RpcInfo info = default)
+    {
+        Runner.Spawn(GameManager.I.Test, Vector3.zero, Quaternion.identity, info.Source);
+    }
+    
 #if UNITY_EDITOR
     public void OnGUI()
     {
@@ -51,7 +51,7 @@ public class Spawner : NetworkBehaviour, INetworkRunnerCallbacks
                 GameManager.I.playerBase, 
                 playerPoint.position, 
                 Quaternion.identity,player);
-            playerInfo.Obj = baseObj;
+            playerInfo.PlayerObject = baseObj;
         }
     }
 

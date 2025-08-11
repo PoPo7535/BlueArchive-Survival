@@ -15,7 +15,7 @@ public class FsmMonsterMove : FsmMonsterBase
     public override void OnEnter()
     {
         var player = App.I.GetAllPlayers();
-        target = App.I.GetPlayerInfo(player[0]).Obj;
+        target = App.I.GetPlayerInfo(player[0]).PlayerObject;
     }
 
     public override void OnUpdate(NetworkInputData _)

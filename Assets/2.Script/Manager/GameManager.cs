@@ -18,6 +18,8 @@ public class GameManager : SerializedMonoBehaviour, ISetInspector
     public NetworkObject playerBase;
     public PlayerInfo playerInfo;
     public EntityTokenResponse playFabEntity;
+    public NetworkObject Test;
+
     [Read] public string ID;
     
     [Button, GUIColor(0,1,0)]

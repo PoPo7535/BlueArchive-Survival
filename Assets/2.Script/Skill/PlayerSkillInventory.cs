@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Fusion;
 using UnityEngine;
 using Serial = UnityEngine.SerializeField;
 using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
@@ -8,7 +9,7 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public class PlayerSkillInventory : PlayerComponent
 {
-    [Read, Serial]private List<IActiveSkill> activeSkills = new List<IActiveSkill>();
+    [Read, Serial] private List<IActiveSkill> activeSkills = new();
     public override void Init(PlayerBase player)
     {
         base.Init(player);
@@ -19,6 +20,12 @@ public class PlayerSkillInventory : PlayerComponent
     {
         skill.Init(this);
         activeSkills.Add(skill);
+    }
+    
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_Spawn()
+    {
+        
     }
     
     public void StateUpdate()
