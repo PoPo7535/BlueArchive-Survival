@@ -8,10 +8,10 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public class ActiveSkillBase : SkillBase, IActiveSkill
 {
-    protected PlayerSkillInventory SkillInventory;
+    protected PlayerSkillInventory skillInventory;
     public void Init(PlayerSkillInventory skillInventory)
     {
-        this.SkillInventory = skillInventory;
+        this.skillInventory = skillInventory;
     }
     public virtual void StatusUpdate() { }
 }

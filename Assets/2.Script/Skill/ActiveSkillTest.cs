@@ -8,9 +8,8 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public class ActiveSkillTest : ActiveSkillBase
 {
-
-
     public override void StatusUpdate()
     {
+        
     }
 }
