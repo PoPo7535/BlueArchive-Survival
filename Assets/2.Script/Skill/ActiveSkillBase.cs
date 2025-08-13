@@ -18,9 +18,8 @@ public class ActiveSkillBase : SkillBase, IActiveSkill
     public override void Spawned()
     {
         base.Spawned();
-        if (false == Object.HasStateAuthority)
-            return;
         player = App.I.GetPlayerInfo(Object.InputAuthority).PlayerObject.GetComponent<PlayerBase>();
+        player.inventory.AddSkill(this);
     }
     public virtual void StatusUpdate() { }
 }

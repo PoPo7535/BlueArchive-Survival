@@ -2013,6 +2013,62 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &480500543
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 480500545}
+  - component: {fileID: 480500544}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &480500544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480500543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a88f13b5b49e09444ab897b70682663f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalSource: {fileID: 2100000, guid: ab262a2823cef7d429928301639c58df, type: 2}
+  bodySource: {fileID: 2100000, guid: dc24902e3e89b3440b12366aa0b5f8cd, type: 2}
+  eyeMouthSource: {fileID: 2100000, guid: 873248fc9081e724dad49545483ddb73, type: 2}
+  faceSource: {fileID: 2100000, guid: 81772ccc45b169041b2beb8aacd39724, type: 2}
+  normalTarget:
+  - {fileID: 2100000, guid: 08519b1a82fae5f47a54118d293b8049, type: 2}
+  bodyTarget:
+  - {fileID: 2100000, guid: a816f2acebf43664981416d6e2f9b26b, type: 2}
+  eyeMouthTarget: []
+  faceTarget:
+  - {fileID: 2100000, guid: 23681bdde8f6b9a40a1f177a0d9e6fd7, type: 2}
+  targetMesh: {fileID: 0}
+--- !u!4 &480500545
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480500543}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -24.653412, y: 17.376545, z: 18.522911}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &521161010
 GameObject:
   m_ObjectHideFlags: 0
@@ -6427,3 +6483,4 @@ SceneRoots:
   - {fileID: 8241656283214348839}
   - {fileID: 1982067598}
   - {fileID: 1365346088}
+  - {fileID: 480500545}

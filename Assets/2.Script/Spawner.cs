@@ -19,7 +19,7 @@ public class Spawner : LocalFusionSingleton<Spawner>, INetworkRunnerCallbacks
             return;
 
     }
-
+    
     [Rpc(RpcSources.All, RpcTargets.StateAuthority, HostMode = RpcHostMode.SourceIsHostPlayer)]
     public void RPC_SpawnTest(RpcInfo info = default)
     {

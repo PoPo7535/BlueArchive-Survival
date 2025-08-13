@@ -21,13 +21,7 @@ public class PlayerSkillInventory : PlayerComponent
         skill.Init(this);
         activeSkills.Add(skill);
     }
-    
-    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-    public void RPC_Spawn()
-    {
-        
-    }
-    
+
     public void StateUpdate()
     {
         foreach (var skill in activeSkills)

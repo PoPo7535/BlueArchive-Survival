@@ -18,8 +18,5 @@ public class ActiveSkillTest : ActiveSkillBase
         transform.rotation = Quaternion.Euler(Vector3.zero);
     }
 
-    public override void StatusUpdate()
-    {
-        
-    }
+    public override void StatusUpdate() { }
 }
