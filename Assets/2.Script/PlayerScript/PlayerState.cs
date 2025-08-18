@@ -40,11 +40,11 @@ public class PlayerState : PlayerComponent
     public override void Init(PlayerBase player)
     {
         base.Init(player);
-        player.state = this;
+        player.State = this;
     }
     public void Start()
     {
-        var controller = Player.aniController.ani.runtimeAnimatorController;
+        var controller = Player.AniController.ani.runtimeAnimatorController;
         var ac = controller.animationClips.FirstOrDefault
             (c => c.name.Split('_')[1] == nameof(StringToHash.Attack));
         
@@ -58,7 +58,7 @@ public class PlayerState : PlayerComponent
 
     private void UpdateAniSpeed()
     {
-        Player.aniController.ChangeSpeed(FsmState.Move, _moveSpeed / 100f);
-        Player.aniController.ChangeSpeed(FsmState.Attack,AttackSpeed / 100f);
+        Player.AniController.ChangeSpeed(FsmState.Move, _moveSpeed / 100f);
+        Player.AniController.ChangeSpeed(FsmState.Attack,AttackSpeed / 100f);
     }
 }

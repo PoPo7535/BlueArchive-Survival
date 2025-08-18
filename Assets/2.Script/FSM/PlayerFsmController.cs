@@ -32,10 +32,10 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
     {
         var prevValue = GetPropertyReader<int>(nameof(AniTrigger)).Read(previous);
         if (prevValue != 0)
-            Player.aniController.ani.ResetTrigger(prevValue);
-        Player.aniController.ani.SetTrigger(AniTrigger);
+            Player.AniController.ani.ResetTrigger(prevValue);
+        Player.AniController.ani.SetTrigger(AniTrigger);
         if (StringToHash.Attack != AniTrigger)
-            Player.aniController.ani.Update(0f);
+            Player.AniController.ani.Update(0f);
     }
     
     [Button, GUIColor(0, 1, 0)]
@@ -47,7 +47,7 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
     public override void Init(PlayerBase player)
     {
         base.Init(player);
-        Player.fsmController = this;
+        Player.FsmController = this;
         
         _idleStateTarget = new FsmPlayerIdle(this);
         _moveStateTarget = new FsmPlayerMove(this);
@@ -72,7 +72,7 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
     public void LateUpdate()
     {
         if (StringToHash.Attack != AniTrigger && 0 != AniTrigger)
-            Player.aniController.ani.SetTrigger(AniTrigger);
+            Player.AniController.ani.SetTrigger(AniTrigger);
     }
 
     public void ChangeState(FsmState newState)
@@ -95,7 +95,7 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
 
     public void Move(NetworkInputData data, Transform _)
     {
-        var dir = data.dir.normalized * (Player.state.MoveSpeed * Runner.DeltaTime);
+        var dir = data.dir.normalized * (Player.State.MoveSpeed * Runner.DeltaTime);
         rigi.velocity = new Vector3(dir.x,  rigi.velocity.y, dir.y);
     }
 
@@ -103,7 +103,7 @@ public class PlayerFsmController : PlayerComponent, IFsmStateOther, ISetInspecto
     public void Rotation(NetworkInputData data, Transform _)
     {
 
-        var dir = data.dir.normalized * (Player.state.MoveSpeed * Runner.DeltaTime);
+        var dir = data.dir.normalized * (Player.State.MoveSpeed * Runner.DeltaTime);
         var targetRotation = Quaternion.LookRotation(new Vector3(dir.x, 0, dir.y));
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotateSpeed * Runner.DeltaTime);
     }

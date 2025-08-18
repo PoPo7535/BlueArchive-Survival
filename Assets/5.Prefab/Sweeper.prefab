@@ -14,8 +14,10 @@ GameObject:
   - component: {fileID: 2116902545299958876}
   - component: {fileID: 269341265931728516}
   - component: {fileID: 6520990288503470339}
+  - component: {fileID: -7564653320798899472}
   - component: {fileID: 7918903665182491294}
   - component: {fileID: 1041766510307135944}
+  - component: {fileID: -1952888793106760407}
   m_Layer: 0
   m_Name: Sweeper
   m_TagString: Enemy
@@ -128,8 +130,10 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 6520990288503470339}
+  - {fileID: -7564653320798899472}
   - {fileID: 7918903665182491294}
   - {fileID: 1041766510307135944}
+  - {fileID: -1952888793106760407}
 --- !u!114 &6520990288503470339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,6 +156,18 @@ MonoBehaviour:
     Position: 0.01
     Rotation: 0.01
     Scale: 0.01
+--- !u!114 &-7564653320798899472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3286513706925757525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff9451c95eba00488ef3c30f15f8a73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7918903665182491294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,6 +199,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   expObj: {fileID: 8021241639796330058, guid: eb851445ec132a446996b66a398ccd3d, type: 3}
   dropExpValue: 40
+--- !u!114 &-1952888793106760407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3286513706925757525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0468a96ef89ea846b6702abf114be4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2468194081166597016
 PrefabInstance:
   m_ObjectHideFlags: 0

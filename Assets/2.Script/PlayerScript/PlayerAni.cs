@@ -30,7 +30,7 @@ public class PlayerAni : MonoBehaviour, ISetInspector
     {
         if (pb == null)
             pb = transform.parent.GetComponent<PlayerBase>();
-        pb.fsmController.OnAttack();
+        pb.FsmController.OnAttack();
     }
     private void SetAnimatorController()
     {

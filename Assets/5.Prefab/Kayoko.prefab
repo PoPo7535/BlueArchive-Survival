@@ -3597,7 +3597,6 @@ GameObject:
   - component: {fileID: 7461774109172521428}
   - component: {fileID: 1045847734138903264}
   - component: {fileID: 832328503041314972}
-  - component: {fileID: 8930458751826804551}
   - component: {fileID: 4446647335603666684}
   - component: {fileID: -8750236703293195644}
   m_Layer: 0
@@ -3715,23 +3714,6 @@ MonoBehaviour:
   showGizmo: 0
   scale: 1
   isSet: 0
---- !u!114 &8930458751826804551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7719790744615435754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b957f4326df7ef546a65eb202e8c04b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ani: {fileID: 1045847734138903264}
-  mainCamera: {fileID: 0}
-  bullet: {fileID: 970238790205541930, guid: 165c5e191bafd4b4a83b899f0a386523, type: 3}
-  moveSpeed: 100
-  rotateSpeed: 10
 --- !u!114 &4446647335603666684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3749,7 +3731,6 @@ MonoBehaviour:
   Flags: 262145
   NestedObjects: []
   NetworkedBehaviours:
-  - {fileID: 8930458751826804551}
   - {fileID: -8750236703293195644}
 --- !u!114 &-8750236703293195644
 MonoBehaviour:

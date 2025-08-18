@@ -19,7 +19,7 @@ public class ActiveSkillBase : SkillBase, IActiveSkill
     {
         base.Spawned();
         player = App.I.GetPlayerInfo(Object.InputAuthority).PlayerObject.GetComponent<PlayerBase>();
-        player.inventory.AddSkill(this);
+        player.Inventory.AddSkill(this);
     }
     public virtual void StatusUpdate() { }
 }

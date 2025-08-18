@@ -10,7 +10,7 @@ using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 
-public class MonsterFsmController : NetworkBehaviour, IFsmStateOther, ISetInspector
+public class MonsterFsmController : NetworkBehaviour, IFsmStateOther, ISetInspector, IMonsterComponent
 {
     [Serial, Read] public Rigidbody rigi;
     [Serial, Read] public Animator ani;
@@ -96,4 +96,8 @@ public class MonsterFsmController : NetworkBehaviour, IFsmStateOther, ISetInspec
         return true;
     }
 
+    public void Init(MonsterBase monsterBase)
+    {
+        monsterBase.FsmController = this;
+    }
 }

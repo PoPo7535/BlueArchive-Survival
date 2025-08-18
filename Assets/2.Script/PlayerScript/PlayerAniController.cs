@@ -18,7 +18,7 @@ public class PlayerAniController : PlayerComponent
     public override void Init(PlayerBase player)
     {
         base.Init(player);
-        Player.aniController = this;
+        Player.AniController = this;
     }
 
     public void ChangeSpeed(FsmState state, float speed = 1f)

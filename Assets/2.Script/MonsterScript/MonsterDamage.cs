@@ -8,7 +8,7 @@ using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 
-public class MonsterDamage : NetworkBehaviour
+public class MonsterDamage : NetworkBehaviour , IMonsterComponent
 {
     [Networked, Capacity(3), OnChangedRender(nameof(OnAttackerLog))] private NetworkDictionary<PlayerRef, bool> attackerLog { get; }
     private Queue<PlayerRef> attackerQueue = new();
@@ -22,7 +22,8 @@ public class MonsterDamage : NetworkBehaviour
             var expObject = Instantiate(expObj, transform.position, Quaternion.identity);
             expObject.Init(dropExpValue / number);
         }
-        if (attackerLog.Any(pair=>pair.Value))
+
+        if (attackerLog.Any(pair => pair.Value))
             Runner.Despawn(Object);
     }
 
@@ -47,5 +48,10 @@ public class MonsterDamage : NetworkBehaviour
     {
         if (false == attackerLog[other])
             attackerQueue.Enqueue(other);
+    }
+
+    public void Init(MonsterBase monsterBase)
+    {
+        monsterBase.Damage = this;
     }
 }

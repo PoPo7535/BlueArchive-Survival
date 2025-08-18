@@ -50,7 +50,6 @@ public class ExpObject : MonoBehaviour
     
     private void OnTriggerStay(Collider other)
     {
-        nameof(OnTriggerStay).Log();
         if (_triggerCheck)
             return;
         if (false == other.CompareTag("Player"))

@@ -13,7 +13,7 @@ public class PlayerSkillInventory : PlayerComponent
     public override void Init(PlayerBase player)
     {
         base.Init(player);
-        Player.inventory = this;
+        Player.Inventory = this;
     }
 
     public void AddSkill(IActiveSkill skill)
