@@ -5,23 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="92ad331b-57ba-4eed-bed9-8043b55c7314" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/ExpObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/ExpObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/FSM/FsmPlayerBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/FSM/FsmPlayerBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/FSM/MonsterFsmController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/FSM/MonsterFsmController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/FSM/PlayerFsmController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/FSM/PlayerFsmController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/MonsterDamage.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/MonsterDamage.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/NetworkHit.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/NetworkHit.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/PlayerScript/PlayerAni.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/PlayerScript/PlayerAni.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/PlayerScript/PlayerAniController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/PlayerScript/PlayerAniController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/PlayerScript/PlayerBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/PlayerScript/PlayerBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/PlayerScript/PlayerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/PlayerScript/PlayerState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Interfaces/IActiveSkill.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Interfaces/IActiveSkill.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillTest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillInventory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Prefab/Kayoko.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Prefab/Kayoko.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Prefab/Sweeper.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Prefab/Sweeper.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5.Prefab/Skill/Cube.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Prefab/Skill/Cube.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,32 +21,33 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9232050d96be4a5f8f15ce871ca8d4ef27800/33/8d69907a/ConstraintSource.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2.Script/Interfaces/IMonsterComponent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2.Script/MonsterScript/MonsterBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/Fusion/Editor/Fusion.Unity.Editor.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="31TkKXfSaIVLHKCUQZllx32o1xC" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Unity 에디터에 연결.Unity 에디터에 연결">
     <configuration name="유닛 테스트(배치 모드)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="E:\2022.3.33f1\Editor\Unity.exe" />
@@ -110,7 +100,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1755555387961</updated>
-      <workItem from="1755555390825" duration="1864000" />
+      <workItem from="1755555390825" duration="2028000" />
+      <workItem from="1755693398400" duration="4077000" />
     </task>
     <servers />
   </component>

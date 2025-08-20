@@ -9,11 +9,7 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 public class ActiveSkillBase : SkillBase, IActiveSkill
 {
     protected PlayerBase player;
-    protected PlayerSkillInventory skillInventory;
-    public void Init(PlayerSkillInventory skillInventory)
-    {
-        this.skillInventory = skillInventory;
-    }
+    public virtual void StatusUpdate() { }
     
     public override void Spawned()
     {
@@ -21,5 +17,4 @@ public class ActiveSkillBase : SkillBase, IActiveSkill
         player = App.I.GetPlayerInfo(Object.InputAuthority).PlayerObject.GetComponent<PlayerBase>();
         player.Inventory.AddSkill(this);
     }
-    public virtual void StatusUpdate() { }
 }

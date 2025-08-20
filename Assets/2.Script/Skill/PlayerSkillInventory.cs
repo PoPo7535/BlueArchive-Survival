@@ -18,7 +18,6 @@ public class PlayerSkillInventory : PlayerComponent
 
     public void AddSkill(IActiveSkill skill)
     {
-        skill.Init(this);
         activeSkills.Add(skill);
     }
 

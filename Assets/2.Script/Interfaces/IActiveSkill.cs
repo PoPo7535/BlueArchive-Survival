@@ -8,6 +8,5 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public interface IActiveSkill
 {
-    public void Init(PlayerSkillInventory skillInventory);
     public void StatusUpdate();
 }
