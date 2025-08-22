@@ -7,10 +7,12 @@ public class FindEnemy
     public FindEnemy(Transform transform)
     {
         this.transform = transform;
+        MonsterLayer = LayerMask.GetMask("Monster");
     }
     public float radius = 5;
     private int frameCount = 0;
     private Transform transform;
+    private readonly int MonsterLayer;
     public GameObject nearObj
     {
         get
@@ -39,8 +41,8 @@ public class FindEnemy
         
         frameCount = Time.frameCount;
         _nearObj = _randomObj = null;
-        var colliders = Physics.OverlapSphere(transform.position, radius);
-        colliders = colliders.Where(col => col.gameObject.CompareTag("Enemy")).ToArray();
+        var colliders = Physics.OverlapSphere(transform.position, radius, MonsterLayer);
+        colliders = colliders.Where(col => col.gameObject.CompareTag($"Monster")).ToArray();
 
         if (0 == colliders.Length)
             return;

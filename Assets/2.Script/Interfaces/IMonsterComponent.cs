@@ -1,4 +1,4 @@
 interface IMonsterComponent
 {
-    public void Init(MonsterBase monsterBase);
+    public void Init(MonsterBase monster);
 }

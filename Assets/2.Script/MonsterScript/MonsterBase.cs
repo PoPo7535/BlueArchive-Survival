@@ -12,7 +12,7 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 public class MonsterBase : NetworkBehaviour
 {
     [NonSerialized, Read] public MonsterFsmController FsmController;
-    [NonSerialized, Read] public MonsterHitData HitData;
+    [NonSerialized, Read] public MonsterHitManager HitManager;
     [NonSerialized, Read] public MonsterDamage Damage;
     private void Awake()
     {

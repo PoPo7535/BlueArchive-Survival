@@ -18,9 +18,9 @@ GameObject:
   - component: {fileID: 7918903665182491294}
   - component: {fileID: 1041766510307135944}
   - component: {fileID: -1952888793106760407}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sweeper
-  m_TagString: Enemy
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -271,14 +271,82 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7224024148593271909, guid: 5688e3ea15ed556449efd3217814d31f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -4923767093395742743, guid: 5688e3ea15ed556449efd3217814d31f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -4375772239857538358, guid: 5688e3ea15ed556449efd3217814d31f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -3174451425493424371, guid: 5688e3ea15ed556449efd3217814d31f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -2942733184427462801, guid: 5688e3ea15ed556449efd3217814d31f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -2286192792253433076, guid: 5688e3ea15ed556449efd3217814d31f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -2258310633648582731, guid: 5688e3ea15ed556449efd3217814d31f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -1869531236097219418, guid: 5688e3ea15ed556449efd3217814d31f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -1442948512032612773, guid: 5688e3ea15ed556449efd3217814d31f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -885813068545119954, guid: 5688e3ea15ed556449efd3217814d31f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5688e3ea15ed556449efd3217814d31f, type: 3}
       propertyPath: m_Name
       value: Sweeper
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5688e3ea15ed556449efd3217814d31f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686868527017153919, guid: 5688e3ea15ed556449efd3217814d31f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2659768907929547346, guid: 5688e3ea15ed556449efd3217814d31f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4554237856219092771, guid: 5688e3ea15ed556449efd3217814d31f, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 5688e3ea15ed556449efd3217814d31f, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: fa9293d3b7cb4304c957a6d434b09a97, type: 2}
+    - target: {fileID: 6434042153513290319, guid: 5688e3ea15ed556449efd3217814d31f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6954587238412302988, guid: 5688e3ea15ed556449efd3217814d31f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674800191184856893, guid: 5688e3ea15ed556449efd3217814d31f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5866666021909216657, guid: 5688e3ea15ed556449efd3217814d31f, type: 3}
     m_RemovedGameObjects: []

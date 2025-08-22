@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 2076192928926661857}
   - component: {fileID: 2583031555111653973}
   - component: {fileID: 7851215496999530326}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerBase
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -145,10 +145,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 254a43596f771a946bce94219e68a762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aniController: {fileID: 0}
-  fsmController: {fileID: 0}
-  state: {fileID: 0}
-  skillInventory: {fileID: 0}
 --- !u!114 &7120439622682882317
 MonoBehaviour:
   m_ObjectHideFlags: 0

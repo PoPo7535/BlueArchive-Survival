@@ -38,9 +38,9 @@ public class Bullet : NetworkBehaviour
         if (false == _spawn)
             return;
         
-        if (other.CompareTag($"Enemy"))
+        if (other.CompareTag($"Monster"))
         {
-            other.GetComponent<MonsterDamage>().Damage(Object.InputAuthority);
+            other.GetComponent<MonsterHitManager>().Damage(Object.InputAuthority, 10f);
             Runner.Despawn(Object);
         }
     }

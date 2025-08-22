@@ -6,11 +6,21 @@
   <component name="ChangeListManager">
     <list default="true" id="92ad331b-57ba-4eed-bed9-8043b55c7314" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Interfaces/IActiveSkill.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Interfaces/IActiveSkill.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillInventory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Prefab/Skill/Cube.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Prefab/Skill/Cube.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Bullet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/FSM/MonsterFsmController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/FSM/MonsterFsmController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Interfaces/IMonsterComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Interfaces/IMonsterComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/MonsterScript/MonsterBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/MonsterScript/MonsterBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/MonsterScript/MonsterDamage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/MonsterScript/MonsterDamage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/MonsterScript/MonsterHitData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/MonsterScript/MonsterHitManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/MonsterScript/MonsterHitData.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/MonsterScript/MonsterHitManager.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/PlayerScript/FindEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/PlayerScript/FindEnemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/4.Ani Cntroller/Aris/Aris_Attack.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/4.Ani Cntroller/Aris/Aris_Attack.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5.Prefab/Bullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Prefab/Bullet.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5.Prefab/Playable Character/PlayerBase.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Prefab/Playable Character/PlayerBase.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5.Prefab/Sweeper.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Prefab/Sweeper.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,9 +31,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1f76ff20d9ff469b846a8371e880c369ab800/eb/0517ac5d/NetworkBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9232050d96be4a5f8f15ce871ca8d4ef27800/33/8d69907a/ConstraintSource.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2.Script/Interfaces/IMonsterComponent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2.Script/MonsterScript/MonsterBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2.Script/MonsterScript/MonsterComponent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/Fusion/Editor/Fusion.Unity.Editor.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
@@ -101,7 +113,8 @@
       <option name="presentableId" value="Default" />
       <updated>1755555387961</updated>
       <workItem from="1755555390825" duration="2028000" />
-      <workItem from="1755693398400" duration="4077000" />
+      <workItem from="1755693398400" duration="7302000" />
+      <workItem from="1755860026787" duration="5141000" />
     </task>
     <servers />
   </component>
