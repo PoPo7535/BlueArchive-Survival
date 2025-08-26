@@ -16,16 +16,16 @@ public class PlayerSkillInventory : PlayerComponent
         Player.Inventory = this;
     }
 
-    public void AddSkill(IActiveSkill skill)
+    public void AddSkill(IActiveSkill skillTrigger)
     {
-        activeSkills.Add(skill);
+        activeSkills.Add(skillTrigger);
     }
 
     public void StateUpdate()
     {
         foreach (var skill in activeSkills)
         {
-            skill.StatusUpdate();
+            skill.UpdateState();
         }
     }
 }

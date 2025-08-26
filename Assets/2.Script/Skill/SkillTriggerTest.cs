@@ -8,7 +8,7 @@ using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 
-public class ActiveSkillTest : ActiveSkillBase, ISetInspector
+public class SkillTriggerTest : SkillTriggerBase, ISetInspector
 {
     [Read, Serial] public PositionConstraint positionConstraint;
     [Button, GUIColor(0, 1, 0)]
@@ -29,7 +29,4 @@ public class ActiveSkillTest : ActiveSkillBase, ISetInspector
         });
         
     }
-
-    public override void StatusUpdate() { }
-
 }
