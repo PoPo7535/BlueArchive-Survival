@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="92ad331b-57ba-4eed-bed9-8043b55c7314" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillTriggerAttackTrigger.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Interfaces/IActiveSkill.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Interfaces/ISkillTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Interfaces/IActiveSkill.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Interfaces/ISkillTrigger.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillTriggerBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillBase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillTriggerBase.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillTriggerTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillTest.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillTriggerTest.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillInventory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillAttackTrigger.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillAttackTrigger.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillTriggerAttackTrigger.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillTriggerTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillTriggerTest.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +43,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -115,7 +107,9 @@
       <workItem from="1755555390825" duration="2028000" />
       <workItem from="1755693398400" duration="7302000" />
       <workItem from="1755860026787" duration="14127000" />
-      <workItem from="1756221249915" duration="5558000" />
+      <workItem from="1756221249915" duration="6166000" />
+      <workItem from="1756562902059" duration="2010000" />
+      <workItem from="1756746104687" duration="4280000" />
     </task>
     <servers />
   </component>

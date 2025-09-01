@@ -12,7 +12,7 @@ public class SkillTriggerTest : SkillTriggerBase, ISetInspector
 {
     [Read, Serial] public PositionConstraint positionConstraint;
     [Button, GUIColor(0, 1, 0)]
-    public void SetInspector()
+    public new void SetInspector()
     {
         positionConstraint = GetComponent<PositionConstraint>();
     }
