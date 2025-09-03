@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,19 +9,16 @@ using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 
-public class SkillTriggerBase : SkillBase, IActiveSkill,ISetInspector
+public class ActiveSkillBase : SkillBase, IActiveSkill, ISetInspector
 {
-    private List<ISkillTrigger> activeSkills = new ();
+    [Read, Serial, SerializeReference] private List<SkillTrigger> activeSkills = new ();
     protected PlayerBase player;
     
     [Button, GUIColor(0,1,0)]
     public void SetInspector()
     {
         activeSkills.Clear();
-        var skillTrigger = GetComponent<ISkillTrigger>();
-        if (null != skillTrigger)
-            activeSkills.Add(skillTrigger);
-        var triggers = GetComponentsInChildren<ISkillTrigger>();
+        var triggers = GetComponentsInChildren<SkillTrigger>();
         foreach (var t in triggers)
             activeSkills.Add(t);
     }

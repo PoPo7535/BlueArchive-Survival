@@ -3,16 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Fusion;
+using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 using UnityEngine;
 using Serial = UnityEngine.SerializeField;
 using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
-
-public class SkillTriggerAttackTrigger : NetworkBehaviour, ISkillTrigger
+public class SkillTrigger : NetworkBehaviour
 {
-    private AttackType _attackType;
+    [Read, Serial] private AttackType _attackType;
     private float _delay = 10f;
     private float _MaxDelay = 10f;
     private bool CanAttack => _MaxDelay <= _delay;

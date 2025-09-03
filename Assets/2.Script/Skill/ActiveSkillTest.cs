@@ -8,12 +8,13 @@ using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 
-public class SkillTriggerTest : SkillTriggerBase, ISetInspector
+public class ActiveSkillTest : ActiveSkillBase, ISetInspector
 {
     [Read, Serial] public PositionConstraint positionConstraint;
     [Button, GUIColor(0, 1, 0)]
     public new void SetInspector()
     {
+        base.SetInspector();
         positionConstraint = GetComponent<PositionConstraint>();
     }
 
