@@ -53,6 +53,7 @@ MonoBehaviour:
     - {fileID: 5622018250881000323, guid: b39cbe3843ac1b541899f1ef3dcf8e9e, type: 3}
     - {fileID: 2854155166852420474, guid: 187e0a824cb34b842bd50615b301e313, type: 3}
     - {fileID: 9012993738355288034, guid: 3f0277d6ad179fb4e894a138a32dc49b, type: 3}
+    - {fileID: 11400000, guid: 4604ee3f8746b7847a8990b2533dd11b, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -144,8 +145,44 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  skillDataTests:
-  - {fileID: 11400000, guid: 4604ee3f8746b7847a8990b2533dd11b, type: 2}
+    - Name: skillDataTests
+      Entry: 7
+      Data: 2|System.Collections.Generic.Dictionary`2[[SkillType, Assembly-CSharp],[SkillDataScriptable,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 3|System.Collections.Generic.EnumEqualityComparer`1[[SkillType, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 10
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   playerBase: {fileID: 3415727493827998914, guid: 9dcaa8f33994d2b4286c00b5fdce78c5, type: 3}
   playerInfo: {fileID: 1734125769452678798, guid: 562dc621784a3824d8008d3a9c35be93, type: 3}
   playFabEntity:

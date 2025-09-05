@@ -12,6 +12,7 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 public class ActiveSkillBase : SkillBase, IActiveSkill, ISetInspector
 {
     [Read, Serial, SerializeReference] private List<SkillTrigger> activeSkills = new ();
+    [Serial] public SkillType type;
     protected PlayerBase player;
     
     [Button, GUIColor(0,1,0)]
@@ -26,7 +27,7 @@ public class ActiveSkillBase : SkillBase, IActiveSkill, ISetInspector
     {
         base.Spawned();
         player = App.I.GetPlayerInfo(Object.InputAuthority).PlayerObject.GetComponent<PlayerBase>();
-        player.Inventory.AddSkill(this);
+        player.Inventory.AddSkill(type, this);
     }
 
     public void UpdateState()

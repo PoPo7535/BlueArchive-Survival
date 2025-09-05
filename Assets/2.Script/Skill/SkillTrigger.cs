@@ -12,7 +12,7 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public class SkillTrigger : NetworkBehaviour
 {
-    [Read, Serial] private AttackType _attackType;
+    [Serial] private AttackType _attackType;
     private float _delay = 10f;
     private float _MaxDelay = 10f;
     private bool CanAttack => _MaxDelay <= _delay;
