@@ -23,7 +23,7 @@ public class Spawner : LocalFusionSingleton<Spawner>, INetworkRunnerCallbacks
     [Rpc(RpcSources.All, RpcTargets.StateAuthority, HostMode = RpcHostMode.SourceIsHostPlayer)]
     public void RPC_SpawnTest(RpcInfo info = default)
     {
-        Runner.Spawn(GameManager.I.Test, Vector3.zero, Quaternion.identity, info.Source);
+        Runner.Spawn(GameManager.I.skillDataTests[0].skillObj, Vector3.zero, Quaternion.identity, info.Source);
     }
     
 #if UNITY_EDITOR

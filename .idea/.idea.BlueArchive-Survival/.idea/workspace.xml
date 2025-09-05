@@ -7,14 +7,11 @@
     <list default="true" id="92ad331b-57ba-4eed-bed9-8043b55c7314" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1.Scenes/0.Login.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1.Scenes/0.Login.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Interfaces/ISkillTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Interfaces/ISkillTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillInventory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillTriggerAttackTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillTriggerAttackTrigger.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillTrigger.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillTriggerBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillTriggerBase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillBase.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillTriggerTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillTriggerTest.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillTest.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Login/LoginPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Login/LoginPanel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Manager/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Spawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Spawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3.Char.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5.Prefab/GameManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Prefab/GameManager.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/5.Prefab/Skill/Cube.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Prefab/Skill/Cube.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,6 +24,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1f76ff20d9ff469b846a8371e880c369ab800/eb/0517ac5d/NetworkBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/779cc116a5954f1c9b92496e62345641175c00/33/df71ee1e/CreateAssetMenuAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9232050d96be4a5f8f15ce871ca8d4ef27800/33/8d69907a/ConstraintSource.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2.Script/Interfaces/IActiveSkill.cs" root0="FORCE_HIGHLIGHTING" />
@@ -34,8 +32,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/2.Script/Interfaces/ISkillTrigger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2.Script/MonsterScript/MonsterBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2.Script/MonsterScript/MonsterComponent.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/2.Script/Skill/SkillTriggerAttackTrigger.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/2.Script/Skill/SkillTriggerTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2.Script/ScriptableObject/SkillDataTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/Fusion/Editor/Fusion.Unity.Editor.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
@@ -120,6 +117,8 @@
       <workItem from="1756562902059" duration="2010000" />
       <workItem from="1756746104687" duration="4280000" />
       <workItem from="1756909897525" duration="3446000" />
+      <workItem from="1756974172840" duration="4229000" />
+      <workItem from="1757064744423" duration="4287000" />
     </task>
     <servers />
   </component>

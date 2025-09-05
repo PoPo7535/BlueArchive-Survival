@@ -340,11 +340,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxLevel: 1
   currentLevel: 1
-  activeSkills: []
+  activeSkills:
+  - {fileID: 8535781751049112592}
   positionConstraint: {fileID: 8810770208307846985}
-  references:
-    version: 2
-    RefIds: []
 --- !u!1818360608 &8810770208307846985
 PositionConstraint:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ using Sirenix.Serialization;
 using Sirenix.OdinInspector;
 using PlayFab.ClientModels;
 using Fusion;
+using UnityEngine.Serialization;
 #if UNITY_EDITOR   
 using UnityEditor;
 #endif
@@ -15,10 +16,10 @@ public class GameManager : SerializedMonoBehaviour, ISetInspector
 {
     public static GameManager I;
     [OdinSerialize] public Dictionary<PlayableChar, GameObject> playableChar = new ();
+    public List<SkillDataTest> skillDataTests = new();
     public NetworkObject playerBase;
     public PlayerInfo playerInfo;
     public EntityTokenResponse playFabEntity;
-    public NetworkObject Test;
 
     [Read] public string ID;
     
@@ -36,6 +37,15 @@ public class GameManager : SerializedMonoBehaviour, ISetInspector
         }
         var prefabRoot = PrefabUtility.GetOutermostPrefabInstanceRoot(gameObject);
         PrefabUtility.ApplyPrefabInstance(prefabRoot , InteractionMode.UserAction);
+        
+        skillDataTests.Clear();
+        var typeName = nameof(SkillDataTest); // FindAssets는 타입 이름 문자열을 사용
+        var guids = AssetDatabase.FindAssets($"t:{typeName}", new[] { "Assets/3.ScriptableObject/" });
+        skillDataTests = guids
+            .Select(AssetDatabase.GUIDToAssetPath)
+            .Select(AssetDatabase.LoadAssetAtPath<SkillDataTest>)
+            .Where(x => x != null)
+            .ToList();
 #endif
     }
     public void Awake()
