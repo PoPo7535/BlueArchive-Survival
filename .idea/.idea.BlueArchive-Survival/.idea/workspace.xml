@@ -6,19 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="92ad331b-57ba-4eed-bed9-8043b55c7314" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1.Scenes/0.Login.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1.Scenes/0.Login.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Manager/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/ScriptableObject/SkillDataTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/ScriptableObject/SkillScriptable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/ScriptableObject/SkillDataTest.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/ScriptableObject/SkillScriptable.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/PlayerScript/PlayerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/PlayerScript/PlayerState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/ScriptableObject/SkillScriptable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/ScriptableObject/SkillScriptable.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillInventory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillTest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillBase.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Spawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Spawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/UI/SelectCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/UI/SelectCard.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3.ScriptableObject/Skill Data.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3.ScriptableObject/Skill Data.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Prefab/GameManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Prefab/GameManager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3.ScriptableObject/Wheel.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3.ScriptableObject/Wheel.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5.Prefab/Skill/Cube.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5.Prefab/Skill/Cube.prefab.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +26,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1f76ff20d9ff469b846a8371e880c369ab800/eb/0517ac5d/NetworkBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/52753f37eafb4d828451103e07e79dcd3a800/04/190dc899/StructWrapperUtility.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/779cc116a5954f1c9b92496e62345641175c00/2b/4dd6aad2/Component.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/779cc116a5954f1c9b92496e62345641175c00/33/df71ee1e/CreateAssetMenuAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9232050d96be4a5f8f15ce871ca8d4ef27800/33/8d69907a/ConstraintSource.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="FORCE_HIGHLIGHTING" />
@@ -39,7 +37,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/2.Script/Interfaces/ISkillTrigger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2.Script/MonsterScript/MonsterBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2.Script/MonsterScript/MonsterComponent.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/2.Script/ScriptableObject/SkillDataScriptable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/Fusion/Editor/Fusion.Unity.Editor.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
@@ -126,6 +123,13 @@
       <workItem from="1756909897525" duration="3446000" />
       <workItem from="1756974172840" duration="4229000" />
       <workItem from="1757064744423" duration="10176000" />
+      <workItem from="1757162071735" duration="8996000" />
+      <workItem from="1757329052616" duration="2719000" />
+      <workItem from="1757506698846" duration="3740000" />
+      <workItem from="1757591934493" duration="2414000" />
+      <workItem from="1757672787516" duration="4272000" />
+      <workItem from="1757756796998" duration="1886000" />
+      <workItem from="1757847363585" duration="5108000" />
     </task>
     <servers />
   </component>

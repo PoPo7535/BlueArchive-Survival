@@ -14,6 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillObj: {fileID: -5714291310737588132, guid: 9090b50c85645e34a94fed85b941af13, type: 3}
   _skillData:
-    skillID: 0
     skillMaxLevel: 0
   _skillType: 1

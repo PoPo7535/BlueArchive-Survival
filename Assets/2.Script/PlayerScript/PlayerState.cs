@@ -13,7 +13,6 @@ public class PlayerState : PlayerComponent
     public int hp = 100;
     public int maxHp = 100;
     public int defensive;
-
     private float _moveSpeed = 100f;
     public float MoveSpeed
     {
@@ -25,6 +24,7 @@ public class PlayerState : PlayerComponent
         }
     }
     
+    private float _attackValue = 1f;
     private float _attackSpeed = 100f;
     private float _attackBaseSpeed;
     private float AttackSpeed
@@ -51,10 +51,12 @@ public class PlayerState : PlayerComponent
         _attackBaseSpeed = ac.length / 2f;
         UpdateAniSpeed();
     }
-    public void Damage(int damage)
+    public void TakeDamage(int damage)
     {
         hp -= damage;
     }
+
+    public float GetDamageValue(float damage) => damage * _attackValue;
 
     private void UpdateAniSpeed()
     {

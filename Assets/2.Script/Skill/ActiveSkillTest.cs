@@ -28,6 +28,8 @@ public class ActiveSkillTest : ActiveSkillBase, ISetInspector
             sourceTransform = player.transform,
             weight = 1,
         });
+        foreach (var trigger in activeSkills)
+            trigger.Init(player, TriggerType.Enter);
         
     }
 }
