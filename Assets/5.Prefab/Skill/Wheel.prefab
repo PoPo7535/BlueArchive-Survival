@@ -100,7 +100,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa64923b6e5461c47b6887be4d322e83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackType: 0
+  triggerType: 0
 --- !u!1 &3091494433891126113
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,7 +219,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa64923b6e5461c47b6887be4d322e83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackType: 0
+  triggerType: 0
 --- !u!1 &4312438747428748694
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,7 +338,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -356,7 +356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa64923b6e5461c47b6887be4d322e83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackType: 0
+  triggerType: 0
 --- !u!1 &7731483813849986845
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,7 +454,7 @@ MonoBehaviour:
   - {fileID: 488267330086078465}
   - {fileID: 5143468726314561021}
   - {fileID: 1899963327857746014}
-  type: 0
+  type: 1
   positionConstraint: {fileID: 8810770208307846985}
 --- !u!1818360608 &8810770208307846985
 PositionConstraint:
@@ -574,7 +574,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -592,4 +592,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa64923b6e5461c47b6887be4d322e83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackType: 0
+  triggerType: 0

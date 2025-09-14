@@ -6,6 +6,7 @@ using Sirenix.Serialization;
 using Sirenix.OdinInspector;
 using PlayFab.ClientModels;
 using Fusion;
+using TMPro;
 using UnityEngine.Serialization;
 #if UNITY_EDITOR   
 using UnityEditor;
@@ -20,8 +21,8 @@ public class GameManager : SerializedMonoBehaviour, ISetInspector
     public Dictionary<SkillType, SkillScriptable> skillDataTests = new();
     public NetworkObject playerBase;
     public PlayerInfo playerInfo;
-    public EntityTokenResponse playFabEntity;
-
+    public TMP_Text textUi;
+    [NonSerialized]public EntityTokenResponse playFabEntity;
     [Read] public string ID;
     
     [Button, GUIColor(0,1,0)]

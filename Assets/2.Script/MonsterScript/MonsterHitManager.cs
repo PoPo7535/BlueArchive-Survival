@@ -23,7 +23,9 @@ public class MonsterHitManager : MonsterComponent
             var index = (_previousHitCount + i) % HitCapacity;
             var hitData = _hitData.Get(index);
             if (Runner.LocalPlayer == hitData.other)
-                HitUtile.ShowHitLog(_hitData.Get((_previousHitCount + i) % HitCapacity), transform);
+            {
+                HitUtile.ShowHitLog(hitData, transform);
+            }
         }
         _previousHitCount = _hitCount;
     }
@@ -33,7 +35,7 @@ public class MonsterHitManager : MonsterComponent
         _hitData.Set(_hitCount % HitCapacity, new HitData()
         {
             other = player,
-            damage = _hitCount,
+            damage = damage,
         });
         ++_hitCount;
     }
