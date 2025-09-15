@@ -21,7 +21,7 @@ public class GameManager : SerializedMonoBehaviour, ISetInspector
     public Dictionary<SkillType, SkillScriptable> skillDataTests = new();
     public NetworkObject playerBase;
     public PlayerInfo playerInfo;
-    public TMP_Text textUi;
+    public HitUi textUi;
     [NonSerialized]public EntityTokenResponse playFabEntity;
     [Read] public string ID;
     

@@ -10,31 +10,34 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public class HitUtile 
 {
-    private static readonly Queue<TMP_Text> _hitUiQueue = new();
+    private static readonly Queue<HitUi> _hitUiQueue = new();
 
 
     public static void ShowHitLog(HitData hitData, Transform transform)
     {
         var textObj = GetTextObject();
-        textObj.text = $"{(int)hitData.damage}";
+        textObj.SetText($"{(int)hitData.damage}");
         textObj.transform.position = transform.position;
     }
 
-    private static TMP_Text GetTextObject()
+    private static HitUi GetTextObject()
     {
         while (true) 
         {
             if (_hitUiQueue.TryDequeue(out var text))
             {
-                if (text.IsUnityNull() || text.gameObject.activeSelf)
+                if (text.IsUnityNull())
                     continue;
+                if (text.gameObject.activeSelf)
+                    break;
 
                 text.gameObject.SetActive(true);
                 _hitUiQueue.Enqueue(text);
                 return text;
             }
-            _hitUiQueue.Enqueue(Object.Instantiate(GameManager.I.textUi));
-            return _hitUiQueue.Peek();
+            break;
         }
+        _hitUiQueue.Enqueue(Object.Instantiate(GameManager.I.textUi));
+        return _hitUiQueue.Peek();
     }
 }

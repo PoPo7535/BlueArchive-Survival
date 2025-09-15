@@ -7,13 +7,10 @@
     <list default="true" id="92ad331b-57ba-4eed-bed9-8043b55c7314" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1.Scenes/0.Login.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1.Scenes/0.Login.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/HitData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/HitData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/2.Script/HitUtile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/HitUtile.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/2.Script/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Manager/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/MonsterScript/MonsterHitManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/MonsterScript/MonsterHitManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Spawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Spawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5.Prefab/DamageUiTest.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Prefab/DamageUiTest.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/5.Prefab/GameManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Prefab/GameManager.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Prefab/Skill/Wheel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Prefab/Skill/Wheel.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +28,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9232050d96be4a5f8f15ce871ca8d4ef27800/33/8d69907a/ConstraintSource.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2.Script/HitUi.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2.Script/Interfaces/IActiveSkill.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2.Script/Interfaces/IMonsterComponent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2.Script/Interfaces/ISkillTrigger.cs" root0="FORCE_HIGHLIGHTING" />
@@ -129,7 +127,8 @@
       <workItem from="1757591934493" duration="2414000" />
       <workItem from="1757672787516" duration="4272000" />
       <workItem from="1757756796998" duration="1886000" />
-      <workItem from="1757847363585" duration="12655000" />
+      <workItem from="1757847363585" duration="12742000" />
+      <workItem from="1757943877332" duration="4916000" />
     </task>
     <servers />
   </component>

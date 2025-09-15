@@ -185,5 +185,5 @@ MonoBehaviour:
       Data: 
   playerBase: {fileID: 3415727493827998914, guid: 9dcaa8f33994d2b4286c00b5fdce78c5, type: 3}
   playerInfo: {fileID: 1734125769452678798, guid: 562dc621784a3824d8008d3a9c35be93, type: 3}
-  textUi: {fileID: 6036754023976806230, guid: 8d2a4529fbcc87e468eb5e65f24679ab, type: 3}
+  textUi: {fileID: 2817333044785041555, guid: 8d2a4529fbcc87e468eb5e65f24679ab, type: 3}
   ID: 
