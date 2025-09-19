@@ -14,23 +14,24 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public class SkillTrigger : NetworkBehaviour
 {
-    [FormerlySerializedAs("_attackType")] [Serial] private TriggerType triggerType;
+    [Serial] private TriggerType _triggerType;
     private HashSet<MonsterHitManager> dic = new();
     private PlayerBase _player;
     private float _delay = 10f;
     private float _MaxDelay = 10f;
     private float _damageValue = 100f;
+    private SkillData _skillData;
     private float Damage => _player.State.GetDamageValue(_damageValue);
     private bool CanAttack => _MaxDelay <= _delay;
 
-    public  void Init(PlayerBase _player, TriggerType triggerType)
+    public void Init(PlayerBase player, SkillData skillData,TriggerType triggerType)
     {
-        this._player = _player;
-        this.triggerType = triggerType;
+        this._player = player;
+        this._skillData = skillData;
+        this._triggerType = triggerType;
     }
     public  void UpdateState()
     {
-        
     }
     public override void FixedUpdateNetwork()
     {
@@ -78,7 +79,7 @@ public class SkillTrigger : NetworkBehaviour
     private bool CheckTrigger(Collider other, TriggerType type)
     {
         if (false == Object.HasStateAuthority ||
-            triggerType != type ||
+            _triggerType != type ||
             false == other.CompareTag($"Monster"))
             return false;
         

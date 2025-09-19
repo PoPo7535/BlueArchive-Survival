@@ -12,7 +12,6 @@ public class HitUtile
 {
     private static readonly Queue<HitUi> _hitUiQueue = new();
 
-
     public static void ShowHitLog(HitData hitData, Transform transform)
     {
         var textObj = GetTextObject();
@@ -24,16 +23,19 @@ public class HitUtile
     {
         while (true) 
         {
-            if (_hitUiQueue.TryDequeue(out var text))
+            if (_hitUiQueue.TryDequeue(out var textUi))
             {
-                if (text.IsUnityNull())
+                if (textUi.IsUnityNull())
                     continue;
-                if (text.gameObject.activeSelf)
+                if (textUi.gameObject.activeSelf)
+                {
+                    _hitUiQueue.Enqueue(textUi);   
                     break;
+                }
 
-                text.gameObject.SetActive(true);
-                _hitUiQueue.Enqueue(text);
-                return text;
+                textUi.gameObject.SetActive(true);
+                _hitUiQueue.Enqueue(textUi);
+                return textUi;
             }
             break;
         }

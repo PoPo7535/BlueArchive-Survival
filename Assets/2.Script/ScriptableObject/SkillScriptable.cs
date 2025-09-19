@@ -35,8 +35,11 @@ public class SkillScriptable : ScriptableObject
 public struct SkillData
 {
     public int skillMaxLevel;
+    public float damage;
+    public float delay;
+    public float area;
 }
-
+    
 public enum SkillType
 {
     None,

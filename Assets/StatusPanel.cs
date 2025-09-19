@@ -19,6 +19,5 @@ public class StatusPanel : SerializedMonoBehaviour, ISetInspector
             var sprite = LoadHelper.LoadUpGradeIcon<Sprite>($"{type}_Icon");
             dic.Add(type, sprite);
         }
-        
     }
 }
