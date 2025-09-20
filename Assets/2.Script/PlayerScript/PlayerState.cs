@@ -51,7 +51,7 @@ public class PlayerState : PlayerComponent
         _attackBaseSpeed = ac.length / 2f;
         UpdateAniSpeed();
     }
-    public void TakeDamage(int damage)
+    public void HitDamage(int damage)
     {
         hp -= damage;
     }

@@ -10,7 +10,7 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public class PlayerSkillInventory : PlayerComponent
 {
-    [Read] private Dictionary<SkillType, IActiveSkill> activeSkills = new();
+    [Read] private HashSet<SkillType> activeSkills = new();
     // [Read] private List<IPassiveSkill> passiveSkills = new();
     public override void Init(PlayerBase player)
     {
@@ -18,21 +18,8 @@ public class PlayerSkillInventory : PlayerComponent
         Player.Inventory = this;
     }
 
-    public void AddSkill(SkillType type, IActiveSkill skillTrigger)
+    public void AddSkill(SkillType type)
     {
-        activeSkills.Add(type, skillTrigger);
-    }
-
-    public void StateUpdate()
-    {
-        foreach (var skill in activeSkills.Values)
-        {
-            skill.UpdateState();
-        }
-    }
-
-    public void GetSkill()
-    {
-        
+        activeSkills.Add(type);
     }
 }

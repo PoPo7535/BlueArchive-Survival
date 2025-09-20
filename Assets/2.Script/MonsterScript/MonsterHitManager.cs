@@ -34,6 +34,7 @@ public class MonsterHitManager : MonsterComponent
         {
             other = player,
             damage = damage,
+            critical = false,
         });
         ++_hitCount;
     }

@@ -15,23 +15,20 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 public class SkillTrigger : NetworkBehaviour
 {
     [Serial] private TriggerType _triggerType;
+    [Serial] private SkillType _skillType;
     private HashSet<MonsterHitManager> dic = new();
     private PlayerBase _player;
-    private float _delay = 10f;
-    private float _MaxDelay = 10f;
-    private float _damageValue = 100f;
-    private SkillData _skillData;
-    private float Damage => _player.State.GetDamageValue(_damageValue);
-    private bool CanAttack => _MaxDelay <= _delay;
-
-    public void Init(PlayerBase player, SkillData skillData,TriggerType triggerType)
+    private SkillData SkillData => GameManager.I.skillDataTests[_skillType].SkillData[currentLevel];
+    private int currentLevel = 0;
+    private float _delay = 0;
+    private float Damage => _player.State.GetDamageValue(SkillData.damage);
+    private bool CanAttack => SkillData.delay <= _delay;
+    public bool CanLevelUp => currentLevel <= GameManager.I.skillDataTests[_skillType].maxLevel;
+    public void Init(PlayerBase player, TriggerType triggerType, SkillType skillType)
     {
-        this._player = player;
-        this._skillData = skillData;
-        this._triggerType = triggerType;
-    }
-    public  void UpdateState()
-    {
+        _player = player;
+        _triggerType = triggerType;
+        _skillType = skillType;
     }
     public override void FixedUpdateNetwork()
     {
@@ -39,7 +36,11 @@ public class SkillTrigger : NetworkBehaviour
             _delay += Runner.DeltaTime;
     }
 
-
+    public void LevelUp()
+    {
+        if (CanLevelUp)
+            ++currentLevel;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if(false == CheckTrigger(other, TriggerType.Enter))
@@ -71,7 +72,7 @@ public class SkillTrigger : NetworkBehaviour
         var hitManager = other.GetComponent<MonsterHitManager>();
         while (CanAttack)
         {
-            _delay -= _MaxDelay;
+            _delay -= SkillData.delay;
             hitManager.Damage(Object.InputAuthority, 10f);
         }
     }

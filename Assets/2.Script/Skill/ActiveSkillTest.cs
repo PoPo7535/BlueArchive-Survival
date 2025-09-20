@@ -29,6 +29,6 @@ public class ActiveSkillTest : ActiveSkillBase, ISetInspector
             weight = 1,
         });
         foreach (var trigger in activeSkills)
-            trigger.Init(player, skillData, TriggerType.Enter);
+            trigger.Init(player, TriggerType.Enter, type);
     }
 }
