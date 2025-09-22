@@ -12,7 +12,7 @@ public class PlayerBase : NetworkBehaviour
 {
     [NonSerialized, Read] public PlayerAniController AniController;
     [NonSerialized, Read] public PlayerFsmController FsmController;
-    [NonSerialized, Read] public PlayerSkillInventory Inventory;
+    [NonSerialized, Read] public PlayerSkillManager SkillManager;
     [NonSerialized, Read] public PlayerState State;
     public FindEnemy findEnemy;
     private void Awake()

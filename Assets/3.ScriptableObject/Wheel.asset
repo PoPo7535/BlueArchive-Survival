@@ -13,6 +13,14 @@ MonoBehaviour:
   m_Name: Wheel
   m_EditorClassIdentifier: 
   skillObj: {fileID: -5714291310737588132, guid: 9090b50c85645e34a94fed85b941af13, type: 3}
-  _skillData:
-    skillMaxLevel: 0
   _skillType: 1
+  SkillData:
+  - damage: 1
+    delay: 2
+    area: 3
+  - damage: 4
+    delay: 5
+    area: 6
+  - damage: 7
+    delay: 8
+    area: 9

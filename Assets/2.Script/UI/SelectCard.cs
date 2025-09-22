@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Fusion;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -17,8 +18,19 @@ public class SelectCard : MonoBehaviour, ISetInspector
     [Read, Serial, Fold("Inspector")] private Button _selectBtn;
     [Read, Serial, Fold("Inspector")] private Image _selectImg;
     [Read, Serial] public int index;
-    
     [Read] private static int[] num = new int[3];
+    
+    private static PlayerSkillManager _skillManager;
+    private static PlayerSkillManager SkillManager
+    {
+        get
+        {
+            if(null==_skillManager)
+                _skillManager= App.I.GetPlayerInfo(App.I.Runner.LocalPlayer).PlayerObject.SkillManager;
+            return _skillManager;
+        }
+    }
+
     [Read,ShowInInspector] private int myCard
     {
         get => num[index];
@@ -57,8 +69,8 @@ public class SelectCard : MonoBehaviour, ISetInspector
         if (myCard == 0)
             return;
         myCard = 0;
-        BattleSceneManager.I.Rpc_Ready();
-        Spawner.I.RPC_SkillSpawn();
+        BattleSceneManager.I.Rpc_SelectReady();
+        SkillManager.RPC_SkillSpawn();
+        // Spawner.I.RPC_SkillSpawn();
     }
-
 }

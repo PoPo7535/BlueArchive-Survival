@@ -14,13 +14,13 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public class SkillTrigger : NetworkBehaviour
 {
-    [Serial] private TriggerType _triggerType;
-    [Serial] private SkillType _skillType;
-    private HashSet<MonsterHitManager> dic = new();
+    [Serial, Read] private TriggerType _triggerType;
+    [Serial, Read] private SkillType _skillType;
     private PlayerBase _player;
-    private SkillData SkillData => GameManager.I.skillDataTests[_skillType].SkillData[currentLevel];
     private int currentLevel = 0;
     private float _delay = 0;
+
+    private SkillData SkillData => GameManager.I.skillDataTests[_skillType].SkillData[currentLevel];
     private float Damage => _player.State.GetDamageValue(SkillData.damage);
     private bool CanAttack => SkillData.delay <= _delay;
     public bool CanLevelUp => currentLevel <= GameManager.I.skillDataTests[_skillType].maxLevel;
@@ -48,20 +48,12 @@ public class SkillTrigger : NetworkBehaviour
 
         if(other.TryGetComponent<MonsterHitManager>(out var hitManager))
             hitManager.Damage(Object.InputAuthority, Damage);
-        // if (false == dic.Contains(hitManager))
-        // {
-        //     dic.Add(hitManager);
-        // }
     }
 
     private void OnTriggerExit(Collider other)
     {
         if(false == CheckTrigger(other, TriggerType.Enter))
             return;
-
-        // var hitManager = GetComponent<MonsterHitManager>();
-        // if (dic.Contains(hitManager))
-        //     dic.Remove(hitManager);
     }
 
     private void OnTriggerStay(Collider other)

@@ -6,14 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="92ad331b-57ba-4eed-bed9-8043b55c7314" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/HitData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/HitData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/MonsterScript/MonsterHitManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/MonsterScript/MonsterHitManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/PlayerScript/PlayerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/PlayerScript/PlayerState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/ScriptableObject/SkillScriptable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/ScriptableObject/SkillScriptable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1.Scenes/0.Login.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1.Scenes/0.Login.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/FSM/FsmMonsterMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/FSM/FsmMonsterMove.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Manager/BattleSceneManager+Ready.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Manager/BattleSceneManager+Ready.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/PlayerScript/PlayerBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/PlayerScript/PlayerBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/PlayerScript/PlayerInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/PlayerScript/PlayerInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillInventory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillInventory.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillManager.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillTrigger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Spawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Spawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/UI/SelectCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/UI/SelectCard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3.ScriptableObject/Wheel.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3.ScriptableObject/Wheel.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +31,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1f76ff20d9ff469b846a8371e880c369ab800/9c/5c7af81f/NetworkRunner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1f76ff20d9ff469b846a8371e880c369ab800/eb/0517ac5d/NetworkBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/52753f37eafb4d828451103e07e79dcd3a800/04/190dc899/StructWrapperUtility.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/779cc116a5954f1c9b92496e62345641175c00/2b/4dd6aad2/Component.cs" root0="FORCE_HIGHLIGHTING" />
@@ -42,6 +47,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/2.Script/MonsterScript/MonsterBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2.Script/MonsterScript/MonsterComponent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/Fusion/Editor/Fusion.Unity.Editor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/PlayFabSDK/Shared/Public/PlayFabEvents.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.visualscripting@1.9.4/Runtime/VisualScripting.Core/Utilities/UnityObjectUtility.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
@@ -142,7 +148,10 @@
       <workItem from="1758206548860" duration="1779000" />
       <workItem from="1758306401978" duration="4931000" />
       <workItem from="1758368046260" duration="12121000" />
-      <workItem from="1758385396558" duration="1453000" />
+      <workItem from="1758385396558" duration="2647000" />
+      <workItem from="1758393019716" duration="13000" />
+      <workItem from="1758464774145" duration="3046000" />
+      <workItem from="1758538122349" duration="10786000" />
     </task>
     <servers />
   </component>

@@ -51,7 +51,7 @@ public class Spawner : LocalFusionSingleton<Spawner>, INetworkRunnerCallbacks
                 GameManager.I.playerBase, 
                 playerPoint.position, 
                 Quaternion.identity,player);
-            playerInfo.PlayerObject = baseObj;
+            playerInfo.PlayerObject = baseObj.GetComponent<PlayerBase>();
         }
     }
 

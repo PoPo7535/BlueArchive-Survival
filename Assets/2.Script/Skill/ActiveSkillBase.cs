@@ -27,7 +27,6 @@ public class ActiveSkillBase : SkillBase, ISetInspector
     {
         base.Spawned();
         player = App.I.GetPlayerInfo(Object.InputAuthority).PlayerObject.GetComponent<PlayerBase>();
-        player.Inventory.AddSkill(type, this); 
+        player.SkillManager.AddSkill(type); 
     }
-
 }

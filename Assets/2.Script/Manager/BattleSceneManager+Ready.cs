@@ -32,7 +32,7 @@ public partial class BattleSceneManager // Ready
         _select.Remove(player);
     }
     [Rpc(RpcSources.All, RpcTargets.All, HostMode = RpcHostMode.SourceIsHostPlayer)]
-    public void Rpc_Ready(RpcInfo info = default)
+    public void Rpc_SelectReady(RpcInfo info = default)
     {
         _select[info.Source] = true;
         if (false == CheckReady)

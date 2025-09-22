@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerInfo : NetworkBehaviour, IPlayerLeft
 {
     [Networked] public NetworkString<_16> PlayerName { get; set; }
-    [Networked] public NetworkObject PlayerObject { get; set; }
+    [Networked] public PlayerBase PlayerObject { get; set; }
     [Networked] public PlayableChar CharIndex { get; set; }
     [Networked] public bool isSpawned { get; set; }
     
