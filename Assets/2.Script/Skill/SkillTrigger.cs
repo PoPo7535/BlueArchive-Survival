@@ -17,18 +17,17 @@ public class SkillTrigger : NetworkBehaviour
     [Serial, Read] private TriggerType _triggerType;
     [Serial, Read] private SkillType _skillType;
     private PlayerBase _player;
-    private int currentLevel = 0;
+    private ActiveSkillBase _activeSkill;
     private float _delay = 0;
 
-    private SkillData SkillData => GameManager.I.skillDataTests[_skillType].SkillData[currentLevel];
-    private float Damage => _player.State.GetDamageValue(SkillData.damage);
-    private bool CanAttack => SkillData.delay <= _delay;
-    public bool CanLevelUp => currentLevel <= GameManager.I.skillDataTests[_skillType].maxLevel;
-    public void Init(PlayerBase player, TriggerType triggerType, SkillType skillType)
+    private float Damage => _player.State.GetDamageValue(_activeSkill.SkillData.damage);
+    private bool CanAttack => _activeSkill.SkillData.delay <= _delay;
+    public void Init(PlayerBase player, ActiveSkillBase activeSkillBase,TriggerType triggerType, SkillType skillType)
     {
         _player = player;
         _triggerType = triggerType;
         _skillType = skillType;
+        _activeSkill = activeSkillBase;
     }
     public override void FixedUpdateNetwork()
     {
@@ -36,11 +35,6 @@ public class SkillTrigger : NetworkBehaviour
             _delay += Runner.DeltaTime;
     }
 
-    public void LevelUp()
-    {
-        if (CanLevelUp)
-            ++currentLevel;
-    }
     private void OnTriggerEnter(Collider other)
     {
         if(false == CheckTrigger(other, TriggerType.Enter))
@@ -64,7 +58,7 @@ public class SkillTrigger : NetworkBehaviour
         var hitManager = other.GetComponent<MonsterHitManager>();
         while (CanAttack)
         {
-            _delay -= SkillData.delay;
+            _delay -= _activeSkill.SkillData.delay;
             hitManager.Damage(Object.InputAuthority, 10f);
         }
     }

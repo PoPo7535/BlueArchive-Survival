@@ -25,8 +25,8 @@ public class SelectCard : MonoBehaviour, ISetInspector
     {
         get
         {
-            if(null==_skillManager)
-                _skillManager= App.I.GetPlayerInfo(App.I.Runner.LocalPlayer).PlayerObject.SkillManager;
+            if (null == _skillManager)
+                _skillManager = App.I.GetPlayerInfo(App.I.Runner.LocalPlayer).PlayerObject.SkillManager;
             return _skillManager;
         }
     }
@@ -71,6 +71,5 @@ public class SelectCard : MonoBehaviour, ISetInspector
         myCard = 0;
         BattleSceneManager.I.Rpc_SelectReady();
         SkillManager.RPC_SkillSpawn();
-        // Spawner.I.RPC_SkillSpawn();
     }
 }

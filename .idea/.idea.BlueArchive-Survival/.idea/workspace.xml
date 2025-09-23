@@ -6,18 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="92ad331b-57ba-4eed-bed9-8043b55c7314" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1.Scenes/0.Login.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1.Scenes/0.Login.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/FSM/FsmMonsterMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/FSM/FsmMonsterMove.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Manager/BattleSceneManager+Ready.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Manager/BattleSceneManager+Ready.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/PlayerScript/PlayerBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/PlayerScript/PlayerBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/PlayerScript/PlayerInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/PlayerScript/PlayerInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillInventory.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillManager.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillBase.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Spawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Spawner.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/2.Script/UI/SelectCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/UI/SelectCard.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3.ScriptableObject/Wheel.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3.ScriptableObject/Wheel.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +144,8 @@
       <workItem from="1758385396558" duration="2647000" />
       <workItem from="1758393019716" duration="13000" />
       <workItem from="1758464774145" duration="3046000" />
-      <workItem from="1758538122349" duration="10786000" />
+      <workItem from="1758538122349" duration="10821000" />
+      <workItem from="1758625096591" duration="8027000" />
     </task>
     <servers />
   </component>

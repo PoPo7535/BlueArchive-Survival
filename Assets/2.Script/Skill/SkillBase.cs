@@ -11,5 +11,5 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 public class SkillBase : NetworkBehaviour
 {
     [Read, Fold("State")] public int maxLevel = 1;
-    [Read, Fold("State")] public int currentLevel = 1;
+    [Read, Fold("State")] public int currentLevel = 0;
 }
