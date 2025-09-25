@@ -20,7 +20,8 @@ public class PlayerSkillManager : PlayerComponent
 
     public void AddSkill(ActiveSkillBase skillBase, SkillType type)
     {
-        activeSkills.Add(type, skillBase);
+        if (false == activeSkills.TryAdd(type, skillBase))
+            $"{nameof(AddSkill)} Error".ErrorLog();
     }
 
     public void UpdateSkillData()
