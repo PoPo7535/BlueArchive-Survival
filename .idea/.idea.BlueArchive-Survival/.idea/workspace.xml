@@ -7,9 +7,7 @@
     <list default="true" id="92ad331b-57ba-4eed-bed9-8043b55c7314" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillTrigger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/2.Script/UI/SelectCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/UI/SelectCard.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -145,7 +143,9 @@
       <workItem from="1758393019716" duration="13000" />
       <workItem from="1758464774145" duration="3046000" />
       <workItem from="1758538122349" duration="10821000" />
-      <workItem from="1758625096591" duration="8027000" />
+      <workItem from="1758625096591" duration="8066000" />
+      <workItem from="1758729258935" duration="10196000" />
+      <workItem from="1758752476850" duration="1960000" />
     </task>
     <servers />
   </component>

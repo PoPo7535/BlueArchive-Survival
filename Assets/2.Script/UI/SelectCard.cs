@@ -31,7 +31,8 @@ public class SelectCard : MonoBehaviour, ISetInspector
         }
     }
 
-    [Read,ShowInInspector] private int myCard
+    [Read,ShowInInspector] 
+    private int myCard
     {
         get => num[index];
         set => num[index] = value;
@@ -62,6 +63,7 @@ public class SelectCard : MonoBehaviour, ISetInspector
     public void UpdateCard()
     {
         myCard = 1;
+        SkillManager.GetSkill();
     }
 
     public void Select()
@@ -71,5 +73,6 @@ public class SelectCard : MonoBehaviour, ISetInspector
         myCard = 0;
         BattleSceneManager.I.Rpc_SelectReady();
         SkillManager.RPC_SkillSpawn();
+        SkillManager.UpdateSkillData();
     }
 }

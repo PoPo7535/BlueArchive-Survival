@@ -14,7 +14,7 @@ public class ActiveSkillBase : NetworkBehaviour, ISetInspector
 {
     [Read, Serial, SerializeReference] protected List<SkillTrigger> activeSkills = new();
     protected PlayerBase player;
-    protected int currentLevel = 0;
+    public int currentLevel = 0;
     [Serial] public SkillType type;
     public SkillData SkillData => GameManager.I.skillDataTests[type].SkillData[currentLevel];
     public bool CanLevelUp => currentLevel <= GameManager.I.skillDataTests[type].maxLevel;
@@ -31,7 +31,7 @@ public class ActiveSkillBase : NetworkBehaviour, ISetInspector
     {
         base.Spawned();
         player = App.I.GetPlayerInfo(Object.InputAuthority).PlayerObject.GetComponent<PlayerBase>();
-        player.SkillManager.AddSkill(type); 
+        player.SkillManager.AddSkill(this, type); 
     }
 
     public void LevelUp()
