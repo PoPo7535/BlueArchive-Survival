@@ -36,5 +36,9 @@ public struct SkillData
 public enum SkillType
 {
     None,
-    Wheel
+    Wheel,
+    A,
+    B,
+    C,
+    D,
 }

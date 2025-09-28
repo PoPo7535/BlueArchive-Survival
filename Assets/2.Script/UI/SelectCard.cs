@@ -63,7 +63,7 @@ public class SelectCard : MonoBehaviour, ISetInspector
     public void UpdateCard()
     {
         myCard = 1;
-        SkillManager.GetSkill();
+        SkillManager.GetRandomSkill();
     }
 
     public void Select()
@@ -72,7 +72,7 @@ public class SelectCard : MonoBehaviour, ISetInspector
             return;
         myCard = 0;
         BattleSceneManager.I.Rpc_SelectReady();
-        SkillManager.RPC_SkillSpawn();
+        SkillManager.RPC_SkillSpawn(SkillType.Wheel);
         SkillManager.UpdateSkillData();
     }
 }
