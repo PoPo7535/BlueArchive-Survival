@@ -39,11 +39,7 @@ public partial class BattleSceneManager // Ready
             return;
         foreach (var playerRef in App.I.GetAllPlayers())
             _select[playerRef] = false;
-        if (exp < levelUpValue)
-            PanelOpen(false);
-        else
-            PanelOpen(true);
-        // RPC_LevelUp();
+        PanelOpen(false == (exp < levelUpValue));
     }
 
     private void PanelOpen(bool open)

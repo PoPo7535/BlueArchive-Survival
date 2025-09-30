@@ -6,9 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="92ad331b-57ba-4eed-bed9-8043b55c7314" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1.Scenes/0.Login.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1.Scenes/0.Login.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Manager/BattleSceneManager+Ready.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Manager/BattleSceneManager+Ready.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/2.Script/ScriptableObject/SkillScriptable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/ScriptableObject/SkillScriptable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillBase.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/2.Script/UI/SelectCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/UI/SelectCard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5.Prefab/GameManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Prefab/GameManager.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,6 +158,8 @@
       <workItem from="1758817093254" duration="9293000" />
       <workItem from="1758866835618" duration="1200000" />
       <workItem from="1758952943100" duration="23090000" />
+      <workItem from="1759151818836" duration="6258000" />
+      <workItem from="1759207642180" duration="10224000" />
     </task>
     <servers />
   </component>

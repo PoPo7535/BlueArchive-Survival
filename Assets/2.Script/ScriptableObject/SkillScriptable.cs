@@ -15,7 +15,7 @@ public class SkillScriptable : ScriptableObject
     public NetworkObject skillObj;
     [Serial] public SkillType _skillType;
     [Serial] public SkillData[] SkillData;
-    public int maxLevel => SkillData.Length + 1;
+    public int MaxLevel => SkillData.Length;
     
     [Button, GUIColor(0, 1, 0)] 
     public void SetSkillType()
@@ -37,8 +37,6 @@ public enum SkillType
 {
     None,
     Wheel,
-    A,
-    B,
-    C,
-    D,
+    Gun,
+    Bike,
 }

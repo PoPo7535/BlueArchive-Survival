@@ -4,6 +4,7 @@ using System.Linq;
 using Fusion;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
+using Unity.VisualScripting;
 using UnityEngine;
 using Serial = UnityEngine.SerializeField;
 using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
@@ -19,16 +20,13 @@ public class PlayerSkillManager : PlayerComponent
         base.Init(player);
         Player.SkillManager = this;
         foreach (var skillType in SkillType.None.ToArray().Skip(1))
-        {
-            skillType.Log();
             randomSkillValue.Add(skillType, 1);
-        }
     }
 
     public override void Spawned()
     {
         base.Spawned();
-        Random.InitState(Object.InputAuthority.PlayerId);
+        Random.InitState(Object.InputAuthority.PlayerId + Runner.Tick);
     }
 
     public void AddSkill(ActiveSkillBase skillBase, SkillType type)
@@ -37,11 +35,6 @@ public class PlayerSkillManager : PlayerComponent
             $"{nameof(AddSkill)} Error".ErrorLog();
     }
 
-    public void UpdateSkillData()
-    {
-        
-    }
-    [Button]
     public SkillType GetRandomSkill()
     {
         var skillTypes = randomSkillValue.Keys.ToList();
@@ -56,21 +49,20 @@ public class PlayerSkillManager : PlayerComponent
         var randomValue = Random.Range(0, sum);
         var current = 0;
 
-        foreach (var pair in randomSkillValue.SkipLast(1))
+        foreach (var pair in randomSkillValue)
         {
             current += randomSkillValue[pair.Key];
-            var max = current + randomSkillValue[pair.Key.Next()];
             if (pair.Key.IsLast())
             {
                 randomSkillValue[pair.Key] = 0;
                 return pair.Key;
             }
+            var max = current + randomSkillValue[pair.Key.Next()];
             if (current <= randomValue && randomValue < max)
             {
                 randomSkillValue[pair.Key] = 0;
                 return pair.Key;
             }
-
         }
 
         $"{nameof(GetRandomSkill)} 확률버그".WarningLog();
@@ -78,8 +70,19 @@ public class PlayerSkillManager : PlayerComponent
     }
     
     [Rpc(RpcSources.All, RpcTargets.All, HostMode = RpcHostMode.SourceIsHostPlayer)]
-    public void RPC_SkillSpawn(SkillType skillType, RpcInfo info = default)
+    public void RPC_GetSkill(SkillType skillType, RpcInfo info = default)
     {
+
+        if (activeSkills.ContainsKey(skillType))
+        {
+            if (activeSkills[skillType].CanLevelUp) 
+            {
+                activeSkills[skillType].LevelUp();
+                return;
+            }
+            $"{nameof(RPC_GetSkill)} 오류".ErrorLog();
+            return;
+        }
         if (false == Object.HasStateAuthority)
             return;
         Runner.Spawn(

@@ -14,10 +14,17 @@ public class ActiveSkillBase : NetworkBehaviour, ISetInspector
 {
     [Read, Serial, SerializeReference] protected List<SkillTrigger> activeSkills = new();
     protected PlayerBase player;
-    public int currentLevel = 0;
+    public int currentLevel = 1;
     [Serial] public SkillType type;
-    public SkillData SkillData => GameManager.I.skillDataTests[type].SkillData[currentLevel];
-    public bool CanLevelUp => currentLevel <= GameManager.I.skillDataTests[type].maxLevel;
+    public SkillData SkillData => GameManager.I.skillDataTests[type].SkillData[currentLevel - 1];
+    public bool CanLevelUp
+    {
+        get
+        {
+            $"{currentLevel} < {GameManager.I.skillDataTests[type].MaxLevel}".Log();
+            return currentLevel < GameManager.I.skillDataTests[type].MaxLevel;
+        }
+    }
 
     [Button, GUIColor(0,1,0)]
     public void SetInspector()

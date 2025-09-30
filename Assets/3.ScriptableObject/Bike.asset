@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19441760e5c85e646bfeacca8364d062, type: 3}
+  m_Name: Bike
+  m_EditorClassIdentifier: 
+  skillObj: {fileID: -5714291310737588132, guid: 8ba84bea8c72a2e4c9ae554ff8118cb0, type: 3}
+  _skillType: 3
+  SkillData:
+  - damage: 1
+    delay: 2
+    area: 3
+  - damage: 4
+    delay: 5
+    area: 6
+  - damage: 7
+    delay: 8
+    area: 9
