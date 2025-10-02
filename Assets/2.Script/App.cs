@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using Fusion;
 using Fusion.Sockets;
+using Unity.VisualScripting;
 using Utility;
 using WebSocketSharp;
 
@@ -26,6 +27,7 @@ public class App : SimulationSingleton<App>, INetworkRunnerCallbacks
     {
         runner = GetComponent<NetworkRunner>();
         runner.AddCallbacks(this);
+        
     }
     private void Start()
     {

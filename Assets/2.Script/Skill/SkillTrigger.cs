@@ -15,24 +15,14 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 public class SkillTrigger : NetworkBehaviour
 {
     [Serial, Read] private TriggerType _triggerType;
-    [Serial, Read] private SkillType _skillType;
     private PlayerBase _player;
-    private ActiveSkillBase _activeSkill;
-    private float _delay = 0;
-
-    private float Damage => _player.State.GetDamageValue(_activeSkill.SkillData.damage);
-    private bool CanAttack => _activeSkill.SkillData.delay <= _delay;
-    public void Init(PlayerBase player, ActiveSkillBase activeSkillBase,TriggerType triggerType, SkillType skillType)
+    private ActiveSkillBase _skillBase;
+    private float Damage => _player.State.GetDamageValue(_skillBase.SkillData.damage);
+    public void Init(PlayerBase player, ActiveSkillBase activeSkillBase,TriggerType triggerType)
     {
         _player = player;
         _triggerType = triggerType;
-        _skillType = skillType;
-        _activeSkill = activeSkillBase;
-    }
-    public override void FixedUpdateNetwork()
-    {
-        if (false == CanAttack)
-            _delay += Runner.DeltaTime;
+        _skillBase = activeSkillBase;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -56,10 +46,10 @@ public class SkillTrigger : NetworkBehaviour
             return;
         
         var hitManager = other.GetComponent<MonsterHitManager>();
-        while (CanAttack)
+        while (_skillBase.CanAttack)
         {
-            _delay -= _activeSkill.SkillData.delay;
-            hitManager.Damage(Object.InputAuthority, 10f);
+            _skillBase.DecreaseDelay();
+            hitManager.Damage(Object.InputAuthority, Damage);
         }
     }
 

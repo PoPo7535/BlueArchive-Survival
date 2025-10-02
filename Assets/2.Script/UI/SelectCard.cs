@@ -31,7 +31,6 @@ public class SelectCard : MonoBehaviour, ISetInspector
         }
     }
 
-    [Read,ShowInInspector] 
     private int myCard
     {
         get => num[index];

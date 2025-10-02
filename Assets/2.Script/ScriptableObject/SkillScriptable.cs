@@ -38,5 +38,5 @@ public enum SkillType
     None,
     Wheel,
     Gun,
-    Bike,
+    Bike, 
 }
