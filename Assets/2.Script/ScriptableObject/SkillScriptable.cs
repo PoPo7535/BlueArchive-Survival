@@ -15,6 +15,8 @@ public class SkillScriptable : ScriptableObject
     public NetworkObject skillObj;
     [Serial] public SkillType _skillType;
     [Serial] public SkillData[] SkillData;
+    public Sprite sprite;
+    public string msg;
     public int MaxLevel => SkillData.Length;
     
     [Button, GUIColor(0, 1, 0)] 

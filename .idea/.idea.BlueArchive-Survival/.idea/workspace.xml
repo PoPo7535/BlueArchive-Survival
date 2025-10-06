@@ -6,22 +6,26 @@
   <component name="ChangeListManager">
     <list default="true" id="92ad331b-57ba-4eed-bed9-8043b55c7314" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/App.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/App.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/MonsterScript.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/MonsterScript/MonsterBase.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/MonsterScript/MonsterBase.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/MonsterScript/MonsterComponent.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/MonsterScript/MonsterComponent.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/MonsterScript/MonsterDamage.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/MonsterScript/MonsterDamage.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/MonsterScript/MonsterHitManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/MonsterScript/MonsterHitManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1.Scenes/0.Login.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1.Scenes/0.Login.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Manager/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/2.Script/ScriptableObject/SkillScriptable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/ScriptableObject/SkillScriptable.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillWheel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillTest.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillWheel.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/SkillTrigger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/MonsterScript.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/MonsterScript/MonsterBase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/MonsterScript/MonsterBase.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/MonsterScript/MonsterComponent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/MonsterScript/MonsterComponent.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/MonsterScript/MonsterDamage.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/MonsterScript/MonsterDamage.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/MonsterScript/MonsterHitManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/MonsterScript/MonsterHitManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Spawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Spawner.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/2.Script/UI/SelectCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/UI/SelectCard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3.ScriptableObject/Bike.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3.ScriptableObject/Bike.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3.ScriptableObject/Gun.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3.ScriptableObject/Gun.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3.ScriptableObject/Wheel.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3.ScriptableObject/Wheel.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5.Prefab/GameManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Prefab/GameManager.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,7 +175,9 @@
       <workItem from="1759151818836" duration="6258000" />
       <workItem from="1759207642180" duration="10224000" />
       <workItem from="1759302962546" duration="7447000" />
-      <workItem from="1759376630242" duration="9722000" />
+      <workItem from="1759376630242" duration="9821000" />
+      <workItem from="1759553980544" duration="4418000" />
+      <workItem from="1759669558467" duration="4333000" />
     </task>
     <servers />
   </component>

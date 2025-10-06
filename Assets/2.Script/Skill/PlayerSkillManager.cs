@@ -86,7 +86,7 @@ public class PlayerSkillManager : PlayerComponent
         if (false == Object.HasStateAuthority)
             return;
         Runner.Spawn(
-            GameManager.I.skillDataTests[skillType].skillObj, 
+            GameManager.I.GetSkillScriptable(skillType).skillObj, 
             Vector3.zero, 
             Quaternion.identity, 
             info.Source);

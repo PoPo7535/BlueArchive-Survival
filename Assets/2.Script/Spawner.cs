@@ -19,12 +19,12 @@ public class Spawner : LocalFusionSingleton<Spawner>, INetworkRunnerCallbacks
             return;
 
     }
-    
-    [Rpc(RpcSources.All, RpcTargets.StateAuthority, HostMode = RpcHostMode.SourceIsHostPlayer)]
-    public void RPC_SkillSpawn(RpcInfo info = default)
-    {
-        Runner.Spawn(GameManager.I.skillDataTests[SkillType.Wheel].skillObj, Vector3.zero, Quaternion.identity, info.Source);
-    }
+    //
+    // [Rpc(RpcSources.All, RpcTargets.StateAuthority, HostMode = RpcHostMode.SourceIsHostPlayer)]
+    // public void RPC_SkillSpawn(RpcInfo info = default)
+    // {
+    //     Runner.Spawn(GameManager.I.GetSkillScriptable(SkillType.Wheel).skillObj, Vector3.zero, Quaternion.identity, info.Source);
+    // }
     
 #if UNITY_EDITOR
     public void OnGUI()

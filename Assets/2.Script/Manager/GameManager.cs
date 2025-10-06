@@ -18,11 +18,11 @@ public class GameManager : SerializedMonoBehaviour, ISetInspector
 {
     public static GameManager I;
     [OdinSerialize] public Dictionary<PlayableChar, GameObject> playableChar = new ();
-    public Dictionary<SkillType, SkillScriptable> skillDataTests = new();
+    [Read, Serial] private Dictionary<SkillType, SkillScriptable> _skillScriptables = new();
     public NetworkObject playerBase;
     public PlayerInfo playerInfo;
     public HitUi textUi;
-    [NonSerialized]public EntityTokenResponse playFabEntity;
+    [NonSerialized] public EntityTokenResponse playFabEntity;
     [Read] public string ID;
     
     [Button, GUIColor(0,1,0)]
@@ -37,7 +37,7 @@ public class GameManager : SerializedMonoBehaviour, ISetInspector
             var obj = AssetDatabase.LoadAssetAtPath<GameObject>(root);
             playableChar.Add(playable, obj);
         }
-        skillDataTests.Clear();
+        _skillScriptables.Clear();
         var skillTypes = SkillType.None.ToArray();
         foreach (var skillType in skillTypes.Skip(1))
         {
@@ -45,7 +45,7 @@ public class GameManager : SerializedMonoBehaviour, ISetInspector
             var obj = AssetDatabase.LoadAssetAtPath<SkillScriptable>(root);
             obj._skillType = SkillType.Wheel;
             obj.SetSkillType();
-            skillDataTests.Add(skillType, obj);
+            _skillScriptables.Add(skillType, obj);
         }
         
         var prefabRoot = PrefabUtility.GetOutermostPrefabInstanceRoot(gameObject);
@@ -62,6 +62,11 @@ public class GameManager : SerializedMonoBehaviour, ISetInspector
         }
         DontDestroyOnLoad(gameObject);
         I = this;
+    }
+
+    public SkillScriptable GetSkillScriptable(SkillType skillType)
+    {
+        return _skillScriptables.GetValueOrDefault(skillType);
     }
 }
 

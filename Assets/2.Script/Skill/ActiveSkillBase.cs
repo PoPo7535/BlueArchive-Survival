@@ -14,9 +14,10 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 public class ActiveSkillBase : NetworkBehaviour, ISetInspector
 {
     [Read, Serial, SerializeReference] protected List<SkillTrigger> activeSkills = new();
-    public SkillData SkillData => GameManager.I.skillDataTests[type].SkillData[_currentLevel - 1];
+    public SkillScriptable skillScriptable => GameManager.I.GetSkillScriptable(type);
+    public SkillData SkillData => skillScriptable.SkillData[_currentLevel - 1];
+    public bool CanLevelUp => _currentLevel < skillScriptable.MaxLevel;
     public bool CanAttack => SkillData.delay <= delay;
-    public bool CanLevelUp => _currentLevel < GameManager.I.skillDataTests[type].MaxLevel;
 
     protected PlayerBase player;
     [Serial] public SkillType type;

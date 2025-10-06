@@ -62,7 +62,11 @@ public class SelectCard : MonoBehaviour, ISetInspector
     public void UpdateCard()
     {
         myCard = 1;
-        SkillManager.GetRandomSkill();
+        var skillType = SkillManager.GetRandomSkill();
+        var scriptable = GameManager.I.GetSkillScriptable(skillType);
+        skillType.Log();
+        (scriptable == null).Log();
+        _selectImg.sprite = scriptable.sprite;
     }
 
     public void Select()
