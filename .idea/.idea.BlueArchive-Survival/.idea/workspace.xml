@@ -90,7 +90,7 @@
 }</component>
   <component name="RunManager" selected="Unity 에디터에 연결.Unity 에디터에 연결">
     <configuration name="유닛 테스트(배치 모드)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="E:\2022.3.33f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="E:\2022.3.62f2\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath E:\BlueArchive-Survival -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="E:\BlueArchive-Survival" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -98,7 +98,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unity 시작" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="E:\2022.3.33f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="E:\2022.3.62f2\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath E:\BlueArchive-Survival -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="E:\BlueArchive-Survival" />
       <option name="PASS_PARENT_ENVS" value="1" />
