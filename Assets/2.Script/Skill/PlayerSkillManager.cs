@@ -13,14 +13,15 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 
 public class PlayerSkillManager : PlayerComponent
 {
-    [Read] private Dictionary<SkillType, ActiveSkillBase> activeSkills = new();
-    [Read] private Dictionary<SkillType, int> randomSkillValue = new();
+    [Read] private readonly Dictionary<SkillType, ActiveSkillBase> _activeSkills = new();
+    [Read] private Dictionary<SkillType, ActiveSkillBase> _passiveSkills = new();
+    [Read] private readonly Dictionary<SkillType, int> _randomSkillValue = new();
     public override void Init(PlayerBase player)
     {
         base.Init(player);
         Player.SkillManager = this;
         foreach (var skillType in SkillType.None.ToArray().Skip(1))
-            randomSkillValue.Add(skillType, 1);
+            _randomSkillValue.Add(skillType, 1);
     }
 
     public override void Spawned()
@@ -31,36 +32,41 @@ public class PlayerSkillManager : PlayerComponent
 
     public void AddSkill(ActiveSkillBase skillBase, SkillType type)
     {
-        if (false == activeSkills.TryAdd(type, skillBase))
+        if (false == _activeSkills.TryAdd(type, skillBase))
+        {
             $"{nameof(AddSkill)} Error".ErrorLog();
+            return;
+        }
+
+        CharacterSkillPanel.I.SkillUpdate(_activeSkills);
     }
 
     public SkillType GetRandomSkill()
     {
-        var skillTypes = randomSkillValue.Keys.ToList();
+        var skillTypes = _randomSkillValue.Keys.ToList();
         foreach (var skillType in skillTypes)
-            randomSkillValue[skillType] += 1;
+            _randomSkillValue[skillType] += 1;
         
-        skillTypes = activeSkills.Keys.Where(skillType => activeSkills.ContainsKey(skillType)).ToList();
+        skillTypes = _activeSkills.Keys.Where(skillType => _activeSkills.ContainsKey(skillType)).ToList();
         foreach (var skillType in skillTypes)
-            randomSkillValue[skillType] += 3;
+            _randomSkillValue[skillType] += 3;
 
-        var sum = randomSkillValue.Keys.Sum(skillType => randomSkillValue[skillType]);
+        var sum = _randomSkillValue.Keys.Sum(skillType => _randomSkillValue[skillType]);
         var randomValue = Random.Range(0, sum);
         var current = 0;
 
-        foreach (var pair in randomSkillValue)
+        foreach (var pair in _randomSkillValue)
         {
-            current += randomSkillValue[pair.Key];
+            current += _randomSkillValue[pair.Key];
             if (pair.Key.IsLast())
             {
-                randomSkillValue[pair.Key] = 0;
+                _randomSkillValue[pair.Key] = 0;
                 return pair.Key;
             }
-            var max = current + randomSkillValue[pair.Key.Next()];
+            var max = current + _randomSkillValue[pair.Key.Next()];
             if (current <= randomValue && randomValue < max)
             {
-                randomSkillValue[pair.Key] = 0;
+                _randomSkillValue[pair.Key] = 0;
                 return pair.Key;
             }
         }
@@ -73,11 +79,11 @@ public class PlayerSkillManager : PlayerComponent
     public void RPC_GetSkill(SkillType skillType, RpcInfo info = default)
     {
 
-        if (activeSkills.ContainsKey(skillType))
+        if (_activeSkills.ContainsKey(skillType))
         {
-            if (activeSkills[skillType].CanLevelUp) 
+            if (_activeSkills[skillType].CanLevelUp) 
             {
-                activeSkills[skillType].LevelUp();
+                _activeSkills[skillType].LevelUp();
                 return;
             }
             $"{nameof(RPC_GetSkill)} 오류".ErrorLog();

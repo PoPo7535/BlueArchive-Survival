@@ -42,7 +42,7 @@ public class SelectCard : MonoBehaviour, ISetInspector
             if (value == SkillType.None)
                 return;
             var skillScriptable = GameManager.I.GetSkillScriptable(value);
-            _selectImg.sprite = skillScriptable.sprite;
+            _selectImg.sprite = skillScriptable.Sprite;
             _msg.text = skillScriptable.msg;
         }
     }

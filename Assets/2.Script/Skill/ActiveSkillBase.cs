@@ -15,14 +15,14 @@ public class ActiveSkillBase : NetworkBehaviour, ISetInspector
 {
     [Read, Serial, SerializeReference] protected List<SkillTrigger> activeSkills = new();
     public SkillScriptable skillScriptable => GameManager.I.GetSkillScriptable(type);
-    public SkillData SkillData => skillScriptable.SkillData[_currentLevel - 1];
-    public bool CanLevelUp => _currentLevel < skillScriptable.MaxLevel;
+    public SkillData SkillData => skillScriptable.SkillData[currentLevel - 1];
+    public bool CanLevelUp => currentLevel < skillScriptable.MaxLevel;
     public bool CanAttack => SkillData.delay <= delay;
-
-    protected PlayerBase player;
-    [Serial] public SkillType type;
+    [NonSerialized] public int currentLevel = 1;
     [NonSerialized] public float delay = 0;
-    private int _currentLevel = 1;
+
+    [Serial] public SkillType type;
+    protected PlayerBase player;
 
     [Button, GUIColor(0,1,0)]
     public void SetInspector()
@@ -46,7 +46,7 @@ public class ActiveSkillBase : NetworkBehaviour, ISetInspector
     public void LevelUp()
     {
         if(CanLevelUp)
-            ++_currentLevel;
+            ++currentLevel;
     }
 
     protected void SetPosition()

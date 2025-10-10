@@ -34,10 +34,10 @@ public class CharacterSkillPanel : LocalSingleton<CharacterSkillPanel>, ISetInsp
         _charSkill2 = childs.First(tr => tr.name == "CharSKill 2").GetComponent<Image>();
     }
 
-    public void SkillUpdate()
+    public void SkillUpdate(Dictionary<SkillType, ActiveSkillBase> activeSkills)
     {
-        _activeSkillGroup.SkillUpdate();
-        _passiveSkillGroup.SkillUpdate();
+        _activeSkillGroup.SkillUpdate(activeSkills);
+        // _passiveSkillGroup.SkillUpdate(activeSkills);
     }
 }
 
