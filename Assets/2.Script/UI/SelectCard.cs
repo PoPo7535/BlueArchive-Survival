@@ -79,8 +79,8 @@ public class SelectCard : MonoBehaviour, ISetInspector
     {
         if (myCard == SkillType.None)
             return;
+        SkillManager.RPC_GetSkill(myCard);
         myCard = SkillType.None;
         BattleSceneManager.I.Rpc_SelectReady();
-        SkillManager.RPC_GetSkill(SkillType.Wheel);
     }
 }

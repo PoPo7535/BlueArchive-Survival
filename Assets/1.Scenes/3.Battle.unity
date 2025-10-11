@@ -6399,8 +6399,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 646514882}
-  - component: {fileID: 646514883}
   - component: {fileID: 646514884}
+  - component: {fileID: 646514883}
   m_Layer: 5
   m_Name: AbilitySelect Panel
   m_TagString: Untagged

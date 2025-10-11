@@ -7,11 +7,12 @@
     <list default="true" id="92ad331b-57ba-4eed-bed9-8043b55c7314" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1.Scenes/3.Battle.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1.Scenes/3.Battle.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/ScriptableObject/SkillScriptable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/ScriptableObject/SkillScriptable.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillBase.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/UI/CharacterSkillPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/UI/CharacterSkillPanel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/UI/SkillGroup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/UI/SkillGroup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/UI/SelectCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/UI/SelectCard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3.ScriptableObject/Bike.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3.ScriptableObject/Bike.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3.ScriptableObject/Gun.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3.ScriptableObject/Gun.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3.ScriptableObject/Wheel.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3.ScriptableObject/Wheel.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +167,8 @@
       <workItem from="1759669558467" duration="4333000" />
       <workItem from="1759906339979" duration="8814000" />
       <workItem from="1760020135122" duration="670000" />
-      <workItem from="1760097748095" duration="2911000" />
+      <workItem from="1760097748095" duration="3213000" />
+      <workItem from="1760213354271" duration="3635000" />
     </task>
     <servers />
   </component>

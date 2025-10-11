@@ -37,6 +37,7 @@ public class ActiveSkillBase : NetworkBehaviour, ISetInspector
         base.Spawned();
         player = App.I.GetPlayerInfo(Object.InputAuthority).PlayerObject.GetComponent<PlayerBase>();
         player.SkillManager.AddSkill(this, type); 
+        player.SkillManager.SkillUpdate();
     }
     public override void FixedUpdateNetwork()
     {
@@ -45,8 +46,15 @@ public class ActiveSkillBase : NetworkBehaviour, ISetInspector
     }
     public void LevelUp()
     {
-        if(CanLevelUp)
+        if (CanLevelUp)
+        {
             ++currentLevel;
+            player.SkillManager.SkillUpdate();
+            if (false == CanLevelUp)
+                player.SkillManager.RemoveProbability(type);
+        }
+        else
+            $"{nameof(LevelUp)} 오류".ErrorLog();
     }
 
     protected void SetPosition()

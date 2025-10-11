@@ -25,3 +25,4 @@ MonoBehaviour:
     delay: 8
     area: 9
   sprite: {fileID: 21300000, guid: 46802742c823676409f3f488b10b6783, type: 3}
+  msg: Bike

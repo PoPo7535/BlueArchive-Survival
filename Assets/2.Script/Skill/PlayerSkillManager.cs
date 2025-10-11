@@ -14,14 +14,14 @@ using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
 public class PlayerSkillManager : PlayerComponent
 {
     [Read] private readonly Dictionary<SkillType, ActiveSkillBase> _activeSkills = new();
-    [Read] private Dictionary<SkillType, ActiveSkillBase> _passiveSkills = new();
-    [Read] private readonly Dictionary<SkillType, int> _randomSkillValue = new();
+    [Read] private readonly Dictionary<SkillType, ActiveSkillBase> _passiveSkills = new();
+    [Read] private readonly Dictionary<SkillType, int> _probabilitySkills = new();
     public override void Init(PlayerBase player)
     {
         base.Init(player);
         Player.SkillManager = this;
         foreach (var skillType in SkillType.None.ToArray().Skip(1))
-            _randomSkillValue.Add(skillType, 1);
+            _probabilitySkills.Add(skillType, 1);
     }
 
     public override void Spawned()
@@ -37,36 +37,47 @@ public class PlayerSkillManager : PlayerComponent
             $"{nameof(AddSkill)} Error".ErrorLog();
             return;
         }
+        SkillUpdate();
+    }
 
+    public void RemoveProbability(SkillType type)
+    {
+        _probabilitySkills.Remove(type);
+    }
+    public void SkillUpdate()
+    {
         CharacterSkillPanel.I.SkillUpdate(_activeSkills);
     }
 
     public SkillType GetRandomSkill()
     {
-        var skillTypes = _randomSkillValue.Keys.ToList();
+        var skillTypes = _probabilitySkills.Keys.ToList();
         foreach (var skillType in skillTypes)
-            _randomSkillValue[skillType] += 1;
+            _probabilitySkills[skillType] += 1;
         
         skillTypes = _activeSkills.Keys.Where(skillType => _activeSkills.ContainsKey(skillType)).ToList();
-        foreach (var skillType in skillTypes)
-            _randomSkillValue[skillType] += 3;
+        foreach (var type in skillTypes)
+        {
+            if (_probabilitySkills.ContainsKey(type))
+                _probabilitySkills[type] += 3;
+        }
 
-        var sum = _randomSkillValue.Keys.Sum(skillType => _randomSkillValue[skillType]);
+        var sum = _probabilitySkills.Keys.Sum(skillType => _probabilitySkills[skillType]);
         var randomValue = Random.Range(0, sum);
         var current = 0;
 
-        foreach (var pair in _randomSkillValue)
+        foreach (var pair in _probabilitySkills)
         {
-            current += _randomSkillValue[pair.Key];
+            current += _probabilitySkills[pair.Key];
             if (pair.Key.IsLast())
             {
-                _randomSkillValue[pair.Key] = 0;
+                _probabilitySkills[pair.Key] = 0;
                 return pair.Key;
             }
-            var max = current + _randomSkillValue[pair.Key.Next()];
+            var max = current + _probabilitySkills[pair.Key.Next()];
             if (current <= randomValue && randomValue < max)
             {
-                _randomSkillValue[pair.Key] = 0;
+                _probabilitySkills[pair.Key] = 0;
                 return pair.Key;
             }
         }
