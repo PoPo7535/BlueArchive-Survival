@@ -16,6 +16,7 @@ public class PlayerSkillManager : PlayerComponent
     [Read] private readonly Dictionary<SkillType, ActiveSkillBase> _activeSkills = new();
     [Read] private readonly Dictionary<SkillType, ActiveSkillBase> _passiveSkills = new();
     [Read] private readonly Dictionary<SkillType, int> _probabilitySkills = new();
+    [Read] private SkillType[] _skillTypes = new SkillType[3]; 
     public override void Init(PlayerBase player)
     {
         base.Init(player);
@@ -63,20 +64,19 @@ public class PlayerSkillManager : PlayerComponent
         }
 
         var sum = _probabilitySkills.Keys.Sum(skillType => _probabilitySkills[skillType]);
-        var randomValue = Random.Range(0, sum);
+        var randomValue = Random.Range(1, sum);
         var current = 0;
 
+        var output = string.Empty;
+        foreach (var pair in _probabilitySkills)
+            output += $"[{pair.Key}:{pair.Value}] ";
+        $"{output} = {randomValue}".Log();
+        
         foreach (var pair in _probabilitySkills)
         {
             current += _probabilitySkills[pair.Key];
-            if (pair.Key.IsLast())
-            {
-                _probabilitySkills[pair.Key] = 0;
-                return pair.Key;
-            }
-            var max = current + _probabilitySkills[pair.Key.Next()];
-            if (current <= randomValue && randomValue < max)
-            {
+            if (randomValue <= current)
+            { 
                 _probabilitySkills[pair.Key] = 0;
                 return pair.Key;
             }
@@ -85,11 +85,19 @@ public class PlayerSkillManager : PlayerComponent
         $"{nameof(GetRandomSkill)} 확률버그".WarningLog();
         return SkillType.None;
     }
+
+    public void Foo()
+    {
+        for (int i = 0; i < _skillTypes.Length; ++i)
+            _skillTypes[i] = GetRandomSkill();
+        
+    }
+
+    public SkillType GetSkillType(int index) => _skillTypes[index];
     
     [Rpc(RpcSources.All, RpcTargets.All, HostMode = RpcHostMode.SourceIsHostPlayer)]
     public void RPC_GetSkill(SkillType skillType, RpcInfo info = default)
     {
-
         if (_activeSkills.ContainsKey(skillType))
         {
             if (_activeSkills[skillType].CanLevelUp) 

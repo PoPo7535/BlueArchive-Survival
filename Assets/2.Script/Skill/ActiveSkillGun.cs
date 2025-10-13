@@ -29,17 +29,17 @@ public class ActiveSkillGun : ActiveSkillBase, ISetInspector
         if(false == Object.HasStateAuthority) 
             return;
 
-        if (CanAttack)
-        {
-            var targetObj = player.findEnemy.nearObj;
-            if (null == targetObj)
-                return;
-            DecreaseDelay();
+        if (false == CanAttack) 
+            return;
+        
+        var targetObj = player.findEnemy.nearObj;
+        if (null == targetObj)
+            return;
+        DecreaseDelay();
 
-            var dir = (targetObj.transform.position - player.transform.position).normalized * 0.1f;
-            var lookRotation = Quaternion.LookRotation(dir, Vector3.zero);
-            Runner.Spawn(bullet, player.transform.position + dir, lookRotation,
-                inputAuthority: Object.InputAuthority);
-        }
+        var dir = (targetObj.transform.position - player.transform.position).normalized * 0.1f;
+        var lookRotation = Quaternion.LookRotation(dir, Vector3.zero);
+        Runner.Spawn(bullet, player.transform.position + dir, lookRotation,
+            inputAuthority: Object.InputAuthority);
     }
 }
