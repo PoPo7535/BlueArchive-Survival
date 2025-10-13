@@ -6,13 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="92ad331b-57ba-4eed-bed9-8043b55c7314" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1.Scenes/3.Battle.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1.Scenes/3.Battle.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1.Scenes/1.Lobby.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1.Scenes/1.Lobby.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/UI/SelectCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/UI/SelectCard.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3.ScriptableObject/Bike.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3.ScriptableObject/Bike.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillGun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillGun.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/3.ScriptableObject/Gun.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3.ScriptableObject/Gun.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3.ScriptableObject/Wheel.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3.ScriptableObject/Wheel.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5.Prefab/Skill/Bike.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Prefab/Skill/Bike.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5.Prefab/Skill/Gun.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Prefab/Skill/Gun.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +29,9 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1f76ff20d9ff469b846a8371e880c369ab800/c4/9aaac1ec/NetworkObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1f76ff20d9ff469b846a8371e880c369ab800/e6/94761584/PlayerRef.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1f76ff20d9ff469b846a8371e880c369ab800/eb/0517ac5d/NetworkBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/37cc348edc804f4cb176b63962c716e7177200/2d/e4bcc80d/Transform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/37cc348edc804f4cb176b63962c716e7177200/63/3a561de4/Quaternion.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/37cc348edc804f4cb176b63962c716e7177200/9f/8ed69418/Component.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/52753f37eafb4d828451103e07e79dcd3a800/04/190dc899/StructWrapperUtility.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/779cc116a5954f1c9b92496e62345641175c00/2b/4dd6aad2/Component.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/779cc116a5954f1c9b92496e62345641175c00/33/df71ee1e/CreateAssetMenuAttribute.cs" root0="FORCE_HIGHLIGHTING" />
@@ -169,6 +171,7 @@
       <workItem from="1760020135122" duration="670000" />
       <workItem from="1760097748095" duration="3213000" />
       <workItem from="1760213354271" duration="3635000" />
+      <workItem from="1760345389012" duration="8927000" />
     </task>
     <servers />
   </component>

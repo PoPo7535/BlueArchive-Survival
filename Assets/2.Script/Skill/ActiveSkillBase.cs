@@ -34,7 +34,6 @@ public class ActiveSkillBase : NetworkBehaviour, ISetInspector
     }
     public override void Spawned()
     {
-        base.Spawned();
         player = App.I.GetPlayerInfo(Object.InputAuthority).PlayerObject.GetComponent<PlayerBase>();
         player.SkillManager.AddSkill(this, type); 
         player.SkillManager.SkillUpdate();
@@ -60,7 +59,7 @@ public class ActiveSkillBase : NetworkBehaviour, ISetInspector
     protected void SetPosition()
     {
         transform.localPosition = Vector3.zero;
-        transform.rotation = Quaternion.Euler(Vector3.zero);
+        transform.localRotation = Quaternion.Euler(Vector3.zero);
     }
 
     public void DecreaseDelay()

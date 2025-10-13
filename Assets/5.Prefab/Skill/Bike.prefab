@@ -119,7 +119,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _triggerType: 0
-  _skillType: 0
 --- !u!1 &3091494433891126113
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,7 +238,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _triggerType: 0
-  _skillType: 0
 --- !u!1 &4312438747428748694
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,7 +357,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _triggerType: 0
-  _skillType: 0
 --- !u!1 &7731483813849986845
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,7 +368,6 @@ GameObject:
   - component: {fileID: 2879681587622476997}
   - component: {fileID: -5714291310737588132}
   - component: {fileID: 4681369630949781683}
-  - component: {fileID: 2252237137380870971}
   - component: {fileID: 8810770208307846985}
   m_Layer: 0
   m_Name: Bike
@@ -417,7 +413,6 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 4681369630949781683}
-  - {fileID: 2252237137380870971}
   - {fileID: 2183291843998357759}
   - {fileID: 488267330086078465}
   - {fileID: 5143468726314561021}
@@ -438,26 +433,6 @@ MonoBehaviour:
   SyncParent: 1
   _autoAOIOverride: 1
   DisableSharedModeInterpolation: 0
---- !u!114 &2252237137380870971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7731483813849986845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9f20077c568a8347abafc74b23eb2c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activeSkills:
-  - {fileID: 2183291843998357759}
-  - {fileID: 488267330086078465}
-  - {fileID: 5143468726314561021}
-  - {fileID: 1899963327857746014}
-  currentLevel: 1
-  type: 1
-  positionConstraint: {fileID: 8810770208307846985}
 --- !u!1818360608 &8810770208307846985
 PositionConstraint:
   m_ObjectHideFlags: 0
@@ -595,4 +570,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _triggerType: 0
-  _skillType: 0

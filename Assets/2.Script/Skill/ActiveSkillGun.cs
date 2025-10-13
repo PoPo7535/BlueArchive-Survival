@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Fusion;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Serial = UnityEngine.SerializeField;
 using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
@@ -18,26 +19,27 @@ public class ActiveSkillGun : ActiveSkillBase, ISetInspector
     public override void Spawned()
     {
         base.Spawned();
+        transform.SetParent(player.transform, false);
         SetPosition();
     }
+    
     public override void FixedUpdateNetwork()
     {
-        if(false == HasStateAuthority) 
+        base.FixedUpdateNetwork();
+        if(false == Object.HasStateAuthority) 
             return;
+
         if (CanAttack)
         {
-            var obj = player.findEnemy.nearObj;
-            if (null == obj)
+            var targetObj = player.findEnemy.nearObj;
+            if (null == targetObj)
                 return;
             DecreaseDelay();
 
-            Runner.Spawn(bullet, transform.position, inputAuthority: Object.InputAuthority,
-                onBeforeSpawned: (_, bulletObj) =>
-                {
-                    bulletObj.transform.rotation.SetLookRotation(obj.transform.position);
-                    var angles = bulletObj.transform.rotation.eulerAngles;
-                    bulletObj.transform.rotation = Quaternion.Euler(0, angles.y, 0);
-                });
+            var dir = (targetObj.transform.position - player.transform.position).normalized * 0.1f;
+            var lookRotation = Quaternion.LookRotation(dir, Vector3.zero);
+            Runner.Spawn(bullet, player.transform.position + dir, lookRotation,
+                inputAuthority: Object.InputAuthority);
         }
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19441760e5c85e646bfeacca8364d062, type: 3}
   m_Name: Gun
   m_EditorClassIdentifier: 
-  skillObj: {fileID: -5714291310737588132, guid: affb984036048234b98c799fb72d3e0b, type: 3}
+  skillObj: {fileID: -1950952165652015233, guid: affb984036048234b98c799fb72d3e0b, type: 3}
   _skillType: 2
   SkillData:
   - damage: 1
