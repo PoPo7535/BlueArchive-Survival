@@ -16,7 +16,7 @@ public class PlayerSkillManager : PlayerComponent
     [Read] private readonly Dictionary<SkillType, ActiveSkillBase> _activeSkills = new();
     [Read] private readonly Dictionary<SkillType, ActiveSkillBase> _passiveSkills = new();
     [Read] private readonly Dictionary<SkillType, int> _probabilitySkills = new();
-    [Read] private SkillType[] _skillTypes = new SkillType[3]; 
+    [Read] private readonly SkillType[] _skillTypes = new SkillType[3]; 
     public override void Init(PlayerBase player)
     {
         base.Init(player);
@@ -63,7 +63,11 @@ public class PlayerSkillManager : PlayerComponent
                 _probabilitySkills[type] += 3;
         }
 
-        var sum = _probabilitySkills.Keys.Sum(skillType => _probabilitySkills[skillType]);
+        var sum = _probabilitySkills.Keys.Sum(skillType =>
+        {
+            // _skillTypes.Contains(skillType)
+            return _probabilitySkills[skillType];
+        });
         var randomValue = Random.Range(1, sum);
         var current = 0;
 
@@ -74,6 +78,9 @@ public class PlayerSkillManager : PlayerComponent
         
         foreach (var pair in _probabilitySkills)
         {
+            // if (_skillTypes.Contains(pair.Key))
+            //     continue;
+            //
             current += _probabilitySkills[pair.Key];
             if (randomValue <= current)
             { 

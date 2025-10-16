@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="92ad331b-57ba-4eed-bed9-8043b55c7314" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillGun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/ActiveSkillGun.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -167,7 +166,9 @@
       <workItem from="1760020135122" duration="670000" />
       <workItem from="1760097748095" duration="3213000" />
       <workItem from="1760213354271" duration="3635000" />
-      <workItem from="1760345389012" duration="11949000" />
+      <workItem from="1760345389012" duration="13737000" />
+      <workItem from="1760473590164" duration="7728000" />
+      <workItem from="1760619854070" duration="2190000" />
     </task>
     <servers />
   </component>
