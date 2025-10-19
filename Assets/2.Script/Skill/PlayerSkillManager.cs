@@ -50,7 +50,7 @@ public class PlayerSkillManager : PlayerComponent
         CharacterSkillPanel.I.SkillUpdate(_activeSkills);
     }
 
-    public SkillType GetRandomSkill()
+    private SkillType GetRandomSkill()
     {
         var exclude = new Dictionary<SkillType, int>();
         Remove();
@@ -69,10 +69,8 @@ public class PlayerSkillManager : PlayerComponent
         var randomValue = Random.Range(1, sum);
         var current = 0;
 
-        var output = _probabilitySkills.Aggregate(
-            string.Empty, (current1, pair) => current1 + $"[{pair.Key}:{pair.Value}] ");
-        $"{output} = {randomValue}".Log();
-        
+        ShowLog();
+
         foreach (var pair in _probabilitySkills)
         {
             if (_skillTypes.Contains(pair.Key))
@@ -82,6 +80,7 @@ public class PlayerSkillManager : PlayerComponent
             if (randomValue <= current)
             { 
                 _probabilitySkills[pair.Key] = 0;
+                Add();
                 return pair.Key;
             }
         }
@@ -93,7 +92,9 @@ public class PlayerSkillManager : PlayerComponent
         {
             foreach (var type in _skillTypes)
             {
-                var val = _probabilitySkills[type];
+                if(false == _probabilitySkills.TryGetValue(type, out var val))
+                    continue;
+
                 exclude.Add(type, val);
                 _probabilitySkills.Remove(type);
             }
@@ -103,10 +104,11 @@ public class PlayerSkillManager : PlayerComponent
         {
             foreach (var pair in exclude)
                 _probabilitySkills.Add(pair.Key,pair.Value);
+            ShowLog();
         }
     }
 
-    public void InitSkills()
+    public void SetSkills()
     {
         for (int i = 0; i < _skillTypes.Length; ++i)
             _skillTypes[i] = GetRandomSkill();
@@ -140,4 +142,13 @@ public class PlayerSkillManager : PlayerComponent
             Quaternion.identity, 
             info.Source);
     }
+
+#if UNITY_EDITOR
+    private void ShowLog()
+    {
+        var output = _probabilitySkills.Aggregate(
+            string.Empty, (current1, pair) => current1 + $"[{pair.Key}:{pair.Value}] ");
+        $"{output}".Log();
+    }
+#endif
 }

@@ -22,17 +22,6 @@ public class SelectCard : MonoBehaviour, ISetInspector
     [Read, Serial] public int index;
     [Read] private static SkillType[] num = new SkillType[3];
     
-    private static PlayerSkillManager _skillManager;
-    private static PlayerSkillManager SkillManager
-    {
-        get
-        {
-            if (null == _skillManager)
-                _skillManager = App.I.GetPlayerInfo(App.I.Runner.LocalPlayer).PlayerObject.SkillManager;
-            return _skillManager;
-        }
-    }
-
     private SkillType myCard
     {
         get => num[index];
@@ -75,15 +64,15 @@ public class SelectCard : MonoBehaviour, ISetInspector
 
     public void UpdateCard()
     {
-        myCard = SkillManager.GetRandomSkill();
+        myCard = LocalPlayer.SkillManager.GetSkillType(index);
     }
 
     public void Select()
     {
         if (myCard == SkillType.None)
             return;
-        SkillManager.RPC_GetSkill(myCard);
-        // myCard = SkillType.None;
+        LocalPlayer.SkillManager.RPC_GetSkill(myCard);
+        LocalPlayer.SkillManager.ResetSkills();
         BattleSceneManager.I.Rpc_SelectReady();
     }
 }

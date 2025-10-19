@@ -34,6 +34,7 @@ public class AbilitySelectPanel : MonoBehaviour, ISetInspector
         _cg.ActiveCG(active);
         if (false == active)
             return;
+        LocalPlayer.SkillManager.SetSkills();
         foreach (var selectCard in _selectCards)
             selectCard.UpdateCard();
     }
