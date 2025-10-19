@@ -52,10 +52,12 @@ public class PlayerSkillManager : PlayerComponent
 
     public SkillType GetRandomSkill()
     {
+        var exclude = new Dictionary<SkillType, int>();
+        Remove();
         var skillTypes = _probabilitySkills.Keys.ToList();
         foreach (var skillType in skillTypes)
             _probabilitySkills[skillType] += 1;
-        
+
         skillTypes = _activeSkills.Keys.Where(skillType => _activeSkills.ContainsKey(skillType)).ToList();
         foreach (var type in skillTypes)
         {
@@ -63,24 +65,19 @@ public class PlayerSkillManager : PlayerComponent
                 _probabilitySkills[type] += 3;
         }
 
-        var sum = _probabilitySkills.Keys.Sum(skillType =>
-        {
-            // _skillTypes.Contains(skillType)
-            return _probabilitySkills[skillType];
-        });
+        var sum = _probabilitySkills.Keys.Sum(skillType => _probabilitySkills[skillType]);
         var randomValue = Random.Range(1, sum);
         var current = 0;
 
-        var output = string.Empty;
-        foreach (var pair in _probabilitySkills)
-            output += $"[{pair.Key}:{pair.Value}] ";
+        var output = _probabilitySkills.Aggregate(
+            string.Empty, (current1, pair) => current1 + $"[{pair.Key}:{pair.Value}] ");
         $"{output} = {randomValue}".Log();
         
         foreach (var pair in _probabilitySkills)
         {
-            // if (_skillTypes.Contains(pair.Key))
-            //     continue;
-            //
+            if (_skillTypes.Contains(pair.Key))
+                continue;
+            
             current += _probabilitySkills[pair.Key];
             if (randomValue <= current)
             { 
@@ -89,17 +86,37 @@ public class PlayerSkillManager : PlayerComponent
             }
         }
 
-        $"{nameof(GetRandomSkill)} 확률버그".WarningLog();
+        Add();
         return SkillType.None;
+        
+        void Remove()
+        {
+            foreach (var type in _skillTypes)
+            {
+                var val = _probabilitySkills[type];
+                exclude.Add(type, val);
+                _probabilitySkills.Remove(type);
+            }
+        }
+        
+        void Add()
+        {
+            foreach (var pair in exclude)
+                _probabilitySkills.Add(pair.Key,pair.Value);
+        }
     }
 
-    public void Foo()
+    public void InitSkills()
     {
         for (int i = 0; i < _skillTypes.Length; ++i)
             _skillTypes[i] = GetRandomSkill();
-        
     }
-
+    public void ResetSkills()
+    {
+        for (int i = 0; i < _skillTypes.Length; ++i)
+            _skillTypes[i] = SkillType.None;
+    }
+    
     public SkillType GetSkillType(int index) => _skillTypes[index];
     
     [Rpc(RpcSources.All, RpcTargets.All, HostMode = RpcHostMode.SourceIsHostPlayer)]

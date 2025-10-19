@@ -40,14 +40,17 @@ public class SelectCard : MonoBehaviour, ISetInspector
         {
             num[index] = value;
             if (value == SkillType.None)
+            {
+                gameObject.SetActive(false);   
                 return;
+            }
+            gameObject.SetActive(true);
             var skillScriptable = GameManager.I.GetSkillScriptable(value);
             _selectImg.sprite = skillScriptable.Sprite;
             _msg.text = skillScriptable.msg;
         }
     }
-
-
+    
     [Button, GUIColor(0,1,0)]
     public void SetInspector()
     {
@@ -80,7 +83,7 @@ public class SelectCard : MonoBehaviour, ISetInspector
         if (myCard == SkillType.None)
             return;
         SkillManager.RPC_GetSkill(myCard);
-        myCard = SkillType.None;
+        // myCard = SkillType.None;
         BattleSceneManager.I.Rpc_SelectReady();
     }
 }

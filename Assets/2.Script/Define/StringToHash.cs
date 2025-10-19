@@ -10,5 +10,4 @@ public static class StringToHash
     public static readonly int MoveSpeed = Animator.StringToHash("MoveSpeed");
     public static readonly int AttackSpeed = Animator.StringToHash("AttackSpeed");
     public static readonly int Formation_Idle = Animator.StringToHash("Formation Idle");
-
 }

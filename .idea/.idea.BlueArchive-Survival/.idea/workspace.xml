@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="92ad331b-57ba-4eed-bed9-8043b55c7314" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1.Scenes/3.Battle.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1.Scenes/3.Battle.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Define/StringToHash.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Define/StringToHash.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/UI/CharacterSkillPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/UI/CharacterSkillPanel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Script/UI/SelectCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/UI/SelectCard.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +38,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/779cc116a5954f1c9b92496e62345641175c00/ca/39fa6c08/Random.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9232050d96be4a5f8f15ce871ca8d4ef27800/33/8d69907a/ConstraintSource.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7d303c2bf72cd4cec95665b89c457d265d2b8ef3ed6da17cd4f85587c2f9de7/System.Linq.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2.Script/HitUi.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2.Script/Interfaces/IActiveSkill.cs" root0="FORCE_HIGHLIGHTING" />
@@ -45,6 +50,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/2.Script/UI/CharacterSkillPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/Fusion/Editor/Fusion.Unity.Editor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PlayFabSDK/Shared/Public/PlayFabEvents.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.visualscripting@1.9.4/Runtime/VisualScripting.Core/Pooling/ListPool.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.visualscripting@1.9.4/Runtime/VisualScripting.Core/Utilities/UnityObjectUtility.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
@@ -168,7 +174,9 @@
       <workItem from="1760213354271" duration="3635000" />
       <workItem from="1760345389012" duration="13737000" />
       <workItem from="1760473590164" duration="7728000" />
-      <workItem from="1760619854070" duration="2190000" />
+      <workItem from="1760619854070" duration="2869000" />
+      <workItem from="1760718730324" duration="4630000" />
+      <workItem from="1760816972868" duration="11966000" />
     </task>
     <servers />
   </component>

@@ -40,4 +40,3 @@ public class CharacterSkillPanel : LocalSingleton<CharacterSkillPanel>, ISetInsp
         // _passiveSkillGroup.SkillUpdate(activeSkills);
     }
 }
-
