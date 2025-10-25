@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="92ad331b-57ba-4eed-bed9-8043b55c7314" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Skill/PlayerSkillManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/UI/AbilitySelectPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/UI/AbilitySelectPanel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/UI/SelectCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/UI/SelectCard.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +172,8 @@
       <workItem from="1760619854070" duration="2869000" />
       <workItem from="1760718730324" duration="4630000" />
       <workItem from="1760816972868" duration="11966000" />
-      <workItem from="1760888170694" duration="4925000" />
+      <workItem from="1760888170694" duration="5908000" />
+      <workItem from="1761338765054" duration="594000" />
     </task>
     <servers />
   </component>
