@@ -1,18 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.Serialization;
 using UnityEngine;
+using Utility;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : SerializeSingleton<AudioManager>
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [OdinSerialize] public Dictionary<string, int> test = new();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

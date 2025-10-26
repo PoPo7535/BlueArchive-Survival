@@ -8,15 +8,15 @@ using PlayFab.ClientModels;
 using Fusion;
 using TMPro;
 using UnityEngine.Serialization;
+using Utility;
 #if UNITY_EDITOR   
 using UnityEditor;
 #endif
 using Serial = UnityEngine.SerializeField;
 using Read = Sirenix.OdinInspector.ReadOnlyAttribute;
 using Fold = Sirenix.OdinInspector.FoldoutGroupAttribute;
-public class GameManager : SerializedMonoBehaviour, ISetInspector
+public class GameManager : SerializeSingleton<GameManager>, ISetInspector
 {
-    public static GameManager I;
     [OdinSerialize] public Dictionary<PlayableChar, GameObject> playableChar = new ();
     [Read, Serial] private Dictionary<SkillType, SkillScriptable> _skillScriptables = new();
     public NetworkObject playerBase;
@@ -51,17 +51,6 @@ public class GameManager : SerializedMonoBehaviour, ISetInspector
         var prefabRoot = PrefabUtility.GetOutermostPrefabInstanceRoot(gameObject);
         PrefabUtility.ApplyPrefabInstance(prefabRoot , InteractionMode.UserAction);
 #endif
-    }
-
-    public void Awake()
-    {
-        if (null != I)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        DontDestroyOnLoad(gameObject);
-        I = this;
     }
 
     public SkillScriptable GetSkillScriptable(SkillType skillType)
