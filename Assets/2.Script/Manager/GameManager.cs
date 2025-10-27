@@ -41,7 +41,7 @@ public class GameManager : SerializeSingleton<GameManager>, ISetInspector
         var skillTypes = SkillType.None.ToArray();
         foreach (var skillType in skillTypes.Skip(1))
         {
-            var root = $"Assets/3.ScriptableObject/{skillType.ToString()}.asset";
+            var root = $"Assets/2.Script/ScriptableObject/{skillType.ToString()}.asset";
             var obj = AssetDatabase.LoadAssetAtPath<SkillScriptable>(root);
             obj._skillType = SkillType.Wheel;
             obj.SetSkillType();
