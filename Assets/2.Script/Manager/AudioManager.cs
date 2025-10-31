@@ -12,17 +12,12 @@ public class AudioManager : SerializeSingleton<AudioManager>, ISetInspector
     [Button, GUIColor(0,1,0)]
     public void SetInspector() { }
 
-    public void PlayAudio(string audioName)
+    public void PlayAudio(Transform tr, string audioName)
     {
-        audioBank.TryGetValue(audioName, out var audio);
+        if(audioBank.TryGetValue(audioName, out var audio))
         {
             
         }
-    }
-
-    private void Start()
-    {
-        throw new NotImplementedException();
     }
 
     enum AudioType
@@ -30,5 +25,14 @@ public class AudioManager : SerializeSingleton<AudioManager>, ISetInspector
         BGM,
         SFX,
         Voice
+    }
+    public AudioSource asd;
+    [Button]
+    public void Poo()
+    {
+        if (asd.outputAudioMixerGroup.audioMixer.GetFloat("BGM", out var value))
+        {
+            
+        }
     }
 }
