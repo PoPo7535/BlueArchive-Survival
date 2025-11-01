@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
+using UnityEngine.Audio;
 using Utility;
 
 public class AudioManager : SerializeSingleton<AudioManager>, ISetInspector
 {
     [OdinSerialize] public Dictionary<string, AudioSource> audioBank = new();
+    public AudioMixer mixer;
     [Button, GUIColor(0,1,0)]
     public void SetInspector() { }
 
@@ -28,11 +30,13 @@ public class AudioManager : SerializeSingleton<AudioManager>, ISetInspector
     }
     public AudioSource asd;
     [Button]
-    public void Poo()
+    public void Poo(float soundValue)
     {
-        if (asd.outputAudioMixerGroup.audioMixer.GetFloat("BGM", out var value))
+        if (soundValue == 0)
         {
-            
+            mixer.SetFloat("BGM", -80f);
+            return;
         }
+        mixer.SetFloat("BGM", soundValue * 100 - 80f);
     }
 }

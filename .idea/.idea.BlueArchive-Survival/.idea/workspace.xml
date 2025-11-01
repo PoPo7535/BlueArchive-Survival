@@ -8,13 +8,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1.Scenes/0.Login.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1.Scenes/0.Login.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/2.Script/Manager/AudioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Manager/AudioManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Manager/NewAudioMixer.mixer" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Script/Manager/NewAudioMixer.mixer.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3.Audio/BGM.mixer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3.Audio/BGM.mixer" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3.Audio/SFX.mixer" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3.Audio/SFX.mixer.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3.Audio/Voice.mixer" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3.Audio/Voice.mixer.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3.Audio/BGM.mixer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3.Audio/BGM.mixer.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,6 +187,7 @@
       <workItem from="1761604042651" duration="5594000" />
       <workItem from="1761766364067" duration="1846000" />
       <workItem from="1761819193775" duration="3188000" />
+      <workItem from="1761977118463" duration="7311000" />
     </task>
     <servers />
   </component>
