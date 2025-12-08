@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="92ad331b-57ba-4eed-bed9-8043b55c7314" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BlueArchive-Survival/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1.Scenes/0.Login.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1.Scenes/0.Login.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/2.Script/Manager/AudioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Script/Manager/AudioManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3.Audio/Mixer.mixer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3.Audio/Mixer.mixer" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3.Audio/녹음.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3.Audio/녹음.mp3.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,6 +185,7 @@
       <workItem from="1761819193775" duration="3188000" />
       <workItem from="1761977118463" duration="7346000" />
       <workItem from="1762049777064" duration="7063000" />
+      <workItem from="1762505027659" duration="2815000" />
     </task>
     <servers />
   </component>
